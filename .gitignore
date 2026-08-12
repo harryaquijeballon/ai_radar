@@ -1,0 +1,10 @@
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Local Claude Code settings and worktrees
+.claude/settings.local.json
+.claude/worktrees/
+
+# Local-only: explicitly approved internal context — never committed
+internal/

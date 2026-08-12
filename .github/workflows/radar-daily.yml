@@ -1,0 +1,297 @@
+# Unattended daily radar harness (plan U7/U8).
+# Schedule ACTIVATED at rollout stage 8 (user approval 2026-07-23) after full
+# certification — see docs/ops/v2-rollout-runbook.md. Moved to 04:37 UTC on
+# 2026-07-27 (user approval): GitHub cron is UTC-only (the timezone key was
+# ignored on the first live fires — see the 2026-07-27 ops note), so the time
+# is declared directly in UTC. 05:37 London in summer, 04:37 in winter —
+# always before the working day; the off-hour minute avoids the :00 scheduler
+# congestion. Disable: gh workflow disable radar-daily.yml, or re-comment the
+# schedule block (runbook rollback table).
+
+name: radar-daily
+
+on:
+  schedule:
+    - cron: "37 4 * * *"   # UTC — 05:37 London (BST) / 04:37 (GMT)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry-run (stub, no model) | no-push (model, no delivery) | full"
+        type: choice
+        options: [dry-run, no-push, full]
+        default: dry-run
+
+permissions:
+  contents: write
+  id-token: write   # required by the official action's OIDC token exchange; never reaches the model's tool surface
+
+concurrency:
+  group: radar-daily
+  cancel-in-progress: false
+
+env:
+  RADAR_DIR: /tmp/radar
+  RADAR_EVIDENCE_PATH: /tmp/radar/scan-evidence.json
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120   # sized for two full attempts, each with one repair pass
+    steps:
+      - name: Guard auth boundary (R32)
+        id: authgate
+        run: |
+          set -eu
+          if [ -n "${ANTHROPIC_API_KEY:-}" ]; then
+            echo "ABORT AUTH_BOUNDARY - ANTHROPIC_API_KEY present in environment"
+            exit 1
+          fi
+          echo "oauth_secret_ready=${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
+          mkdir -p "$RADAR_DIR/diagnostics"
+
+      - name: Checkout model workspace (no persisted credentials, R49)
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Materialize harness clone and read-only pristine base (R41)
+        id: pristine
+        run: |
+          set -eu
+          BASE_SHA=$(git rev-parse HEAD)
+          git clone --quiet --no-hardlinks "$GITHUB_WORKSPACE" "$RUNNER_TEMP/harness"
+          git -C "$RUNNER_TEMP/harness" checkout --quiet "$BASE_SHA"
+          cp -R "$RUNNER_TEMP/harness" "$RUNNER_TEMP/pristine"
+          chmod -R a-w "$RUNNER_TEMP/pristine"
+          echo "base_sha=$BASE_SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Build model settings from egress allowlist (R48, Option A)
+        run: |
+          set -eu
+          python3 "$RUNNER_TEMP/pristine/scripts/build_claude_settings.py" \
+            --allowlist "$GITHUB_WORKSPACE/profiles/egress_allowlist.md" \
+            --evidence-dir "$RADAR_DIR" \
+            --runner-temp "$RUNNER_TEMP" \
+            --output "$RUNNER_TEMP/claude-settings.json"
+
+      # ---------------- attempt 1 ----------------
+
+      - name: Radar run (attempt 1)
+        id: model1
+        if: inputs.mode != 'dry-run'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          settings: ${{ runner.temp }}/claude-settings.json
+          prompt: "Read the file .github/prompts/daily-radar.md in this repository and follow it exactly."
+        env:
+          RADAR_EVIDENCE_PATH: ${{ env.RADAR_EVIDENCE_PATH }}
+
+      - name: Validate (attempt 1)
+        id: validate1
+        run: |
+          set -eu
+          python3 "$RUNNER_TEMP/pristine/scripts/run_delivery.py" validate \
+            --workspace "$GITHUB_WORKSPACE" \
+            --pristine "$RUNNER_TEMP/pristine" \
+            --git-dir "$RUNNER_TEMP/harness/.git" \
+            --base "${{ steps.pristine.outputs.base_sha }}" \
+            --evidence "$RADAR_EVIDENCE_PATH" \
+            $([ "${{ inputs.mode }}" = "dry-run" ] && echo --skip-evidence) \
+            --violations-out "$RADAR_DIR/violations-1.txt" \
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Repair pass (attempt 1, bounded to one)
+        id: repair1
+        if: steps.validate1.outputs.verdict == 'repairable' && inputs.mode != 'dry-run'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          settings: ${{ runner.temp }}/claude-settings.json
+          prompt: "Read /tmp/radar/violations-1.txt (validator findings for your earlier changes in this repository) and .github/prompts/daily-radar.md, then fix only those findings. Change nothing else."
+
+      - name: Revalidate full suite (attempt 1)
+        id: revalidate1
+        if: steps.repair1.outcome == 'success'
+        run: |
+          set -eu
+          python3 "$RUNNER_TEMP/pristine/scripts/run_delivery.py" validate \
+            --workspace "$GITHUB_WORKSPACE" \
+            --pristine "$RUNNER_TEMP/pristine" \
+            --git-dir "$RUNNER_TEMP/harness/.git" \
+            --base "${{ steps.pristine.outputs.base_sha }}" \
+            --evidence "$RADAR_EVIDENCE_PATH" \
+            --final \
+            --violations-out "$RADAR_DIR/violations-1b.txt" \
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Deliver (attempt 1)
+        id: deliver1
+        if: >
+          (steps.validate1.outputs.verdict == 'pass' ||
+           steps.revalidate1.outputs.verdict == 'pass') &&
+          (inputs.mode == 'full' || github.event_name == 'schedule')
+        env:
+          RADAR_PUSH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          python3 "$RUNNER_TEMP/pristine/scripts/run_delivery.py" deliver \
+            --workspace "$GITHUB_WORKSPACE" \
+            --git-dir "$RUNNER_TEMP/harness/.git" \
+            --base "${{ steps.pristine.outputs.base_sha }}" \
+            --remote "https://x-access-token:${RADAR_PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            --github-output "$GITHUB_OUTPUT"
+
+      # ---------------- attempt 2 (statically unrolled; push race or degenerate attempt-1 model run) ----------------
+      # Degenerate gate (2026-07-28 model-bail review): the model step ended
+      # "success" but produced no scan-evidence artifact and violated nothing
+      # else (validate emits degenerate=true only for that exact signature).
+      # Auth/usage failures never reach it (a failed model step skips
+      # validate), and any other violation makes degenerate=false. Step
+      # outputs only — never inputs.* (2026-07-27 incident).
+
+      - name: Preserve attempt-1 diagnostics and reset (attempt 2 setup)
+        id: reset2
+        if: >
+          steps.deliver1.outputs.outcome == 'rejected' ||
+          (steps.validate1.outputs.degenerate == 'true' &&
+           steps.model1.outcome == 'success')
+        run: |
+          set -eu
+          cp "$RADAR_EVIDENCE_PATH" "$RADAR_DIR/diagnostics/scan-evidence-attempt1.json" 2>/dev/null || true
+          cp "$RADAR_DIR"/violations-1*.txt "$RADAR_DIR/diagnostics/" 2>/dev/null || true
+          python3 "$RUNNER_TEMP/pristine/scripts/summarize_execution_log.py" \
+            --execution-log "${{ steps.model1.outputs.execution_file || '' }}" \
+            --evidence-path "$RADAR_EVIDENCE_PATH" \
+            --output "$RADAR_DIR/diagnostics/model-run-facts-attempt1.json" || true
+          rm -f "$RADAR_EVIDENCE_PATH"
+
+      - name: Re-checkout workspace from new remote head (attempt 2)
+        if: >
+          steps.deliver1.outputs.outcome == 'rejected' ||
+          (steps.validate1.outputs.degenerate == 'true' &&
+           steps.model1.outcome == 'success')
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Re-materialize pristine base and harness clone (attempt 2)
+        id: pristine2
+        if: >
+          steps.deliver1.outputs.outcome == 'rejected' ||
+          (steps.validate1.outputs.degenerate == 'true' &&
+           steps.model1.outcome == 'success')
+        run: |
+          set -eu
+          BASE_SHA=$(git rev-parse HEAD)
+          chmod -R u+w "$RUNNER_TEMP/pristine" && rm -rf "$RUNNER_TEMP/pristine" "$RUNNER_TEMP/harness"
+          git clone --quiet --no-hardlinks "$GITHUB_WORKSPACE" "$RUNNER_TEMP/harness"
+          git -C "$RUNNER_TEMP/harness" checkout --quiet "$BASE_SHA"
+          cp -R "$RUNNER_TEMP/harness" "$RUNNER_TEMP/pristine"
+          chmod -R a-w "$RUNNER_TEMP/pristine"
+          echo "base_sha=$BASE_SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Radar run (attempt 2)
+        id: model2
+        if: >
+          (steps.deliver1.outputs.outcome == 'rejected' ||
+           (steps.validate1.outputs.degenerate == 'true' &&
+            steps.model1.outcome == 'success')) &&
+          inputs.mode != 'dry-run'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          settings: ${{ runner.temp }}/claude-settings.json
+          prompt: "Read the file .github/prompts/daily-radar.md in this repository and follow it exactly."
+        env:
+          RADAR_EVIDENCE_PATH: ${{ env.RADAR_EVIDENCE_PATH }}
+
+      - name: Validate and deliver (attempt 2, final)
+        id: deliver2
+        if: >
+          steps.deliver1.outputs.outcome == 'rejected' ||
+          (steps.validate1.outputs.degenerate == 'true' &&
+           steps.model1.outcome == 'success')
+        env:
+          RADAR_PUSH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          python3 "$RUNNER_TEMP/pristine/scripts/run_delivery.py" validate \
+            --workspace "$GITHUB_WORKSPACE" \
+            --pristine "$RUNNER_TEMP/pristine" \
+            --git-dir "$RUNNER_TEMP/harness/.git" \
+            --base "${{ steps.pristine2.outputs.base_sha }}" \
+            --evidence "$RADAR_EVIDENCE_PATH" \
+            --final \
+            --violations-out "$RADAR_DIR/violations-2.txt" \
+            --github-output "$GITHUB_OUTPUT"
+          if grep -q '^verdict=pass$' "$GITHUB_OUTPUT"; then
+            python3 "$RUNNER_TEMP/pristine/scripts/run_delivery.py" deliver \
+              --workspace "$GITHUB_WORKSPACE" \
+              --git-dir "$RUNNER_TEMP/harness/.git" \
+              --base "${{ steps.pristine2.outputs.base_sha }}" \
+              --remote "https://x-access-token:${RADAR_PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+              --final \
+              --github-output "$GITHUB_OUTPUT"
+          fi
+
+      # ---------------- always: summary, notification, artifacts ----------------
+
+      - name: Job summary (always, safe derived-only, teed to log)
+        id: summary
+        if: always()
+        run: |
+          set -eu
+          mkdir -p "$RADAR_DIR/diagnostics"
+          cp "$RADAR_EVIDENCE_PATH" "$RADAR_DIR/diagnostics/" 2>/dev/null || true
+          cp "$RADAR_DIR"/violations-*.txt "$RADAR_DIR/diagnostics/" 2>/dev/null || true
+          # Safe derived facts from the newest model invocation (raw execution
+          # logs contain fetched content and are never uploaded — R43 review
+          # 2026-07-28); attempt 1's snapshot is preserved by the reset step.
+          python3 "$RUNNER_TEMP/pristine/scripts/summarize_execution_log.py" \
+            --execution-log "${{ steps.model2.outputs.execution_file || steps.repair1.outputs.execution_file || steps.model1.outputs.execution_file || '' }}" \
+            --evidence-path "$RADAR_EVIDENCE_PATH" \
+            --output "$RADAR_DIR/diagnostics/model-run-facts.json" || true
+          python3 "$RUNNER_TEMP/pristine/scripts/run_delivery.py" summarize \
+            --workspace "$GITHUB_WORKSPACE" \
+            --pristine "$RUNNER_TEMP/pristine" \
+            --git-dir "$RUNNER_TEMP/harness/.git" \
+            --mode "${{ inputs.mode || 'schedule' }}" \
+            --authgate "${{ steps.authgate.outcome }}" \
+            --oauth-ready "${{ steps.authgate.outputs.oauth_secret_ready || 'false' }}" \
+            --model1 "${{ steps.model1.outcome }}" \
+            --validate1 "${{ steps.validate1.outputs.verdict || 'none' }}" \
+            --validate1-class "${{ steps.validate1.outputs.failure_class || 'none' }}" \
+            --revalidate1 "${{ steps.revalidate1.outputs.verdict || 'none' }}" \
+            --deliver1 "${{ steps.deliver1.outputs.outcome || 'none' }}" \
+            --deliver1-commit "${{ steps.deliver1.outputs.commit || '' }}" \
+            --model2 "${{ steps.model2.outcome }}" \
+            --deliver2 "${{ steps.deliver2.outputs.verdict || 'none' }}:${{ steps.deliver2.outputs.outcome || 'none' }}" \
+            --deliver2-commit "${{ steps.deliver2.outputs.commit || '' }}" \
+            --deliver2-class "${{ steps.deliver2.outputs.failure_class || 'none' }}" \
+            --base "${{ steps.pristine2.outputs.base_sha || steps.pristine.outputs.base_sha }}" \
+            --evidence "$RADAR_EVIDENCE_PATH" \
+            --github-output "$GITHUB_OUTPUT" \
+            > "$RADAR_DIR/diagnostics/run-summary.md"
+          cat "$RADAR_DIR/diagnostics/run-summary.md" >> "$GITHUB_STEP_SUMMARY"
+          cat "$RADAR_DIR/diagnostics/run-summary.md"
+
+      - name: Preserve diagnostics (failure or incomplete outcome, tiered per R43)
+        if: failure() || steps.summary.outputs.incomplete == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: radar-diagnostics-${{ github.run_id }}
+          path: /tmp/radar/diagnostics/
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Enforce run outcome (fail on incomplete)
+        if: always()
+        run: |
+          OUTCOME="${{ steps.summary.outputs.outcome || 'unknown' }}"
+          case "$OUTCOME" in
+            success|no-change) echo "outcome $OUTCOME - run complete" ;;
+            *) echo "ABORT RUN_INCOMPLETE - outcome $OUTCOME"; exit 1 ;;
+          esac
