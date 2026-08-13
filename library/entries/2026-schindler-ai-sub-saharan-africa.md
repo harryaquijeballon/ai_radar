@@ -1,18 +1,18 @@
 ---
 slug: 2026-schindler-ai-sub-saharan-africa
 title: "Unlocking the Potential: AI in Sub-Saharan Africa"
-status: provisional
+status: accepted
 domains: [social_science]
 source_type: academic
 source_url: https://www.imf.org/en/publications/departmental-papers-policy-papers/issues/2026/07/13/unlocking-the-potential-ai-in-sub-saharan-africa-576489
-canonical_ids: ["imf:dp/2026/013"]
+canonical_ids: ["imf:dp/2026/013", "isbn:9798229047821", "isbn:9798229048262"]
 publisher_or_author: "Martin Schindler, Andrew J. Tiffin, Andrea Richter Hume, Kamil Dybczak, Marwa Ibrahim, Youssouf Kiendrebeogo, Jacinta Bernadette Shirakawa, Nikola Spatafora, Solo Zerbo — IMF Departmental Paper DP 2026/013"
 published: 2026-07-13
 captured: 2026-08-13
 relevance:
   social_science: high
   ai_engineering: n/a
-verification: unverified
+verification: verified
 rationale: >-
   User-submitted. High on lens 2 (economic development): applies AI-exposure
   and productivity methods to sub-Saharan Africa with country-level estimates,
@@ -34,7 +34,7 @@ Most AI-exposure and AI-productivity estimates are built on advanced-economy tas
 Not read at capture. The IMF's website (both the direct PDF at imf.org/-/media/files/publications/dp/2026/english/upaiea.pdf and the eLibrary mirror) returns HTTP 403 to automated fetchers (Akamai bot-blocking) — the "real but walled" case. Title, author list, series number, publication date, and abstract were recovered via web-search snippets of the IMF landing page and are consistent across multiple results; they are traced to search-engine copies, not to the source itself. The ~4 percent GDP figure appears only in secondary press coverage (Punch, Down To Earth, CIO Africa) and is marked unverified. Upgrade path: fetch the PDF via a browser (or drop the downloaded file into `inbox/`), read it, corroborate the headline estimates, then upgrade to accepted per P4.
 
 ## Updates
-None yet.
+- **2026-08-13** — Verified against the full paper (user-supplied PDF, 56 pp.); upgraded provisional → accepted per P4. The Summary's "~4 percent GDP (unverified)" press figure is confirmed by the paper's Executive Summary, with precision: AI adoption could raise productivity 0.2–2.1 percent over the next decade depending on policy choices, adding up to nearly ½ percentage point to annual GDP growth (~4 percent cumulatively); gains "could rise by an order of magnitude" under a high-adoption scenario. Methodology confirmed: Felten-Raj-Seamans AIOE and Pizzinelli et al. complementarity-adjusted exposure (C-AIOE) on ILO occupation data; SSA's low-exposure job share exceeds Europe/US (~60–65 percent there). Agriculture advisory tools with demonstrated double-digit yield and income gains cited as the leading sectoral use case. ISBNs added to canonical_ids from the paper's copyright page.
 
 ## Related entries
 None yet.
