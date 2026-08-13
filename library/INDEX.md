@@ -123,3 +123,16 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-panossian-llm-theory-program-renderer-format | Does the Way We Write a Theory Change the Program an LLM Builds from It? A Prospective Randomized Study of Renderer Format in LLM Theory-to-Program Translation | ai_engineering | accepted | arxiv:2608.10314 |
 | 2025-oecd-bcg-insead-ai-adoption-firms | The Adoption of Artificial Intelligence in Firms: New Evidence for Policymaking | social_science | accepted | doi:10.1787/f9ef33c3-en |
 | 2026-worldbank-adopting-fast-and-slow | Adopting Fast and Slow: Cross-Country Evidence on Business Adoption of Artificial Intelligence | social_science | accepted | thedocs.worldbank.org/en/doc/ec0b4de6941eb645d2ef5d99a6e43799-0050062026/original/Adopting-Fast-and-Slow.pdf |
+| 2026-chatterji-organizations-use-ai-chatgpt | How Organizations Use AI: Evidence from ChatGPT | social_science | accepted | arxiv:2608.12236 |
+| 2026-schubert-organizational-technology-ladders | Organizational Technology Ladders: Remote Work and Generative AI Adoption | social_science | accepted | arxiv:2608.11626 |
+| 2026-choi-ai-advice-pension-experiment | Do People Follow AI Advice? Evidence from a Pension Portfolio Choice Experiment | social_science | accepted | arxiv:2608.11371 |
+| 2026-xu-tool-architecture-coding-agents | The Devil Is in the Interface: Evaluating How Tool Architecture Shapes Coding Agent Behavior | ai_engineering | accepted | arxiv:2608.11386 |
+| 2026-he-continuity-kernel-long-lived-agents | Beyond Memory: A Transactional Continuity Kernel for Long-Lived AI Agents | ai_engineering | accepted | arxiv:2608.11632 |
+| 2026-tran-agent-security-networking-problem | Rethinking Agent Security as a Networking Problem | ai_engineering | accepted | arxiv:2608.12172 |
+| 2026-pollertlam-agentic-memory-serving-cost | Total Recall at What Cost? Benchmarking the Serving Cost of Agentic Memory Systems | ai_engineering | accepted | arxiv:2608.11879 |
+| 2026-wang-darc-diagnosis-before-recovery | Diagnosis Before Recovery: Turning Agent Failures into Selective Self-Correction | ai_engineering | accepted | arxiv:2608.11772 |
+| 2026-bouchard-trajectory-uncertainty-quantification | Beyond Single-Turn Confidence: Trajectory-Adapted Uncertainty Quantification for LLM Agents | ai_engineering | accepted | arxiv:2608.11552 |
+| 2026-huang-speedrunner-programmatic-skill-learning | Better, Faster, Stronger: Programmatic Skill Learning Best Reduces Agent Cost | ai_engineering | accepted | arxiv:2608.11338 |
+| 2026-reddy-vita-clinical-rag-healthbench | A corpus-specific clinical RAG system matches or outperforms newer frontier LLMs on HealthBench | ai_engineering | accepted | arxiv:2608.12138 |
+| 2026-spence-sre-bench-reverse-engineering | The Next Challenge for Agentic Cybersecurity: A Realistic, Contamination-Free Reverse Engineering Benchmark | ai_engineering | accepted | arxiv:2608.11469 |
+| 2026-ko-lodestar-entropy-polarizer-rag | LODESTAR: Trustworthy Entropy Is Navigated, Not Merely Measured | ai_engineering | accepted | arxiv:2608.11922 |
