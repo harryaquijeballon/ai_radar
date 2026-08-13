@@ -136,3 +136,4 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-reddy-vita-clinical-rag-healthbench | A corpus-specific clinical RAG system matches or outperforms newer frontier LLMs on HealthBench | ai_engineering | accepted | arxiv:2608.12138 |
 | 2026-spence-sre-bench-reverse-engineering | The Next Challenge for Agentic Cybersecurity: A Realistic, Contamination-Free Reverse Engineering Benchmark | ai_engineering | accepted | arxiv:2608.11469 |
 | 2026-ko-lodestar-entropy-polarizer-rag | LODESTAR: Trustworthy Entropy Is Navigated, Not Merely Measured | ai_engineering | accepted | arxiv:2608.11922 |
+| 2026-schindler-ai-sub-saharan-africa | Unlocking the Potential: AI in Sub-Saharan Africa | social_science | provisional | imf:dp/2026/013 |
