@@ -8,3 +8,6 @@ Thumbs.db
 
 # Local-only: explicitly approved internal context — never committed
 internal/
+
+# User-dropped source artifacts (often copyrighted) — read locally, never published
+inbox/**/*.pdf
