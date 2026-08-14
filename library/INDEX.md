@@ -137,3 +137,13 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-spence-sre-bench-reverse-engineering | The Next Challenge for Agentic Cybersecurity: A Realistic, Contamination-Free Reverse Engineering Benchmark | ai_engineering | accepted | arxiv:2608.11469 |
 | 2026-ko-lodestar-entropy-polarizer-rag | LODESTAR: Trustworthy Entropy Is Navigated, Not Merely Measured | ai_engineering | accepted | arxiv:2608.11922 |
 | 2026-schindler-ai-sub-saharan-africa | Unlocking the Potential: AI in Sub-Saharan Africa | social_science | accepted | imf:dp/2026/013 |
+| 2026-wang-humans-missing-coding-agent-research | Humans are Missing from AI Coding Agent Research | ai_engineering | accepted | arxiv:2608.12355 |
+| 2026-agyekum-iac-repair-security-degradation | Does Fixing Break Security? An Empirical Study of Security Degradation in Iterative LLM-Driven Infrastructure-as-Code Repair | ai_engineering | accepted | arxiv:2608.13404 |
+| 2026-abenhaim-spec-first-agent-case-study | Specification-first convergence with an AI coding agent | ai_engineering | accepted | arxiv:2608.12440 |
+| 2026-ye-vero-formally-verified-repositories | Vero: Can AI Agents Build Formally Verified Software Repositories? | ai_engineering | accepted | arxiv:2608.13522 |
+| 2026-li-quotebench-command-path-failures | QuoteBench: How Matched Scores Can Hide Command-Path Failures | ai_engineering | accepted | arxiv:2608.13547 |
+| 2026-zhang-reconcile-trust-tiered-research-writer | Reconcile Once, Write Anytime: A Trust-Tiered Librarian and a Multi-Agent Writer for Drift-Free, Point-in-Time Research | ai_engineering, social_science | accepted | arxiv:2608.12984 |
+| 2026-tripathi-integritybench-research-integrity | Diagnostic Foundation for Evaluating LLMs' Research Integrity as Co-Scientists | ai_engineering, social_science | accepted | arxiv:2608.12345 |
+| 2026-okamoto-ai-agents-break-rules-compliance | Why Do AI Agents Break Rules? How Framing, Context, and Social Signals Shape Compliance | ai_engineering, social_science | accepted | arxiv:2608.12323 |
+| 2026-luo-autodesign-meta-harness-optimization | AutoDesign: Meta-Harness Optimization for Long-Horizon Agentic Design | ai_engineering | accepted | arxiv:2608.13560 |
+| 2026-huggingface-icml-2026-open-reproductions | What We Learned by Reproducing 2,200 Papers from ICML | ai_engineering | accepted | repo:ICML-2026-agent-repro/challenge |
