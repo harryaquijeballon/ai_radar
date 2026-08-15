@@ -65,6 +65,18 @@
 - resolution: Read in full interactively: leaked-audio anecdote relayed second-hand, zero quantification, primary source uncorroborable. User dismissed as below the library bar; rejection logged so future runs skip it.
 - linked_ref: library/rejections.md
 
+### https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions
+- title: Maximizing the value of your Claude Code sessions
+- domain: ai_engineering
+- first_encountered: 2026-08-15
+- last_encountered: 2026-08-15
+- source_type: primary
+- reason_class: access_or_license_unclear
+- reason: claude.com is not on the egress allowlist (only anthropic.com is); search snippets describe an Aug 14 2026 guide on Claude Code context/cache efficiency practices, unverifiable without a direct fetch.
+- surfaced_by: open search (harness/context-engineering lens)
+- action_needed: approve claude.com (or the specific blog path) for the allowlist, or have a human read and confirm the practices directly; otherwise dismiss.
+- status: pending
+
 ### https://simonwillison.net/2026/Aug/10/openclaw/
 - title: A quote from OpenClaw
 - domain: ai_engineering

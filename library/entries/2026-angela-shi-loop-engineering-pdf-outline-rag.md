@@ -72,3 +72,4 @@ None yet.
 ## Related entries
 
 [2026-shi-rag-typed-generation-contract](2026-shi-rag-typed-generation-contract.md) — a different author (Kezhan Shi, not Angela Shi) but the same publication and adjacent lens: RAG output/extraction reliability patterns.
+[2026-shi-rag-dispatcher-loop-control](2026-shi-rag-dispatcher-loop-control.md) — same author and series (Enterprise Document Intelligence); Article 13, covering retrieval dispatch and loop termination.

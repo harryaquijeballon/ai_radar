@@ -147,3 +147,6 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-okamoto-ai-agents-break-rules-compliance | Why Do AI Agents Break Rules? How Framing, Context, and Social Signals Shape Compliance | ai_engineering, social_science | accepted | arxiv:2608.12323 |
 | 2026-luo-autodesign-meta-harness-optimization | AutoDesign: Meta-Harness Optimization for Long-Horizon Agentic Design | ai_engineering | accepted | arxiv:2608.13560 |
 | 2026-huggingface-icml-2026-open-reproductions | What We Learned by Reproducing 2,200 Papers from ICML | ai_engineering | accepted | repo:ICML-2026-agent-repro/challenge |
+| 2026-shi-rag-dispatcher-loop-control | RAG Workflow and Loop Engineering: The Dispatcher That Decides When to Loop and When to Stop | ai_engineering | accepted | towardsdatascience.com/rag-workflow-and-loop-engineering-the-dispatcher-that-decides-when-to-loop-and-when-to-stop |
+| 2026-willison-hallucinate-tag-embeddings | Don't classify. Hallucinate! | ai_engineering | accepted | simonwillison.net/2026/Aug/14/dont-classify-hallucinate |
+| 2026-epoch-employer-ai-by-occupation | Most AI use at work happens on free plans, except in science and tech | social_science | accepted | epoch.ai/data-insights/employer-provided-ai-by-occupation |
