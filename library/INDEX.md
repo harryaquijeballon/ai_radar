@@ -150,3 +150,10 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-shi-rag-dispatcher-loop-control | RAG Workflow and Loop Engineering: The Dispatcher That Decides When to Loop and When to Stop | ai_engineering | accepted | towardsdatascience.com/rag-workflow-and-loop-engineering-the-dispatcher-that-decides-when-to-loop-and-when-to-stop |
 | 2026-willison-hallucinate-tag-embeddings | Don't classify. Hallucinate! | ai_engineering | accepted | simonwillison.net/2026/Aug/14/dont-classify-hallucinate |
 | 2026-epoch-employer-ai-by-occupation | Most AI use at work happens on free plans, except in science and tech | social_science | accepted | epoch.ai/data-insights/employer-provided-ai-by-occupation |
+| 2026-jarmak-engineering-reliable-coding-agents | Engineering Reliable Coding Agents: Evaluating and Operating the System Around the Model | ai_engineering | accepted | arxiv:2608.13867 |
+| 2026-li-engineering-signals-vllm-sglang-prs | Engineering Signals of Human-AI Collaboration in the Agentic Coding Era: A Longitudinal Analysis of 33,228 Pull Requests from vLLM and SGLang | ai_engineering | accepted | arxiv:2608.13884 |
+| 2026-lopezmiguel-atlas-agent-automata-learning | ATLAS: Discovering Agent Strategies through LLM-Guided Abstraction and Automata Learning | ai_engineering | accepted | arxiv:2608.14352 |
+| 2026-cekikj-persistent-knowledge-layer-rag | Designing a Persistent Knowledge Layer That Refuses to Guess | ai_engineering | accepted | towardsdatascience.com/designing-a-persistent-knowledge-layer-that-refuses-to-guess |
+| 2026-elhamraoui-graph-rl-drift-diagnosis-recovery | A Graph-Based Reinforcement Learning Framework for Structured Drift Diagnosis and Recovery in Autonomous LLM Agents | ai_engineering | accepted | arxiv:2608.14109 |
+| 2026-sun-agentic-transaction-acid-agents | Agentic Transaction: Towards ACID-Compliant Agent Systems | ai_engineering | accepted | arxiv:2608.13900 |
+| 2026-das-legal-rag-hallucination-study | How Much Do Legal RAG Systems Still Hallucinate? | ai_engineering | accepted | arxiv:2608.14210 |

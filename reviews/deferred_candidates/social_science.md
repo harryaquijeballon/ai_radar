@@ -140,6 +140,18 @@
 - resolution: Public since at least Dec 2024 as ISER DP 1233r (Osaka); arXiv Aug 2026 posting is a late cross-post, not a new development. User dismissed; rejection logged 2026-08-12 so future runs skip it.
 - linked_ref: library/rejections.md
 
+### https://thedocs.worldbank.org/en/doc/eb0c4ff411fe0b8cca09c4587ba27eb7-0050062026/original/AI-Adoption-Among-Frontier-Firms.pdf
+- title: WDR 2026 | Decoding AI for Development | Background Paper 1: AI Adoption Among Frontier Firms
+- domain: social_science
+- first_encountered: 2026-08-17
+- last_encountered: 2026-08-17
+- source_type: primary
+- reason_class: information_boundary_unclear
+- reason: thedocs.worldbank.org is allowlisted and the PDF opens, but its own cover page is marked "Official Use Only" despite the public URL; unclear whether this is boilerplate or a genuine restricted-distribution document.
+- surfaced_by: open search (economic development / lens 2, World Bank AI adoption)
+- action_needed: a human should confirm whether "Official Use Only" WDR background papers on public thedocs.worldbank.org URLs are safe to cite, or whether this one was published prematurely/in error.
+- status: pending
+
 ### https://cepr.org/voxeu/columns/task-based-returns-generative-ai-evidence-central-bank
 - title: "Task-based returns to generative AI: Evidence from a central bank"
 - domain: social_science
