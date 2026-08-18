@@ -91,3 +91,63 @@
 - resolution_date: 2026-08-12
 - resolution: Confirmed agent-driven (OpenClaw agent on Claude; ABC News 2026-08-10 primary source read interactively). User dismissed as a single-incident news story below the library bar; rejection logged so future runs skip it.
 - linked_ref: library/rejections.md
+
+### https://arxiv.org/abs/2608.14825
+- title: Emergent Misaligned Communication in Long-Horizon Multi-Agent LLM Commerce
+- domain: ai_engineering
+- first_encountered: 2026-08-18
+- last_encountered: 2026-08-18
+- source_type: academic
+- reason_class: possible_duplicate_requires_review
+- reason: Appeared in today's cs.MA listing but submitted 14 Aug 2026 (4-day gap); unclear if genuine new cross-list or prior circulation. Would score high on lens 6 (misalignment/deception in multi-agent commerce sim).
+- surfaced_by: watchlist:arxiv-cs.MA
+- action_needed: confirm whether this had prior public visibility before 2026-08-18; if genuinely new, archive at high relevance (lens 6).
+- status: pending
+
+### https://arxiv.org/abs/2608.14668
+- title: BRA-Audit: Budgeted Runtime Auditing for LLM Multi-Agent Systems via Cumulative-Exposure Audit-Point Placement
+- domain: ai_engineering
+- first_encountered: 2026-08-18
+- last_encountered: 2026-08-18
+- source_type: academic
+- reason_class: possible_duplicate_requires_review
+- reason: Appeared in today's cs.MA listing but submitted 2 Aug 2026 (16 days prior) — outside the 7-day window if operative; likely a late cross-list, not new. Would score high on lens 5/6 (token-cost reduction for audit scheduling).
+- surfaced_by: watchlist:arxiv-cs.MA
+- action_needed: confirm the paper's true first-public date; if it predates the window, treat as not-new and skip in future runs.
+- status: pending
+
+### https://arxiv.org/abs/2608.15424
+- title: "ETHOS: Towards a Modular Ethics Framework for Clinical Multi-Agent Systems"
+- domain: ai_engineering
+- first_encountered: 2026-08-18
+- last_encountered: 2026-08-18
+- source_type: academic
+- reason_class: possible_duplicate_requires_review
+- reason: Appeared in today's cs.MA listing but submitted 15 Aug 2026 (3-day gap); unclear if genuinely new-to-radar. On-profile for lens 6 (governance meta-agent architecture for clinical multi-agent systems) if window clears.
+- surfaced_by: watchlist:arxiv-cs.MA
+- action_needed: confirm true first-public date; if within a reasonable window, archive at medium-high relevance (lens 6).
+- status: pending
+
+### https://arxiv.org/abs/2608.15181
+- title: "Insurance as AI Risk Infrastructure: A Generative-Agent Simulation of AI Adoption"
+- domain: ai_engineering, social_science
+- first_encountered: 2026-08-18
+- last_encountered: 2026-08-18
+- source_type: academic
+- reason_class: possible_duplicate_requires_review
+- reason: Appeared in today's cs.MA listing but submitted 15 Aug 2026 (3-day gap). Cross-domain candidate (agent-based simulation of firm-level AI-adoption economics) — on-profile for both radars if window resolves favorably.
+- surfaced_by: watchlist:arxiv-cs.MA
+- action_needed: confirm true first-public date; if within a reasonable window, review for cross-domain archiving.
+- status: pending
+
+### https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/
+- title: Agentic Misalignment in Summer 2026
+- domain: ai_engineering
+- first_encountered: 2026-08-18
+- last_encountered: 2026-08-18
+- source_type: primary
+- reason_class: access_or_license_unclear
+- reason: alignment.anthropic.com is a subdomain not on the egress allowlist (only bare anthropic.com is listed); snippet describes frontier-lab agentic-misalignment simulations, unverified without a direct fetch, publish date unconfirmed.
+- surfaced_by: open search (governance/reproducibility lens)
+- action_needed: approve alignment.anthropic.com for the allowlist, or have a human read and confirm the publish date and findings directly; otherwise dismiss.
+- status: pending
