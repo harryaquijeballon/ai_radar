@@ -171,3 +171,16 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-belay-computational-provenance-causal-state-text | Towards Computational Provenance: Carrying Causal-State Evidence in Generated Text | ai_engineering | accepted | arxiv:2608.16868 |
 | 2026-vuminh-webwright-code-writing-web-agents | Webwright: Why AI Web Agents Should Write Code, Not Click | ai_engineering | accepted | towardsdatascience.com/webwright-why-ai-web-agents-should-write-code-not-click |
 | 2026-chakravarty-autoscaling-agentic-traffic | Three Generations of Autoscaling — And Why Agentic Traffic Breaks All of Them | ai_engineering | accepted | towardsdatascience.com/three-generations-of-autoscaling-and-why-agentic-traffic-breaks-all-of-them |
+| 2026-xu-wu-llm-api-migration-item-regressions | What Aggregate Scores Miss: Measuring Item-Level Regressions in Commercial LLM API Migrations | ai_engineering | accepted | arxiv:2608.17719 |
+| 2026-tufano-spec-driven-test-generation | Grounding AI Agents in Contracts: An Empirical Evaluation of Spec-Driven Test Generation | ai_engineering | accepted | arxiv:2608.17177 |
+| 2026-he-agent-lightning-harnessed-rl | Agent Lightning v1.0: Towards Harnessed Agentic RL | ai_engineering | accepted | arxiv:2608.17528 |
+| 2026-ye-fragility-self-improving-agents | On the Fragility of Self-Improving Agents: Variance, Task Order, and Underspecification | ai_engineering | accepted | arxiv:2608.18066 |
+| 2026-badshah-judge-retrieve-abstain | Judge, Retrieve, or Abstain: Uncertainty-Guarded LLM Judging with Provable Risk Guarantees | ai_engineering | accepted | arxiv:2608.17994 |
+| 2026-lin-task-aware-harness-provisioning | Task-Aware Harness Provisioning for LLM Agents in Mission-Critical Infrastructure Operations | ai_engineering | accepted | arxiv:2608.17433 |
+| 2026-shamay-token-optimization-context-window | Token Optimization and Context Window Management in Multi-Agent AI Workflows | ai_engineering | accepted | arxiv:2608.17188 |
+| 2026-ren-autoresearch-hallucination-out | AutoResearch: Insight In, Hallucination Out | ai_engineering | accepted | arxiv:2608.17906 |
+| 2026-peng-write-execute-refine-skill-optimizer | Write, Execute, Refine: From Skill Followers to Skill Optimizers via Reinforcement Learning from Execution Feedback | ai_engineering | accepted | arxiv:2608.17587 |
+| 2026-smith-little-scientist-llm-agent-discovery | The Little Scientist: LLM Agent-Driven Discovery via the Scientific Method | ai_engineering | accepted | arxiv:2608.16951 |
+| 2026-ghassabi-safer-rag-system2-thinking | Towards Safer RAG: Only Agents Capable of System 2 Thinking may Access Untrusted Documents | ai_engineering | accepted | arxiv:2608.17153 |
+| 2026-fabrega-governing-delegation-genai | Governing Delegation to Generative Artificial Intelligence: Human Direction, Work-Related Orientation, and Modes of Use | social_science, ai_engineering | accepted | arxiv:2608.17624 |
+| 2026-yao-stranded-credentials-skill-signaling | Stranded credentials: how a skill-signaling market absorbed generative AI | social_science | accepted | arxiv:2608.17111 |
