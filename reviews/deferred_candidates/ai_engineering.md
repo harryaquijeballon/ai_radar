@@ -140,6 +140,18 @@
 - action_needed: confirm true first-public date; if within a reasonable window, review for cross-domain archiving.
 - status: pending
 
+### https://www.anthropic.com/engineering/how-we-contain-claude
+- title: How we contain Claude across products
+- domain: ai_engineering
+- first_encountered: 2026-08-20
+- last_encountered: 2026-08-20
+- source_type: primary
+- reason_class: access_or_license_unclear
+- reason: www.anthropic.com is not on the egress allowlist (only bare anthropic.com is); snippet describes sandbox/VM containment architecture (hypervisor, seccomp, gVisor), unverified without fetch; publish date unconfirmed.
+- surfaced_by: watchlist:anthropic-engineering (featured/undated item on anthropic.com/engineering)
+- action_needed: approve www.anthropic.com (or this path) for the allowlist, or have a human read and confirm the publish date and containment-mechanism claims directly; otherwise dismiss.
+- status: pending
+
 ### https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/
 - title: Agentic Misalignment in Summer 2026
 - domain: ai_engineering

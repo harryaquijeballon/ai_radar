@@ -184,3 +184,12 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-ghassabi-safer-rag-system2-thinking | Towards Safer RAG: Only Agents Capable of System 2 Thinking may Access Untrusted Documents | ai_engineering | accepted | arxiv:2608.17153 |
 | 2026-fabrega-governing-delegation-genai | Governing Delegation to Generative Artificial Intelligence: Human Direction, Work-Related Orientation, and Modes of Use | social_science, ai_engineering | accepted | arxiv:2608.17624 |
 | 2026-yao-stranded-credentials-skill-signaling | Stranded credentials: how a skill-signaling market absorbed generative AI | social_science | accepted | arxiv:2608.17111 |
+| 2026-wongchamcharoen-centaurbench-augment-automate | CentaurBench: Benchmarking LLM Capabilities on Augmenting vs. Automating Real-World Work Tasks | social_science, ai_engineering | accepted | arxiv:2608.18554 |
+| 2026-alhaque-johnson-issue-resolution-difficulty | What Makes Software Issue Resolution Tasks Difficult for Agents? | ai_engineering | accepted | arxiv:2608.18280 |
+| 2026-li-gnn-agent-failure-attribution | Beyond LLM-Based Reasoning: Lightweight GNNs for Agent Failure Attribution | ai_engineering | accepted | arxiv:2608.18575 |
+| 2026-sreenivas-larson-contracting-llm-delegation | Contracting for LLM Delegation: Moral Hazard in Technology and Effort Choice | ai_engineering | accepted | arxiv:2608.18232 |
+| 2026-yin-verification-autonomy-levels | Grading the Graders: Verification Autonomy Levels for LLM Reasoning | ai_engineering | accepted | arxiv:2608.19009 |
+| 2026-yash-reversible-forgetting-enterprise-agents | Towards Reversible Forgetting: Managing Obsolete Knowledge in Continual Enterprise AI Agents | ai_engineering | accepted | arxiv:2608.18177 |
+| 2026-liu-spade-self-play-synthetic-environments | SPADE: Self-Play in Adaptive Synthetic Executable Environments | ai_engineering | accepted | arxiv:2608.19197 |
+| 2026-wirdemann-code-health-test-generation | Code Health in LLM-Based Test Generation: Effectiveness and Token Efficiency | ai_engineering | accepted | arxiv:2608.18645 |
+| 2026-chen-skillforge-self-distillation | SkillForge: Self-Distilling Agents for Project-Specific Issue Resolution | ai_engineering | accepted | arxiv:2608.18933 |
