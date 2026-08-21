@@ -152,6 +152,18 @@
 - action_needed: a human should confirm whether "Official Use Only" WDR background papers on public thedocs.worldbank.org URLs are safe to cite, or whether this one was published prematurely/in error.
 - status: pending
 
+### https://www.nber.org/papers/w35621
+- title: Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment
+- domain: social_science
+- first_encountered: 2026-08-21
+- last_encountered: 2026-08-21
+- source_type: academic
+- reason_class: verification_insufficient
+- reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. RCT evidence on AI math tutoring — would score high on lens 1/6 if in-window.
+- surfaced_by: watchlist:nber-working-papers
+- action_needed: confirm exact NBER issue date via dated listing/metadata; archive if in-window.
+- status: pending
+
 ### https://cepr.org/voxeu/columns/task-based-returns-generative-ai-evidence-central-bank
 - title: "Task-based returns to generative AI: Evidence from a central bank"
 - domain: social_science

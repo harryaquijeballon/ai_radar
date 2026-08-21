@@ -193,3 +193,10 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-liu-spade-self-play-synthetic-environments | SPADE: Self-Play in Adaptive Synthetic Executable Environments | ai_engineering | accepted | arxiv:2608.19197 |
 | 2026-wirdemann-code-health-test-generation | Code Health in LLM-Based Test Generation: Effectiveness and Token Efficiency | ai_engineering | accepted | arxiv:2608.18645 |
 | 2026-chen-skillforge-self-distillation | SkillForge: Self-Distilling Agents for Project-Specific Issue Resolution | ai_engineering | accepted | arxiv:2608.18933 |
+| 2026-gao-agent-friendly-documentation | From Agent Behaviour to Agent-Friendly Documentation | ai_engineering | accepted | arxiv:2608.20195 |
+| 2026-raj-breakguard-dependency-breaking-changes | BreakGuard: Detecting Dependency Breaking Changes | ai_engineering | accepted | arxiv:2608.20167 |
+| 2026-jiang-task-model-induction-computer-use-traces | Inducing Task Models from Computer-Use Traces | ai_engineering | accepted | arxiv:2608.20319 |
+| 2026-chen-repo0-design-driven-code-generation | Repo0: Design-Driven Zero-to-All Code Generation | ai_engineering | accepted | arxiv:2608.19854 |
+| 2026-jiang-praxis-tacit-knowledge-code-generation | PRAXIS: Graph-Grounded Tacit Knowledge for Domain Code Generation | ai_engineering | accepted | arxiv:2608.19784 |
+| 2026-chen-loreley-repository-scale-program-evolution | Loreley: Repository-Scale Program Evolution | ai_engineering | accepted | arxiv:2608.19703 |
+| 2026-liang-auditing-llm-test-generation-evolution | Auditing and Decomposing Feedback-Driven Evolution in LLM Test Generation | ai_engineering | accepted | arxiv:2608.19626 |
