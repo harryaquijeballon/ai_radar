@@ -200,3 +200,8 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-jiang-praxis-tacit-knowledge-code-generation | PRAXIS: Graph-Grounded Tacit Knowledge for Domain Code Generation | ai_engineering | accepted | arxiv:2608.19784 |
 | 2026-chen-loreley-repository-scale-program-evolution | Loreley: Repository-Scale Program Evolution | ai_engineering | accepted | arxiv:2608.19703 |
 | 2026-liang-auditing-llm-test-generation-evolution | Auditing and Decomposing Feedback-Driven Evolution in LLM Test Generation | ai_engineering | accepted | arxiv:2608.19626 |
+| 2026-abdul-bayesian-guardrails-ai-decisions | Bayesian Guardrails for AI Decisions: Measuring Uncertainty Before Automating Decisions | ai_engineering | accepted | towardsdatascience.com/bayesian-guardrails-for-ai-decisions-measuring-uncertainty-before-automating-decisions |
+| 2026-bhardwaj-llm-judge-agreeing-with-itself | The LLM Judge That Kept Agreeing With Itself | ai_engineering | accepted | towardsdatascience.com/the-llm-judge-that-kept-agreeing-with-itself |
+| 2026-angela-shi-rag-corpus-shapes | Three Kinds of RAG Corpus, and What It Costs to Build for the Wrong One | ai_engineering | accepted | towardsdatascience.com/three-kinds-of-rag-corpus-and-what-it-costs-to-build-for-the-wrong-one |
+| 2026-shi-row-level-chunks-rag | Retrieve One Row from a Table, Not the Whole Table: Row-Level Chunks for RAG | ai_engineering | accepted | towardsdatascience.com/retrieve-one-row-from-a-table-not-the-whole-table-row-level-chunks-for-rag |
+| 2026-guo-codex-headless-agent-pattern | Running Codex as a Headless Agent | ai_engineering | accepted | towardsdatascience.com/running-codex-as-a-headless-agent |

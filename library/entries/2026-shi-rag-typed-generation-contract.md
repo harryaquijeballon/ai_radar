@@ -65,4 +65,4 @@ studies) were made that would need separate verification.
 
 ## Related entries
 
-None yet.
+[2026-shi-row-level-chunks-rag](2026-shi-row-level-chunks-rag.md) — same author; covers chunking strategy for the retrieval step feeding a typed generation contract.

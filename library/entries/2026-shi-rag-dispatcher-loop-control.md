@@ -71,3 +71,4 @@ None yet.
 ## Related entries
 
 [2026-angela-shi-loop-engineering-pdf-outline-rag](2026-angela-shi-loop-engineering-pdf-outline-rag.md) — same author and series (Enterprise Document Intelligence); the earlier article covers PDF outline recovery, this one covers retrieval dispatch and loop termination.
+[2026-angela-shi-rag-corpus-shapes](2026-angela-shi-rag-corpus-shapes.md) — same author and series; covers classifying a document collection's shape before building a pipeline, upstream of this entry's dispatch/loop logic.
