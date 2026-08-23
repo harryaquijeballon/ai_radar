@@ -190,3 +190,15 @@
 - resolution_date: 2026-07-31
 - resolution: cepr.org still 403 interactively; underlying NBS working paper retrieved via RePEc and archived in its place. User approved papers.ssrn.com and ideas.repec.org for the allowlist.
 - linked_ref: library/entries/2026-marsal-perkowski-task-based-genai-central-bank.md
+
+### https://doi.org/10.1098/rsos.252226
+- title: Towards scalable AI-assisted pre-bunking of election misinformation: evidence from a pre-registered US panel experiment
+- domain: social_science
+- first_encountered: 2026-08-23
+- last_encountered: 2026-08-23
+- source_type: academic
+- reason_class: access_or_license_unclear
+- reason: doi.org resolves to royalsocietypublishing.org, not on the egress allowlist, so the article page could not be fetched; only search-result metadata available. Pre-registered experiment on LLM pre-bunking of election misinformation.
+- surfaced_by: open search (political science / misinformation lens)
+- action_needed: approve royalsocietypublishing.org for the allowlist, or have a human read and confirm the method/results and exact publication date directly; otherwise dismiss.
+- status: pending
