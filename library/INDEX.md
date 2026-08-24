@@ -207,3 +207,15 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-guo-codex-headless-agent-pattern | Running Codex as a Headless Agent | ai_engineering | accepted | towardsdatascience.com/running-codex-as-a-headless-agent |
 | 2026-angela-shi-multi-document-rag-outline | Multi-Document RAG: A Folder of Unrelated PDFs Is One Long Document with a Nested Outline | ai_engineering | accepted | towardsdatascience.com/multi-document-rag-a-folder-of-unrelated-pdfs-is-one-long-document-with-a-nested-outline |
 | 2026-yildirim-langgraph-agent-backend | Building a Proper Backend for My LangGraph AI Agent | ai_engineering | accepted | towardsdatascience.com/building-a-proper-backend-for-my-langgraph-ai-agent |
+| 2026-giri-trustworthy-rag-poison-detection | Trustworthy RAG: An Evaluation Agent for Detecting Misinformation and Knowledge Poisoning in Generative AI Systems | ai_engineering | accepted | arxiv:2608.21095 |
+| 2026-lu-diagguard-trajectory-rca | Beyond Fault Localization: A Trajectory-Level Study of LLM Agents for Microservice Root Cause Analysis | ai_engineering | accepted | arxiv:2608.21310 |
+| 2026-yadav-memstrata-temporal-validity | Temporal Validity on Real Software Histories: Eliminating Stale-Fact Errors in Code-Assistant Memory over GitHub Fixes | ai_engineering | accepted | arxiv:2608.20685 |
+| 2026-xu-artic-nl-workflow-compilation | Natural-Language Workflows Are Not Software Yet: Artifact-Driven Compilation for Reliable Agent Execution | ai_engineering | accepted | arxiv:2608.21341 |
+| 2026-broccia-llm-requirements-inspection-negative-effect | Human-AI Collaboration in Requirements Engineering: Evidence of the Negative Effect of LLMs on Requirements Inspection | ai_engineering | accepted | arxiv:2608.21298 |
+| 2026-grynets-specification-portability-llm-agents | Specification Portability Across LLM Development Agents: Cross-Agent Compatibility in Specification-Driven Software Migration | ai_engineering | accepted | arxiv:2608.21208 |
+| 2026-richard-frase-agentic-ai-testing-c2 | Testing and Evaluation of Agentic AI Systems In Military Command and Control | ai_engineering | accepted | arxiv:2608.20597 |
+| 2026-selvanayagam-ghaleb-ai-to-ai-code-reviews | AI-to-AI Code Reviews of GitHub Pull Requests | ai_engineering | accepted | arxiv:2608.21311 |
+| 2026-sun-hansen-bc-bench-erp-agentic-engineering | BC-Bench: Evaluating Agentic Engineering in a Domain-Specific Language for ERP | ai_engineering | accepted | arxiv:2608.20851 |
+| 2026-marceca-rossi-mariani-agentic-ides-web-apps | Generation of Web Apps with Agentic IDEs: An Empirical Assessment | ai_engineering | accepted | arxiv:2608.20903 |
+| 2026-michels-vibe-coding-state-of-the-art-review | Vibe Coding: Practice, Performance, Productivity, and Risk - A State-of-the-Art Review | ai_engineering | accepted | arxiv:2608.20446 |
+| 2026-angela-shi-case-file-relational-tables-rag | Parse the Folder, Not Just the PDFs: The Relational Tables RAG Needs on a Case File | ai_engineering | accepted | towardsdatascience.com/parse-the-folder-not-just-the-pdfs-the-relational-tables-rag-needs-on-a-case-file |
