@@ -219,3 +219,15 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-marceca-rossi-mariani-agentic-ides-web-apps | Generation of Web Apps with Agentic IDEs: An Empirical Assessment | ai_engineering | accepted | arxiv:2608.20903 |
 | 2026-michels-vibe-coding-state-of-the-art-review | Vibe Coding: Practice, Performance, Productivity, and Risk - A State-of-the-Art Review | ai_engineering | accepted | arxiv:2608.20446 |
 | 2026-angela-shi-case-file-relational-tables-rag | Parse the Folder, Not Just the PDFs: The Relational Tables RAG Needs on a Case File | ai_engineering | accepted | towardsdatascience.com/parse-the-folder-not-just-the-pdfs-the-relational-tables-rag-needs-on-a-case-file |
+| 2026-dell-rambachan-ai-measurement-revolution | The Measurement Revolution? Credible Measurement and Inference in the Age of AI | social_science, ai_engineering | accepted | arxiv:2608.23524 |
+| 2026-wadi-ma-ai-shopping-position-bias | Does Rank Still Matter? Position Bias When AI Agents Shop on Our Behalf | social_science | accepted | arxiv:2608.22697 |
+| 2026-epoch-nvidia-gdp-measurement-gap | The Nvidia-Sized Hole in US GDP Statistics | social_science | accepted | epoch.ai/publications/the-nvidia-sized-hole-in-us-gdp-statistics |
+| 2026-bouchekir-agentguardutil-nl-policy-verification | From Natural Language Policies to Executable Obligations: A Verification Harness for Dependable In-Car LLM Agents | ai_engineering | accepted | arxiv:2608.23282 |
+| 2026-liu-dpiagent-divide-protocol-isolate | DPIAgent: Divide, Protocol, Isolate for Agentic Reproduction Test Generation | ai_engineering | accepted | arxiv:2608.23341 |
+| 2026-hong-swe-refactor-bench | SWE Refactor Bench: Can Coding Agents Complete a Long-Horizon, Whole-Repository Stack Migration? | ai_engineering | accepted | arxiv:2608.23564 |
+| 2026-ann-interaction-tax-multiagent-diversity | The Interaction Tax: When Communication Erases Diversity in Multi-Agent Teams | ai_engineering | accepted | arxiv:2608.23541 |
+| 2026-he-requirement-driven-candidate-sourcing-agent | An Interactive Agent for Requirement-Driven Candidate Sourcing | ai_engineering | accepted | arxiv:2608.23501 |
+| 2026-santos-vat-agent-decomposition-sizing | Right-Sizing LLM-Agent Decomposition in VAT Determination: A Pilot Controlled Sweep | ai_engineering | accepted | arxiv:2608.23395 |
+| 2026-shi-enterprise-rag-ten-positions | 10 Positions for Enterprise RAG That Mainstream Tutorials Get Wrong | ai_engineering | accepted | towardsdatascience.com/10-positions-for-enterprise-rag-that-mainstream-tutorials-get-wrong |
+| 2026-alexander-typed-context-agents | AI Agents Don't Need More Context — They Need Typed Context | ai_engineering | accepted | towardsdatascience.com/ai-agents-dont-need-more-context-they-need-typed-context |
+| 2026-guo-codex-hooks-lifecycle-validation | Put Your Own Logic Inside the Codex Agentic Loop | ai_engineering | accepted | towardsdatascience.com/put-your-own-logic-inside-the-codex-agentic-loop |

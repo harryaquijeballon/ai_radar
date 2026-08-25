@@ -191,6 +191,30 @@
 - resolution: cepr.org still 403 interactively; underlying NBS working paper retrieved via RePEc and archived in its place. User approved papers.ssrn.com and ideas.repec.org for the allowlist.
 - linked_ref: library/entries/2026-marsal-perkowski-task-based-genai-central-bank.md
 
+### https://cepr.org/voxeu/columns/ai-investment-gdp-growth-ecosystem-view
+- title: From AI investment to GDP growth: An ecosystem view
+- domain: social_science
+- first_encountered: 2026-08-25
+- last_encountered: 2026-08-25
+- source_type: academic
+- reason_class: access_or_license_unclear
+- reason: cepr.org allowlisted but WebFetch returned HTTP 403, consistent with prior runs; only a search-engine title/author snippet available, exact date unconfirmed, insufficient to trace claims to source text.
+- surfaced_by: open search (economic growth / lens 1)
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the column and its date directly; consider an SSRN/RePEc mirror if one exists, per the precedent for the Marsal & Perkowski column.
+- status: pending
+
+### https://cepr.org/voxeu/columns/embracing-ai-europe-new-evidence-harmonised-central-bank-business-surveys
+- title: Embracing AI in Europe: New evidence from harmonised central bank business surveys
+- domain: social_science
+- first_encountered: 2026-08-25
+- last_encountered: 2026-08-25
+- source_type: academic
+- reason_class: access_or_license_unclear
+- reason: cepr.org allowlisted but WebFetch returned HTTP 403, consistent with prior runs; only a search-engine title/author snippet available, exact date unconfirmed, insufficient to trace claims to source text.
+- surfaced_by: open search (economic growth / lens 1, competition and regulation / lens 4)
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the column and its date directly; consider an SSRN/RePEc mirror if one exists, per the precedent for the Marsal & Perkowski column.
+- status: pending
+
 ### https://doi.org/10.1098/rsos.252226
 - title: Towards scalable AI-assisted pre-bunking of election misinformation: evidence from a pre-registered US panel experiment
 - domain: social_science
