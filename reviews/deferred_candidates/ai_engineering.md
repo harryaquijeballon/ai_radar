@@ -152,6 +152,18 @@
 - action_needed: approve www.anthropic.com (or this path) for the allowlist, or have a human read and confirm the publish date and containment-mechanism claims directly; otherwise dismiss.
 - status: pending
 
+### https://www.schneier.com/blog/archives/2026/08/prompt-injections-for-defense.html
+- title: Prompt Injections for Defense
+- domain: ai_engineering
+- first_encountered: 2026-08-26
+- last_encountered: 2026-08-26
+- source_type: commentary
+- reason_class: access_or_license_unclear
+- reason: schneier.com is not on the egress allowlist, so the post could not be fetched; only a search-result title was available, exact publish date and content unconfirmed.
+- surfaced_by: open search (security/prompt-injection lens)
+- action_needed: approve schneier.com for the allowlist, or have a human read and confirm the publish date and argument directly; otherwise dismiss.
+- status: pending
+
 ### https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/
 - title: Agentic Misalignment in Summer 2026
 - domain: ai_engineering
