@@ -234,3 +234,13 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-trivedy-langchain-agent-environments | How We Build Agent Environments & Tasks | ai_engineering | accepted | langchain.com/blog/building-agent-environments-and-tasks |
 | 2026-angela-shi-structured-extraction-sql-table-rag | One Document Type, a Million Files: Structured Extraction into the SQL Table RAG Queries | ai_engineering | accepted | towardsdatascience.com/one-document-type-a-million-files-structured-extraction-into-the-sql-table-rag-queries |
 | 2026-marin-hallucination-watermark-conflict | Hallucinations, Watermarks, Removers, and a Squeezed Balloon | ai_engineering | accepted | towardsdatascience.com/hallucinations-watermarks-removers-and-a-squeezed-balloon |
+| 2026-hallman-genai-sophistication-firm | Sophistication in GenAI Use: Field Evidence from a Large Firm | social_science | accepted | arxiv:2608.27364 |
+| 2026-law-liberal-institutions-ai-agents | Liberal Institutions Are Dead / Long Live Liberal Institutions | social_science | accepted | blog.cosmos-institute.org/p/liberal-institutions-are-dead |
+| 2026-willison-claude-code-auto-mode-bypass | Breaking Claude Code Opus 5 Auto Mode | ai_engineering | accepted | simonwillison.net/2026/Aug/27/breaking-claude-code-opus-5-auto-mode |
+| 2026-willison-ai-accelerated-exploit-disclosure | Just a rumour of a bug is enough to find a security exploit these days | ai_engineering | accepted | simonwillison.net/2026/Aug/28/just-a-rumour-of-a-bug |
+| 2026-bhardwaj-human-in-the-loop-risk-routing | Human-in-the-Loop Without Killing Throughput | ai_engineering | accepted | towardsdatascience.com/human-in-the-loop-without-killing-throughput |
+| 2026-guo-codex-subagents-pattern | From One Agent to a Team: Understanding Codex Subagents | ai_engineering | accepted | towardsdatascience.com/from-one-agent-to-a-team-understanding-codex-subagents |
+| 2026-metwalli-working-with-ai-coding-agents | How to Work with AI Coding Agents | ai_engineering | accepted | towardsdatascience.com/how-to-work-with-ai-coding-agents |
+| 2026-kjosbakken-claude-code-time-estimates | Why Claude Code Time Estimates Are Poor | ai_engineering | accepted | towardsdatascience.com/why-claude-code-time-estimates-are-poor |
+| 2026-zeng-mixture-of-roles-single-agent | One Model, Many Minds: Unlocking Multi-Agent Synergy in a Single Agent via Mixture of Roles | ai_engineering | accepted | arxiv:2608.27338 |
+| 2026-reid-risks-controls-multiagent-boundaries | Risks and Controls for Multi-Agent Systems: an analytical framework for deployment of AI agents across organisational boundaries | ai_engineering | accepted | arxiv:2608.26626 |
