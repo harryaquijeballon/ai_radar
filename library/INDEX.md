@@ -244,3 +244,5 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-kjosbakken-claude-code-time-estimates | Why Claude Code Time Estimates Are Poor | ai_engineering | accepted | towardsdatascience.com/why-claude-code-time-estimates-are-poor |
 | 2026-zeng-mixture-of-roles-single-agent | One Model, Many Minds: Unlocking Multi-Agent Synergy in a Single Agent via Mixture of Roles | ai_engineering | accepted | arxiv:2608.27338 |
 | 2026-reid-risks-controls-multiagent-boundaries | Risks and Controls for Multi-Agent Systems: an analytical framework for deployment of AI agents across organisational boundaries | ai_engineering | accepted | arxiv:2608.26626 |
+| 2026-shi-nlp-ladder-before-rag | RAG Is Not the Whole Toolkit: The NLP Techniques Real Problems Still Need | ai_engineering | accepted | towardsdatascience.com/rag-is-not-the-whole-toolkit-the-nlp-techniques-real-problems-still-need |
+| 2026-kjosbakken-claude-code-vs-codex | When to Use Claude Code and When to Use Codex | ai_engineering | accepted | towardsdatascience.com/when-to-use-claude-code-and-when-to-use-codex |
