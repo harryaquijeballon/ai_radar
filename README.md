@@ -7,11 +7,11 @@ The radar covers two fields.
 - **Social science.** Credible developments in generative AI, agentic systems, and AI engineering applied to economics, sociology, political science, and policy research, with particular attention to growth, development, digital technologies, regulation, and empirical methods.
 - **AI engineering.** Technical practice for building reliable AI-powered research and policy products. Agent architecture, harness engineering, tool use, evaluation, validation, observability, context engineering, deterministic guardrails, security, and reproducibility.
 
-Two Claude Code agent skills share one engine. Findings are verified, scored against public interest profiles, deduplicated, and archived as structured markdown entries in a growing library (100+ entries and counting). Each skill writes a short daily report for its own audience. The final product is the library, built over time as a curated selection of papers across the two categories.
+Two Claude Code agent skills share one engine. Findings are verified, scored against public interest profiles, deduplicated, and archived as structured markdown entries in a growing library (240+ entries and counting). Each skill writes a short daily report for its own audience. The final product is the library, built over time as a curated selection of papers across the two categories.
 
 ## Judgment to the model, guarantees to code
 
-The unattended daily run (04:37 UTC, GitHub Actions, live since 23 July 2026) is designed around one principle. **The model exercises judgment, and deterministic code enforces the guarantees.**
+The unattended daily run (04:37 UTC, GitHub Actions, live since 23 July 2026; pilot reviewed successful on 1 September 2026) is designed around one principle. **The model exercises judgment, and deterministic code enforces the guarantees.**
 
 - Claude Code performs discovery, review, verification, and report writing under least privilege. No shell, no git, and network access restricted to a human-controlled, exact-host domain allowlist.
 - Deterministic Python validators (170+ tests) check everything the model wrote from a read-only pristine base. Path allowlist, append-only history protection, report integrity, metadata-only review queues, no-echo output. Work that breaks an invariant is discarded, so a failed day costs one day's harvest, never library corruption.
