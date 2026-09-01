@@ -137,6 +137,13 @@ class TestWorkflowStructure(unittest.TestCase):
             "(inputs.mode == 'full' || github.event_name == 'schedule')",
             deliver_gate)
 
+    def test_deliver_steps_capture_push_stderr_diagnostics(self):
+        """2026-09-01 diagnosis: both delivery invocations hand run_delivery a
+        diagnostics dir so failed-push git stderr survives into the uploaded
+        artifact (redacted by the script)."""
+        self.assertEqual(
+            self.text.count('--diagnostics-dir "$RADAR_DIR/diagnostics"'), 2)
+
     def test_outcome_gate_fails_job_on_incomplete(self):
         """Regression for run 30016278453: a non-successful classified outcome
         must fail the job in every mode, so notifications and diagnostics fire."""
@@ -178,6 +185,22 @@ class TestRuntimePrompt(unittest.TestCase):
         # CLAUDE.md is auto-loaded project context; the prompt must not
         # re-mandate reading it (wasted turns before discovery):
         self.assertIn("do not\n   re-read", self.text)
+
+    def test_no_delegation_to_background_agents(self):
+        """2026-09-01 failure (run 33492847557): the model delegated the scan
+        to a background agent and ended its turn; the agent died with the
+        session and the day's work was lost. The prompt must forbid
+        delegation outright."""
+        self.assertIn("to a subagent", self.text)
+        self.assertIn("still running in the background when your turn ends",
+                      self.text)
+
+    def test_evidence_artifact_written_before_reports(self):
+        """2026-09-01 hardening: a run that dies midway must leave evidence,
+        never orphan reports — the artifact write precedes both report
+        writes."""
+        self.assertIn("no report file may exist before", self.text)
+        self.assertIn("Evidence-before-reports is a hard rule", self.text)
 
     def test_safety_rules_preserved(self):
         for fragment in ("profiles/egress_allowlist.md", "defer",

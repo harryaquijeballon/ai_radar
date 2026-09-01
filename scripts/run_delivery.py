@@ -21,8 +21,10 @@ from __future__ import annotations
 import argparse
 import datetime
 import os
+import re
 import subprocess
 import sys
+import time
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(_HERE, "validators"))
@@ -127,6 +129,20 @@ def cmd_validate(args) -> int:
 
 # --- deliver -----------------------------------------------------------------
 
+# 2026-09-01 diagnosis (run 33087741300, 2026-08-27): a single transient push
+# error threw away an otherwise complete run. Transient errors are retried;
+# non-fast-forward rejections are not (attempt 2 owns the race, R27).
+PUSH_RETRY_DELAYS = (5, 15)  # seconds before tries 2 and 3 (3 tries total)
+
+_REJECTION_MARKERS = ("non-fast-forward", "[rejected]", "fetch first")
+
+
+def _redact_remotes(text):
+    """Git echoes the remote URL in push errors; its userinfo is the delivery
+    token and must never reach a diagnostics artifact."""
+    return re.sub(r"://[^/@\s]+@", "://[redacted]@", text)
+
+
 def _git(git_dir, work_tree, extra, check=True):
     command = ["git", "-c", "user.name=ai-radar harness",
                "-c", "user.email=radar-harness@users.noreply.github.com",
@@ -158,18 +174,37 @@ def cmd_deliver(args) -> int:
          ["commit", "-q", "-m", "radar: daily run %s" % run_date])
     sha = _git(args.git_dir, None, ["rev-parse", "HEAD"]).stdout.strip()
 
-    push = _git(args.git_dir, None,
-                ["push", args.remote, "HEAD:refs/heads/main"], check=False)
-    if push.returncode == 0:
-        _emit([("outcome", "pushed"), ("commit", sha)], args.github_output)
-        return 0
-    stderr = push.stderr.lower()
-    if "non-fast-forward" in stderr or "[rejected]" in stderr \
-            or "fetch first" in stderr:
-        outcome = "push-failed" if args.final else "rejected"
-    else:
-        outcome = "push-error"
-    _emit([("outcome", outcome), ("commit", sha)], args.github_output)
+    delays = tuple(int(part) for part in args.push_retry_delays.split(",")
+                   if part.strip() != "") if args.push_retry_delays is not None \
+        else PUSH_RETRY_DELAYS
+    stderr_log = []
+    attempt = 0
+    while True:
+        attempt += 1
+        push = _git(args.git_dir, None,
+                    ["push", args.remote, "HEAD:refs/heads/main"], check=False)
+        if push.returncode == 0:
+            outcome = "pushed"
+            break
+        stderr_log.append("--- push attempt %d of %d (exit %d) ---\n%s"
+                          % (attempt, len(delays) + 1, push.returncode,
+                             push.stderr))
+        stderr = push.stderr.lower()
+        if any(marker in stderr for marker in _REJECTION_MARKERS):
+            outcome = "push-failed" if args.final else "rejected"
+            break
+        if attempt > len(delays):
+            outcome = "push-error"
+            break
+        time.sleep(delays[attempt - 1])
+    if stderr_log and args.diagnostics_dir:
+        os.makedirs(args.diagnostics_dir, exist_ok=True)
+        name = "push-stderr-deliver%s.txt" % ("2" if args.final else "1")
+        with open(os.path.join(args.diagnostics_dir, name), "w",
+                  encoding="utf-8") as handle:
+            handle.write(_redact_remotes("\n".join(stderr_log)))
+    _emit([("outcome", outcome), ("commit", sha),
+           ("push_attempts", attempt)], args.github_output)
     return 0
 
 
@@ -273,6 +308,11 @@ def main() -> int:
     p_deliver.add_argument("--final", action="store_true")
     p_deliver.add_argument("--run-date", default=None)
     p_deliver.add_argument("--github-output", default=None)
+    p_deliver.add_argument("--diagnostics-dir", default=None)
+    p_deliver.add_argument("--push-retry-delays", default=None,
+                           help="comma-separated seconds between transient-"
+                                "error retries (tests pass 0,0); default %s"
+                                % (PUSH_RETRY_DELAYS,))
 
     p_summarize = sub.add_parser("summarize")
     p_summarize.add_argument("--workspace", required=True)

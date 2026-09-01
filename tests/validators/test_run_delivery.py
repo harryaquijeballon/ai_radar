@@ -79,16 +79,18 @@ class DeliveryBase(unittest.TestCase):
                      for line in result.stdout.splitlines() if "=" in line)
         return pairs
 
-    def deliver(self, workspace, final=False):
+    def deliver(self, workspace, final=False, remote=None, extra_args=None):
         out = workspace + "-deliver-out"
         argv = [sys.executable, SCRIPT, "deliver",
                 "--workspace", workspace,
                 "--git-dir", os.path.join(workspace, ".git"),
                 "--base", "origin/main", "--run-date", RUN_DATE,
-                "--remote", self.origin,
+                "--remote", remote or self.origin,
                 "--github-output", out]
         if final:
             argv.append("--final")
+        if extra_args:
+            argv += extra_args
         result = subprocess.run(argv, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         return dict(line.split("=", 1)
@@ -203,7 +205,11 @@ class TestDeliver(DeliveryBase):
                       fix.read(workspace, fix.ACCEPTED_ENTRY).replace(
                           "2023-korinek-genai-economic-research",
                           "2026-race-entry"))
-            self.assertEqual(self.deliver(workspace)["outcome"], "rejected")
+            pairs = self.deliver(workspace)
+            self.assertEqual(pairs["outcome"], "rejected")
+            # A rejection is a push race, not a transient error — attempt 2
+            # owns the retry, so deliver must not loop on it (2026-09-01):
+            self.assertEqual(pairs["push_attempts"], "1")
             workspace2, _, _ = self.setup_run()
             fix.write(workspace2, "library/entries/2026-race-entry.md",
                       fix.read(workspace2, fix.ACCEPTED_ENTRY).replace(
@@ -214,6 +220,37 @@ class TestDeliver(DeliveryBase):
         finally:
             subprocess.run(["git", "reset", "--hard", "HEAD~1"],
                            cwd=self.origin, capture_output=True, check=True)
+
+    def test_transient_push_error_retried_and_stderr_captured(self):
+        """2026-09-01 diagnosis (run 33087741300, 2026-08-27): a transient
+        push error gets three tries, and the git stderr survives into the
+        diagnostics directory."""
+        workspace, _, _ = self.setup_run()
+        fix.write(workspace, "library/entries/2026-transient-entry.md",
+                  fix.read(workspace, fix.ACCEPTED_ENTRY).replace(
+                      "2023-korinek-genai-economic-research",
+                      "2026-transient-entry"))
+        diagnostics = workspace + "-diagnostics"
+        pairs = self.deliver(workspace,
+                             remote=workspace + "-no-such-remote",
+                             extra_args=["--push-retry-delays", "0,0",
+                                         "--diagnostics-dir", diagnostics])
+        self.assertEqual(pairs["outcome"], "push-error")
+        self.assertEqual(pairs["push_attempts"], "3")
+        with open(os.path.join(diagnostics, "push-stderr-deliver1.txt"),
+                  encoding="utf-8") as handle:
+            captured = handle.read()
+        self.assertIn("push attempt 3 of 3", captured)
+        self.assertIn("no-such-remote", captured)
+
+    def test_push_stderr_redacts_remote_credentials(self):
+        """Push stderr can echo the remote URL whose userinfo is the delivery
+        token; the diagnostics copy must never contain it."""
+        stderr = ("fatal: unable to access 'https://x-access-token:ghs_secret"
+                  "@github.com/o/r.git/': The requested URL returned error: 503")
+        redacted = rd._redact_remotes(stderr)
+        self.assertNotIn("ghs_secret", redacted)
+        self.assertIn("://[redacted]@github.com", redacted)
 
 
 class TestOutcomeClassification(unittest.TestCase):

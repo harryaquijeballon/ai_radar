@@ -141,6 +141,7 @@ jobs:
             --git-dir "$RUNNER_TEMP/harness/.git" \
             --base "${{ steps.pristine.outputs.base_sha }}" \
             --remote "https://x-access-token:${RADAR_PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            --diagnostics-dir "$RADAR_DIR/diagnostics" \
             --github-output "$GITHUB_OUTPUT"
 
       # ---------------- attempt 2 (statically unrolled; push race or degenerate attempt-1 model run) ----------------
@@ -234,6 +235,7 @@ jobs:
               --base "${{ steps.pristine2.outputs.base_sha }}" \
               --remote "https://x-access-token:${RADAR_PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
               --final \
+              --diagnostics-dir "$RADAR_DIR/diagnostics" \
               --github-output "$GITHUB_OUTPUT"
           fi
 
