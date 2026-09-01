@@ -104,10 +104,15 @@ close.
    the credential string expires (~1 year from 2026-07-23, so renewal due
    ~2027-06 per activation step 3's calendar reminder). On expiry the
    failure mode is a loud AUTH-class red run, never silent breakage.
-4. **Manual acceptance test — the one open item.** User picks one pilot
-   day at random and traces report → entry → cited source, and job
-   summary → commit. v2's definition of done closes when this trace is
-   recorded here.
+4. **Manual acceptance test — passed 2026-09-01.** The user chose
+   "AI, Human Cognition and Knowledge Collapse" (entry
+   `2026-acemoglu-knowledge-collapse`, accepted/verified, MIT working
+   paper) and confirmed the source link resolves and the summary is
+   faithful; the entry also appears correctly as "already archived" in
+   pilot scan notes (dedup chain intact). Job summary → commit verified
+   against the 2026-09-01 recovery run (33502207251 → `45d305b`,
+   `radar: daily run 2026-09-01`, in linear history). With this trace
+   recorded, v2's definition of done is met and **v2 is closed**.
 
 ## 7. Recommendation
 
