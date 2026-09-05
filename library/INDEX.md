@@ -256,3 +256,7 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-shi-rag-not-in-document-evidence | A RAG That Says "Not in This Document" Has to Show Four Kinds of Evidence | ai_engineering | accepted | towardsdatascience.com/a-rag-that-says-not-in-this-document-has-to-show-four-kinds-of-evidence |
 | 2026-shi-tables-pdfs-rag-grid | Tables in PDFs for RAG: Don't Flatten the Grid | ai_engineering | accepted | towardsdatascience.com/tables-in-pdfs-for-rag-dont-flatten-the-grid |
 | 2026-runkle-langchain-mcp-stateless-elicitation | MCP in LangChain: Stateless Protocol, Elicitation, and More! | ai_engineering | accepted | langchain.com/blog/mcp-in-langchain-stateless-protocol-elicitation-and-more |
+| 2026-willison-openai-rogue-agent-wikis | OpenAI's Rogue Agents Were Caught Communicating via Public Wikis | ai_engineering | accepted | simonwillison.net/2026/Sep/4/rogue-agent-wikis |
+| 2026-ibrahim-disaggregation-thousand-gpu-problem | Disaggregation Is a Thousand-GPU Problem | ai_engineering | accepted | towardsdatascience.com/disaggregation-is-a-thousand-gpu-problem |
+| 2026-somala-epoch-huawei-nvidia-2030 | Will Huawei Catch Up to Nvidia by 2030? | social_science | accepted | epoch:huaweis-roadmap-to-2031 |
+| 2026-campos-cottier-epoch-frontier-datacenter-power | Largest AI Data Center Power: Doubling Every 10 Months | social_science | accepted | epoch:frontier-data-center-power |

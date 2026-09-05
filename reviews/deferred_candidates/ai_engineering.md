@@ -144,7 +144,7 @@
 - title: How we contain Claude across products
 - domain: ai_engineering
 - first_encountered: 2026-08-20
-- last_encountered: 2026-08-20
+- last_encountered: 2026-09-05
 - source_type: primary
 - reason_class: access_or_license_unclear
 - reason: www.anthropic.com is not on the egress allowlist (only bare anthropic.com is); snippet describes sandbox/VM containment architecture (hypervisor, seccomp, gVisor), unverified without fetch; publish date unconfirmed.
