@@ -144,12 +144,12 @@
 - title: How we contain Claude across products
 - domain: ai_engineering
 - first_encountered: 2026-08-20
-- last_encountered: 2026-09-05
+- last_encountered: 2026-09-07
 - source_type: primary
 - reason_class: access_or_license_unclear
 - reason: www.anthropic.com is not on the egress allowlist (only bare anthropic.com is); snippet describes sandbox/VM containment architecture (hypervisor, seccomp, gVisor), unverified without fetch; publish date unconfirmed.
 - surfaced_by: watchlist:anthropic-engineering (featured/undated item on anthropic.com/engineering)
-- action_needed: approve www.anthropic.com (or this path) for the allowlist, or have a human read and confirm the publish date and containment-mechanism claims directly; otherwise dismiss.
+- action_needed: approve www.anthropic.com (or this path) for the allowlist, or have a human read and confirm the publish date and containment-mechanism claims directly; otherwise dismiss.; 09-07: re-encountered via bare anthropic.com, still no date.
 - status: pending
 
 ### https://www.schneier.com/blog/archives/2026/08/prompt-injections-for-defense.html
@@ -162,6 +162,18 @@
 - reason: schneier.com is not on the egress allowlist, so the post could not be fetched; only a search-result title was available, exact publish date and content unconfirmed.
 - surfaced_by: open search (security/prompt-injection lens)
 - action_needed: approve schneier.com for the allowlist, or have a human read and confirm the publish date and argument directly; otherwise dismiss.
+- status: pending
+
+### https://openai.com/index/research-acceleration-view-inside-openai/
+- title: Research acceleration: The view inside OpenAI
+- domain: ai_engineering
+- first_encountered: 2026-09-07
+- last_encountered: 2026-09-07
+- source_type: primary
+- reason_class: access_or_license_unclear
+- reason: openai.com allowlisted but returned HTTP 403 (persistent pattern); relayed via Simon Willison (09-06) with a quantified claim (3.1 agent workdays/human workday, mid-Aug 2026), unverifiable without direct fetch.
+- surfaced_by: watchlist:simon-willison
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the methodology and figures directly.
 - status: pending
 
 ### https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/
