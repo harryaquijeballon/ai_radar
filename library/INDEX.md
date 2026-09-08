@@ -260,3 +260,4 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-ibrahim-disaggregation-thousand-gpu-problem | Disaggregation Is a Thousand-GPU Problem | ai_engineering | accepted | towardsdatascience.com/disaggregation-is-a-thousand-gpu-problem |
 | 2026-somala-epoch-huawei-nvidia-2030 | Will Huawei Catch Up to Nvidia by 2030? | social_science | accepted | epoch:huaweis-roadmap-to-2031 |
 | 2026-campos-cottier-epoch-frontier-datacenter-power | Largest AI Data Center Power: Doubling Every 10 Months | social_science | accepted | epoch:frontier-data-center-power |
+| 2026-nweke-multiagent-watchdog-intermediate-state-eval | Why Most Multi-Agent Systems Fail Even When Evaluation Passes | ai_engineering | accepted | towardsdatascience.com/why-most-multi-agent-systems-fail-even-when-evaluation-passes |
