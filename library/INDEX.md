@@ -261,3 +261,6 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-somala-epoch-huawei-nvidia-2030 | Will Huawei Catch Up to Nvidia by 2030? | social_science | accepted | epoch:huaweis-roadmap-to-2031 |
 | 2026-campos-cottier-epoch-frontier-datacenter-power | Largest AI Data Center Power: Doubling Every 10 Months | social_science | accepted | epoch:frontier-data-center-power |
 | 2026-nweke-multiagent-watchdog-intermediate-state-eval | Why Most Multi-Agent Systems Fail Even When Evaluation Passes | ai_engineering | accepted | towardsdatascience.com/why-most-multi-agent-systems-fail-even-when-evaluation-passes |
+| 2026-li-epoch-context-latency-scaling | Latency Scaling Differences for GPT and Claude Models | ai_engineering | accepted | epoch.ai/publications/long-context-latency-scaling-gpt-vs-claude |
+| 2026-mabene-ho-discriminatory-local-laws | Hidden in Plain Text: LLM-Assisted Detection of Discriminatory Municipal Laws | ai_engineering, social_science | accepted | hai.stanford.edu/news/ai-legal-review-says-millions-live-under-discriminatory-local-laws |
+| 2026-willison-navier-stokes-ai-proof-race | On the Navier–Stokes Millennium Prize Problem | ai_engineering, social_science | accepted | simonwillison.net/2026/Sep/8/on-navier-stokes |
