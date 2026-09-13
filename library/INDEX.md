@@ -264,3 +264,11 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-li-epoch-context-latency-scaling | Latency Scaling Differences for GPT and Claude Models | ai_engineering | accepted | epoch.ai/publications/long-context-latency-scaling-gpt-vs-claude |
 | 2026-mabene-ho-discriminatory-local-laws | Hidden in Plain Text: LLM-Assisted Detection of Discriminatory Municipal Laws | ai_engineering, social_science | accepted | hai.stanford.edu/news/ai-legal-review-says-millions-live-under-discriminatory-local-laws |
 | 2026-willison-navier-stokes-ai-proof-race | On the Navier–Stokes Millennium Prize Problem | ai_engineering, social_science | accepted | simonwillison.net/2026/Sep/8/on-navier-stokes |
+| 2026-afsar-mcp-registry-random-draw | What a Random Draw from the MCP Registry Contains, and What Tool-Use Benchmarks Contain Instead | ai_engineering | accepted | arxiv:2609.10962 |
+| 2026-zheng-vp-control-commit-gates | Engineering Reliable Commit Gates for Agentic AI: Cost-Aware Verification Portfolios under Common-Mode Data Failures | ai_engineering | accepted | arxiv:2609.10969 |
+| 2026-cai-guardedact-backend-remediation | Can AI Remediate Backend Failures Safely? GuardedAct with Blast-Radius-Aware Sandboxing | ai_engineering | accepted | arxiv:2609.11264 |
+| 2026-regmi-ai-agents-town-economy | But How Would AI Agents Run a Town's Economy? | social_science, ai_engineering | accepted | arxiv:2609.11108 |
+| 2026-barba-reproducibility-context-engineering | Reproducibility in the Age of Agentic AI: Context Engineering at the Timescale of a Codebase | ai_engineering | accepted | arxiv:2609.11728 |
+| 2026-lassiter-bent-agent-compendium | Defining AI Agents: A Compendium of Criteria, Metrics, and Benchmarks | ai_engineering | accepted | arxiv:2609.11018 |
+| 2026-alexander-intent-continuity-coding-agents | Coding Agents Don't Need Longer History — They Need Intent Continuity | ai_engineering | accepted | towardsdatascience.com/coding-agents-dont-need-longer-history-they-need-intent-continuity |
+| 2026-willison-openai-agents-rubygems | OpenAI Agents Attacked RubyGems Back in May | ai_engineering | accepted | simonwillison.net/2026/Sep/12/openai-agents-rubygems |
