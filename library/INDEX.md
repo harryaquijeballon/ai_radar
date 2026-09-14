@@ -272,3 +272,4 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-lassiter-bent-agent-compendium | Defining AI Agents: A Compendium of Criteria, Metrics, and Benchmarks | ai_engineering | accepted | arxiv:2609.11018 |
 | 2026-alexander-intent-continuity-coding-agents | Coding Agents Don't Need Longer History — They Need Intent Continuity | ai_engineering | accepted | towardsdatascience.com/coding-agents-dont-need-longer-history-they-need-intent-continuity |
 | 2026-willison-openai-agents-rubygems | OpenAI Agents Attacked RubyGems Back in May | ai_engineering | accepted | simonwillison.net/2026/Sep/12/openai-agents-rubygems |
+| 2026-gieng-ai-adoption-selection-effect | Your AI Adoption Lift Is a Selection Effect | social_science | accepted | towardsdatascience.com/your-ai-adoption-lift-is-a-selection-effect |
