@@ -203,6 +203,18 @@
 - action_needed: retry direct fetch in a future run, or have a human read and confirm the column and its date directly; consider an SSRN/RePEc mirror if one exists, per the precedent for the Marsal & Perkowski column.
 - status: pending
 
+### https://cepr.org/voxeu/columns/workers-age-and-ai-adoption
+- title: Workers' age and AI adoption
+- domain: social_science
+- first_encountered: 2026-09-16
+- last_encountered: 2026-09-16
+- source_type: academic
+- reason_class: access_or_license_unclear
+- reason: cepr.org allowlisted but WebFetch returned HTTP 403 on the column; listing page confirmed date (16 Sep 2026). Only a search-engine paraphrase available (Cette, Nicoletti, Vernerey — AI adoption by age); insufficient to trace claims.
+- surfaced_by: watchlist:voxeu-cepr
+- action_needed: retry the fetch, or have a human confirm the column; underlying paper may be HAL working paper hal-05560286, "Artificial Intelligence: what drives adoption in EU countries?" (not allowlisted) — consider an allowlisted mirror.
+- status: pending
+
 ### https://cepr.org/voxeu/columns/embracing-ai-europe-new-evidence-harmonised-central-bank-business-surveys
 - title: Embracing AI in Europe: New evidence from harmonised central bank business surveys
 - domain: social_science
