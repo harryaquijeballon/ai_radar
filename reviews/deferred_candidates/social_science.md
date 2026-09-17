@@ -207,7 +207,7 @@
 - title: Workers' age and AI adoption
 - domain: social_science
 - first_encountered: 2026-09-16
-- last_encountered: 2026-09-16
+- last_encountered: 2026-09-17
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403 on the column; listing page confirmed date (16 Sep 2026). Only a search-engine paraphrase available (Cette, Nicoletti, Vernerey — AI adoption by age); insufficient to trace claims.
