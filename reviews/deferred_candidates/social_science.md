@@ -215,6 +215,18 @@
 - action_needed: retry the fetch, or have a human confirm the column; underlying paper may be HAL working paper hal-05560286, "Artificial Intelligence: what drives adoption in EU countries?" (not allowlisted) — consider an allowlisted mirror.
 - status: pending
 
+### https://gsmaintelligence.com/research/telcos-and-the-ai-token-economy-china-sets-the-pace
+- title: AI and the token economy: telco role, telco value
+- domain: social_science
+- first_encountered: 2026-09-18
+- last_encountered: 2026-09-18
+- source_type: primary
+- reason_class: verification_insufficient
+- reason: gsmaintelligence.com index lists this title under "September 2026" (no day-level date); the only dated match found ("Telcos and the AI token economy: China sets the pace") shows June 2026, unclear if same or a newer item.
+- surfaced_by: watchlist:gsma-intelligence
+- action_needed: confirm whether a distinct September-2026 item exists (title differs from the June piece) and its exact date; archive at lens 3 if in-window and new.
+- status: pending
+
 ### https://cepr.org/voxeu/columns/embracing-ai-europe-new-evidence-harmonised-central-bank-business-surveys
 - title: Embracing AI in Europe: New evidence from harmonised central bank business surveys
 - domain: social_science
@@ -231,7 +243,7 @@
 - title: Towards scalable AI-assisted pre-bunking of election misinformation: evidence from a pre-registered US panel experiment
 - domain: social_science
 - first_encountered: 2026-08-23
-- last_encountered: 2026-09-08
+- last_encountered: 2026-09-18
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: doi.org resolves to royalsocietypublishing.org, not on the egress allowlist, so the article page could not be fetched; only search-result metadata available. Pre-registered experiment on LLM pre-bunking of election misinformation.
