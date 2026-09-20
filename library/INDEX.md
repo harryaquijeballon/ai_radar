@@ -280,3 +280,4 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-alexander-commitment-ledger-multiagent-coding | Multi-Agent Coding Isn't Enough — Agents Need a Commitment Layer | ai_engineering | accepted | towardsdatascience.com/multi-agent-coding-isnt-enough-agents-need-a-commitment-layer |
 | 2026-rupareliya-model-pin-requalification-tax | We Pinned Our Model Version to Stay Safe. The Provider Deprecated It Anyway. | ai_engineering | accepted | towardsdatascience.com/we-pinned-our-model-version-to-stay-safe-the-provider-deprecated-it-anyway |
 | 2026-abrishami-epoch-math-preprints-ai-disclosure | In August, 25% of Math Preprints Acknowledged AI Use, Up From 4% in April | ai_engineering | accepted | epoch.ai/data-insights/math-preprints-disclosed-ai-use |
+| 2026-shea-roche-jev-agent-judge-evals | Jev-as-a-Judge for Agent Evals | ai_engineering | accepted | repo:danielgshea/jev-as-a-judge |

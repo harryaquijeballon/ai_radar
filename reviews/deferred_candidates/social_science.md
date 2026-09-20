@@ -156,24 +156,24 @@
 - title: Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment
 - domain: social_science
 - first_encountered: 2026-08-21
-- last_encountered: 2026-09-07
+- last_encountered: 2026-09-20
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. RCT evidence on AI math tutoring — would score high on lens 1/6 if in-window.
 - surfaced_by: watchlist:nber-working-papers
-- action_needed: confirm exact NBER issue date via dated listing/metadata; archive if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.
+- action_needed: confirm exact NBER issue date via dated listing/metadata; archive if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.; 09-20: same.
 - status: pending
 
 ### https://www.nber.org/papers/w35588
 - title: AI Agents and Prompt Engineering in Econometric Coding
 - domain: social_science, ai_engineering
 - first_encountered: 2026-08-22
-- last_encountered: 2026-09-07
+- last_encountered: 2026-09-20
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. Cross-domain: agent-autonomy levels raise econometric-coding task completion 74%→96% at ~$0.08/op (Galiani et al.).
 - surfaced_by: open search (economic-research-methods / AI-agents-for-research lens)
-- action_needed: confirm exact NBER issue date via dated listing/metadata; archive cross-domain if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.
+- action_needed: confirm exact NBER issue date via dated listing/metadata; archive cross-domain if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.; 09-20: same.
 - status: pending
 
 ### https://cepr.org/voxeu/columns/task-based-returns-generative-ai-evidence-central-bank
@@ -219,12 +219,12 @@
 - title: AI and the token economy: telco role, telco value
 - domain: social_science
 - first_encountered: 2026-09-18
-- last_encountered: 2026-09-19
+- last_encountered: 2026-09-20
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: gsmaintelligence.com index lists this title under "September 2026" (no day-level date); the only dated match found ("Telcos and the AI token economy: China sets the pace") shows June 2026, unclear if same or a newer item.
 - surfaced_by: watchlist:gsma-intelligence
-- action_needed: confirm whether a distinct September-2026 item exists (title differs from the June piece) and its exact date; archive at lens 3 if in-window and new.
+- action_needed: confirm whether a distinct September-2026 item exists (title differs from the June piece) and its exact date; archive at lens 3 if in-window and new.; 09-20: same listing, still no day-level date.
 - status: pending
 
 ### https://cepr.org/voxeu/columns/embracing-ai-europe-new-evidence-harmonised-central-bank-business-surveys
@@ -243,10 +243,10 @@
 - title: Towards scalable AI-assisted pre-bunking of election misinformation: evidence from a pre-registered US panel experiment
 - domain: social_science
 - first_encountered: 2026-08-23
-- last_encountered: 2026-09-19
+- last_encountered: 2026-09-20
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: doi.org resolves to royalsocietypublishing.org, not on the egress allowlist, so the article page could not be fetched; only search-result metadata available. Pre-registered experiment on LLM pre-bunking of election misinformation.
 - surfaced_by: open search (political science / misinformation lens)
-- action_needed: approve royalsocietypublishing.org for the allowlist, or have a human read and confirm the method/results and exact publication date directly; otherwise dismiss.; 09-07: re-encountered via open search, same result.
+- action_needed: approve royalsocietypublishing.org for the allowlist, or have a human read and confirm the method/results and exact publication date directly; otherwise dismiss.; 09-07: re-encountered via open search, same result.; 09-20: same.
 - status: pending
