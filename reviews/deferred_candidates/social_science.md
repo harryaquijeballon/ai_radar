@@ -207,7 +207,7 @@
 - title: Workers' age and AI adoption
 - domain: social_science
 - first_encountered: 2026-09-16
-- last_encountered: 2026-09-17
+- last_encountered: 2026-09-23
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403 on the column; listing page confirmed date (16 Sep 2026). Only a search-engine paraphrase available (Cette, Nicoletti, Vernerey — AI adoption by age); insufficient to trace claims.
@@ -243,7 +243,7 @@
 - title: Towards scalable AI-assisted pre-bunking of election misinformation: evidence from a pre-registered US panel experiment
 - domain: social_science
 - first_encountered: 2026-08-23
-- last_encountered: 2026-09-22
+- last_encountered: 2026-09-23
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: doi.org resolves to royalsocietypublishing.org, not on the egress allowlist, so the article page could not be fetched; only search-result metadata available. Pre-registered experiment on LLM pre-bunking of election misinformation.
