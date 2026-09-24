@@ -281,3 +281,12 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-rupareliya-model-pin-requalification-tax | We Pinned Our Model Version to Stay Safe. The Provider Deprecated It Anyway. | ai_engineering | accepted | towardsdatascience.com/we-pinned-our-model-version-to-stay-safe-the-provider-deprecated-it-anyway |
 | 2026-abrishami-epoch-math-preprints-ai-disclosure | In August, 25% of Math Preprints Acknowledged AI Use, Up From 4% in April | ai_engineering | accepted | epoch.ai/data-insights/math-preprints-disclosed-ai-use |
 | 2026-shea-roche-jev-agent-judge-evals | Jev-as-a-Judge for Agent Evals | ai_engineering | accepted | repo:danielgshea/jev-as-a-judge |
+| 2026-michler-mining-meaning-ai-literature-review-error | Mining Meaning: Measurement Error in AI-Assisted Literature Reviews | social_science, ai_engineering | accepted | arxiv:2609.27686 |
+| 2026-wadi-ma-shopping-by-algorithm-price-cues | Shopping by Algorithm: How Agentic AI Deploys Human Heuristics as a Surrogate Consumer | social_science | accepted | arxiv:2609.28372 |
+| 2026-yin-wen-trust-arbitrage-ai-fraud | When Trust Attracts Fraud: AI and Trust Arbitrage | social_science | accepted | arxiv:2609.27404, doi:10.1016/j.econlet.2026.113234 |
+| 2026-kumar-agent-name-collision-a2a | Agent Name Collision Attacks in Multi-Agent Systems | ai_engineering | accepted | arxiv:2609.27624 |
+| 2026-sun-agent-editing-world-model | Agent-Editing World Model: Rethinking World Modeling for LLM Agents | ai_engineering | accepted | arxiv:2609.28416 |
+| 2026-takerngsaksiri-agent-pr-follow-up-fixes | Who Finishes the Job? A Study of Follow-Up Fixes and Commit Authorship on AI Coding Agent Pull Requests | ai_engineering | accepted | arxiv:2609.26847 |
+| 2026-hillenbrand-rule-based-pricing-algorithms | Rule-Based Pricing Algorithms and Market Outcomes: An Experimental Study | social_science | accepted | arxiv:2609.26861 |
+| 2026-khelifi-specifying-maintaining-agentic-workflows | Specifying and Maintaining Agentic Workflows: An Empirical Study of GitHub Agentic Workflows | ai_engineering | accepted | arxiv:2609.27263 |
+| 2026-gopalan-silent-failures-tooluniverse-audit | Silent Failures in Agent-Tool Interaction: An Audit of ToolUniverse | ai_engineering | accepted | arxiv:2609.26836 |

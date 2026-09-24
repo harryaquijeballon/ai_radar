@@ -63,4 +63,4 @@ None yet.
 
 ## Related entries
 
-None yet.
+- [2026-wadi-ma-shopping-by-algorithm-price-cues](2026-wadi-ma-shopping-by-algorithm-price-cues.md) — same research program (Wadi & Ma on AI agents as consumer surrogates), distinct question: that entry tests susceptibility to pricing/promotional manipulation, this one tests search-result position effects.
