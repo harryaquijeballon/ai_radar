@@ -250,3 +250,15 @@
 - surfaced_by: open search (political science / misinformation lens)
 - action_needed: approve royalsocietypublishing.org for the allowlist, or have a human read and confirm the method/results and exact publication date directly; otherwise dismiss.; 09-07: re-encountered via open search, same result.; 09-20: same.
 - status: pending
+
+### https://cepr.org/voxeu/columns/measuring-what-work-generative-ai-does-survey-evidence-versus-chat-logs
+- title: Measuring what work generative AI does: Survey evidence versus chat logs
+- domain: social_science
+- first_encountered: 2026-09-25
+- last_encountered: 2026-09-25
+- source_type: academic
+- reason_class: access_or_license_unclear
+- reason: cepr.org allowlisted but the column 403'd; listing page confirmed date (25 Sep 2026, Bick/Blandin/Deming/Schumacher). NBER WP w35677 is month-only dated and lacks the column's survey-vs-chat-log comparison.
+- surfaced_by: watchlist:voxeu-cepr
+- action_needed: retry the column fetch, or have a human confirm the column text directly; NBER w35677 abstract alone is insufficient to write a verified entry for the column's specific comparison.
+- status: pending

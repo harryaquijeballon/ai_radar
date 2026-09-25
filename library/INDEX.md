@@ -290,3 +290,8 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-hillenbrand-rule-based-pricing-algorithms | Rule-Based Pricing Algorithms and Market Outcomes: An Experimental Study | social_science | accepted | arxiv:2609.26861 |
 | 2026-khelifi-specifying-maintaining-agentic-workflows | Specifying and Maintaining Agentic Workflows: An Empirical Study of GitHub Agentic Workflows | ai_engineering | accepted | arxiv:2609.27263 |
 | 2026-gopalan-silent-failures-tooluniverse-audit | Silent Failures in Agent-Tool Interaction: An Audit of ToolUniverse | ai_engineering | accepted | arxiv:2609.26836 |
+| 2026-li-gao-misinformation-x-algorithm | Why Does Misinformation Propagate Faster? An Algorithmic Perspective on X | social_science | accepted | arxiv:2609.28947 |
+| 2026-chidichimo-artificial-societies-benchmark | Artificial Societies Benchmark: A Validation Framework for Synthetic Research | social_science, ai_engineering | accepted | arxiv:2609.30030 |
+| 2026-pang-codetta-agent-collusion | Codetta: High-Capacity, Keyless, and Undetectable Multi-Agent Collusion | ai_engineering | accepted | arxiv:2609.28900 |
+| 2026-leith-ai-authored-codebase-reliability | Between the Commits: Process, Error, and Claim Reliability in a Wholly AI-Authored Codebase | ai_engineering | accepted | arxiv:2609.29744 |
+| 2026-rao-callisonburch-jev-rubric-judges | JEV vs. LLMs as Rubric Judges: Cheaper, Faster, and Wrong in the Same Places | ai_engineering | accepted | arxiv:2609.29769 |
