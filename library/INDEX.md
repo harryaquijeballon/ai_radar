@@ -295,3 +295,5 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-pang-codetta-agent-collusion | Codetta: High-Capacity, Keyless, and Undetectable Multi-Agent Collusion | ai_engineering | accepted | arxiv:2609.28900 |
 | 2026-leith-ai-authored-codebase-reliability | Between the Commits: Process, Error, and Claim Reliability in a Wholly AI-Authored Codebase | ai_engineering | accepted | arxiv:2609.29744 |
 | 2026-rao-callisonburch-jev-rubric-judges | JEV vs. LLMs as Rubric Judges: Cheaper, Faster, and Wrong in the Same Places | ai_engineering | accepted | arxiv:2609.29769 |
+| 2026-koyejo-truong-ai-benchmark-validity | The Tests That Grade AI May Be Getting It Wrong | ai_engineering | accepted | hai.stanford.edu/news/the-tests-that-grade-ai-may-be-getting-it-wrong, arxiv:2605.17173 |
+| 2026-chalmers-law-saint-simonian-ai-institutions | So You Think the World Is About to Change? | social_science | accepted | blog.cosmos-institute.org/p/so-you-think-the-world-is-about-to |
