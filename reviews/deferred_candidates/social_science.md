@@ -156,24 +156,24 @@
 - title: Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment
 - domain: social_science
 - first_encountered: 2026-08-21
-- last_encountered: 2026-09-20
+- last_encountered: 2026-09-28
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. RCT evidence on AI math tutoring — would score high on lens 1/6 if in-window.
 - surfaced_by: watchlist:nber-working-papers
-- action_needed: confirm exact NBER issue date via dated listing/metadata; archive if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.; 09-20: same.
+- action_needed: confirm exact NBER issue date via dated listing/metadata; archive if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.; 09-20: same.; 09-28: same.
 - status: pending
 
 ### https://www.nber.org/papers/w35588
 - title: AI Agents and Prompt Engineering in Econometric Coding
 - domain: social_science, ai_engineering
 - first_encountered: 2026-08-22
-- last_encountered: 2026-09-20
+- last_encountered: 2026-09-28
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. Cross-domain: agent-autonomy levels raise econometric-coding task completion 74%→96% at ~$0.08/op (Galiani et al.).
 - surfaced_by: open search (economic-research-methods / AI-agents-for-research lens)
-- action_needed: confirm exact NBER issue date via dated listing/metadata; archive cross-domain if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.; 09-20: same.
+- action_needed: confirm exact NBER issue date via dated listing/metadata; archive cross-domain if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.; 09-20: same.; 09-28: same.
 - status: pending
 
 ### https://cepr.org/voxeu/columns/task-based-returns-generative-ai-evidence-central-bank
@@ -195,12 +195,12 @@
 - title: From AI investment to GDP growth: An ecosystem view
 - domain: social_science
 - first_encountered: 2026-08-25
-- last_encountered: 2026-08-25
+- last_encountered: 2026-09-28
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403, consistent with prior runs; only a search-engine title/author snippet available, exact date unconfirmed, insufficient to trace claims to source text.
 - surfaced_by: open search (economic growth / lens 1)
-- action_needed: retry direct fetch in a future run, or have a human read and confirm the column and its date directly; consider an SSRN/RePEc mirror if one exists, per the precedent for the Marsal & Perkowski column.
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the column and its date directly; consider an SSRN/RePEc mirror if one exists, per the precedent for the Marsal & Perkowski column.; 09-28: same result.
 - status: pending
 
 ### https://cepr.org/voxeu/columns/workers-age-and-ai-adoption
@@ -219,12 +219,12 @@
 - title: AI and the token economy: telco role, telco value
 - domain: social_science
 - first_encountered: 2026-09-18
-- last_encountered: 2026-09-22
+- last_encountered: 2026-09-28
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: gsmaintelligence.com index lists this title under "September 2026" (no day-level date); the only dated match found ("Telcos and the AI token economy: China sets the pace") shows June 2026, unclear if same or a newer item.
 - surfaced_by: watchlist:gsma-intelligence
-- action_needed: confirm whether a distinct September-2026 item exists (title differs from the June piece) and its exact date; archive at lens 3 if in-window and new.; 09-20: same listing, still no day-level date.; 09-21: same.; 09-22: same.
+- action_needed: confirm whether a distinct September-2026 item exists (title differs from the June piece) and its exact date; archive at lens 3 if in-window and new.; 09-20: same listing, still no day-level date.; 09-21: same.; 09-22: same.; 09-28: same.
 - status: pending
 
 ### https://cepr.org/voxeu/columns/embracing-ai-europe-new-evidence-harmonised-central-bank-business-surveys
