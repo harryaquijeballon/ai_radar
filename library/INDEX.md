@@ -302,3 +302,4 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-han-multi-agent-diagnostic-contracts | Where Do Multi-Agent Systems Fail? Evidence-Grounded Diagnosis of Collective Mechanisms | ai_engineering | accepted | arxiv:2609.38761 |
 | 2026-maji-risk-aware-adaptive-evaluation | Risk-Aware Adaptive Evaluation: Finding High-Impact Failures Under Limited Budgets | ai_engineering | accepted | arxiv:2609.38914 |
 | 2026-kato-ai-economist-agent | AI Economist Agent: An Agentic Framework for Evidence-Based Economic and Financial Analysis with RAG, Knowledge Graphs, and Large Language Models | social_science, ai_engineering | accepted | arxiv:2606.20041 |
+| 2026-bensalem-three-layer-agent-safety-contracts | Position: A Three-Layer Probabilistic Assume–Guarantee Architecture Is Structurally Required for Safe LLM Agent Deployment | ai_engineering | accepted | arxiv:2605.18672 |
