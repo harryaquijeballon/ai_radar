@@ -187,3 +187,15 @@
 - surfaced_by: open search (governance/reproducibility lens)
 - action_needed: approve alignment.anthropic.com for the allowlist, or have a human read and confirm the publish date and findings directly; otherwise dismiss.
 - status: pending
+
+### https://blog.cryptographyengineering.com/2026/09/30/is-sandboxing-sufficient-to-contain-rogue-agents/
+- title: Is sandboxing sufficient to contain rogue agents?
+- domain: ai_engineering
+- first_encountered: 2026-10-02
+- last_encountered: 2026-10-02
+- source_type: commentary
+- reason_class: access_or_license_unclear
+- reason: blog.cryptographyengineering.com is not on the egress allowlist, so the post was not fetched; known only via a Simon Willison quote post (2026-10-01).
+- surfaced_by: watchlist:simon-willison
+- action_needed: approve the domain for the allowlist, or have a human read it and confirm claims directly; otherwise dismiss.
+- status: pending
