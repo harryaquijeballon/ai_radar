@@ -79,3 +79,4 @@ None yet.
 ## Related entries
 
 [2026-zhu-pai-econ-claude-gated-agents](2026-zhu-pai-econ-claude-gated-agents.md) — same underlying concern (human authority over agent-produced economic analysis under uncertainty), applied to crisis-response scenario modelling rather than theory development.
+[2026-kato-ai-economist-agent](2026-kato-ai-economist-agent.md) — same pattern (agents orchestrate, registered economic models originate every number), with predefined acceptance tests and program-enforced path consistency in place of staged analyst approval.

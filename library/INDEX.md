@@ -301,3 +301,4 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-blumenfeld-ai-software-engineering-macro | The Macroeconomic Effect of AI: Sizing the Software Engineering Channel | social_science | accepted | nber:w35793 |
 | 2026-han-multi-agent-diagnostic-contracts | Where Do Multi-Agent Systems Fail? Evidence-Grounded Diagnosis of Collective Mechanisms | ai_engineering | accepted | arxiv:2609.38761 |
 | 2026-maji-risk-aware-adaptive-evaluation | Risk-Aware Adaptive Evaluation: Finding High-Impact Failures Under Limited Budgets | ai_engineering | accepted | arxiv:2609.38914 |
+| 2026-kato-ai-economist-agent | AI Economist Agent: An Agentic Framework for Evidence-Based Economic and Financial Analysis with RAG, Knowledge Graphs, and Large Language Models | social_science, ai_engineering | accepted | arxiv:2606.20041 |
