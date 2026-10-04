@@ -303,3 +303,6 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-maji-risk-aware-adaptive-evaluation | Risk-Aware Adaptive Evaluation: Finding High-Impact Failures Under Limited Budgets | ai_engineering | accepted | arxiv:2609.38914 |
 | 2026-kato-ai-economist-agent | AI Economist Agent: An Agentic Framework for Evidence-Based Economic and Financial Analysis with RAG, Knowledge Graphs, and Large Language Models | social_science, ai_engineering | accepted | arxiv:2606.20041 |
 | 2026-bensalem-three-layer-agent-safety-contracts | Position: A Three-Layer Probabilistic Assume–Guarantee Architecture Is Structurally Required for Safe LLM Agent Deployment | ai_engineering | accepted | arxiv:2605.18672 |
+| 2026-hardy-agent-evaluation-reliability | Agent Evaluation Reliability: More Tasks Won't (Always) Fix An Agent Leaderboard | ai_engineering | accepted | arxiv:2610.00651 |
+| 2026-bansak-ai-refugee-matching-rct | AI-based matching improves refugee employment in a double-blind randomized trial | social_science | accepted | arxiv:2609.35448 |
+| 2026-willison-default-hard-budget-caps | We're going to need default hard budget caps on pretty much everything | ai_engineering | accepted | simonwillison.net/2026/Oct/3/default-hard-budget-caps |
