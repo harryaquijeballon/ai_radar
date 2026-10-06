@@ -307,3 +307,4 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-bansak-ai-refugee-matching-rct | AI-based matching improves refugee employment in a double-blind randomized trial | social_science | accepted | arxiv:2609.35448 |
 | 2026-willison-default-hard-budget-caps | We're going to need default hard budget caps on pretty much everything | ai_engineering | accepted | simonwillison.net/2026/Oct/3/default-hard-budget-caps |
 | 2026-lyu-llm-judges-occupational-measurement | Right Order, Wrong Scale: Auditing LLM Judges for Occupational AI Measurement | social_science, ai_engineering | accepted | arxiv:2610.02492 |
+| 2026-huang-ai-assistants-market-simulation | Who Keeps the Gains from Personal AI Assistants? Seller Adaptation and the Unassisted in a Language-Model Market Simulation | social_science, ai_engineering | accepted | arxiv:2610.05823 |
