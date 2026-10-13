@@ -308,3 +308,5 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-willison-default-hard-budget-caps | We're going to need default hard budget caps on pretty much everything | ai_engineering | accepted | simonwillison.net/2026/Oct/3/default-hard-budget-caps |
 | 2026-lyu-llm-judges-occupational-measurement | Right Order, Wrong Scale: Auditing LLM Judges for Occupational AI Measurement | social_science, ai_engineering | accepted | arxiv:2610.02492 |
 | 2026-huang-ai-assistants-market-simulation | Who Keeps the Gains from Personal AI Assistants? Seller Adaptation and the Unassisted in a Language-Model Market Simulation | social_science, ai_engineering | accepted | arxiv:2610.05823 |
+| 2026-hu-reward-hacking-transmissible-multiagent-coding | Reward Hacking as a Transmissible Strategy in Multi-Agent Coding Systems | ai_engineering | accepted | arxiv:2610.12822 |
+| 2026-elhousni-ai-mediation-retail-assortment | AI-Mediation in Retail Markets: Revenue Effects and Assortment Optimization | social_science | accepted | arxiv:2610.12917 |
