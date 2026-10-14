@@ -310,3 +310,4 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-huang-ai-assistants-market-simulation | Who Keeps the Gains from Personal AI Assistants? Seller Adaptation and the Unassisted in a Language-Model Market Simulation | social_science, ai_engineering | accepted | arxiv:2610.05823 |
 | 2026-hu-reward-hacking-transmissible-multiagent-coding | Reward Hacking as a Transmissible Strategy in Multi-Agent Coding Systems | ai_engineering | accepted | arxiv:2610.12822 |
 | 2026-elhousni-ai-mediation-retail-assortment | AI-Mediation in Retail Markets: Revenue Effects and Assortment Optimization | social_science | accepted | arxiv:2610.12917 |
+| 2026-anthropic-redesigning-source-control-scion | Redesigning source control at Anthropic | ai_engineering | accepted | anthropic.com/engineering/redesigning-source-control |
