@@ -68,3 +68,4 @@ If any answer is unclear, stop and ask the user.
 
 - Work follows the implementation units in `docs/plans/`. Commit and push at the end of each approved unit so the user can review the markdown files and Mermaid diagrams on GitHub.
 - Never continue past a unit's review checkpoint without the user's explicit approval.
+- Write a delta handover for HDAI in docs/hdai/ every week, and whenever a session builds new agentic-engineering knowledge.
