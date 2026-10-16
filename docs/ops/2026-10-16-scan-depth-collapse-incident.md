@@ -36,6 +36,25 @@ From `gh run view <id> --log` (the model step's init and result blocks):
 2. **Pin the action by SHA** at its four `uses:` lines in `.github/workflows/radar-daily.yml`, with the tag as a comment (`@<sha> # v1, pinned 2026-10-xx`). Upgrades then become deliberate commits.
 3. **Confirm causality first:** one no-push `workflow_dispatch` with the model pinned to `claude-sonnet-5`, then decide which model to pin long term. Choosing `claude-sonnet-5-5` would require U12's coverage sensor (and possibly prompt changes) before the scan can be trusted.
 
+## A/B confirmation (2026-10-16)
+
+Both runs started manually from `main` (`no-push` mode), on the same day with the same action, CLI and prompt; only the model differed. A first attempt from a branch could not run at all: the action refuses to execute a workflow file that differs from the default branch (runs 38922704387, 38922909935). The model override was therefore merged to `main` first (`0212b11`; scheduled-run settings verified byte-identical).
+
+| | `claude-sonnet-5` (run 38925669047) | default `claude-sonnet-5-5` (run 38928404856) |
+|---|---|---|
+| Turns | 83 | 22 |
+| Model step duration | 756 s | 50 s |
+| Cost | $2.66 | $0.22 |
+| New entries | 9 accepted + 1 provisional | 0 |
+| Report items (social science / AI eng.) | 0 / 3 | 0 / 0 |
+| Curated fetches recorded (SS / AE) | 4 / 4 | 3 / 4 |
+| Validation | abort, 1 violation | pass |
+
+**Findings.**
+1. **The model change is confirmed as the cause of the effort collapse.** On identical inputs, `claude-sonnet-5` does roughly four times the turns and finds what the default model misses.
+2. **The self-reported coverage count does not separate the two runs** (4/4 vs 3/4), even though one run produced ten entries and the other none. So "curated sources fetched" is not a trustworthy sensor as it stands. U12 should record named sources and cross-check them against the fetch tool calls in the execution log, rather than trusting a count.
+3. **The `claude-sonnet-5` run had one abort-class (path or history) violation.** By design the validator does not echo content; the detail is in the run's diagnostics artifact. It must be explained before that model is pinned with delivery switched on.
+
 ## Lessons
 
 - Any input that is not pinned is a dependency that can change without a commit. Here, a model upgrade silently changed the system's behaviour.
