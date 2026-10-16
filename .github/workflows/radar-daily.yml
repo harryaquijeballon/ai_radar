@@ -21,7 +21,7 @@ on:
         options: [dry-run, no-push, full]
         default: dry-run
       model:
-        description: "Optional model id for this run only (U11 A/B test); empty = unpinned default"
+        description: "Optional model id for this run only; empty = the pinned model in scripts/build_claude_settings.py"
         type: string
         default: ""
 
@@ -87,7 +87,7 @@ jobs:
       - name: Radar run (attempt 1)
         id: model1
         if: inputs.mode != 'dry-run'
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@374f254f5efaf968abfe15d399fd90972e8138b9  # v1 as of 2026-10-16 (CLI 2.1.301), pinned per U11; upgrade by deliberate commit
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           settings: ${{ runner.temp }}/claude-settings.json
@@ -112,7 +112,7 @@ jobs:
       - name: Repair pass (attempt 1, bounded to one)
         id: repair1
         if: steps.validate1.outputs.verdict == 'repairable' && inputs.mode != 'dry-run'
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@374f254f5efaf968abfe15d399fd90972e8138b9  # v1 as of 2026-10-16 (CLI 2.1.301), pinned per U11; upgrade by deliberate commit
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           settings: ${{ runner.temp }}/claude-settings.json
@@ -208,7 +208,7 @@ jobs:
            (steps.validate1.outputs.degenerate == 'true' &&
             steps.model1.outcome == 'success')) &&
           inputs.mode != 'dry-run'
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@374f254f5efaf968abfe15d399fd90972e8138b9  # v1 as of 2026-10-16 (CLI 2.1.301), pinned per U11; upgrade by deliberate commit
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           settings: ${{ runner.temp }}/claude-settings.json

@@ -33,7 +33,7 @@ From `gh run view <id> --log` (the model step's init and result blocks):
 ## Proposed fix (awaiting approval; protected paths)
 
 1. **Pin the model** in one place: `scripts/build_claude_settings.py` writes `"model": "<id>"` into the generated settings, which every model step (attempts 1 and 2, both repair passes) already loads.
-2. **Pin the action by SHA** at its four `uses:` lines in `.github/workflows/radar-daily.yml`, with the tag as a comment (`@<sha> # v1, pinned 2026-10-xx`). Upgrades then become deliberate commits.
+2. **Pin the action by SHA** at its three `uses:` lines (attempt 1, repair 1, attempt 2) in `.github/workflows/radar-daily.yml`, with the tag as a comment (`@<sha> # v1, pinned 2026-10-xx`). Upgrades then become deliberate commits.
 3. **Confirm causality first:** one no-push `workflow_dispatch` with the model pinned to `claude-sonnet-5`, then decide which model to pin long term. Choosing `claude-sonnet-5-5` would require U12's coverage sensor (and possibly prompt changes) before the scan can be trusted.
 
 ## A/B confirmation (2026-10-16)

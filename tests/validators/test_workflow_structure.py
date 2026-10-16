@@ -66,8 +66,12 @@ class TestWorkflowStructure(unittest.TestCase):
         self.assertEqual(self.text.count("RADAR_PUSH_TOKEN: ${{ github.token }}"), 2)
 
     def test_model_steps_use_pinned_settings_and_prompt_file(self):
-        model_steps = self.text.count("uses: anthropics/claude-code-action@v1")
+        model_steps = self.text.count(
+            "uses: anthropics/claude-code-action@374f254f5efaf968abfe15d399fd90972e8138b9")
         self.assertEqual(model_steps, 3)  # attempt 1, repair 1, attempt 2
+        # U11: no floating tag may remain — it moved three times unannounced.
+        self.assertNotRegex(self.text, r"claude-code-action@v\d+\s*$")
+        self.assertNotIn("claude-code-action@v1\n", self.text)
         self.assertEqual(
             self.text.count("settings: ${{ runner.temp }}/claude-settings.json"),
             model_steps)
@@ -228,11 +232,13 @@ class TestSettingsBuilder(unittest.TestCase):
         self.assertIn("Edit(//home/runner/work/_temp/**)", deny)
         self.assertNotIn("WebFetch", deny)  # bare deny would nullify domain allows
 
-    def test_model_absent_by_default_and_written_when_given(self):
-        """U11: no model key unless one is passed (schedule path unchanged)."""
-        self.assertNotIn("model", bcs.build_settings(["arxiv.org"], "/tmp/r", "/t"))
-        settings = bcs.build_settings(["arxiv.org"], "/tmp/r", "/t", "claude-sonnet-5")
-        self.assertEqual(settings["model"], "claude-sonnet-5")
+    def test_model_pinned_by_default_and_overridable(self):
+        """U11: scheduled runs get the pinned model; a dispatch may override it."""
+        default = bcs.build_settings(["arxiv.org"], "/tmp/r", "/t")
+        self.assertEqual(default["model"], bcs.PINNED_MODEL)
+        self.assertEqual(bcs.PINNED_MODEL, "claude-sonnet-5")
+        override = bcs.build_settings(["arxiv.org"], "/tmp/r", "/t", "claude-opus-5-5")
+        self.assertEqual(override["model"], "claude-opus-5-5")
 
     def test_model_id_rejected_unless_claude_identifier(self):
         for bad in ("gpt-5", "claude-sonnet-5; rm -rf /", "claude-$(id)", " claude-x"):

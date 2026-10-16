@@ -37,6 +37,10 @@ def read_allowlist(path: str) -> list:
 
 
 MODEL_ID = re.compile(r"^claude-[a-z0-9.-]+$")
+# U11 (docs/ops/2026-10-16-scan-depth-collapse-incident.md): the unpinned
+# default moved to claude-sonnet-5-5 on 2026-09-29 and the scan collapsed.
+# Pinned to the model that passed the same-day A/B; change only by commit.
+PINNED_MODEL = "claude-sonnet-5"
 
 
 def build_settings(domains: list, evidence_dir: str, runner_temp: str,
@@ -58,12 +62,10 @@ def build_settings(domains: list, evidence_dir: str, runner_temp: str,
         "Edit(//%s/**)" % runner_temp.strip("/"),
     ]
     settings = {"permissions": {"allow": allow, "deny": deny}}
-    # U11 (2026-10-16 scan-depth incident): an unpinned default model changed
-    # under the run. An explicit model is written only when one is given.
-    if model:
-        if not MODEL_ID.match(model):
-            raise ValueError("model id rejected: not a claude-* identifier")
-        settings["model"] = model
+    model = model or PINNED_MODEL
+    if not MODEL_ID.match(model):
+        raise ValueError("model id rejected: not a claude-* identifier")
+    settings["model"] = model
     return settings
 
 
@@ -83,7 +85,7 @@ def main() -> int:
     print("settings written: %d fetch domains allowed; model: %s"
           % (sum(1 for rule in settings["permissions"]["allow"]
                  if rule.startswith("WebFetch(")),
-             settings.get("model", "default (unpinned)")))
+             settings["model"]))
     return 0
 
 
