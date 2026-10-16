@@ -33,6 +33,12 @@ way) and `www.oneusefulthing.org` (bare domain fails DNS — open scan-note
 item since 2026-07-27). Removed on the same date: `aniketpanjwani.com`
 (source retired from both watchlists; see `profiles/*/sources.md`).
 
+User approval 2026-10-16: `www.anthropic.com` and `www-cdn.anthropic.com`,
+for the Anthropic Institute economics watchlist row. Institute pages live on
+`www.`, and its working-paper PDFs on the CDN host. Bare `anthropic.com`,
+listed below for ai_engineering, does not match either host under
+exact-host matching.
+
 ## Academic repositories, publishers, identifiers
 
 - arxiv.org
@@ -71,6 +77,8 @@ item since 2026-07-27). Removed on the same date: `aniketpanjwani.com`
 - aei.org
 - www.aei.org
 - ai.google
+- www.anthropic.com
+- www-cdn.anthropic.com
 - economics.mit.edu
 - oneusefulthing.org
 - www.oneusefulthing.org
