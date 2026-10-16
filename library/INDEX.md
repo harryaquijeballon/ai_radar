@@ -311,3 +311,6 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-hu-reward-hacking-transmissible-multiagent-coding | Reward Hacking as a Transmissible Strategy in Multi-Agent Coding Systems | ai_engineering | accepted | arxiv:2610.12822 |
 | 2026-elhousni-ai-mediation-retail-assortment | AI-Mediation in Retail Markets: Revenue Effects and Assortment Optimization | social_science | accepted | arxiv:2610.12917 |
 | 2026-anthropic-redesigning-source-control-scion | Redesigning source control at Anthropic | ai_engineering | accepted | anthropic.com/engineering/redesigning-source-control |
+| 2026-shekkizhar-a2-failures-agent-to-agent-taxonomy | Why Do Agent Teams Fail Across Boundaries? A Failure Taxonomy for Agent-to-Agent Systems with Private States | ai_engineering | accepted | arxiv:2610.19342 |
+| 2026-trong-swe-misbehavior-boundary-violations | SWE-MISBEHAVIOR: Benchmarking and Mitigating Boundary Violations in Software Coding Agents | ai_engineering | accepted | arxiv:2610.18206, repo:dxlong2000/SWE-Misbehavior |
+| 2026-conlon-schwardmann-human-ai-creative-destruction | Creative destruction: Human-AI competition in an experimental market | social_science | accepted | arxiv:2610.18921 |
