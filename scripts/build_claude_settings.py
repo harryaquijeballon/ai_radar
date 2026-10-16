@@ -36,7 +36,11 @@ def read_allowlist(path: str) -> list:
     return domains
 
 
-def build_settings(domains: list, evidence_dir: str, runner_temp: str) -> dict:
+MODEL_ID = re.compile(r"^claude-[a-z0-9.-]+$")
+
+
+def build_settings(domains: list, evidence_dir: str, runner_temp: str,
+                   model: str = "") -> dict:
     allow = [
         "Read(./**)",
         "Edit(./**)",
@@ -53,7 +57,14 @@ def build_settings(domains: list, evidence_dir: str, runner_temp: str) -> dict:
         "Read(//%s/**)" % runner_temp.strip("/"),
         "Edit(//%s/**)" % runner_temp.strip("/"),
     ]
-    return {"permissions": {"allow": allow, "deny": deny}}
+    settings = {"permissions": {"allow": allow, "deny": deny}}
+    # U11 (2026-10-16 scan-depth incident): an unpinned default model changed
+    # under the run. An explicit model is written only when one is given.
+    if model:
+        if not MODEL_ID.match(model):
+            raise ValueError("model id rejected: not a claude-* identifier")
+        settings["model"] = model
+    return settings
 
 
 def main() -> int:
@@ -62,15 +73,17 @@ def main() -> int:
     parser.add_argument("--evidence-dir", required=True)
     parser.add_argument("--runner-temp", required=True)
     parser.add_argument("--output", required=True)
+    parser.add_argument("--model", default="")
     args = parser.parse_args()
     settings = build_settings(read_allowlist(args.allowlist),
-                              args.evidence_dir, args.runner_temp)
+                              args.evidence_dir, args.runner_temp, args.model)
     with open(args.output, "w", encoding="utf-8") as handle:
         json.dump(settings, handle, indent=2)
         handle.write("\n")
-    print("settings written: %d fetch domains allowed"
-          % sum(1 for rule in settings["permissions"]["allow"]
-                if rule.startswith("WebFetch(")))
+    print("settings written: %d fetch domains allowed; model: %s"
+          % (sum(1 for rule in settings["permissions"]["allow"]
+                 if rule.startswith("WebFetch(")),
+             settings.get("model", "default (unpinned)")))
     return 0
 
 

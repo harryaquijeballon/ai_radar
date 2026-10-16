@@ -20,6 +20,10 @@ on:
         type: choice
         options: [dry-run, no-push, full]
         default: dry-run
+      model:
+        description: "Optional model id for this run only (U11 A/B test); empty = unpinned default"
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -67,12 +71,15 @@ jobs:
           echo "base_sha=$BASE_SHA" >> "$GITHUB_OUTPUT"
 
       - name: Build model settings from egress allowlist (R48, Option A)
+        env:
+          MODEL_OVERRIDE: ${{ inputs.model }}   # empty on schedule; passed via env, never interpolated into the script
         run: |
           set -eu
           python3 "$RUNNER_TEMP/pristine/scripts/build_claude_settings.py" \
             --allowlist "$GITHUB_WORKSPACE/profiles/egress_allowlist.md" \
             --evidence-dir "$RADAR_DIR" \
             --runner-temp "$RUNNER_TEMP" \
+            --model "${MODEL_OVERRIDE:-}" \
             --output "$RUNNER_TEMP/claude-settings.json"
 
       # ---------------- attempt 1 ----------------

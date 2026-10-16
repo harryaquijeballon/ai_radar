@@ -228,6 +228,23 @@ class TestSettingsBuilder(unittest.TestCase):
         self.assertIn("Edit(//home/runner/work/_temp/**)", deny)
         self.assertNotIn("WebFetch", deny)  # bare deny would nullify domain allows
 
+    def test_model_absent_by_default_and_written_when_given(self):
+        """U11: no model key unless one is passed (schedule path unchanged)."""
+        self.assertNotIn("model", bcs.build_settings(["arxiv.org"], "/tmp/r", "/t"))
+        settings = bcs.build_settings(["arxiv.org"], "/tmp/r", "/t", "claude-sonnet-5")
+        self.assertEqual(settings["model"], "claude-sonnet-5")
+
+    def test_model_id_rejected_unless_claude_identifier(self):
+        for bad in ("gpt-5", "claude-sonnet-5; rm -rf /", "claude-$(id)", " claude-x"):
+            with self.assertRaises(ValueError):
+                bcs.build_settings(["arxiv.org"], "/tmp/r", "/t", bad)
+
+    def test_model_override_passed_via_env_not_interpolated(self):
+        text = workflow_text()
+        self.assertIn("MODEL_OVERRIDE: ${{ inputs.model }}", text)
+        self.assertIn('--model "${MODEL_OVERRIDE:-}"', text)
+        self.assertNotIn('--model "${{ inputs.model }}"', text)
+
     def test_real_allowlist_builds(self):
         domains = bcs.read_allowlist(
             os.path.join(REPO, "profiles", "egress_allowlist.md"))
