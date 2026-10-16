@@ -4,7 +4,7 @@ Unit U11 of `docs/plans/2026-10-16-001-fix-discovery-coverage-plan.md`. Status: 
 
 ## What happened
 
-From the 2026-09-29 run onward, every scheduled run finished in 1–2 minutes and was classified `success`, while checking 1–4 curated sources per domain (25 social science, 17 AI engineering active). The healthy runs before it checked 9–17 and 12–15 sources and took 8–19 minutes. Nothing in the repository changed between the two runs. The runs also stopped writing rejections and deferrals altogether.
+From the 2026-09-29 run onward, every scheduled run finished in 1–2 minutes and was classified `success`, while checking 1–4 curated sources per domain (25 social science, 17 AI engineering active). The healthy runs before it checked 9–17 and 12–15 sources and took 8–19 minutes. Nothing in the repository changed between the two runs. The runs also stopped writing rejections (133 lines in the 18 days before, 0 after) and touched the deferred queues in only 2 of 17 run commits (10 of 15 before).
 
 ## Evidence
 

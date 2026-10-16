@@ -27,7 +27,7 @@ The defects surfaced together. The user found a high-relevance working paper the
 | 2026-09-28 | 9 | 13 | 9 min | success |
 | **2026-09-29 to 10-16** | **1–4** | **1–3** | **1–2 min** | **success, every day** |
 
-The active watchlists have 25 (social science) and 17 (AI engineering) sources. After 2026-09-28 the runs also stopped writing to `library/rejections.md` and the deferred queues entirely. Nothing under `.github/`, `engine/`, `scripts/` or `profiles/` changed between the 09-28 and 09-29 runs. The workflow pins `anthropics/claude-code-action@v1` (a floating major tag) and sets no model, so the action, the CLI or the default model can change without a commit. That is the leading hypothesis, and it is unconfirmed.
+The active watchlists have 25 (social science) and 17 (AI engineering) sources. After 2026-09-28 the runs stopped writing to `library/rejections.md` entirely (133 lines in the 18 days before, 0 in the 18 days after) and touched the deferred queues in only 2 of 17 run commits (10 of 15 before). Nothing under `.github/`, `engine/`, `scripts/` or `profiles/` changed between the 09-28 and 09-29 runs. The workflow pins `anthropics/claude-code-action@v1` (a floating major tag) and sets no model, so the action, the CLI or the default model can change without a commit. That is the leading hypothesis, and it is unconfirmed.
 
 **Window rejections.** From `library/rejections.md`:
 
