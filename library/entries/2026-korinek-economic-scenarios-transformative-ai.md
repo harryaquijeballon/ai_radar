@@ -70,3 +70,5 @@ Full PDF fetched (2026-10-16, 656 KB, LaTeX source) and its text extracted. Ever
 [2025-oecd-filippucci-ai-productivity-g7](2025-oecd-filippucci-ai-productivity-g7.md) — OECD estimate the paper uses to benchmark its modest scenario.
 [2026-blumenfeld-ai-software-engineering-macro](2026-blumenfeld-ai-software-engineering-macro.md) — another 2026 macro sizing of AI effects, through a single-sector channel.
 [2026-imas-ai-productivity-paradox](2026-imas-ai-productivity-paradox.md) — the micro–macro gap this paper addresses by modelling diffusion and frictions explicitly.
+[2026-massenkoff-economic-index-cadences](2026-massenkoff-economic-index-cadences.md) — Economic Index release sharing two authors (Sacher, McCrory).
+[2026-favaro-clark-when-ai-builds-itself](2026-favaro-clark-when-ai-builds-itself.md) — Institute essay arguing that the AI-research channel, small in this model by 2030, may be strengthening.

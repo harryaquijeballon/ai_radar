@@ -315,3 +315,7 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-trong-swe-misbehavior-boundary-violations | SWE-MISBEHAVIOR: Benchmarking and Mitigating Boundary Violations in Software Coding Agents | ai_engineering | accepted | arxiv:2610.18206, repo:dxlong2000/SWE-Misbehavior |
 | 2026-conlon-schwardmann-human-ai-creative-destruction | Creative destruction: Human-AI competition in an experimental market | social_science | accepted | arxiv:2610.18921 |
 | 2026-korinek-economic-scenarios-transformative-ai | Economic Scenarios for Transformative AI | social_science | accepted | anthropic-institute-wp:2026-02 |
+| 2026-favaro-measuring-pace-ai-development-frontier-labs | Measurements for understanding the pace of AI development inside frontier labs | social_science, ai_engineering | accepted | anthropic.com/institute/measuring-pace-of-ai-development |
+| 2026-favaro-clark-when-ai-builds-itself | When AI builds itself | social_science, ai_engineering | accepted | anthropic.com/institute/recursive-self-improvement |
+| 2026-huang-81k-interviews-what-people-want-from-ai | What 81,000 people want from AI | social_science | accepted | anthropic.com/features/81k-interviews, anthropic.com/research/81k-economics |
+| 2026-massenkoff-economic-index-cadences | Anthropic Economic Index report: Cadences | social_science | accepted | anthropic.com/research/economic-index-june-2026-report |
