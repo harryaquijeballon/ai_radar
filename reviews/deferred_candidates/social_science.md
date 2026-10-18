@@ -168,7 +168,7 @@
 - title: AI Agents and Prompt Engineering in Econometric Coding
 - domain: social_science, ai_engineering
 - first_encountered: 2026-08-22
-- last_encountered: 2026-09-28
+- last_encountered: 2026-10-18
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. Cross-domain: agent-autonomy levels raise econometric-coding task completion 74%→96% at ~$0.08/op (Galiani et al.).
