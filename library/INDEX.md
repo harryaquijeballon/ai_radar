@@ -251,6 +251,14 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-paialunga-context-engineering-changing | Context Engineering Is Changing. Here's What It Means for Data Scientists | ai_engineering | accepted | towardsdatascience.com/context-engineering-is-changing-heres-what-it-means-for-data-scientists |
 | 2026-willison-paintnet-direct2d-vibe-coding | A quote from Rick Brewster (Paint.NET's from-scratch Direct2D rewrite) | ai_engineering | accepted | simonwillison.net/2026/Sep/2/rick-brewster |
 | 2026-ou-langchain-agent-scaling-enterprise-lessons | Scaling Agents in Europe & The Middle East: Lessons from Schneider Electric, Vodafone, and monday.com | ai_engineering | accepted | langchain.com/blog/scaling-agents-in-europe-the-middle-east-lessons-from-schneider-electric-vodafone-and-monday-com |
+| 2026-fu-luo-ramasubbu-ai-deployment-worker-opportunity | When Better Opportunities Backfire: Service Worker Responses to Parallel AI Deployment in Customer Acquisition | social_science | accepted | arxiv:2610.25603 |
+| 2026-bichler-hierhager-koeck-pieroth-llm-price-competition | How language model agents reshape price competition | social_science, ai_engineering | accepted | arxiv:2610.21711 |
+| 2026-sartor-seamans-thompson-robotics-exposure | How exposed is work to robotics? Occupational, industry, and geographic measures | social_science | accepted | arxiv:2610.24267 |
+| 2026-zohrehvand-kapacinskaite-trace-ai-research-governance | TRACE: Governing AI-Assisted Research with Principles from Computer Science | social_science, ai_engineering | accepted | arxiv:2610.24035 |
+| 2026-liu-tianqi-pace-prd-driven-coding-agent-benchmark | When Coding Agents Outpace Review: Evaluating PRD-Driven Development in Mature Enterprise Repositories | ai_engineering | accepted | arxiv:2610.26394 |
+| 2026-shi-xinyu-fault-localization-agentic-repair | From Finding to Fixing: How Useful is Fault Localization for Agentic Program Repair? | ai_engineering | accepted | arxiv:2610.25826 |
+| 2026-dan-soham-swe-bench-pro-v2 | SWE-Bench Pro V2: A Cleaner, Harder-to-Game Coding Benchmark | ai_engineering | accepted | arxiv:2610.24206 |
+| 2026-marchezan-ai-assisted-development-homogenization | Does AI-Assisted Development Homogenize Software? An Empirical Study of Code Similarity, Quality, and Evolution | ai_engineering | accepted | arxiv:2610.24093 |
 | 2026-sacher-ai-expectations-gap | The AI Expectations Gap | social_science | accepted | anthropic.com/research/ai-expectations-gap |
 | 2026-wilmers-anthropic-employment-change | How Employment Is Changing at Anthropic | social_science, ai_engineering | accepted | anthropic.com/research/employment-at-anthropic |
 | 2026-heander-codehealth-agentic-review-cost | CodeHealth Predicts the Token Cost of Agentic Code Review: A Pre-Registered Study of 465 Agent-Authored Pull Requests | ai_engineering | accepted | arxiv:2610.21914 |
