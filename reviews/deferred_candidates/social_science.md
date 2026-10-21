@@ -195,7 +195,7 @@
 - title: From AI investment to GDP growth: An ecosystem view
 - domain: social_science
 - first_encountered: 2026-08-25
-- last_encountered: 2026-09-28
+- last_encountered: 2026-10-21
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403, consistent with prior runs; only a search-engine title/author snippet available, exact date unconfirmed, insufficient to trace claims to source text.
@@ -207,7 +207,7 @@
 - title: Workers' age and AI adoption
 - domain: social_science
 - first_encountered: 2026-09-16
-- last_encountered: 2026-09-23
+- last_encountered: 2026-10-21
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403 on the column; listing page confirmed date (16 Sep 2026). Only a search-engine paraphrase available (Cette, Nicoletti, Vernerey — AI adoption by age); insufficient to trace claims.
@@ -231,7 +231,7 @@
 - title: Embracing AI in Europe: New evidence from harmonised central bank business surveys
 - domain: social_science
 - first_encountered: 2026-08-25
-- last_encountered: 2026-08-25
+- last_encountered: 2026-10-21
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403, consistent with prior runs; only a search-engine title/author snippet available, exact date unconfirmed, insufficient to trace claims to source text.
@@ -255,7 +255,7 @@
 - title: Measuring what work generative AI does: Survey evidence versus chat logs
 - domain: social_science
 - first_encountered: 2026-09-25
-- last_encountered: 2026-09-25
+- last_encountered: 2026-10-21
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but the column 403'd; listing page confirmed date (25 Sep 2026, Bick/Blandin/Deming/Schumacher). NBER WP w35677 is month-only dated and lacks the column's survey-vs-chat-log comparison.
@@ -267,7 +267,7 @@
 - title: Telco AI: State of the Market, Q3 2026
 - domain: social_science
 - first_encountered: 2026-10-20
-- last_encountered: 2026-10-20
+- last_encountered: 2026-10-21
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: Research-index page lists this title under "Oct 2026" only (no day-level date, no item-specific URL shown); distinct title from the prior pending June-2026 "token economy" item, so likely a new report.
