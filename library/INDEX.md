@@ -337,3 +337,4 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-favaro-clark-when-ai-builds-itself | When AI builds itself | social_science, ai_engineering | accepted | anthropic.com/institute/recursive-self-improvement |
 | 2026-huang-81k-interviews-what-people-want-from-ai | What 81,000 people want from AI | social_science | accepted | anthropic.com/features/81k-interviews, anthropic.com/research/81k-economics |
 | 2026-massenkoff-economic-index-cadences | Anthropic Economic Index report: Cadences | social_science | accepted | anthropic.com/research/economic-index-june-2026-report |
+| 2026-hadhazy-ai-economic-indicators-labor-market | Tracking AI's Real-Time Footprint On The Labor Market | social_science | accepted | hai.stanford.edu/news/tracking-ais-real-time-footprint-on-the-labor-market |

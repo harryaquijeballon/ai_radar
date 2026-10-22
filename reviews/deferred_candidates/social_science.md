@@ -267,10 +267,22 @@
 - title: Telco AI: State of the Market, Q3 2026
 - domain: social_science
 - first_encountered: 2026-10-20
-- last_encountered: 2026-10-21
+- last_encountered: 2026-10-22
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: Research-index page lists this title under "Oct 2026" only (no day-level date, no item-specific URL shown); distinct title from the prior pending June-2026 "token economy" item, so likely a new report.
 - surfaced_by: watchlist:gsma-intelligence
 - action_needed: locate the item-specific URL and exact publication date; review for lens 3 archiving if confirmed new and in-window.
+- status: pending
+
+### https://arxiv.org/abs/2610.28639
+- title: Can AI Chat Replace Traditional Search? Evidence from a RAG-based Live Events Experiment
+- domain: social_science, ai_engineering
+- first_encountered: 2026-10-22
+- last_encountered: 2026-10-22
+- source_type: academic
+- reason_class: verification_insufficient
+- reason: arXiv ID prefix (2610) implies Oct 2026 and it appears in today's econ.GN listing, but the abs page's own "Submitted on" line reads 20 Aug 2026 — an internal contradiction WebFetch could not resolve.
+- surfaced_by: watchlist:arxiv-econ.GN
+- action_needed: confirm the true submission date directly (not via summarizing fetch); if genuinely in-window, review a RAG-vs-filter search-interface field experiment for lens 3/6 (social_science) and lens 8 (ai_engineering).
 - status: pending
