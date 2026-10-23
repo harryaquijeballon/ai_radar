@@ -251,6 +251,15 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-paialunga-context-engineering-changing | Context Engineering Is Changing. Here's What It Means for Data Scientists | ai_engineering | accepted | towardsdatascience.com/context-engineering-is-changing-heres-what-it-means-for-data-scientists |
 | 2026-willison-paintnet-direct2d-vibe-coding | A quote from Rick Brewster (Paint.NET's from-scratch Direct2D rewrite) | ai_engineering | accepted | simonwillison.net/2026/Sep/2/rick-brewster |
 | 2026-ou-langchain-agent-scaling-enterprise-lessons | Scaling Agents in Europe & The Middle East: Lessons from Schneider Electric, Vodafone, and monday.com | ai_engineering | accepted | langchain.com/blog/scaling-agents-in-europe-the-middle-east-lessons-from-schneider-electric-vodafone-and-monday-com |
+| 2026-espinalmaya-agent-delegability-index | The Delegation Divide: An Open Index of AI-Agent Delegability across Occupations and Countries | social_science | accepted | arxiv:2610.30752 |
+| 2026-zeinali-joules-to-gdp | Joules-to-GDP: How Much Economic Value Do AI Systems Produce per Unit of Energy? | social_science | accepted | arxiv:2610.30858 |
+| 2026-malo-customer-is-the-builder | The Customer Is the Builder: How AI Coding Agents Are Rewriting the Economics of Software | social_science, ai_engineering | accepted | arxiv:2610.30307 |
+| 2026-xu-wu-stale-instruction-files | Stale Instruction Files Override the Code in Coding Agents: A One-Sentence Fix | ai_engineering | accepted | arxiv:2610.30571 |
+| 2026-chandratre-datar-doordash-feature-flags | Automating Feature Flag Cleanup at Scale with Multi-Agent LLM Systems: An Industrial Experience at DoorDash | ai_engineering | accepted | arxiv:2610.31351 |
+| 2026-hashemi-llm-herding-cascades | LLM Multi-Agent Systems Are Vulnerable to Herding and Runaway Cascades | ai_engineering | accepted | arxiv:2610.30769 |
+| 2026-metr-redteam-openai-agent-monitoring | Red-Teaming OpenAI's Internal Agent Monitoring Systems | ai_engineering | accepted | metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring |
+| 2026-adeniji-auditing-behavioral-detectors | What the Trace Shows and What the Label Says: Auditing Behavioral Detectors in Agent Evaluation | ai_engineering | accepted | arxiv:2610.30491 |
+| 2026-anthropic-donating-agent-skills-aaif | Donating Agent Skills to the Agentic AI Foundation | ai_engineering | accepted | anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation |
 | 2026-fu-luo-ramasubbu-ai-deployment-worker-opportunity | When Better Opportunities Backfire: Service Worker Responses to Parallel AI Deployment in Customer Acquisition | social_science | accepted | arxiv:2610.25603 |
 | 2026-bichler-hierhager-koeck-pieroth-llm-price-competition | How language model agents reshape price competition | social_science, ai_engineering | accepted | arxiv:2610.21711 |
 | 2026-sartor-seamans-thompson-robotics-exposure | How exposed is work to robotics? Occupational, industry, and geographic measures | social_science | accepted | arxiv:2610.24267 |

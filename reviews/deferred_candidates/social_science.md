@@ -279,10 +279,10 @@
 - title: Can AI Chat Replace Traditional Search? Evidence from a RAG-based Live Events Experiment
 - domain: social_science, ai_engineering
 - first_encountered: 2026-10-22
-- last_encountered: 2026-10-22
+- last_encountered: 2026-10-23
 - source_type: academic
 - reason_class: verification_insufficient
-- reason: arXiv ID prefix (2610) implies Oct 2026 and it appears in today's econ.GN listing, but the abs page's own "Submitted on" line reads 20 Aug 2026 — an internal contradiction WebFetch could not resolve.
+- reason: arXiv ID prefix (2610) implies Oct 2026 and it appears in today's econ.GN listing, but the abs page's own "Submitted on" line reads 20 Aug 2026 — an internal contradiction WebFetch could not resolve.; 10-23: date confirmed, not new.
 - surfaced_by: watchlist:arxiv-econ.GN
-- action_needed: confirm the true submission date directly (not via summarizing fetch); if genuinely in-window, review a RAG-vs-filter search-interface field experiment for lens 3/6 (social_science) and lens 8 (ai_engineering).
+- action_needed: confirm the true submission date directly (not via summarizing fetch); if genuinely in-window, review a RAG-vs-filter search-interface field experiment for lens 3/6 (social_science) and lens 8 (ai_engineering).: 10-23 confirmed stale.
 - status: pending
