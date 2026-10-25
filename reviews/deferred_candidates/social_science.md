@@ -267,12 +267,12 @@
 - title: Telco AI: State of the Market, Q3 2026
 - domain: social_science
 - first_encountered: 2026-10-20
-- last_encountered: 2026-10-24
+- last_encountered: 2026-10-25
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: Research-index page lists this title under "Oct 2026" only (no day-level date, no item-specific URL shown); distinct title from the prior pending June-2026 "token economy" item, so likely a new report.
 - surfaced_by: watchlist:gsma-intelligence
-- action_needed: locate the item-specific URL and exact publication date; review for lens 3 archiving if confirmed new and in-window.; 10-24: WebFetch tool-permission error blocked the research index this run, no new information.
+- action_needed: locate the item-specific URL and exact publication date; review for lens 3 archiving if confirmed new and in-window.; 10-24: WebFetch tool-permission error blocked the research index this run, no new information.; 10-25: same.
 - status: pending
 
 ### https://arxiv.org/abs/2610.28639
