@@ -267,7 +267,7 @@
 - title: Telco AI: State of the Market, Q3 2026
 - domain: social_science
 - first_encountered: 2026-10-20
-- last_encountered: 2026-10-25
+- last_encountered: 2026-10-26
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: Research-index page lists this title under "Oct 2026" only (no day-level date, no item-specific URL shown); distinct title from the prior pending June-2026 "token economy" item, so likely a new report.
