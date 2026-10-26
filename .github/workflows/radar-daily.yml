@@ -259,6 +259,9 @@ jobs:
           # Safe derived facts from the newest model invocation (raw execution
           # logs contain fetched content and are never uploaded — R43 review
           # 2026-07-28); attempt 1's snapshot is preserved by the reset step.
+          # Scan coverage (plan 2026-10-16-001 U12) is measured from the scan
+          # attempt's log, never the repair pass, and is report-only until
+          # the user sets per-domain floors.
           python3 "$RUNNER_TEMP/pristine/scripts/summarize_execution_log.py" \
             --execution-log "${{ steps.model2.outputs.execution_file || steps.repair1.outputs.execution_file || steps.model1.outputs.execution_file || '' }}" \
             --evidence-path "$RADAR_EVIDENCE_PATH" \
@@ -282,6 +285,8 @@ jobs:
             --deliver2-class "${{ steps.deliver2.outputs.failure_class || 'none' }}" \
             --base "${{ steps.pristine2.outputs.base_sha || steps.pristine.outputs.base_sha }}" \
             --evidence "$RADAR_EVIDENCE_PATH" \
+            --execution-log "${{ steps.model2.outputs.execution_file || steps.model1.outputs.execution_file || '' }}" \
+            --coverage-out "$RADAR_DIR/diagnostics/coverage.json" \
             --github-output "$GITHUB_OUTPUT" \
             > "$RADAR_DIR/diagnostics/run-summary.md"
           cat "$RADAR_DIR/diagnostics/run-summary.md" >> "$GITHUB_STEP_SUMMARY"

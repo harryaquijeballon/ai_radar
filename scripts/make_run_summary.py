@@ -114,10 +114,46 @@ def _evidence_counts(evidence_path):
     return counts
 
 
+def _short_name(name: str) -> str:
+    """Watchlist row name up to its first qualifier, e.g. "OECD"."""
+    return re.split(r" \(| — ", name, maxsplit=1)[0]
+
+
+def _coverage_rows(coverage):
+    """Rows from the U12 coverage record (check_scan_coverage.build_record);
+    None means the execution log was unavailable. Names come from the
+    pristine watchlists and hosts are pattern-checked by the sensor, so
+    nothing model-authored reaches the summary."""
+    if coverage is None:
+        return ["| curated coverage (%s) | unavailable |" % domain
+                for domain in lib_radar.DOMAINS]
+    rows = []
+    for domain in lib_radar.DOMAINS:
+        section = coverage["domains"][domain]
+        rows.append("| curated coverage (%s) | %d of %d attempted, %d succeeded |"
+                    % (domain, section["attempted"], section["fetchable"],
+                       section["succeeded"]))
+        for key, label in (("not_attempted", "not attempted"),
+                           ("attempted_all_failed", "fetched, all failed")):
+            if section[key]:
+                rows.append("| %s (%s) | %s |" % (label, domain, ", ".join(
+                    _short_name(name) for name in section[key])))
+        rows.append("| search-only sources (%s) | %d |"
+                    % (domain, len(section["search_only"])))
+    hosts = ", ".join("%s (%d, %d failed)" % (host, tally["fetches"],
+                                              tally["failed"])
+                      for host, tally in coverage["unmatched_hosts"].items())
+    rows.append("| fetches outside watchlists | %d%s |"
+                % (coverage["unmatched_fetches"], ": " + hosts if hosts else ""))
+    return rows
+
+
 def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.date,
                   outcome: str, attempts: int, commit: str,
                   oauth_ready: bool, artifacts_note: bool,
-                  evidence_path: str = None) -> str:
+                  evidence_path: str = None, coverage=False) -> str:
+    """`coverage` is False when not measured (no rows), None when the
+    execution log was unavailable, else the U12 coverage record."""
     added, modified, provisional, rejections = _entry_change_counts(
         workspace, base_ref, git_dir)
     deferred_total, deferred_by_class = _new_queue_records(
@@ -154,6 +190,8 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
                      % (domain, pair[0] if pair else "unavailable"))
         lines.append("| scan fetches (%s) | %s |"
                      % (domain, pair[1] if pair else "unavailable"))
+    if coverage is not False:
+        lines += _coverage_rows(coverage)
     for domain in lib_radar.DOMAINS:
         count = _count_report_items(workspace, domain, run_date)
         report_rel = "reports/%s/daily/%s.md" % (domain, run_date.isoformat())

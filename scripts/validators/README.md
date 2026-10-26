@@ -42,6 +42,7 @@ CLASS RULE_ID path[:line] - message
 | `check_changed_paths.py` | Allowlist (R22/R23); history protection incl. `reviews/` audit trail (R50); entry-body and queue-record preservation; run-date report discipline (R44); `--mode unattended|manual` gates queue lifecycle transitions | abort |
 | `check_clean_base.py` | Manual-run preconditions: clean tree, known upstream, no divergence (R24/R29) | abort |
 | `check_scan_evidence.py` | Scan-evidence artifact presence/structure on every outcome (R39) | abort (TOOLING) |
+| `check_scan_coverage.py` | Scan coverage (plan 2026-10-16-001 U12, R53): the run's actual WebFetch calls, from the execution log, matched against the `fetch hosts` column of the active watchlists. Report-only (run summary + `coverage.json`) until per-domain floors are set with `--min-ratio` | abort (TOOLING) when enforcing |
 | `check_library_consistency.py` | Entry schema conformance; slug/filename; INDEX agreement | repairable |
 | `check_report_integrity.py` | Report bar: entry link resolves (abort), accepted+verified+high relevance, ≤3 items, quiet-day statement + evidence block | abort / repairable |
 | `check_queue_records.py` | Queue structure, controlled vocabularies, URL hygiene, metadata-only bounds, duplicates incl. sibling-domain | repairable |

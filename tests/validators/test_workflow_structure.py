@@ -132,6 +132,18 @@ class TestWorkflowStructure(unittest.TestCase):
                 self.assertNotIn("cp ", line)
                 self.assertNotIn("upload", line.lower())
 
+    def test_coverage_measured_from_scan_attempt_report_only(self):
+        """Plan 2026-10-16-001 U12: the summary measures coverage from the
+        scan attempt's log (attempt 2 when it ran, never the repair pass),
+        and nothing enforces a floor until the user sets one."""
+        summary = self.text.split("Job summary (always")[1].split("- name:")[0]
+        self.assertIn('--execution-log "${{ steps.model2.outputs.execution_file'
+                      ' || steps.model1.outputs.execution_file || \'\' }}"',
+                      summary)
+        self.assertIn('--coverage-out "$RADAR_DIR/diagnostics/coverage.json"',
+                      summary)
+        self.assertNotIn("--min-ratio", self.text)
+
     def test_delivery_gate_covers_scheduled_runs(self):
         """Regression for runs 30154883225/30198956789: `inputs.mode` is empty
         on schedule triggers, so a gate of mode == 'full' alone silently skips

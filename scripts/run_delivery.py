@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import json
 import os
 import re
 import subprocess
@@ -268,10 +269,21 @@ def cmd_summarize(args) -> int:
         deliver2_class=args.deliver2_class)
     incomplete = outcome not in ("success", "no-change")
     commit = args.deliver2_commit or args.deliver1_commit or ""
+    # U12 coverage sensor, report-only until the user sets per-domain floors:
+    # the scan's actual fetches against the pristine watchlists.
+    coverage = False
+    if args.execution_log is not None:
+        import check_scan_coverage as csc
+        coverage = csc.measure(os.path.join(args.pristine, "profiles"),
+                               args.execution_log)
+        if coverage is not None and args.coverage_out:
+            with open(args.coverage_out, "w", encoding="utf-8") as handle:
+                json.dump(coverage, handle, indent=2, sort_keys=True)
+                handle.write("\n")
     summary = mrs.build_summary(
         args.workspace, args.base, args.git_dir, run_date, outcome, attempts,
         commit, args.oauth_ready == "true", artifacts_note=incomplete,
-        evidence_path=args.evidence)
+        evidence_path=args.evidence, coverage=coverage)
     # stdout carries ONLY the safe summary markdown (the workflow tees it to
     # the step summary, the log, and the diagnostics artifact); machine
     # outputs go to the --github-output file so the gate and upload steps
@@ -332,6 +344,10 @@ def main() -> int:
     p_summarize.add_argument("--validate1-class", default="none")
     p_summarize.add_argument("--deliver2-class", default="none")
     p_summarize.add_argument("--evidence", default="")
+    p_summarize.add_argument("--execution-log", default=None,
+                             help="execution log of the scan attempt (U12 "
+                                  "coverage rows); omit to skip them")
+    p_summarize.add_argument("--coverage-out", default=None)
     p_summarize.add_argument("--base", required=True)
     p_summarize.add_argument("--run-date", default=None)
     p_summarize.add_argument("--github-output", default=None)

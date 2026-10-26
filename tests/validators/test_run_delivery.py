@@ -394,6 +394,36 @@ class TestSummarizeOutputs(DeliveryBase):
         self.assertIn("| run status | operationally incomplete |", stdout)
         self.assertNotIn("incomplete=", stdout)  # outputs never pollute stdout
 
+    def test_summarize_measures_coverage_from_execution_log(self):
+        """Plan 2026-10-16-001 U12: watchlists come from the pristine copy;
+        the record lands in diagnostics and the rows in the summary."""
+        workspace, pristine, _ = self.setup_run()
+        shutil.copytree(os.path.join(REPO_ROOT, "profiles"),
+                        os.path.join(pristine, "profiles"))
+        log = workspace + "-execution.json"
+        with open(log, "w", encoding="utf-8") as handle:
+            json.dump([{"type": "assistant", "message": {"content": [
+                {"type": "tool_use", "id": "a", "name": "WebFetch",
+                 "input": {"url": "https://simonwillison.net/", "prompt": "p"}}]}},
+                {"type": "user", "message": {"content": [
+                    {"type": "tool_result", "tool_use_id": "a",
+                     "content": "page"}]}}], handle)
+        coverage_out = workspace + "-coverage.json"
+        result = subprocess.run(
+            [sys.executable, SCRIPT, "summarize",
+             "--workspace", workspace, "--pristine", pristine,
+             "--mode", "no-push", "--model1", "success", "--validate1", "pass",
+             "--base", "origin/main", "--run-date", RUN_DATE,
+             "--execution-log", log, "--coverage-out", coverage_out],
+            capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertRegex(result.stdout,
+                         r"\| curated coverage \(ai_engineering\) \| "
+                         r"1 of \d+ attempted, 1 succeeded \|")
+        with open(coverage_out, encoding="utf-8") as handle:
+            self.assertEqual(
+                json.load(handle)["domains"]["ai_engineering"]["succeeded"], 1)
+
     def test_clean_no_push_run_emits_incomplete_false(self):
         pairs, stdout = self.summarize("pass", "none", "none")
         self.assertEqual(pairs["outcome"], "no-change")

@@ -199,6 +199,44 @@ class TestRunSummary(unittest.TestCase):
         self.assertIn("| scan queries (social_science) | unavailable |", summary)
         self.assertIn("| scan fetches (ai_engineering) | 5 |", summary)
 
+    def test_coverage_rows(self):
+        """Plan 2026-10-16-001 U12: observed coverage beside the self-report."""
+        workspace = fix.fresh_workspace(self._tmp.name, self.template)
+        section = {"fetchable": 4, "attempted": 2, "succeeded": 1,
+                   "not_attempted": ["OECD — AI Papers & Economics Dept.",
+                                     "IMF working papers & blogs"],
+                   "attempted_all_failed": ["VoxDev"],
+                   "search_only": ["Anton Korinek (UVA)"], "ratio": 0.5}
+        coverage = {"web_fetches": 5, "unmatched_fetches": 2,
+                    "unmatched_hosts": {"www.oecd.org": {"fetches": 2,
+                                                         "failed": 2}},
+                    "domains": {"social_science": section,
+                                "ai_engineering": dict(
+                                    section, not_attempted=[],
+                                    attempted_all_failed=[], search_only=[])}}
+        summary = mrs.build_summary(workspace, "origin/main", None, RUN_DATE,
+                                    "no-change", 1, "", True, False,
+                                    coverage=coverage)
+        self.assertIn("| curated coverage (social_science) | "
+                      "2 of 4 attempted, 1 succeeded |", summary)
+        self.assertIn("| not attempted (social_science) | OECD, "
+                      "IMF working papers & blogs |", summary)
+        self.assertIn("| fetched, all failed (social_science) | VoxDev |", summary)
+        self.assertIn("| search-only sources (social_science) | 1 |", summary)
+        self.assertNotIn("| not attempted (ai_engineering)", summary)
+        self.assertIn("| fetches outside watchlists | 2: "
+                      "www.oecd.org (2, 2 failed) |", summary)
+
+    def test_coverage_unavailable_and_unmeasured(self):
+        workspace = fix.fresh_workspace(self._tmp.name, self.template)
+        summary = mrs.build_summary(workspace, "origin/main", None, RUN_DATE,
+                                    "tooling", 1, "", True, True, coverage=None)
+        self.assertIn("| curated coverage (social_science) | unavailable |",
+                      summary)
+        summary = mrs.build_summary(workspace, "origin/main", None, RUN_DATE,
+                                    "tooling", 1, "", True, True)
+        self.assertNotIn("curated coverage", summary)
+
     def test_no_change_run_reports_zero_counts(self):
         workspace = fix.fresh_workspace(self._tmp.name, self.template)
         summary = mrs.build_summary(
