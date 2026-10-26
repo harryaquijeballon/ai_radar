@@ -21,15 +21,15 @@
 
 | source | type | why included | fetch hosts |
 |--------|------|--------------|-------------|
-| NBER working papers (weekly digest) | academic | Primary pipeline for new empirical economics, incl. AI/digital topics — all lenses. | `nber.org`, `www.nber.org` |
-| OECD — AI Papers & Economics Dept. working papers | academic | Cross-country policy-grade analysis (already anchoring the library) — lenses 1, 3, 4. | `oecd.org`, `oecd-ilibrary.org` |
+| NBER working papers (weekly digest) | academic | Primary pipeline for new empirical economics, incl. AI/digital topics — all lenses. | `nber.org`, `www.nber.org`, `www2.nber.org` |
+| OECD — AI Papers & Economics Dept. working papers | academic | Cross-country policy-grade analysis (already anchoring the library) — lenses 1, 3, 4. | `oecd.org`, `www.oecd.org`, `oecd-ilibrary.org` |
 | VoxEU / CEPR columns | academic | Fast, citable digests of new research by the authors themselves — all lenses. | `cepr.org`, `voxeu.org` |
 | VoxDev | academic | Development-economics counterpart to VoxEU — lens 2. | `voxdev.org` |
-| IMF working papers & blogs | academic | Macro/AI and digital-economy analysis with global coverage — lenses 1, 2. | `imf.org` |
+| IMF working papers & blogs | academic | Macro/AI and digital-economy analysis with global coverage — lenses 1, 2. | `imf.org`, `www.imf.org` |
 | World Bank blogs & working papers (incl. WDR 2026 background papers) | academic | Development + digital adoption evidence, now anchoring lens 2 with firm-level AI-adoption surveys (WDR 2026: The Promise of Artificial Intelligence, worldbank.org/en/publication/wdr2026). Content lives on subdomains — www/blogs/documents/thedocs/openknowledge.worldbank.org — not the bare domain; see the 2026-08-12 coverage note below. Lenses 1, 2, 3. | `worldbank.org`, `www.worldbank.org`, `blogs.worldbank.org`, `documents.worldbank.org`, `thedocs.worldbank.org`, `openknowledge.worldbank.org` |
-| J-PAL / policy evaluation publications | academic | RCT-grade evidence and methods for policy research — lenses 2, 5. | `povertyactionlab.org` |
-| GSMA Intelligence — public research | primary | Published connectivity/digital-economy research; public GSMA material is explicitly in scope — lens 3. | `gsmaintelligence.com`, `gsma.com` |
-| ITU data and reports | primary | Authoritative connectivity statistics and policy reports — lens 3. | `itu.int` |
+| J-PAL / policy evaluation publications | academic | RCT-grade evidence and methods for policy research — lenses 2, 5. | `povertyactionlab.org`, `www.povertyactionlab.org` |
+| GSMA Intelligence — public research | primary | Published connectivity/digital-economy research; public GSMA material is explicitly in scope — lens 3. | `gsmaintelligence.com`, `www.gsmaintelligence.com`, `gsma.com` |
+| ITU data and reports | primary | Authoritative connectivity statistics and policy reports — lens 3. | `itu.int`, `www.itu.int` |
 | arXiv econ.GN (Economics) | academic | Preprint pipeline for AI-and-economics work ahead of journals — lenses 1, 5, 6. | `arxiv.org/list/econ` |
 | Cosmos Institute (cosmos-institute.org) | academic | Philosophy of technology — human flourishing, autonomy, and AI; the anchor source for lens 8. | `cosmos-institute.org`, `blog.cosmos-institute.org` |
 | Google / Google DeepMind economics research (ai.google) | academic | First-party economic research on realised AI usage at scale — the ATLAS series maps Gemini usage to BLS occupations, O*NET tasks, ATUS activities, countries and languages. Lenses 1, 2, 3. **Vendor source: treat every distributional result as describing Google's user base first and the economy by inference; never report a first-party adoption claim without that caveat.** Added by user approval 2026-07-31. | `ai.google` |

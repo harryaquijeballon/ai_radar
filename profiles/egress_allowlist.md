@@ -39,6 +39,14 @@ for the Anthropic Institute economics watchlist row. Institute pages live on
 listed below for ai_engineering, does not match either host under
 exact-host matching.
 
+User approval 2026-10-26: eight `www.`/`www2.` hosts that the supervised
+U12 check run (40345891512) tried and was denied. Each site redirects its
+bare domain to that host, and WebFetch does not follow a redirect to
+another host, so these sources were reachable in name only: `www.imf.org`,
+`www.oecd.org`, `www.povertyactionlab.org`, `www.gsmaintelligence.com`,
+`www.itu.int`, `www2.nber.org`, `www.langchain.com`, `www.llamaindex.ai`.
+The bare hosts stay listed, because the first request still goes to them.
+
 ## Academic repositories, publishers, identifiers
 
 - arxiv.org
@@ -47,14 +55,17 @@ exact-host matching.
 - ideas.repec.org
 - nber.org
 - www.nber.org
+- www2.nber.org
 - doi.org
 - aeaweb.org
 - sciencedirect.com
 - cambridge.org
 - oecd.org
+- www.oecd.org
 - oecd-ilibrary.org
 - bis.org
 - imf.org
+- www.imf.org
 - worldbank.org
 - www.worldbank.org
 - blogs.worldbank.org
@@ -63,7 +74,9 @@ exact-host matching.
 - openknowledge.worldbank.org
 - ifc.org
 - itu.int
+- www.itu.int
 - povertyactionlab.org
+- www.povertyactionlab.org
 
 ## Social-science watchlist domains
 
@@ -72,6 +85,7 @@ exact-host matching.
 - voxdev.org
 - gsma.com
 - gsmaintelligence.com
+- www.gsmaintelligence.com
 - cosmos-institute.org
 - blog.cosmos-institute.org
 - aei.org
@@ -103,5 +117,7 @@ exact-host matching.
 - huyenchip.com
 - lilianweng.github.io
 - langchain.com
+- www.langchain.com
 - llamaindex.ai
+- www.llamaindex.ai
 - kaggle.com

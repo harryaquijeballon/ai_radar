@@ -28,7 +28,7 @@
 | Stanford HAI (incl. the AI Index) | academic | University-based independent measurement of AI capability, cost, and adoption trends; a second counterweight to vendor benchmarks — lenses 4, 6. | `hai.stanford.edu` |
 | Epoch AI | academic | Independent data and analysis on AI capability and compute trends; evidence base for capability claims — lenses 4, 6. | `epoch.ai` |
 | arXiv cs.MA / cs.CL / cs.SE (agent, eval, SE-with-LLM papers) | academic | Preprint pipeline for agent architecture, evaluation, and AI-assisted development research — lenses 1, 4, 7. | `arxiv.org/list/cs` |
-| LangChain / LlamaIndex blogs | commentary | Framework-vendor posts; useful for ecosystem patterns, discounted for framework promotion — lenses 1, 3, 5. | `langchain.com`, `llamaindex.ai` |
+| LangChain / LlamaIndex blogs | commentary | Framework-vendor posts; useful for ecosystem patterns, discounted for framework promotion — lenses 1, 3, 5. | `langchain.com`, `www.langchain.com`, `llamaindex.ai`, `www.llamaindex.ai` |
 | Towards Data Science | commentary | User's existing high-yield source; applied builds and post-mortems — lenses 1, 4, 5, 7. | `towardsdatascience.com` |
 
 ## Deliberately not covered
