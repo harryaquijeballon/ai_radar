@@ -38,8 +38,11 @@ Procedure:
    project instructions (`CLAUDE.md`) are already in your context — do not
    re-read them. Then begin the social-science scan immediately.
 2. Run the **social-science-radar** daily scan, then the
-   **ai-engineering-radar** daily scan (P6 → P8 each). Lookback per P6.1
-   (strictly before today, Europe/London, 7-day cap). Hold back each
+   **ai-engineering-radar** daily scan (P6 → P8 each). Search window and
+   eligibility per P6.1: the window decides only where you look. Never
+   reject a candidate for its date while it is inside the 7-day cap
+   (arXiv counts from its listing date, not its submission date), and
+   never log a rejection for one older than the cap. Hold back each
    domain's P8 report write for step 6: no report file may exist before
    the scan-evidence artifact does.
 3. Fetch only from domains in `profiles/egress_allowlist.md`. A promising

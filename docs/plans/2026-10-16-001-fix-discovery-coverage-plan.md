@@ -146,6 +146,7 @@ flowchart LR
 - **Dependencies:** U13.
 - **Files:** `.github/prompts/daily-radar.md` (protected; the "Lookback per P6.1" line), `scripts/validators/check_report_integrity.py` only if the report's "Window searched" line changes meaning, tests.
 - **Approach:** minimum diff, pointing at the new P6.1 rather than restating it.
+- **Implemented 2026-10-26 with U13.** P6.1 also exempts date-only rejection-log lines from discovery dedup, so candidates rejected for their date within the last 7 days are reviewed again automatically; older ones remain U15's batch. The prompt keeps one sentence beyond the pointer (the ban on date rejections and the arXiv listing-date rule), because the runs had applied the date logic consistently. No validator change: the report's "Window searched" line keeps its meaning. `engine/schema.md` is unchanged.
 - **Checkpoint:** user approves; one supervised `workflow_dispatch` no-push run shows zero date-only rejections and normal coverage.
 
 ### Phase C — Recover what was lost, and measure

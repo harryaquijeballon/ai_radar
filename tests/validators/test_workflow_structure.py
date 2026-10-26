@@ -223,6 +223,23 @@ class TestRuntimePrompt(unittest.TestCase):
                          "Never run git", "`.github/`", "quiet-day"):
             self.assertIn(fragment, self.text)
 
+    def test_window_never_decides_eligibility(self):
+        """Plan 2026-10-16-001 U13/U14: 243 candidates were rejected for
+        their submission date. The prompt points at P6.1 and keeps the
+        date-rejection ban and the arXiv listing-date rule in view."""
+        text = " ".join(self.text.split())
+        self.assertIn("the window decides only where you look", text)
+        self.assertIn("Never reject a candidate for its date while it is "
+                      "inside the 7-day cap", text)
+        self.assertIn("listing date, not its submission date", text)
+        self.assertNotIn("Lookback per P6.1", text)
+        with open(os.path.join(REPO, "engine", "ENGINE.md"),
+                  encoding="utf-8") as handle:
+            engine = handle.read()
+        for fragment in ("**Search window**", "**Eligibility**",
+                         "**Visibility date**", "**No date-only rejections.**"):
+            self.assertIn(fragment, engine)
+
 
 class TestSettingsBuilder(unittest.TestCase):
     def test_settings_shape(self):
