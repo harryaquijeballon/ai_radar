@@ -354,3 +354,8 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-huang-81k-interviews-what-people-want-from-ai | What 81,000 people want from AI | social_science | accepted | anthropic.com/features/81k-interviews, anthropic.com/research/81k-economics |
 | 2026-massenkoff-economic-index-cadences | Anthropic Economic Index report: Cadences | social_science | accepted | anthropic.com/research/economic-index-june-2026-report |
 | 2026-hadhazy-ai-economic-indicators-labor-market | Tracking AI's Real-Time Footprint On The Labor Market | social_science | accepted | hai.stanford.edu/news/tracking-ais-real-time-footprint-on-the-labor-market |
+| 2026-levyyeyati-tacit-knowledge-genai-returns-schooling | Practice Makes Perfect: Tacit Knowledge, Generative AI, and Returns to Schooling and Experience | social_science | accepted | arxiv:2610.36008 |
+| 2026-sehgal-context-pipeline-not-window | Context Is a Pipeline, Not a Window: Information Attrition in LLM Agent Harnesses | ai_engineering | accepted | arxiv:2610.36114 |
+| 2026-jiang-over-compliant-refactoring-agents | Your Wish Is My Commit: Over-Compliant Refactoring in AI Coding Agents | ai_engineering | accepted | arxiv:2610.36346 |
+| 2026-paixao-coding-agent-instruction-stacks | Hidden in Plain Sight: an Empirical Study about The Instruction Stacks of Coding Agents | ai_engineering | accepted | arxiv:2610.37332 |
+| 2026-paina-probe-coding-agent-bug-discovery | PROBE: Frontier Coding Agents Find Different Bugs Than Maintainers Fix | ai_engineering | accepted | arxiv:2610.35987 |

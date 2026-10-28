@@ -156,24 +156,24 @@
 - title: Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment
 - domain: social_science
 - first_encountered: 2026-08-21
-- last_encountered: 2026-10-27
+- last_encountered: 2026-10-28
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. RCT evidence on AI math tutoring — would score high on lens 1/6 if in-window.
 - surfaced_by: watchlist:nber-working-papers
-- action_needed: confirm exact NBER issue date via dated listing/metadata; archive if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.; 09-20: same.; 09-28: same.; 10-20: same.
+- action_needed: confirm exact NBER issue date via dated listing/metadata; archive if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.; 09-20: same.; 09-28: same.; 10-20: same.; 10-28: same.
 - status: pending
 
 ### https://www.nber.org/papers/w35588
 - title: AI Agents and Prompt Engineering in Econometric Coding
 - domain: social_science, ai_engineering
 - first_encountered: 2026-08-22
-- last_encountered: 2026-10-27
+- last_encountered: 2026-10-28
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. Cross-domain: agent-autonomy levels raise econometric-coding task completion 74%→96% at ~$0.08/op (Galiani et al.).
 - surfaced_by: open search (economic-research-methods / AI-agents-for-research lens)
-- action_needed: confirm exact NBER issue date via dated listing/metadata; archive cross-domain if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.; 09-20: same.; 09-28: same.; 10-20: same.
+- action_needed: confirm exact NBER issue date via dated listing/metadata; archive cross-domain if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.; 09-20: same.; 09-28: same.; 10-20: same.; 10-28: rev0 dated 4 Aug 2026 found.
 - status: pending
 
 ### https://cepr.org/voxeu/columns/task-based-returns-generative-ai-evidence-central-bank
@@ -267,12 +267,12 @@
 - title: Telco AI: State of the Market, Q3 2026
 - domain: social_science
 - first_encountered: 2026-10-20
-- last_encountered: 2026-10-27
+- last_encountered: 2026-10-28
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: Research-index page lists this title under "Oct 2026" only (no day-level date, no item-specific URL shown); distinct title from the prior pending June-2026 "token economy" item, so likely a new report.
 - surfaced_by: watchlist:gsma-intelligence
-- action_needed: locate the item-specific URL and exact publication date; review for lens 3 archiving if confirmed new and in-window.; 10-24: WebFetch tool-permission error blocked the research index this run, no new information.; 10-25: same.
+- action_needed: locate the item-specific URL and exact publication date; review for lens 3 archiving if confirmed new and in-window.; 10-24: WebFetch tool-permission error blocked the research index this run, no new information.; 10-25: same.; 10-28: same.
 - status: pending
 
 ### https://arxiv.org/abs/2610.28639
