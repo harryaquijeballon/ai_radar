@@ -359,3 +359,13 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-jiang-over-compliant-refactoring-agents | Your Wish Is My Commit: Over-Compliant Refactoring in AI Coding Agents | ai_engineering | accepted | arxiv:2610.36346 |
 | 2026-paixao-coding-agent-instruction-stacks | Hidden in Plain Sight: an Empirical Study about The Instruction Stacks of Coding Agents | ai_engineering | accepted | arxiv:2610.37332 |
 | 2026-paina-probe-coding-agent-bug-discovery | PROBE: Frontier Coding Agents Find Different Bugs Than Maintainers Fix | ai_engineering | accepted | arxiv:2610.35987 |
+| 2026-xiang-spine-subtask-context-compiler | Spine: Compiling Subtask Trees into Structured Context for Long-Horizon Coding Agents | ai_engineering | accepted | arxiv:2610.37224 |
+| 2026-sehgal-stratum-repository-memory | Stratum: Repository Memory for Coding Agents Beyond the Context Window | ai_engineering | accepted | arxiv:2610.36153 |
+| 2026-kovalenko-effectworld-tool-semantics | Small Agents Should Know What Their Tools Do | ai_engineering | accepted | arxiv:2610.35981 |
+| 2026-daxerer-coding-agents-debugger-necessity | Do Coding Agents Still Need a Debugger? Frontier-Model-Based Fault Localization at the Accuracy Ceiling | ai_engineering | accepted | arxiv:2610.36015 |
+| 2026-srinivasan-continue-or-restart-agents | Continue or Restart? The Limits of Early Failure Prediction in Coding Agents | ai_engineering | accepted | arxiv:2610.35971 |
+| 2026-huang-reasoning-cost-code-correctness | Does More Thinking Pay Off? Reasoning Cost and Correctness of LLMs in Code Generation and Bug Fixing | ai_engineering | accepted | arxiv:2610.36952 |
+| 2026-horikawa-detecting-ai-agent-commits | Agent or Human? Detecting Commits by AI Coding Agents in the Absence of Authorship Signatures | ai_engineering | accepted | arxiv:2610.36229 |
+| 2026-anthropic-theorem-formal-verification-scale | LLMs Are Making Formal Software Verification Feasible at a Much Larger Scale | ai_engineering | accepted | anthropic.com/research/formal-verification |
+| 2026-anthropic-discovering-vulnerabilities-claude | Discovering and Exploiting Vulnerabilities in Critical, Real-World Software with Claude | ai_engineering | accepted | anthropic.com/research/discovering-vulnerabilities-with-claude |
+| 2026-github-octoverse-2026-agentic-growth | GitHub Octoverse 2026: Merged PRs, Commits, and New Repositories Roughly Tripled | ai_engineering | provisional | simonwillison.net/2026/Oct/28/github-octoverse-2026 |

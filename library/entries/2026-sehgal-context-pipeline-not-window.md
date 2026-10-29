@@ -79,4 +79,4 @@ None yet.
 
 ## Related entries
 
-None yet.
+- **2026-10-29** — [2026-sehgal-stratum-repository-memory](2026-sehgal-stratum-repository-memory.md) — same-project: same authors' companion paper on cross-session repository memory, published two days after this one.

@@ -156,19 +156,19 @@
 - title: Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment
 - domain: social_science
 - first_encountered: 2026-08-21
-- last_encountered: 2026-10-28
+- last_encountered: 2026-10-29
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. RCT evidence on AI math tutoring — would score high on lens 1/6 if in-window.
 - surfaced_by: watchlist:nber-working-papers
-- action_needed: confirm exact NBER issue date via dated listing/metadata; archive if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.; 09-20: same.; 09-28: same.; 10-20: same.; 10-28: same.
+- action_needed: confirm exact NBER issue date via dated listing/metadata; archive if in-window.; 09-06: still month-level only, unresolved.; 09-07: same.; 09-20: same.; 09-28: same.; 10-20: same.; 10-28: same.; 10-29: same.
 - status: pending
 
 ### https://www.nber.org/papers/w35588
 - title: AI Agents and Prompt Engineering in Econometric Coding
 - domain: social_science, ai_engineering
 - first_encountered: 2026-08-22
-- last_encountered: 2026-10-28
+- last_encountered: 2026-10-29
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. Cross-domain: agent-autonomy levels raise econometric-coding task completion 74%→96% at ~$0.08/op (Galiani et al.).
@@ -231,7 +231,7 @@
 - title: Embracing AI in Europe: New evidence from harmonised central bank business surveys
 - domain: social_science
 - first_encountered: 2026-08-25
-- last_encountered: 2026-10-21
+- last_encountered: 2026-10-29
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403, consistent with prior runs; only a search-engine title/author snippet available, exact date unconfirmed, insufficient to trace claims to source text.
@@ -267,7 +267,7 @@
 - title: Telco AI: State of the Market, Q3 2026
 - domain: social_science
 - first_encountered: 2026-10-20
-- last_encountered: 2026-10-28
+- last_encountered: 2026-10-29
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: Research-index page lists this title under "Oct 2026" only (no day-level date, no item-specific URL shown); distinct title from the prior pending June-2026 "token economy" item, so likely a new report.
@@ -279,7 +279,7 @@
 - title: Can AI Chat Replace Traditional Search? Evidence from a RAG-based Live Events Experiment
 - domain: social_science, ai_engineering
 - first_encountered: 2026-10-22
-- last_encountered: 2026-10-23
+- last_encountered: 2026-10-29
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: arXiv ID prefix (2610) implies Oct 2026 and it appears in today's econ.GN listing, but the abs page's own "Submitted on" line reads 20 Aug 2026 — an internal contradiction WebFetch could not resolve.; 10-23: date confirmed, not new.
