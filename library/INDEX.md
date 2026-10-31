@@ -250,6 +250,22 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-shi-noisy-text-rag | Noisy Text in RAG: Typos, OCR, and the Gap Classical Spell-Check Leaves | ai_engineering | accepted | towardsdatascience.com/noisy-text-in-rag-typos-ocr-and-the-gap-classical-spell-check-leaves |
 | 2026-paialunga-context-engineering-changing | Context Engineering Is Changing. Here's What It Means for Data Scientists | ai_engineering | accepted | towardsdatascience.com/context-engineering-is-changing-heres-what-it-means-for-data-scientists |
 | 2026-willison-paintnet-direct2d-vibe-coding | A quote from Rick Brewster (Paint.NET's from-scratch Direct2D rewrite) | ai_engineering | accepted | simonwillison.net/2026/Sep/2/rick-brewster |
+| 2026-vivalt-ai-forecast-treatment-effects | Can Artificial Intelligence Forecast Treatment Effects in Economics? | social_science | accepted | arxiv:2610.38883 |
+| 2026-jacobs-what-is-work-for-ai-age | What is Work For? Labor, Politics, and Meaning in the Age of AI | social_science | accepted | arxiv:2610.39375 |
+| 2026-epoch-ai-computing-capacity-doubling | New global AI computing capacity is doubling every 9 months | social_science | accepted | epoch.ai/data-insights/ai-computing-capacity-additions-doubling |
+| 2026-epoch-biorxiv-llm-acknowledgment | LLM use is acknowledged almost as often as specialized AI tools in biology preprints | social_science | accepted | epoch.ai/data-insights/biorxiv-llms-vs-ai-tools |
+| 2026-demoura-coding-agent-memory-file-security | Security Impact of Coding Agent's Memory Files | ai_engineering | accepted | arxiv:2610.38521 |
+| 2026-sanko-oversight-loosening-agent-skills | When Skills Tell Agents Not to Ask: A Large-Scale Study of Oversight Directives in Agent Skills | ai_engineering | accepted | arxiv:2610.37734 |
+| 2026-fu-cari-cross-boundary-injection | CARI: Cross-Boundary Adversarial Runtime Injection in Coding-Agent Workflows | ai_engineering | accepted | arxiv:2610.38799 |
+| 2026-tal-snyk-vulnbench-sast-vs-ai | How Deterministic SAST and AI Security Agents Divide the Work: Coverage, Harness Policy and Cost in Snyk VulnBench 2.0 | ai_engineering | accepted | arxiv:2610.38617 |
+| 2026-assuncao-case-operational-context-validity | When Relevant Code Is Wrong: Runtime-Aware Context for AI Coding Agents | ai_engineering | accepted | arxiv:2610.38800 |
+| 2026-liao-repairs-for-whom-evaluator-executor-mismatch | Repairs for Whom? Evaluator-Executor Mismatch in Selecting Repairs for Failed LLM Agents | ai_engineering | accepted | arxiv:2610.38610 |
+| 2026-zettl-coordination-tax-heterogeneity-dividend | The Coordination Tax and the Heterogeneity Dividend: Break-Even Conditions for Multi-Agent LLM Pipelines | ai_engineering | accepted | arxiv:2610.37700 |
+| 2026-gupta-long-term-agent-memory-curation-consolidation | Long-Term Agent Memory through Complementary Curation and Consolidation | ai_engineering | accepted | arxiv:2610.39790 |
+| 2026-khan-soei-structured-observability-agents | Soei: Structured Observability of Evidence and Intent for Multi-Agent AI Software Engineering | ai_engineering | accepted | arxiv:2610.39468 |
+| 2026-xie-judged-in-company-batch-llm-judge-bias | Judged in Company: In-Context Batching Makes LLM Verdicts Depend on Other Items | ai_engineering | accepted | arxiv:2610.40241 |
+| 2026-kaushik-multiagent-collusion-strategic-vagueness | Who Else Is In? Multi-Agent Collusion Initiation Via Strategic Vagueness | ai_engineering | accepted | arxiv:2610.37984 |
+| 2026-liu-langchain-openwiki-evidence-grounded-memory | Building Evidence-Grounded Agent Memory with OpenWiki and Graphs | ai_engineering | accepted | langchain.com/blog/building-agent-memory-openwiki-graphs |
 | 2026-ou-langchain-agent-scaling-enterprise-lessons | Scaling Agents in Europe & The Middle East: Lessons from Schneider Electric, Vodafone, and monday.com | ai_engineering | accepted | langchain.com/blog/scaling-agents-in-europe-the-middle-east-lessons-from-schneider-electric-vodafone-and-monday-com |
 | 2026-tadepalli-intelligence-explosion-efficiency-capability | Efficiency vs Capability in the Intelligence Explosion | social_science | accepted | arxiv:2610.33447 |
 | 2026-catrinescu-capability-transfer-expertise-pipeline | The Capability Transfer: Cohort Reversal, Codified Expertise, and the Adaptability Tax of AI Transformation | social_science | accepted | arxiv:2610.33102 |
