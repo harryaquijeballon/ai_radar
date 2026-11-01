@@ -385,3 +385,7 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-anthropic-theorem-formal-verification-scale | LLMs Are Making Formal Software Verification Feasible at a Much Larger Scale | ai_engineering | accepted | anthropic.com/research/formal-verification |
 | 2026-anthropic-discovering-vulnerabilities-claude | Discovering and Exploiting Vulnerabilities in Critical, Real-World Software with Claude | ai_engineering | accepted | anthropic.com/research/discovering-vulnerabilities-with-claude |
 | 2026-github-octoverse-2026-agentic-growth | GitHub Octoverse 2026: Merged PRs, Commits, and New Repositories Roughly Tripled | ai_engineering | provisional | simonwillison.net/2026/Oct/28/github-octoverse-2026 |
+| 2026-lei-pass-is-a-claim-mechanical-reverification | PASS Is a Claim, Not an Observation: Mechanical Re-verification of 10 Self-Asserted Fix Claims in a Live Multi-Agent Audit Layer | ai_engineering | accepted | arxiv:2610.35950 |
+| 2026-cahyono-sticky-collusion-persistence | Sticky Collusion: Persistence of LLM Agent Collusion after Incentive Removal and Partner Replacement | ai_engineering | accepted | arxiv:2610.39660 |
+| 2026-bu-role-grounding-attack-agent-memory | Is it my preference? Role Grounding Attack against Agent's Memory via Social Interaction | ai_engineering | accepted | arxiv:2610.38209 |
+| 2026-sternlicht-llm-novelty-judge-instability | Old Ideas, Novel Problems: The Instability of LLM-Based Novelty Evaluation | ai_engineering, social_science | accepted | arxiv:2610.02022 |
