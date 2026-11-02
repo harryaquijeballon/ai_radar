@@ -389,3 +389,9 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-cahyono-sticky-collusion-persistence | Sticky Collusion: Persistence of LLM Agent Collusion after Incentive Removal and Partner Replacement | ai_engineering | accepted | arxiv:2610.39660 |
 | 2026-bu-role-grounding-attack-agent-memory | Is it my preference? Role Grounding Attack against Agent's Memory via Social Interaction | ai_engineering | accepted | arxiv:2610.38209 |
 | 2026-sternlicht-llm-novelty-judge-instability | Old Ideas, Novel Problems: The Instability of LLM-Based Novelty Evaluation | ai_engineering, social_science | accepted | arxiv:2610.02022 |
+| 2026-tadigotla-ai-pricing-passthrough | When AI Gets Cheaper, Do Prices Follow? Information Delays and Algorithmic Pricing | social_science | accepted | arxiv:2610.31693 |
+| 2026-kuhle-write-cheap-read-costly-ai-research | AI-Augmented Research: Free to Write, Costly to Read | social_science, ai_engineering | accepted | arxiv:2610.32355 |
+| 2026-willison-chatgpt-sandbox-account-takeover | How We Took Over ChatGPT Accounts (Parameter Labs sandbox-escape writeup) | ai_engineering | accepted | simonwillison.net/2026/Oct/31/how-we-took-over-chatgpt-accounts |
+| 2026-ghassabi-rag-conformity-bias-poisoned-claims | Language Models Show Conformity Bias in RAG: When the Majority Endorses a Poisoned Claim | ai_engineering | accepted | arxiv:2610.41012 |
+| 2026-kitsios-cbdl-constrained-decoding-valid-imports | No More Import Errors: Constrained Decoding for Guaranteed Valid Imports in LLM-Generated Tests | ai_engineering | accepted | arxiv:2610.41878 |
+| 2026-kerr-cognitive-inclusivity-ai-coding-assistants | Cognitive Inclusivity in AI Coding Assistants: Evidence from GitHub Copilot | ai_engineering | accepted | arxiv:2610.41192 |
