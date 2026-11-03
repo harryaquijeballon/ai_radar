@@ -395,3 +395,19 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-ghassabi-rag-conformity-bias-poisoned-claims | Language Models Show Conformity Bias in RAG: When the Majority Endorses a Poisoned Claim | ai_engineering | accepted | arxiv:2610.41012 |
 | 2026-kitsios-cbdl-constrained-decoding-valid-imports | No More Import Errors: Constrained Decoding for Guaranteed Valid Imports in LLM-Generated Tests | ai_engineering | accepted | arxiv:2610.41878 |
 | 2026-kerr-cognitive-inclusivity-ai-coding-assistants | Cognitive Inclusivity in AI Coding Assistants: Evidence from GitHub Copilot | ai_engineering | accepted | arxiv:2610.41192 |
+| 2026-itu-facts-and-figures-2026-digital-divide | Facts and Figures 2026: 6.3 Billion People Now Online, Yet Digital Divides Persist | social_science | accepted | itu.int/en/mediacentre/Pages/PR-2026-11-03-Facts-and-Figures.aspx |
+| 2026-decclesiis-castellacci-ahmadi-validating-llm-synthetic-surveys | Validating LLM-Generated Synthetic Survey Samples: A Use-Dependent Multi-Dimensional Framework for Social-Science Applications | social_science, ai_engineering | accepted | arxiv:2611.00256 |
+| 2026-alidaee-khanna-koning-ai-hiring-platform-model-externality | Learning about Markets from Models: Evidence from an AI Hiring Platform | social_science | accepted | arxiv:2611.01226 |
+| 2026-popov-llm-judges-filename-label-bias | Same Text, Different Filename: Are LLM Judges Biased? | social_science, ai_engineering | accepted | arxiv:2611.01829 |
+| 2026-na-zhu-cross-bakker-behavioral-profiles-llm-simulation | Designing Behavioral Profiles for Language Model Simulation of Out-of-Distribution Human Behavior | social_science, ai_engineering | accepted | arxiv:2611.00661 |
+| 2026-corti-siraj-green-manifesto-llm-panel | How Green Is Your Manifesto? Scoring Environmental Positions in the 2024 EU Elections with an LLM Panel | social_science | accepted | arxiv:2611.02033 |
+| 2026-willison-census-bureau-super-intelligence-btos | The U.S. Census Bureau and "Super Intelligence" | social_science | accepted | simonwillison.net/2026/Nov/2/census-bureau-super-intelligence |
+| 2026-yao-destructive-tool-approval-mcp | When Neither Side Confirms: Destructive Tool Approval Across MCP Servers and Hosts | ai_engineering | accepted | arxiv:2611.02527 |
+| 2026-cuadron-gupta-boba-coding-agent-chains | Built on Broken Assumptions (BOBA): Why Coding Agents Cannot Be Left Alone | ai_engineering | accepted | arxiv:2611.02207 |
+| 2026-roth-dependable-agents-hard-fuzzy-rules | Dependable Agents Need Hard and Fuzzy Rules | ai_engineering | accepted | arxiv:2611.01043 |
+| 2026-qian-paretosaddler-harness-optimization | ParetoSaddler: Pareto-Guided Optimization of Agent Harnesses for Quality and Cost | ai_engineering | accepted | arxiv:2611.02079 |
+| 2026-patel-liao-foresight-swe-coding-agent-bugs | Do Coding Agents Catch Their Own Bugs? (They Don't.) | ai_engineering | accepted | arxiv:2611.01181 |
+| 2026-mehboob-shafique-quantization-coding-agents | Beyond Accuracy: How Quantization Affects Coding Agents | ai_engineering | accepted | arxiv:2611.02368 |
+| 2026-wang-stategraph-dependency-aware-agent-memory | A State Change Is Local, Its Consequences Are Not: Dependency-Aware State Revision for Long-Term Agent Memory | ai_engineering | accepted | arxiv:2611.02912 |
+| 2026-shanto-agent-instruction-files-template | Toward an Evidence-Based Template for Agent Instruction Files: An Empirical Study of Adoption, Consistency, and Maintenance | ai_engineering | accepted | arxiv:2611.02383 |
+| 2026-amin-salminen-jansen-gender-sensitivity-llm-judges | LLMs Cannot Be Neutral: Gender Sensitivity Across Candidates, Evaluators, and Models | ai_engineering | accepted | arxiv:2611.02692 |
