@@ -411,3 +411,21 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-wang-stategraph-dependency-aware-agent-memory | A State Change Is Local, Its Consequences Are Not: Dependency-Aware State Revision for Long-Term Agent Memory | ai_engineering | accepted | arxiv:2611.02912 |
 | 2026-shanto-agent-instruction-files-template | Toward an Evidence-Based Template for Agent Instruction Files: An Empirical Study of Adoption, Consistency, and Maintenance | ai_engineering | accepted | arxiv:2611.02383 |
 | 2026-amin-salminen-jansen-gender-sensitivity-llm-judges | LLMs Cannot Be Neutral: Gender Sensitivity Across Candidates, Evaluators, and Models | ai_engineering | accepted | arxiv:2611.02692 |
+| 2026-chetty-fogel-katz-digital-twins-workforce-training | Experimentally Validated Digital Twins: Evaluating Workforce Training Programs in the Age of Big Data | social_science | accepted | arxiv:2611.03938 |
+| 2026-gan-prizes-shared-hazard-frontier-ai-speed | Prizes, Shared Hazard, and the Speed of Frontier AI | social_science | accepted | arxiv:2611.04266 |
+| 2026-gan-agreements-have-a-clock-ai-restraint-verification | Agreements Have a Clock: Compute Growth and the Verification of AI Restraint | social_science | accepted | arxiv:2611.04272 |
+| 2026-itu-u4ssc-ai-smart-cities-toolbox | Toolbox for People-Centred Smart Cities in the AI Era | social_science | accepted | itu.int/en/mediacentre/Pages/PR-2026-11-04-AI-toolbox.aspx |
+| 2026-liu-silent-instrument-errors-agent-leaderboards | Silent Instrument Errors Reorder Agent Leaderboards | ai_engineering | accepted | arxiv:2611.04399 |
+| 2026-chen-zhang-verifier-strength-discovery-quality | Verifier Strength Does Not Buy Discovery Quality | ai_engineering | accepted | arxiv:2611.04420 |
+| 2026-smith-inter-agent-influence-persuasion-deception-coercion | Inter-Agent Influence: Evaluating Persuasion, Deception, and Coercion in Multi-Agent Systems | ai_engineering | accepted | arxiv:2611.04556 |
+| 2026-huang-how-agent-skills-evolve | How Agent Skills Evolve: A Large-Scale Empirical Study of Skills on GitHub | ai_engineering | accepted | arxiv:2611.04456 |
+| 2026-maliha-atc-agent-trajectory-control-role-contracts | ATC: Agent Trajectory Control for Role-Contract Enforcement in Black-Box Multi-Agent Systems | ai_engineering | accepted | arxiv:2611.04321 |
+| 2026-pramanik-drift-no-more-spectral-locking-atlas | Drift No More: Spectral Locking for Long-Horizon Open-Weight Multi-Agent AI | ai_engineering | accepted | arxiv:2611.04315 |
+| 2026-naveed-raglog-rag-fault-localization | From Logs to Faults: Reference-Free Fault Localization for Retrieval-Augmented Generation Pipelines | ai_engineering | accepted | arxiv:2611.03725 |
+| 2026-talavera-eirinaki-interpretable-early-termination-web-agents | Interpretable Early Termination of Web Navigation Agents via Closed Sequential Pattern Mining | ai_engineering | accepted | arxiv:2611.04142 |
+| 2026-allenai-statebench-state-tracking-benchmark | StateBench: Testing How Language Models Track State Changes Over Long Documents | ai_engineering | accepted | repo:allenai/state-bench |
+| 2026-virgolin-eu-ai-act-qa-regulatory-readiness | Are LLM Assistants Regulatory Ready? Answers from regenold's 2026 EU AI Act Q&A Challenge | ai_engineering | accepted | arxiv:2611.04546 |
+| 2026-he-pearl-durable-misalignment-suppression | Suppressing Misaligned Behaviors in Language Models, Durably | ai_engineering | accepted | arxiv:2611.05358 |
+| 2026-chen-zhang-patching-the-protocol-pre-registration-repairs | Patching the Protocol: A Taxonomy of Pre-Registration Repairs in LLM-Proposer Experiments | ai_engineering, social_science | accepted | arxiv:2611.04338 |
+| 2026-ramdowar-fresh-ai-stock-analysis-refresh-budget | When Is Fresh AI Stock Analysis Worth It? Allocating a Limited Research Budget Across a Portfolio | social_science, ai_engineering | accepted | arxiv:2611.04348 |
+| 2026-tsuchida-agents-md-policy-wording-compliance | Do Coding Agents Follow AGENTS.md? The Effect of Policy Wording on Instruction Compliance | ai_engineering | accepted | arxiv:2611.04367 |
