@@ -249,6 +249,15 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-ibrahim-agentops-not-mlops | AgentOps Is Not MLOps: What Breaks in Your Monitoring Stack When Agents Go to Production | ai_engineering | accepted | towardsdatascience.com/agentops-is-not-mlops-what-breaks-in-your-monitoring-stack-when-agents-go-to-production |
 | 2026-shi-noisy-text-rag | Noisy Text in RAG: Typos, OCR, and the Gap Classical Spell-Check Leaves | ai_engineering | accepted | towardsdatascience.com/noisy-text-in-rag-typos-ocr-and-the-gap-classical-spell-check-leaves |
 | 2026-paialunga-context-engineering-changing | Context Engineering Is Changing. Here's What It Means for Data Scientists | ai_engineering | accepted | towardsdatascience.com/context-engineering-is-changing-heres-what-it-means-for-data-scientists |
+| 2026-anthropic-hermle-how-researchers-use-claude | AI for Scientific Discovery: How Researchers Use Claude | social_science, ai_engineering | accepted | anthropic.com/research/how-researchers-use-claude |
+| 2026-epoch-broadcom-tpu-shipments | Broadcom TPU Compute Shipments Doubled from Q2 to Q3 2026, Reaching 2 Million H100-Equivalents | social_science | accepted | epoch.ai/data-insights/tpu-production-doubling |
+| 2026-tuncturk-more-agents-more-reliable | More Agents, More Reliable? System-Level Reliability of Multi-Agent LLMs under Operational-Profile Uncertainty | ai_engineering | accepted | arxiv:2611.07140 |
+| 2026-donno-agent2agent-authorization-propagation | Authorization Propagation in Agent2Agent Systems: An Experimental Security Evaluation of Multi-Hop Delegation | ai_engineering | accepted | arxiv:2611.07050 |
+| 2026-wang-take-it-from-here-project-takeover | Take It From Here: Evaluating Coding Agents On Project Takeover | ai_engineering | accepted | arxiv:2611.07307 |
+| 2026-taraz-agent-trilemma-honesty-confidentiality | Trilemma: How Agents Choose between Honesty, Confidentiality, and Task Completion | ai_engineering, social_science | accepted | arxiv:2611.08312 |
+| 2026-zeng-how-ai-agents-waste-your-money | How Do AI Agents Waste Your Money? | ai_engineering | accepted | arxiv:2611.07238 |
+| 2026-liang-memory-trap-overgeneralize | The Memory Trap: Language Agents Overgeneralize from Benign Interactions | ai_engineering | accepted | arxiv:2611.07554 |
+| 2026-langchain-agents-going-async | Agents Are Going Async | ai_engineering | accepted | langchain.com/blog/agents-are-going-async |
 | 2026-willison-paintnet-direct2d-vibe-coding | A quote from Rick Brewster (Paint.NET's from-scratch Direct2D rewrite) | ai_engineering | accepted | simonwillison.net/2026/Sep/2/rick-brewster |
 | 2026-vivalt-ai-forecast-treatment-effects | Can Artificial Intelligence Forecast Treatment Effects in Economics? | social_science | accepted | arxiv:2610.38883 |
 | 2026-jacobs-what-is-work-for-ai-age | What is Work For? Labor, Politics, and Meaning in the Age of AI | social_science | accepted | arxiv:2610.39375 |
