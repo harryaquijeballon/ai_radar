@@ -249,6 +249,14 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-ibrahim-agentops-not-mlops | AgentOps Is Not MLOps: What Breaks in Your Monitoring Stack When Agents Go to Production | ai_engineering | accepted | towardsdatascience.com/agentops-is-not-mlops-what-breaks-in-your-monitoring-stack-when-agents-go-to-production |
 | 2026-shi-noisy-text-rag | Noisy Text in RAG: Typos, OCR, and the Gap Classical Spell-Check Leaves | ai_engineering | accepted | towardsdatascience.com/noisy-text-in-rag-typos-ocr-and-the-gap-classical-spell-check-leaves |
 | 2026-paialunga-context-engineering-changing | Context Engineering Is Changing. Here's What It Means for Data Scientists | ai_engineering | accepted | towardsdatascience.com/context-engineering-is-changing-heres-what-it-means-for-data-scientists |
+| 2026-botvinick-ai-democracy-athens-scale | What Will You Build For: Matthew Botvinick — On AI, Democracy, and "Ancient Athens at Scale" | social_science | accepted | blog.cosmos-institute.org/p/what-will-you-build-for-matthew-botvinick |
+| 2026-anthropic-components-of-agent-memory | The Components of Agent Memory | ai_engineering | accepted | anthropic.com/research/components-of-agent-memory |
+| 2026-collinear-cwe-bench-v2-security-benchmark | CWE-bench v2: More Coverage, Quality, and Transparency | ai_engineering | accepted | repo:collinear-ai/cwe-bench |
+| 2026-acharya-two-ledger-model-agent-cost-accounting | The Two-Ledger Model: Transaction-Grain Cost Accounting for Multi-Agent AI Systems Across Clouds, Models, and Systems of Record | ai_engineering | accepted | arxiv:2611.06989 |
+| 2026-chen-signed-but-not-safe-requirement-integrity | Signed but Not Safe: Requirement Integrity in Multi-Agent LLM Handoffs | ai_engineering | accepted | arxiv:2611.07483 |
+| 2026-zhang-evolver-agent-capability-persistence | Evolver: Turning Agent Exploration into Evolving Capabilities | ai_engineering | accepted | arxiv:2611.07595 |
+| 2026-wu-what-the-middleman-delivers-api-relays | What the Middleman Delivers: Answer Behavior, Tool Permissions, and Billed Usage in LLM API Relays | ai_engineering | accepted | arxiv:2611.07650 |
+| 2026-huang-stress-testing-cot-monitoring-misalignment | Stress Testing Chain-of-Thought Monitoring Against Covert Misalignment | ai_engineering | accepted | arxiv:2611.07586 |
 | 2026-anthropic-hermle-how-researchers-use-claude | AI for Scientific Discovery: How Researchers Use Claude | social_science, ai_engineering | accepted | anthropic.com/research/how-researchers-use-claude |
 | 2026-epoch-broadcom-tpu-shipments | Broadcom TPU Compute Shipments Doubled from Q2 to Q3 2026, Reaching 2 Million H100-Equivalents | social_science | accepted | epoch.ai/data-insights/tpu-production-doubling |
 | 2026-tuncturk-more-agents-more-reliable | More Agents, More Reliable? System-Level Reliability of Multi-Agent LLMs under Operational-Profile Uncertainty | ai_engineering | accepted | arxiv:2611.07140 |
