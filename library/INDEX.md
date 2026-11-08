@@ -249,6 +249,21 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-ibrahim-agentops-not-mlops | AgentOps Is Not MLOps: What Breaks in Your Monitoring Stack When Agents Go to Production | ai_engineering | accepted | towardsdatascience.com/agentops-is-not-mlops-what-breaks-in-your-monitoring-stack-when-agents-go-to-production |
 | 2026-shi-noisy-text-rag | Noisy Text in RAG: Typos, OCR, and the Gap Classical Spell-Check Leaves | ai_engineering | accepted | towardsdatascience.com/noisy-text-in-rag-typos-ocr-and-the-gap-classical-spell-check-leaves |
 | 2026-paialunga-context-engineering-changing | Context Engineering Is Changing. Here's What It Means for Data Scientists | ai_engineering | accepted | towardsdatascience.com/context-engineering-is-changing-heres-what-it-means-for-data-scientists |
+| 2026-mosk-frontier-ai-cyber-defense-glasswing | Does Frontier AI Strengthen Cyber Defense? Evidence from Project Glasswing | social_science, ai_engineering | accepted | arxiv:2611.06629 |
+| 2026-yu-occupational-ai-exposure-working-conditions | Dull, Dirty, Dangerous? Working Conditions and the Limits of Occupational AI Exposure | social_science | accepted | arxiv:2611.06888 |
+| 2026-saxena-decision-models-economic-surrogates | Decision Models as Scalable Economic Surrogates that Capture Human Variation | social_science, ai_engineering | accepted | arxiv:2611.05553 |
+| 2026-mitikj-stojkoski-digital-trade-fiscal-rules | The potential impact of fiscal rule changes on digital products trade | social_science | accepted | arxiv:2611.05714 |
+| 2026-chen-zheng-zhu-self-prediction-vs-recommenders | You Know What You Will Like: People Predict Their Own Ratings Better Than Recommender Systems | social_science | accepted | arxiv:2611.06696 |
+| 2026-aun-germline-execution-mcp-toolchain-trust | Signed, Sealed, Leaked: Trust Beyond Signature for MCP Toolchains | ai_engineering | accepted | arxiv:2611.06585 |
+| 2026-zhan-airlock-multiagent-containment | Airlock: Bounding the Multi-Agent Blast Radius via Selective Online Containment | ai_engineering | accepted | arxiv:2611.06727 |
+| 2026-chen-accepted-but-wrong-silent-repair-failures | Accepted but Wrong: Silent Failures of LLM Code Repairs after API Migrations | ai_engineering | accepted | arxiv:2611.08269 |
+| 2026-yang-reconmem-repository-dual-memory | ReConMem: A Graph-Based Dual Memory System for Repository-Oriented Conversations | ai_engineering | accepted | arxiv:2611.07759 |
+| 2026-wang-req2rust-cpp-migration-harness | Req2Rust: A Requirements-Guided Agent Harness for Project-Level C++-to-Rust Migration | ai_engineering | accepted | arxiv:2611.07442 |
+| 2026-zeng-multistep-swe-long-horizon-benchmark | Multi-step SWE: Can Coding Agents Keep Building on Their Own Code Over Long Horizons? | ai_engineering | accepted | arxiv:2611.07166 |
+| 2026-peilivanidis-skillware-deterministic-capability | Don't Prompt Your Agents. Equip Them: Skillware as a Modular Standard for Sovereign, Auditable, and Deterministic Capability Execution | ai_engineering | accepted | arxiv:2611.07652 |
+| 2026-storey-cognitive-tours-intent-debt | Cognitive Tours: Making Understanding a Deliverable in AI-Assisted Development | ai_engineering | accepted | arxiv:2611.08456 |
+| 2026-sepidband-how-should-agents-see-code | How Should Agents See Code? Rethinking Code Representations for Agentic Software Engineering | ai_engineering | accepted | arxiv:2611.07286 |
+| 2026-hua-agent-harness-boundary-criteria | Beyond the Agent Harness: Boundary Criteria for Software-Factory Orchestration | ai_engineering | accepted | arxiv:2611.06946 |
 | 2026-botvinick-ai-democracy-athens-scale | What Will You Build For: Matthew Botvinick — On AI, Democracy, and "Ancient Athens at Scale" | social_science | accepted | blog.cosmos-institute.org/p/what-will-you-build-for-matthew-botvinick |
 | 2026-anthropic-components-of-agent-memory | The Components of Agent Memory | ai_engineering | accepted | anthropic.com/research/components-of-agent-memory |
 | 2026-collinear-cwe-bench-v2-security-benchmark | CWE-bench v2: More Coverage, Quality, and Transparency | ai_engineering | accepted | repo:collinear-ai/cwe-bench |
