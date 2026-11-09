@@ -424,6 +424,31 @@ class TestSummarizeOutputs(DeliveryBase):
             self.assertEqual(
                 json.load(handle)["domains"]["ai_engineering"]["succeeded"], 1)
 
+    def test_summarize_counts_queue_restorations(self):
+        """Plan 2026-11-09-001 U3: the normaliser's derived report becomes a
+        count row; a missing report means zero; no flag means no row."""
+        workspace, pristine, _ = self.setup_run()
+        report = workspace + "-restored.txt"
+        base_args = [sys.executable, SCRIPT, "summarize",
+                     "--workspace", workspace, "--pristine", pristine,
+                     "--mode", "no-push", "--model1", "success",
+                     "--validate1", "pass", "--base", "origin/main",
+                     "--run-date", RUN_DATE]
+        result = subprocess.run(base_args + ["--queue-restored-log", report],
+                                capture_output=True, text=True)
+        self.assertIn("| queue fields restored by harness | 0 |", result.stdout)
+        with open(report, "w", encoding="utf-8") as handle:
+            handle.write("RESTORED reviews/deferred_candidates/social_science.md:"
+                         "266 action_needed over_cap\nRESTORED reviews/"
+                         "deferred_candidates/ai_engineering.md:143 "
+                         "action_needed over_cap\n")
+        result = subprocess.run(base_args + ["--queue-restored-log", report],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("| queue fields restored by harness | 2 |", result.stdout)
+        result = subprocess.run(base_args, capture_output=True, text=True)
+        self.assertNotIn("queue fields restored", result.stdout)
+
     def test_clean_no_push_run_emits_incomplete_false(self):
         pairs, stdout = self.summarize("pass", "none", "none")
         self.assertEqual(pairs["outcome"], "no-change")

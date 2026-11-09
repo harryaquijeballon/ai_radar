@@ -71,12 +71,15 @@ _FIELD_RE = re.compile(r"^- ([a-z_]+):\s?(.*)$")
 
 
 class QueueRecord:
-    __slots__ = ("url", "fields", "line")
+    __slots__ = ("url", "fields", "line", "field_lines")
 
     def __init__(self, url: str, line: int):
         self.url = url
         self.fields: Dict[str, str] = {}
         self.line = line
+        # 1-based line number of each field (first occurrence), so harness
+        # scripts can rewrite one field in place (normalize_queue_appends.py).
+        self.field_lines: Dict[str, int] = {}
 
 
 def queue_type(path: str) -> Optional[str]:
@@ -111,6 +114,8 @@ def parse_queue_file(text: str) -> Tuple[List[QueueRecord], List[Tuple[int, str]
             key = field_match.group(1)
             if key in current.fields:
                 errors.append((number, "duplicate-field"))
+            else:
+                current.field_lines[key] = number
             current.fields[key] = field_match.group(2).strip()
             continue
         if stripped == "" or stripped.startswith("#") or stripped.startswith(">") \

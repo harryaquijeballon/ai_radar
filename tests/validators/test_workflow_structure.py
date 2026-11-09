@@ -122,27 +122,85 @@ class TestWorkflowStructure(unittest.TestCase):
         """R43 + 2026-07-28 review: diagnostics carry only the derived facts
         record; the raw execution log (contains fetched content) is never
         copied or uploaded."""
-        self.assertEqual(self.text.count("summarize_execution_log.py"), 2)
+        self.assertEqual(self.text.count("summarize_execution_log.py"), 3)
         self.assertIn("model-run-facts.json", self.text)
         self.assertIn("model-run-facts-attempt1.json", self.text)
         self.assertIn("--deliver2-class", self.text)
         for line in self.text.split("\n"):
             if "execution_file" in line:
-                self.assertIn("summarize_execution_log.py", self.text)
                 self.assertNotIn("cp ", line)
                 self.assertNotIn("upload", line.lower())
+        # The one transcript copy (U2 snapshot) lands in the harness-private
+        # runner-temp dir, never in the evidence or diagnostics dirs:
+        copies = [line.strip() for line in self.text.split("\n")
+                  if "scan-transcript" in line and line.strip().startswith("cp ")]
+        self.assertEqual(copies, [
+            'cp "$SCAN_TRANSCRIPT" '
+            '"$RUNNER_TEMP/radar-private/scan-transcript-attempt1.json"'])
+        upload = self.text.split("uses: actions/upload-artifact@v7")[1]
+        self.assertIn("path: /tmp/radar/diagnostics/", upload)
+        self.assertNotIn("radar-private", upload.split("- name:")[0])
 
     def test_coverage_measured_from_scan_attempt_report_only(self):
-        """Plan 2026-10-16-001 U12: the summary measures coverage from the
-        scan attempt's log (attempt 2 when it ran, never the repair pass),
+        """Plan 2026-10-16-001 U12, fixed by plan 2026-11-09-001 U2: every
+        model invocation writes the same execution_file path, so the repair
+        pass overwrote the scan transcript. Coverage now reads attempt 2's
+        own transcript or the attempt-1 snapshot taken before any repair,
         and nothing enforces a floor until the user sets one."""
+        snapshot = self.text.index("Snapshot attempt-1 transcript (before any repair)")
+        self.assertLess(self.text.index("id: model1"), snapshot)
+        self.assertLess(snapshot, self.text.index("id: repair1"))
         summary = self.text.split("Job summary (always")[1].split("- name:")[0]
-        self.assertIn('--execution-log "${{ steps.model2.outputs.execution_file'
-                      ' || steps.model1.outputs.execution_file || \'\' }}"',
+        self.assertIn('SCAN_LOG="${{ steps.model2.outputs.execution_file || \'\' }}"',
                       summary)
+        self.assertIn('SNAPSHOT="$RUNNER_TEMP/radar-private/'
+                      'scan-transcript-attempt1.json"', summary)
+        self.assertIn('--execution-log "$SCAN_LOG"', summary)
+        self.assertNotIn("repair1.outputs.execution_file || steps.model1"
+                         ".outputs.execution_file || '' }}\" \\\n"
+                         "            --coverage-out", summary)
         self.assertIn('--coverage-out "$RADAR_DIR/diagnostics/coverage.json"',
                       summary)
         self.assertNotIn("--min-ratio", self.text)
+        # The attempt-2 reset reads the snapshot too (a push race can follow
+        # a repaired attempt 1):
+        reset = self.text.split("Preserve attempt-1 diagnostics and reset")[1] \
+            .split("- name:")[0]
+        self.assertIn("scan-transcript-attempt1.json", reset)
+        self.assertNotIn("execution_file", reset)
+
+    def test_runner_image_pinned(self):
+        """Plan 2026-11-09-001 U4: ubuntu-latest moved to 26.04 unannounced
+        (HDAI-AIRADAR-001 P-rule: pin every input that can change a run)."""
+        self.assertIn("runs-on: ubuntu-26.04", self.text)
+        self.assertNotIn("ubuntu-latest\n", self.text)
+        self.assertNotRegex(self.text, r"runs-on: ubuntu-latest\s")
+
+    def test_queue_normaliser_runs_before_every_validation(self):
+        """Plan 2026-11-09-001 U3: the P9 deadlock is fixed by a script that
+        restores grow-only queue text before each validation (attempt 1,
+        revalidation after repair, attempt 2)."""
+        steps = self.text.split("      - name: ")
+        validating = [s for s in steps if "run_delivery.py\" validate" in s]
+        self.assertEqual(len(validating), 3)
+        for step in validating:
+            self.assertIn("normalize_queue_appends.py", step)
+            self.assertLess(step.index("normalize_queue_appends.py"),
+                            step.index("run_delivery.py\" validate"))
+            self.assertIn('--report-out "$RUNNER_TEMP/radar-private/'
+                          'queue-restored.txt"', step)
+        summary = self.text.split("Job summary (always")[1].split("- name:")[0]
+        self.assertIn('--queue-restored-log "$RUNNER_TEMP/radar-private/'
+                      'queue-restored.txt"', summary)
+
+    def test_repair_prompt_forbids_delegation_and_shortening(self):
+        """Plan 2026-11-09-001 U1: the 10-30 repair pass delegated to
+        background agents and ended without an edit."""
+        repair = self.text.split("id: repair1")[1].split("- name:")[0]
+        self.assertIn("this session ends the moment you stop", repair)
+        self.assertIn("never hand work to another agent", repair)
+        self.assertIn("Never shorten or rephrase text that already existed "
+                      "in a queue record", repair)
 
     def test_delivery_gate_covers_scheduled_runs(self):
         """Regression for runs 30154883225/30198956789: `inputs.mode` is empty
@@ -260,6 +318,16 @@ class TestSettingsBuilder(unittest.TestCase):
         self.assertIn("Edit(.git/**)", deny)
         self.assertIn("Edit(//home/runner/work/_temp/**)", deny)
         self.assertNotIn("WebFetch", deny)  # bare deny would nullify domain allows
+
+    def test_deferral_tools_denied(self):
+        """Plan 2026-11-09-001 U1: tools that hand work past the end of the
+        turn are denied by bare name (runs 33492847557 and 41044727227)."""
+        deny = bcs.build_settings(["arxiv.org"], "/tmp/r", "/t")["permissions"]["deny"]
+        for tool in ("Agent", "Task", "ScheduleWakeup", "ListAgents",
+                     "SendMessage"):
+            self.assertIn(tool, deny)
+        allow = bcs.build_settings(["arxiv.org"], "/tmp/r", "/t")["permissions"]["allow"]
+        self.assertFalse(set(bcs.DEFERRAL_TOOLS) & set(allow))
 
     def test_model_pinned_by_default_and_overridable(self):
         """U11: scheduled runs get the pinned model; a dispatch may override it."""

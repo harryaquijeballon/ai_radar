@@ -39,7 +39,7 @@ env:
 
 jobs:
   radar:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04   # pinned 2026-11-09 (plan 2026-11-09-001 U4); was ubuntu-latest, which moved to 26.04 unannounced
     timeout-minutes: 120   # sized for two full attempts, each with one repair pass
     steps:
       - name: Guard auth boundary (R32)
@@ -52,6 +52,9 @@ jobs:
           fi
           echo "oauth_secret_ready=${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
           mkdir -p "$RADAR_DIR/diagnostics"
+          # Harness-private scratch under the runner temp dir, which the
+          # model's settings deny (R48): transcript snapshot, normaliser report.
+          mkdir -p "$RUNNER_TEMP/radar-private"
 
       - name: Checkout model workspace (no persisted credentials, R49)
         uses: actions/checkout@v4
@@ -95,10 +98,30 @@ jobs:
         env:
           RADAR_EVIDENCE_PATH: ${{ env.RADAR_EVIDENCE_PATH }}
 
+      # Plan 2026-11-09-001 U2: every model invocation writes its transcript to
+      # the same execution_file path, so a repair pass overwrote the scan's
+      # transcript and the U12 coverage sensor read 0 on every repaired run.
+      # Snapshot attempt 1's transcript before any repair; it stays in the
+      # harness-private dir and is never copied to diagnostics (R43).
+      - name: Snapshot attempt-1 transcript (before any repair)
+        if: always() && steps.model1.outputs.execution_file != ''
+        env:
+          SCAN_TRANSCRIPT: ${{ steps.model1.outputs.execution_file }}
+        run: |
+          set -eu
+          cp "$SCAN_TRANSCRIPT" "$RUNNER_TEMP/radar-private/scan-transcript-attempt1.json"
+
       - name: Validate (attempt 1)
         id: validate1
         run: |
           set -eu
+          # Plan 2026-11-09-001 U3: restore grow-only queue text the run may
+          # not change (the P9 deadlock), before the validators judge it.
+          python3 "$RUNNER_TEMP/pristine/scripts/normalize_queue_appends.py" \
+            --workspace "$GITHUB_WORKSPACE" \
+            --pristine "$RUNNER_TEMP/pristine" \
+            --report-out "$RUNNER_TEMP/radar-private/queue-restored.txt" \
+            || echo "queue normaliser failed; validating unchanged files"
           python3 "$RUNNER_TEMP/pristine/scripts/run_delivery.py" validate \
             --workspace "$GITHUB_WORKSPACE" \
             --pristine "$RUNNER_TEMP/pristine" \
@@ -116,13 +139,18 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           settings: ${{ runner.temp }}/claude-settings.json
-          prompt: "Read /tmp/radar/violations-1.txt (validator findings for your earlier changes in this repository) and .github/prompts/daily-radar.md, then fix only those findings. Change nothing else."
+          prompt: "Read /tmp/radar/violations-1.txt (validator findings for your earlier changes in this repository) and .github/prompts/daily-radar.md, then fix only those findings. Change nothing else. No user is present and this session ends the moment you stop: make every edit yourself, directly, before you stop, and never hand work to another agent or wait for anything. Never shorten or rephrase text that already existed in a queue record."
 
       - name: Revalidate full suite (attempt 1)
         id: revalidate1
         if: steps.repair1.outcome == 'success'
         run: |
           set -eu
+          python3 "$RUNNER_TEMP/pristine/scripts/normalize_queue_appends.py" \
+            --workspace "$GITHUB_WORKSPACE" \
+            --pristine "$RUNNER_TEMP/pristine" \
+            --report-out "$RUNNER_TEMP/radar-private/queue-restored.txt" \
+            || echo "queue normaliser failed; validating unchanged files"
           python3 "$RUNNER_TEMP/pristine/scripts/run_delivery.py" validate \
             --workspace "$GITHUB_WORKSPACE" \
             --pristine "$RUNNER_TEMP/pristine" \
@@ -170,10 +198,13 @@ jobs:
           cp "$RADAR_EVIDENCE_PATH" "$RADAR_DIR/diagnostics/scan-evidence-attempt1.json" 2>/dev/null || true
           cp "$RADAR_DIR"/violations-1*.txt "$RADAR_DIR/diagnostics/" 2>/dev/null || true
           python3 "$RUNNER_TEMP/pristine/scripts/summarize_execution_log.py" \
-            --execution-log "${{ steps.model1.outputs.execution_file || '' }}" \
+            --execution-log "$RUNNER_TEMP/radar-private/scan-transcript-attempt1.json" \
             --evidence-path "$RADAR_EVIDENCE_PATH" \
             --output "$RADAR_DIR/diagnostics/model-run-facts-attempt1.json" || true
           rm -f "$RADAR_EVIDENCE_PATH"
+          # Attempt 2 reports its own restorations; keep attempt 1's as a count.
+          mv "$RUNNER_TEMP/radar-private/queue-restored.txt" \
+            "$RUNNER_TEMP/radar-private/queue-restored-attempt1.txt" 2>/dev/null || true
 
       - name: Re-checkout workspace from new remote head (attempt 2)
         if: >
@@ -226,6 +257,11 @@ jobs:
           RADAR_PUSH_TOKEN: ${{ github.token }}
         run: |
           set -eu
+          python3 "$RUNNER_TEMP/pristine/scripts/normalize_queue_appends.py" \
+            --workspace "$GITHUB_WORKSPACE" \
+            --pristine "$RUNNER_TEMP/pristine" \
+            --report-out "$RUNNER_TEMP/radar-private/queue-restored.txt" \
+            || echo "queue normaliser failed; validating unchanged files"
           python3 "$RUNNER_TEMP/pristine/scripts/run_delivery.py" validate \
             --workspace "$GITHUB_WORKSPACE" \
             --pristine "$RUNNER_TEMP/pristine" \
@@ -260,12 +296,28 @@ jobs:
           # logs contain fetched content and are never uploaded — R43 review
           # 2026-07-28); attempt 1's snapshot is preserved by the reset step.
           # Scan coverage (plan 2026-10-16-001 U12) is measured from the scan
-          # attempt's log, never the repair pass, and is report-only until
-          # the user sets per-domain floors.
+          # attempt's transcript, never the repair pass, and is report-only
+          # until the user sets per-domain floors. Attempt 2 is never repaired,
+          # so its execution_file is its own; otherwise use the attempt-1
+          # snapshot taken before any repair (plan 2026-11-09-001 U2).
+          SCAN_LOG="${{ steps.model2.outputs.execution_file || '' }}"
+          SNAPSHOT="$RUNNER_TEMP/radar-private/scan-transcript-attempt1.json"
+          if [ -z "$SCAN_LOG" ] && [ -f "$SNAPSHOT" ]; then
+            SCAN_LOG="$SNAPSHOT"
+          fi
           python3 "$RUNNER_TEMP/pristine/scripts/summarize_execution_log.py" \
             --execution-log "${{ steps.model2.outputs.execution_file || steps.repair1.outputs.execution_file || steps.model1.outputs.execution_file || '' }}" \
             --evidence-path "$RADAR_EVIDENCE_PATH" \
             --output "$RADAR_DIR/diagnostics/model-run-facts.json" || true
+          # After a repair, the newest facts are the repair's; keep the scan's too.
+          if [ "${{ steps.repair1.outcome }}" != "skipped" ] && [ -f "$SNAPSHOT" ] \
+              && [ ! -f "$RADAR_DIR/diagnostics/model-run-facts-attempt1.json" ]; then
+            python3 "$RUNNER_TEMP/pristine/scripts/summarize_execution_log.py" \
+              --execution-log "$SNAPSHOT" \
+              --evidence-path "$RADAR_EVIDENCE_PATH" \
+              --output "$RADAR_DIR/diagnostics/model-run-facts-attempt1.json" || true
+          fi
+          cp "$RUNNER_TEMP"/radar-private/queue-restored*.txt "$RADAR_DIR/diagnostics/" 2>/dev/null || true
           python3 "$RUNNER_TEMP/pristine/scripts/run_delivery.py" summarize \
             --workspace "$GITHUB_WORKSPACE" \
             --pristine "$RUNNER_TEMP/pristine" \
@@ -285,8 +337,9 @@ jobs:
             --deliver2-class "${{ steps.deliver2.outputs.failure_class || 'none' }}" \
             --base "${{ steps.pristine2.outputs.base_sha || steps.pristine.outputs.base_sha }}" \
             --evidence "$RADAR_EVIDENCE_PATH" \
-            --execution-log "${{ steps.model2.outputs.execution_file || steps.model1.outputs.execution_file || '' }}" \
+            --execution-log "$SCAN_LOG" \
             --coverage-out "$RADAR_DIR/diagnostics/coverage.json" \
+            --queue-restored-log "$RUNNER_TEMP/radar-private/queue-restored.txt" \
             --github-output "$GITHUB_OUTPUT" \
             > "$RADAR_DIR/diagnostics/run-summary.md"
           cat "$RADAR_DIR/diagnostics/run-summary.md" >> "$GITHUB_STEP_SUMMARY"

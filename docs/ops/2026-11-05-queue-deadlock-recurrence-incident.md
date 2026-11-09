@@ -78,3 +78,12 @@ The U12 coverage rows for this run read `0 of 19 attempted` (social science) and
 
 - An instruction-only fix for a structural deadlock fails at the model's adherence rate. Four recurrences in three months, with a growing set of fields at the cap, are the measured cost (P9, *revalidated*).
 - Test what a sensor actually reads, not the name of its input. U12's structure test asserts that the workflow never passes the repair step's output to the coverage sensor (`tests/validators/test_workflow_structure.py`), but both steps' outputs are the same file, so the test passes while the sensor reads the repair transcript.
+
+## Update 2026-11-09: fixes 1, 2 and 4 applied
+
+Plan `docs/plans/2026-11-09-001-harden-repair-loop-plan.md`, Phase 1, approved by the user:
+- **U3 (fix 1):** `scripts/normalize_queue_appends.py` runs before every validation and restores the base text of any grow-only field the run rephrased or pushed over the cap. Fixture tests reproduce this run's two fields (240 and 233 characters plus an append) and the repair's trimmed output; all three pass the real validators after normalisation. Replayed over the 22 delivered daily runs 10-17 → 11-08, it restores nothing.
+- **U1 (fix 2):** the repair prompt forbids shortening or rephrasing existing queue text.
+- **U2 (fix 4):** attempt 1's transcript is snapshotted to `$RUNNER_TEMP/radar-private/` before any repair. Coverage reads the snapshot.
+
+Fix 3 (keep `verification` out of the repair pass) is Phase 2, U5.

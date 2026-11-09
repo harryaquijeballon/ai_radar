@@ -47,6 +47,7 @@ CLASS RULE_ID path[:line] - message
 | `check_report_integrity.py` | Report bar: entry link resolves (abort), accepted+verified+high relevance, ≤3 items, quiet-day statement + evidence block | abort / repairable |
 | `check_queue_records.py` | Queue structure, controlled vocabularies, URL hygiene, metadata-only bounds, duplicates incl. sibling-domain | repairable |
 | `../make_run_summary.py` | R37 job summary — derived counts, controlled vocab, safe paths only; no model-authored text can reach it | n/a (generator) |
+| `../normalize_queue_appends.py` | Not a validator: a harness step run before every unattended validation (plan 2026-11-09-001 U3). Restores the base text of a grow-only field on an existing queue record when the run rephrased it or pushed it over `MAX_FREE_TEXT`; keeps the `last_encountered` bump. Fixes the grow-only/length-cap deadlock (P9) without the model. Reports `path:line field reason` only (count in the run summary) | n/a (mutates workspace) |
 
 Queue-record and scan-evidence formats are DRAFT until the U5 engine revision adopts them (documented in `lib_queues.py` and `check_scan_evidence.py`).
 

@@ -8,7 +8,9 @@ The unattended model step gets exactly:
   `profiles/egress_allowlist.md` — no other network surface;
 - no Bash, no PowerShell (bare-name deny removes them from the model's
   context entirely), and no access to the runner temp directory where the
-  GitHub control files ($GITHUB_ENV, $GITHUB_OUTPUT, ...) live.
+  GitHub control files ($GITHUB_ENV, $GITHUB_OUTPUT, ...) live;
+- no tools that defer work past the end of the turn (subagents, wake-ups,
+  messaging; `DEFERRAL_TOOLS`), which a non-interactive run silently drops.
 
 Deny rules override allows; in a non-interactive run, anything not allowed
 does not execute. Run from the pristine base copy (R41).
@@ -36,6 +38,16 @@ def read_allowlist(path: str) -> list:
     return domains
 
 
+# Plan 2026-11-09-001 U1: tools that hand work to something that outlives the
+# agent's turn. In a non-interactive run the end of the turn is the end of
+# the session, so that work is silently lost: the 2026-09-01 scan (run
+# 33492847557) and the 2026-10-30 repair pass (run 41044727227,
+# docs/ops/2026-10-30-repair-pass-stall-incident.md). A prompt rule did not
+# stop the second one, so they are denied by bare name, which removes them
+# from the model's context like Bash. `Task` is the older name of `Agent`.
+DEFERRAL_TOOLS = ("Agent", "Task", "ScheduleWakeup", "ListAgents",
+                  "SendMessage", "Monitor", "CronCreate", "RemoteTrigger")
+
 MODEL_ID = re.compile(r"^claude-[a-z0-9.-]+$")
 # U11 (docs/ops/2026-10-16-scan-depth-collapse-incident.md): the unpinned
 # default moved to claude-sonnet-5-5 on 2026-09-29 and the scan collapsed.
@@ -61,6 +73,7 @@ def build_settings(domains: list, evidence_dir: str, runner_temp: str,
         "Read(//%s/**)" % runner_temp.strip("/"),
         "Edit(//%s/**)" % runner_temp.strip("/"),
     ]
+    deny += list(DEFERRAL_TOOLS)
     settings = {"permissions": {"allow": allow, "deny": deny}}
     model = model or PINNED_MODEL
     if not MODEL_ID.match(model):

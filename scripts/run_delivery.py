@@ -280,10 +280,20 @@ def cmd_summarize(args) -> int:
             with open(args.coverage_out, "w", encoding="utf-8") as handle:
                 json.dump(coverage, handle, indent=2, sort_keys=True)
                 handle.write("\n")
+    # Plan 2026-11-09-001 U3: count of grow-only queue fields the harness
+    # restored before validation (one derived line each; absent file = 0).
+    queue_restored = None
+    if args.queue_restored_log is not None:
+        queue_restored = 0
+        if os.path.isfile(args.queue_restored_log):
+            with open(args.queue_restored_log, encoding="utf-8") as handle:
+                queue_restored = sum(1 for line in handle
+                                     if line.startswith("RESTORED "))
     summary = mrs.build_summary(
         args.workspace, args.base, args.git_dir, run_date, outcome, attempts,
         commit, args.oauth_ready == "true", artifacts_note=incomplete,
-        evidence_path=args.evidence, coverage=coverage)
+        evidence_path=args.evidence, coverage=coverage,
+        queue_restored=queue_restored)
     # stdout carries ONLY the safe summary markdown (the workflow tees it to
     # the step summary, the log, and the diagnostics artifact); machine
     # outputs go to the --github-output file so the gate and upload steps
@@ -348,6 +358,9 @@ def main() -> int:
                              help="execution log of the scan attempt (U12 "
                                   "coverage rows); omit to skip them")
     p_summarize.add_argument("--coverage-out", default=None)
+    p_summarize.add_argument("--queue-restored-log", default=None,
+                             help="normalize_queue_appends.py report (U3 "
+                                  "summary row); omit to skip the row")
     p_summarize.add_argument("--base", required=True)
     p_summarize.add_argument("--run-date", default=None)
     p_summarize.add_argument("--github-output", default=None)

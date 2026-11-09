@@ -53,3 +53,11 @@ The repair agent handed the fix to two background subagents and then ended its t
 
 - In a non-interactive harness, any tool that defers work past the end of the turn (background subagents, wake-ups) silently drops that work. Deny such tools by default; do not leave them merely unallowed.
 - A repair pass needs its own sensor. "Repair ran successfully" (the step's outcome) and "repair changed anything" are different facts, and only the second matters.
+
+## Update 2026-11-09: fixes 1 and 2 applied
+
+Plan `docs/plans/2026-11-09-001-harden-repair-loop-plan.md`, Phase 1, approved by the user:
+- **U1:** the deferral tools are denied by bare name (`DEFERRAL_TOOLS` in `scripts/build_claude_settings.py`). The repair prompt says the session ends when the agent stops and forbids handing work off.
+- **U3:** the rephrased existing record (line 155) is now restored by the harness before validation. Only the new over-cap record (line 290) would have reached the repair pass.
+
+Fix 3 (repair outcome classes) is Phase 2, U6. This incident also repeats the 2026-09-01 failure (run 33492847557), where the scan delegated to a background agent despite a prompt rule. That is why U1 is a deny rule and not another instruction.

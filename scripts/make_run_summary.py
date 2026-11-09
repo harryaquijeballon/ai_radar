@@ -151,9 +151,13 @@ def _coverage_rows(coverage):
 def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.date,
                   outcome: str, attempts: int, commit: str,
                   oauth_ready: bool, artifacts_note: bool,
-                  evidence_path: str = None, coverage=False) -> str:
+                  evidence_path: str = None, coverage=False,
+                  queue_restored=None) -> str:
     """`coverage` is False when not measured (no rows), None when the
-    execution log was unavailable, else the U12 coverage record."""
+    execution log was unavailable, else the U12 coverage record.
+    `queue_restored` is the number of grow-only queue fields the harness
+    restored to their base text (normalize_queue_appends.py), or None when
+    the normaliser did not run (no row)."""
     added, modified, provisional, rejections = _entry_change_counts(
         workspace, base_ref, git_dir)
     deferred_total, deferred_by_class = _new_queue_records(
@@ -183,6 +187,9 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
         if reason_class in deferred_by_class:
             lines.append("| deferred: %s | %d |"
                          % (reason_class, deferred_by_class[reason_class]))
+    if queue_restored is not None:
+        lines.append("| queue fields restored by harness | %d |"
+                     % int(queue_restored))
     evidence = _evidence_counts(evidence_path)
     for domain in lib_radar.DOMAINS:
         pair = evidence.get(domain)
