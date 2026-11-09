@@ -461,3 +461,11 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-chen-zhang-patching-the-protocol-pre-registration-repairs | Patching the Protocol: A Taxonomy of Pre-Registration Repairs in LLM-Proposer Experiments | ai_engineering, social_science | accepted | arxiv:2611.04338 |
 | 2026-ramdowar-fresh-ai-stock-analysis-refresh-budget | When Is Fresh AI Stock Analysis Worth It? Allocating a Limited Research Budget Across a Portfolio | social_science, ai_engineering | accepted | arxiv:2611.04348 |
 | 2026-tsuchida-agents-md-policy-wording-compliance | Do Coding Agents Follow AGENTS.md? The Effect of Policy Wording on Instruction Compliance | ai_engineering | accepted | arxiv:2611.04367 |
+| 2026-althoff-ai-scientific-discovery-claude-usage | AI for Scientific Discovery: How Researchers Use Claude | social_science, ai_engineering | accepted | anthropic.com/research/how-researchers-use-claude |
+| 2026-botvinick-ai-political-freedom | What Will You Build For: Matthew Botvinick | social_science | accepted | blog.cosmos-institute.org/p/what-will-you-build-for-matthew-botvinick |
+| 2026-zhao-aegis-os-transactional-agent-runtime | Aegis OS: A Transactional Multi-Tenant Operating System Runtime for Eliminating Authorization Fatigue in Autonomous Coding Agents | ai_engineering | accepted | arxiv:2611.08516 |
+| 2026-mehtiyev-stale-instruction-files-documentation-debt | When Instruction Files Go Stale: Documentation Debt and Hidden Cost in Coding Agents | ai_engineering | accepted | arxiv:2611.09802 |
+| 2026-segal-agents-patch-path-security-remediation | Agents on the Patch Path: Mining AI-Associated Security Remediation in GitHub Security Advisories | ai_engineering | accepted | arxiv:2611.09808 |
+| 2026-handa-decaf-agentic-pipeline-optimization | Divide, Diagnose, and Compose: Optimizing Agentic Pipelines and Harnesses | ai_engineering | accepted | arxiv:2611.08723 |
+| 2026-adnan-breakpoint-debugging-repair-limits | On the Limits of Execution Traces for Repairing Assertion Failures in LLM-Generated Code | ai_engineering | accepted | arxiv:2611.09212 |
+| 2026-zhou-greyzone-agentic-threat-benchmark | GreyZone: Production-quality Agentic Application Threats | ai_engineering | accepted | arxiv:2611.09161 |
