@@ -22,6 +22,10 @@ Two modes:
   never URLs, paths, queries, or tool results.
 - enforcing (`--min-ratio domain=0.36`, repeatable): a domain below its floor,
   or a missing execution log, is an abort (TOOLING) violation.
+
+The unattended run enforces `ATTEMPTED_FLOORS` (counts of fetchable watchlist
+sources attempted), through `run_delivery.py validate`: a run below the floor
+is not delivered (user decision 2026-11-09, plan 2026-11-09-001 U7).
 """
 
 from __future__ import annotations
@@ -42,6 +46,12 @@ register_rule("COVERAGE_LOG_MISSING", ABORT,
 register_rule("COVERAGE_BELOW_FLOOR", ABORT,
               "curated-source coverage for {domain} is {attempted} of {fetchable}, "
               "below the floor {floor}")
+
+# Plan 2026-11-09-001 U7, agreed by the user 2026-11-09: minimum fetchable
+# watchlist sources attempted per run. Calibrated on the 7 valid readings of
+# 2026-10-27 → 11-08 (social science 16-17 of 19, AI engineering 7-17 of 17)
+# and far above the 2026-09-29 collapse (1-4). Change only by commit.
+ATTEMPTED_FLOORS = {"social_science": 12, "ai_engineering": 6}
 
 FETCH_TOOL = "WebFetch"
 HOSTS_HEADER = "fetch hosts"
@@ -210,6 +220,25 @@ def check_floors(record: Optional[dict], floors: Dict[str, float]) -> List[Viola
     return violations
 
 
+def check_attempted_floors(record: Optional[dict],
+                           floors: Dict[str, int] = None) -> List[Violation]:
+    """Count floors (U7). A floor above a shrunken watchlist is capped at
+    the watchlist's size, so a watchlist edit can never make it unmeetable."""
+    floors = ATTEMPTED_FLOORS if floors is None else floors
+    label = "scan-coverage"
+    if record is None:
+        return [emit("COVERAGE_LOG_MISSING", label)]
+    violations = []
+    for domain, floor in sorted(floors.items()):
+        section = record["domains"][domain]
+        required = min(floor, section["fetchable"])
+        if section["attempted"] < required:
+            violations.append(emit("COVERAGE_BELOW_FLOOR", label, domain=domain,
+                                   attempted=section["attempted"],
+                                   fetchable=section["fetchable"], floor=required))
+    return violations
+
+
 def parse_floor(value: str) -> Tuple[str, float]:
     domain, _, ratio = value.partition("=")
     if domain not in lib_radar.DOMAINS:
@@ -229,15 +258,24 @@ def main() -> int:
                         help="write the coverage record here (JSON)")
     parser.add_argument("--min-ratio", type=parse_floor, action="append",
                         default=[], help="domain=floor; enforcing mode")
+    parser.add_argument("--enforce-floors", action="store_true",
+                        help="enforce ATTEMPTED_FLOORS (the unattended run's gate)")
     args = parser.parse_args()
     record = measure(args.profiles_root, args.execution_log)
     if args.report_out and record is not None:
         with open(args.report_out, "w", encoding="utf-8") as handle:
             json.dump(record, handle, indent=2, sort_keys=True)
             handle.write("\n")
-    if not args.min_ratio:
+    violations = []
+    if args.enforce_floors:
+        violations += check_attempted_floors(record)
+    if args.min_ratio:
+        violations += [v for v in check_floors(record, dict(args.min_ratio))
+                       if not (args.enforce_floors
+                               and v.rule_id == "COVERAGE_LOG_MISSING")]
+    if not (args.enforce_floors or args.min_ratio):
         return lib_radar.EXIT_PASS
-    return lib_radar.report(check_floors(record, dict(args.min_ratio)))
+    return lib_radar.report(violations)
 
 
 if __name__ == "__main__":

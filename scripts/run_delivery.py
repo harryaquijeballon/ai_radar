@@ -89,10 +89,33 @@ def cmd_validate(args) -> int:
     if queue_paths:
         checks.append(("check_queue_records.py", queue_paths))
 
+    # Plan 2026-11-09-001 U5: the repair pass may not raise verification or
+    # status (an evidence judgment). Only on revalidation after a repair.
+    if args.pre_repair_entries:
+        checks.append(("check_repair_scope.py",
+                       ["--before", args.pre_repair_entries,
+                        "--workspace", args.workspace]))
+
     for name, check_args in checks:
         code, out = _run_validator(args.pristine, name, check_args)
         lines += out.splitlines()
         internal |= code == lib_radar.EXIT_INTERNAL
+
+    # Plan 2026-11-09-001 U7: a scan below the agreed coverage floors is not
+    # delivered (user decision 2026-11-09). Measured from the scan attempt's
+    # own transcript (U2 snapshot), never self-reported; fails closed when
+    # the transcript is missing. Dry runs have no model step and skip it.
+    coverage_lines = []
+    if not args.skip_evidence and args.scan_transcript is not None:
+        code, out = _run_validator(
+            args.pristine, "check_scan_coverage.py",
+            ["--execution-log", args.scan_transcript, "--profiles-root",
+             os.path.join(args.pristine, "profiles"), "--enforce-floors"])
+        coverage_lines = out.splitlines()
+        lines += coverage_lines
+        internal |= code == lib_radar.EXIT_INTERNAL
+    coverage_abort = any(line.startswith("ABORT COVERAGE_")
+                         for line in coverage_lines)
 
     if args.violations_out:
         with open(args.violations_out, "w", encoding="utf-8") as handle:
@@ -102,8 +125,13 @@ def cmd_validate(args) -> int:
                                 or line.startswith("INTERNAL ") for line in lines)
     has_repairable = any(line.startswith("REPAIRABLE ") for line in lines)
 
+    other_abort = internal or any(
+        (line.startswith("ABORT ") or line.startswith("INTERNAL "))
+        and not line.startswith("ABORT COVERAGE_") for line in lines)
     if tooling or (not args.skip_evidence and internal and not lines):
         verdict, failure_class = "abort", "tooling"
+    elif coverage_abort and not other_abort and not has_repairable:
+        verdict, failure_class = "abort", "coverage"
     elif has_abort:
         verdict, failure_class = "abort", "validation"
     elif has_repairable:
@@ -117,9 +145,13 @@ def cmd_validate(args) -> int:
     # this exact signature is retry-eligible — a missing artifact alongside any
     # other violation (protected path, history, queue rewrite) is not, and a
     # malformed artifact emits a different token, so it is not either.
+    # A degenerate run also scans nothing, so its coverage lines (U7) do not
+    # disqualify it from the retry.
     nonempty = [line for line in lines if line.strip()]
-    degenerate = (not internal and len(nonempty) == 1
-                  and nonempty[0].startswith("ABORT EVIDENCE_MISSING"))
+    signature = [line for line in nonempty
+                 if not line.startswith("ABORT COVERAGE_")]
+    degenerate = (not internal and len(signature) == 1
+                  and signature[0].startswith("ABORT EVIDENCE_MISSING"))
 
     _emit([("verdict", verdict), ("failure_class", failure_class),
            ("violation_count", len(nonempty)),
@@ -231,7 +263,7 @@ def classify_outcome(mode, authgate, model1, validate1, revalidate1, deliver1,
         if deliver2_outcome == "no-change":
             return "no-change", 2
         if deliver2_verdict == "abort":
-            return ("tooling" if deliver2_class == "tooling"
+            return (deliver2_class if deliver2_class in ("tooling", "coverage")
                     else "validation"), 2
         return "push", 2
     if "failure" in (model1, model2):
@@ -239,9 +271,9 @@ def classify_outcome(mode, authgate, model1, validate1, revalidate1, deliver1,
     verdicts = [value for value in (validate1, revalidate1) if value != "none"]
     final_verdict = verdicts[-1] if verdicts else "none"
     if final_verdict in ("abort", "repairable"):
-        if final_verdict == "abort" and validate1_class == "tooling" \
+        if final_verdict == "abort" and validate1_class in ("tooling", "coverage") \
                 and deliver1 == "none":
-            return "tooling", attempts
+            return validate1_class, attempts
         return "validation", attempts
     if deliver1 == "pushed":
         return "success", attempts
@@ -254,6 +286,40 @@ def classify_outcome(mode, authgate, model1, validate1, revalidate1, deliver1,
     if mode in ("dry-run", "no-push") and final_verdict in ("pass", "none"):
         return "no-change", attempts
     return "tooling", attempts
+
+
+def _violation_keys(path):
+    """Multiset of (class, rule, file) per violation line: line numbers shift
+    when a repair edits a file, so they are not part of the identity."""
+    keys = []
+    if path and os.path.isfile(path):
+        with open(path, encoding="utf-8") as handle:
+            for line in handle:
+                parts = line.split()
+                if len(parts) >= 3 and parts[0] in ("ABORT", "REPAIRABLE", "INTERNAL"):
+                    keys.append((parts[0], parts[1], parts[2].rsplit(":", 1)[0]
+                                 if parts[2].rsplit(":", 1)[-1].isdigit()
+                                 else parts[2]))
+    return sorted(keys)
+
+
+def classify_repair(revalidate_verdict, before_path, after_path):
+    """Plan 2026-11-09-001 U6: what the bounded repair pass achieved, as one
+    of make_run_summary.REPAIR_OUTCOMES.
+    None when no repair ran. `regressed` = it created a violation that was not
+    there before (08-07, 09-27, 11-05); `no_progress` = same violations (10-30)."""
+    if revalidate_verdict in ("none", "", None):
+        return None
+    if revalidate_verdict == "pass":
+        return "fixed"
+    before = _violation_keys(before_path)
+    after = _violation_keys(after_path)
+    remaining = list(before)
+    for key in after:
+        if key not in remaining:
+            return "regressed"
+        remaining.remove(key)
+    return "no_progress" if after == before else "partial"
 
 
 def cmd_summarize(args) -> int:
@@ -293,7 +359,9 @@ def cmd_summarize(args) -> int:
         args.workspace, args.base, args.git_dir, run_date, outcome, attempts,
         commit, args.oauth_ready == "true", artifacts_note=incomplete,
         evidence_path=args.evidence, coverage=coverage,
-        queue_restored=queue_restored)
+        queue_restored=queue_restored,
+        repair_outcome=classify_repair(args.revalidate1, args.violations_before,
+                                       args.violations_after))
     # stdout carries ONLY the safe summary markdown (the workflow tees it to
     # the step summary, the log, and the diagnostics artifact); machine
     # outputs go to the --github-output file so the gate and upload steps
@@ -320,6 +388,12 @@ def main() -> int:
     p_validate.add_argument("--final", action="store_true")
     p_validate.add_argument("--run-date", default=None)
     p_validate.add_argument("--violations-out", default=None)
+    p_validate.add_argument("--scan-transcript", default=None,
+                            help="the scan attempt's transcript; enforces the "
+                                 "U7 coverage floors (omit to skip)")
+    p_validate.add_argument("--pre-repair-entries", default=None,
+                            help="snapshot of library/entries/ before the "
+                                 "repair pass; enforces U5 repair scope")
     p_validate.add_argument("--github-output", default=None)
 
     p_deliver = sub.add_parser("deliver")
@@ -358,6 +432,11 @@ def main() -> int:
                              help="execution log of the scan attempt (U12 "
                                   "coverage rows); omit to skip them")
     p_summarize.add_argument("--coverage-out", default=None)
+    p_summarize.add_argument("--violations-before", default=None,
+                             help="validator findings that sent attempt 1 to "
+                                  "repair (harness-private copy; U6)")
+    p_summarize.add_argument("--violations-after", default=None,
+                             help="findings at revalidation after the repair")
     p_summarize.add_argument("--queue-restored-log", default=None,
                              help="normalize_queue_appends.py report (U3 "
                                   "summary row); omit to skip the row")

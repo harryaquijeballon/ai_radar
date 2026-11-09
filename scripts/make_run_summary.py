@@ -25,7 +25,9 @@ import check_changed_paths as ccp  # noqa: E402
 import lib_queues  # noqa: E402
 import lib_radar  # noqa: E402
 
-OUTCOMES = ("success", "no-change", "auth", "tooling", "validation", "push")
+OUTCOMES = ("success", "no-change", "auth", "tooling", "validation", "push",
+            "coverage")
+REPAIR_OUTCOMES = ("fixed", "no_progress", "partial", "regressed")
 _SHA_RE = re.compile(r"^[0-9a-f]{7,40}$")
 _ITEM_RE = re.compile(r"^### ", re.MULTILINE)
 
@@ -152,12 +154,13 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
                   outcome: str, attempts: int, commit: str,
                   oauth_ready: bool, artifacts_note: bool,
                   evidence_path: str = None, coverage=False,
-                  queue_restored=None) -> str:
+                  queue_restored=None, repair_outcome=None) -> str:
     """`coverage` is False when not measured (no rows), None when the
     execution log was unavailable, else the U12 coverage record.
     `queue_restored` is the number of grow-only queue fields the harness
     restored to their base text (normalize_queue_appends.py), or None when
-    the normaliser did not run (no row)."""
+    the normaliser did not run (no row). `repair_outcome` is one of
+    REPAIR_OUTCOMES, or None when no repair ran (no row)."""
     added, modified, provisional, rejections = _entry_change_counts(
         workspace, base_ref, git_dir)
     deferred_total, deferred_by_class = _new_queue_records(
@@ -187,6 +190,10 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
         if reason_class in deferred_by_class:
             lines.append("| deferred: %s | %d |"
                          % (reason_class, deferred_by_class[reason_class]))
+    if repair_outcome is not None:
+        lines.append("| repair outcome | %s |"
+                     % (repair_outcome if repair_outcome in REPAIR_OUTCOMES
+                        else "unknown"))
     if queue_restored is not None:
         lines.append("| queue fields restored by harness | %d |"
                      % int(queue_restored))

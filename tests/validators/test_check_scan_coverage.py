@@ -227,6 +227,55 @@ class TestFloors(CoverageBase):
         self.assertEqual([v.rule_id for v in violations], ["COVERAGE_LOG_MISSING"])
 
 
+class TestAttemptedFloors(CoverageBase):
+    """Plan 2026-11-09-001 U7: count floors agreed by the user 2026-11-09."""
+
+    def test_agreed_floor_values(self):
+        self.assertEqual(csc.ATTEMPTED_FLOORS,
+                         {"social_science": 12, "ai_engineering": 6})
+
+    def test_at_floor_passes_and_below_aborts(self):
+        record = self.measure(log(
+            fetch("a", "https://nber.org/"), result("a"),
+            fetch("b", "https://economics.mit.edu/"), result("b"),
+            fetch("c", "https://simonwillison.net/"), result("c")))
+        self.assertEqual(csc.check_attempted_floors(
+            record, {"social_science": 2, "ai_engineering": 1}), [])
+        violations = csc.check_attempted_floors(
+            record, {"social_science": 3, "ai_engineering": 1})
+        self.assertEqual([v.rule_id for v in violations], ["COVERAGE_BELOW_FLOOR"])
+        self.assertEqual(violations[0].klass, "abort")
+        self.assertIn("social_science is 2 of 4", violations[0].format())
+
+    def test_floor_capped_at_watchlist_size(self):
+        """A shrunken watchlist can never make the floor unmeetable."""
+        everything = log(
+            fetch("a", "https://nber.org/"), result("a"),
+            fetch("b", "https://economics.mit.edu/"), result("b"),
+            fetch("c", "https://arxiv.org/list/econ.GN/new"), result("c"),
+            fetch("d", "https://towardsdatascience.com/"), result("d"),
+            fetch("e", "https://simonwillison.net/"), result("e"),
+            fetch("f", "https://arxiv.org/list/cs.MA/new"), result("f"))
+        record = self.measure(everything)
+        self.assertEqual(csc.check_attempted_floors(record), [])
+
+    def test_missing_transcript_fails_closed(self):
+        self.assertEqual([v.rule_id for v in csc.check_attempted_floors(None)],
+                         ["COVERAGE_LOG_MISSING"])
+
+    def test_cli_enforce_floors(self):
+        self.write_log(log(fetch("a", "https://nber.org/"), result("a")))
+        completed = self.run_cli("--enforce-floors")
+        self.assertEqual(completed.returncode, 1)
+        self.assertIn("ABORT COVERAGE_BELOW_FLOOR", completed.stdout)
+
+    def run_cli(self, *extra):
+        return TestCli.run_cli(self, *extra)
+
+    def write_log(self, messages):
+        return TestCli.write_log(self, messages)
+
+
 class TestCli(CoverageBase):
     def run_cli(self, *extra):
         return subprocess.run(

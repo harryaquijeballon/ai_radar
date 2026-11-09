@@ -61,7 +61,7 @@ class DeliveryBase(unittest.TestCase):
         return workspace, pristine, evidence
 
     def validate(self, workspace, pristine, evidence, final=False,
-                 skip_evidence=False):
+                 skip_evidence=False, extra_args=None):
         out = workspace + ("-out-final" if final else "-out")
         argv = [sys.executable, SCRIPT, "validate",
                 "--workspace", workspace, "--pristine", pristine,
@@ -73,6 +73,7 @@ class DeliveryBase(unittest.TestCase):
             argv.append("--final")
         if skip_evidence:
             argv.append("--skip-evidence")
+        argv += extra_args or []
         result = subprocess.run(argv, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         pairs = dict(line.split("=", 1)
@@ -363,6 +364,147 @@ class TestOutcomeClassification(unittest.TestCase):
                                        deliver2_class="tooling",
                                        deliver2_outcome="none"),
                          ("auth", 2))
+
+
+def transcript_with_fetches(path, hosts):
+    """A minimal SDK message array with one successful WebFetch per host."""
+    messages = []
+    for number, host in enumerate(hosts):
+        call = "c%d" % number
+        messages.append({"type": "assistant", "message": {"content": [
+            {"type": "tool_use", "id": call, "name": "WebFetch",
+             "input": {"url": "https://%s/" % host, "prompt": "p"}}]}})
+        messages.append({"type": "user", "message": {"content": [
+            {"type": "tool_result", "tool_use_id": call, "content": "ok"}]}})
+    with open(path, "w", encoding="utf-8") as handle:
+        json.dump(messages, handle)
+    return path
+
+
+def watchlist_hosts(domain):
+    """First fetch host of every fetchable source on the real watchlist."""
+    import check_scan_coverage as csc
+    hosts = []
+    for _name, patterns in csc.load_watchlists(
+            os.path.join(REPO_ROOT, "profiles"))[domain]:
+        if patterns:
+            hosts.append(patterns[0][0])
+    return hosts
+
+
+class TestCoverageGate(DeliveryBase):
+    """Plan 2026-11-09-001 U7: below the agreed floors the run is not
+    delivered (abort, outcome class `coverage`)."""
+
+    def setup_with_profiles(self):
+        workspace, pristine, evidence = self.setup_run()
+        shutil.copytree(os.path.join(REPO_ROOT, "profiles"),
+                        os.path.join(pristine, "profiles"))
+        return workspace, pristine, evidence
+
+    def test_healthy_scan_passes(self):
+        workspace, pristine, evidence = self.setup_with_profiles()
+        hosts = watchlist_hosts("social_science") + watchlist_hosts("ai_engineering")
+        log = transcript_with_fetches(workspace + "-scan.json", hosts)
+        pairs = self.validate(workspace, pristine, evidence,
+                              extra_args=["--scan-transcript", log])
+        self.assertEqual(pairs["verdict"], "pass")
+
+    def test_hollow_scan_aborts_as_coverage_2026_09_29(self):
+        workspace, pristine, evidence = self.setup_with_profiles()
+        log = transcript_with_fetches(workspace + "-scan.json",
+                                      watchlist_hosts("social_science")[:2])
+        pairs = self.validate(workspace, pristine, evidence,
+                              extra_args=["--scan-transcript", log])
+        self.assertEqual(pairs["verdict"], "abort")
+        self.assertEqual(pairs["failure_class"], "coverage")
+        self.assertEqual(pairs["degenerate"], "false")
+
+    def test_missing_transcript_fails_closed(self):
+        workspace, pristine, evidence = self.setup_with_profiles()
+        pairs = self.validate(workspace, pristine, evidence,
+                              extra_args=["--scan-transcript",
+                                          workspace + "-absent.json"])
+        self.assertEqual((pairs["verdict"], pairs["failure_class"]),
+                         ("abort", "coverage"))
+
+    def test_dry_run_skips_the_gate(self):
+        workspace, pristine, evidence = self.setup_with_profiles()
+        pairs = self.validate(workspace, pristine, evidence, skip_evidence=True,
+                              extra_args=["--scan-transcript",
+                                          workspace + "-absent.json"])
+        self.assertEqual(pairs["verdict"], "pass")
+
+    def test_bail_with_empty_transcript_stays_retry_eligible(self):
+        """A degenerate attempt 1 scans nothing; its coverage lines must not
+        cancel the attempt-2 retry (2026-07-28 review)."""
+        workspace, pristine, _ = self.setup_with_profiles()
+        log = transcript_with_fetches(workspace + "-scan.json", [])
+        pairs = self.validate(workspace, pristine, workspace + "-missing.json",
+                              extra_args=["--scan-transcript", log])
+        self.assertEqual(pairs["degenerate"], "true")
+
+    def test_coverage_with_repairable_defect_is_not_repaired(self):
+        """A repair cannot add fetches: a low-coverage scan never goes to
+        the repair pass, whatever else it violated."""
+        workspace, pristine, evidence = self.setup_with_profiles()
+        fix.write(workspace, fix.ACCEPTED_ENTRY, fix.read(
+            workspace, fix.ACCEPTED_ENTRY).replace("verification: ", "verification_x: ", 1))
+        log = transcript_with_fetches(workspace + "-scan.json", [])
+        pairs = self.validate(workspace, pristine, evidence,
+                              extra_args=["--scan-transcript", log])
+        self.assertEqual(pairs["verdict"], "abort")
+        self.assertEqual(pairs["failure_class"], "validation")
+
+    def test_outcome_class_is_coverage(self):
+        self.assertEqual(rd.classify_outcome(
+            "schedule", "success", "success", "abort", "none", "none",
+            "skipped", "none", "none", validate1_class="coverage"),
+            ("coverage", 1))
+        self.assertEqual(rd.classify_outcome(
+            "schedule", "success", "success", "abort", "none", "none",
+            "success", "abort", "none", deliver2_class="coverage"),
+            ("coverage", 2))
+
+
+class TestRepairOutcome(unittest.TestCase):
+    """Plan 2026-11-09-001 U6."""
+
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def write(self, name, *lines):
+        path = os.path.join(self._tmp.name, name)
+        with open(path, "w", encoding="utf-8") as handle:
+            handle.write("".join(line + "\n" for line in lines))
+        return path
+
+    def test_classes(self):
+        q155 = ("REPAIRABLE QUEUE_RECORD_REWRITTEN reviews/deferred_candidates/"
+                "social_science.md:155 - justification text must grow")
+        q290 = ("REPAIRABLE QUEUE_TEXT_TOO_LONG reviews/deferred_candidates/"
+                "social_science.md:290 - free-text field too long")
+        long143 = ("REPAIRABLE QUEUE_TEXT_TOO_LONG reviews/deferred_candidates/"
+                   "ai_engineering.md:143 - too long")
+        rewrite143 = ("REPAIRABLE QUEUE_RECORD_REWRITTEN reviews/"
+                      "deferred_candidates/ai_engineering.md:143 - must grow")
+        field = ("REPAIRABLE FIELD_MISSING library/entries/a.md - required "
+                 "frontmatter field verification is missing")
+        before = self.write("v1.txt", q155, q290)
+        # 10-30: same findings after the repair (line numbers may shift).
+        same = self.write("v1b.txt", q155.replace(":155", ":157"), q290)
+        self.assertEqual(rd.classify_repair("abort", before, same), "no_progress")
+        # 11-05: the repair created a rewrite that was not there before.
+        before2 = self.write("v2.txt", field, long143)
+        after2 = self.write("v2b.txt", rewrite143)
+        self.assertEqual(rd.classify_repair("abort", before2, after2), "regressed")
+        after3 = self.write("v3b.txt", q290)
+        self.assertEqual(rd.classify_repair("abort", before, after3), "partial")
+        self.assertEqual(rd.classify_repair("pass", before, None), "fixed")
+        self.assertIsNone(rd.classify_repair("none", before, same))
 
 
 class TestSummarizeOutputs(DeliveryBase):

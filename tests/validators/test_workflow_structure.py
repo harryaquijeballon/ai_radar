@@ -193,6 +193,44 @@ class TestWorkflowStructure(unittest.TestCase):
         self.assertIn('--queue-restored-log "$RUNNER_TEMP/radar-private/'
                       'queue-restored.txt"', summary)
 
+    def test_coverage_floors_gate_every_scan_validation(self):
+        """Plan 2026-11-09-001 U7: every validation of a scan passes that
+        scan's own transcript, so a run below the floors is not delivered."""
+        steps = self.text.split("      - name: ")
+        validating = [s for s in steps if "run_delivery.py\" validate" in s]
+        attempt1 = [s for s in validating if "pristine.outputs.base_sha" in s]
+        self.assertEqual(len(attempt1), 2)  # validate1 + revalidate1
+        for step in attempt1:
+            self.assertIn('--scan-transcript "$RUNNER_TEMP/radar-private/'
+                          'scan-transcript-attempt1.json"', step)
+        attempt2 = [s for s in validating if "pristine2.outputs.base_sha" in s]
+        self.assertEqual(len(attempt2), 1)
+        self.assertIn("SCAN_TRANSCRIPT_2: ${{ steps.model2.outputs.execution_file }}",
+                      attempt2[0])
+        self.assertIn('--scan-transcript "${SCAN_TRANSCRIPT_2:-}"', attempt2[0])
+
+    def test_repair_scope_and_outcome_inputs_are_harness_private(self):
+        """Plan 2026-11-09-001 U5/U6: the pre-repair snapshot and the
+        violations the repair was given live where the model cannot edit."""
+        snap = self.text.index("Snapshot entries before repair (attempt 1)")
+        self.assertLess(self.text.index("id: validate1"), snap)
+        self.assertLess(snap, self.text.index("id: repair1"))
+        self.assertIn('cp -R "$GITHUB_WORKSPACE/library/entries" '
+                      '"$RUNNER_TEMP/radar-private/pre-repair-entries"', self.text)
+        revalidate = self.text.split("id: revalidate1")[1].split("- name:")[0]
+        self.assertIn('--pre-repair-entries "$RUNNER_TEMP/radar-private/'
+                      'pre-repair-entries"', revalidate)
+        self.assertIn('cp "$RADAR_DIR/violations-1.txt" '
+                      '"$RUNNER_TEMP/radar-private/violations-1.txt"', self.text)
+        summary = self.text.split("Job summary (always")[1].split("- name:")[0]
+        self.assertIn('--violations-before "$RUNNER_TEMP/radar-private/'
+                      'violations-1.txt"', summary)
+        self.assertIn('--violations-after "$RADAR_DIR/violations-1b.txt"', summary)
+        repair = self.text.split("id: repair1")[1].split("- name:")[0]
+        self.assertIn("Never raise an entry's verification or status", repair)
+        self.assertIn("set verification: unverified and status: provisional",
+                      repair)
+
     def test_repair_prompt_forbids_delegation_and_shortening(self):
         """Plan 2026-11-09-001 U1: the 10-30 repair pass delegated to
         background agents and ended without an edit."""

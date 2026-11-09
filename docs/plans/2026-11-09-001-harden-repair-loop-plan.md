@@ -6,7 +6,7 @@ origin: >-
   Incident records docs/ops/2026-10-30-repair-pass-stall-incident.md and
   docs/ops/2026-11-05-queue-deadlock-recurrence-incident.md; handover
   HDAI-AIRADAR-003 (docs/hdai/2026-11-09_handover_003_delta.md)
-status: Phase 1 done (2026-11-09); Phases 2–3 awaiting approval
+status: Phases 1–2 done (2026-11-09); Phase 3 awaiting approval
 ---
 
 # fix: Harden the repair loop and the coverage sensor
@@ -19,14 +19,17 @@ Two scheduled runs (10-30, 11-05) were lost at revalidation after the single rep
 flowchart LR
     M1[Radar run<br/>attempt 1] --> S[Snapshot transcript<br/>U2]
     S --> N1[Normalise queue text<br/>U3]
-    N1 --> V1{Validate}
+    N1 --> V1{Validate<br/>+ coverage floors U7}
     V1 -- pass --> D[Deliver]
-    V1 -- repairable --> R[Repair pass<br/>no deferral tools, U1]
+    V1 -- below floor --> X
+    V1 -- repairable --> E[Snapshot entries<br/>U5]
+    E --> R[Repair pass<br/>no deferral tools, U1]
     R --> N2[Normalise queue text<br/>U3]
-    N2 --> V2{Revalidate, final}
+    N2 --> V2{Revalidate, final<br/>+ repair scope U5}
     V2 -- pass --> D
-    V2 -- abort --> X[Run incomplete]
-    S -. coverage reads the snapshot .-> C[Run summary<br/>coverage rows]
+    V2 -- abort --> X[Run incomplete,<br/>nothing delivered]
+    S -. transcript .-> V1
+    V2 -. repair outcome U6 .-> C[Run summary]
 ```
 
 ## Phase 1: stop losing days (approved and done 2026-11-09)
@@ -40,11 +43,17 @@ flowchart LR
 
 **Residual risk.** If the CLI rejected a deny rule naming a tool it does not know, the model step would fail loudly (`auth`-class outcome) rather than silently. The first run after merge confirms it.
 
-## Phase 2: make the repair loop safe and visible (awaiting approval)
+## Phase 2: make the repair loop safe and visible (approved and done 2026-11-09)
 
-- **U5 Repair scope.** A check comparing pre- and post-repair files aborts if the repair raised `verification` or changed `status`. The repair may only add `verification: unverified`. (11-05: the repair set `partial` on 15 entries with zero fetches.)
-- **U6 Repair outcome classes.** The run summary records `repair_fixed`, `repair_no_op` or `repair_regressed`, plus a running repair pass rate (7/9 for 10-17 → 11-08).
-- **U7 Coverage floors** (needs U2 data). Proposed: social science ≥ 12 of 19 attempted, AI engineering ≥ 6 of 17. Recommended behaviour below the floor: deliver, but fail the run. Values and behaviour are the user's decision.
+User decisions, 2026-11-09: floors social science ≥ 12 of 19 and AI engineering ≥ 6 of 17 attempted; **below the floor the run is not delivered**.
+
+| Unit | Change | Check |
+|---|---|---|
+| **U5** Repair scope | Before the repair, the harness snapshots `library/entries/` to `$RUNNER_TEMP/radar-private/`. On revalidation, `check_repair_scope.py` aborts if the repair raised `verification` or `status`; a field it adds must be `unverified` / `provisional` (the schema already requires all-unverified entries to be provisional). The repair prompt states the rule | `tests/validators/test_check_repair_scope.py` (the 11-05 case: adding `partial` aborts; adding `unverified` + `provisional` passes) |
+| **U6** Repair outcome | The run summary gains `repair outcome`: `fixed`, `no_progress` (10-30), `partial` or `regressed` (08-07, 09-27, 11-05), comparing (class, rule, file) of the findings before and after. The "before" findings are copied to the harness-private dir, because the repair pass can edit `$RADAR_DIR` | `TestRepairOutcome` with the real 10-30 and 11-05 findings. The pass rate across runs is computed from the run summaries in handovers (no state file) |
+| **U7** Coverage floors | `ATTEMPTED_FLOORS` in `check_scan_coverage.py`, enforced by `run_delivery.py validate --scan-transcript` on attempt 1 (from the U2 snapshot), on revalidation, and on attempt 2 (its own transcript). Below the floor, or no transcript: abort, outcome class `coverage`, never sent to repair (a repair cannot add fetches). Coverage lines do not cancel the degenerate-run retry. Dry runs skip the gate | `TestCoverageGate`, `TestAttemptedFloors`. Replay over the logs: every unrepaired run 10-26 → 11-09 clears the floors (lowest: AI engineering 7 of 17 on 11-03) |
+
+**Residual risk.** The gate fails closed: if the transcript snapshot (U2) were broken in production, every run would stop with outcome `coverage` and deliver nothing until fixed. That is loud, not silent, and the library is untouched. A supervised no-push run before the next scheduled run removes the risk.
 
 ## Phase 3: close the outer loop (awaiting approval)
 
