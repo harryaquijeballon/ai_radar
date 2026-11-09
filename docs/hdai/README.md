@@ -10,6 +10,7 @@ Project short name: `AIRADAR`. IDs follow `HDAI-AIRADAR-<NNN>`, numbered in sequ
 |---|---|---|---|
 | HDAI-AIRADAR-001 | 2026-10-14 | baseline | [2026-10-14_handover_001_agentic_engineering.md](2026-10-14_handover_001_agentic_engineering.md) |
 | HDAI-AIRADAR-002 | 2026-10-16 | delta | [2026-10-16_handover_002_delta.md](2026-10-16_handover_002_delta.md) |
+| HDAI-AIRADAR-003 | 2026-11-09 | delta | [2026-11-09_handover_003_delta.md](2026-11-09_handover_003_delta.md) |
 
 Add one row per handover, newest last.
 
