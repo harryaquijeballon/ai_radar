@@ -203,8 +203,16 @@ def cmd_deliver(args) -> int:
         _emit([("outcome", outcome), ("commit", "")], args.github_output)
         return 0
 
-    _git(args.git_dir, args.workspace,
-         ["commit", "-q", "-m", "radar: daily run %s" % run_date])
+    # Plan 2026-11-09-001 U8: the scan's turns, cost and duration travel
+    # with the commit as trailers (numbers only), so git history holds the
+    # effort record after the run logs expire. No transcript, no trailers.
+    import run_metrics
+    message = "radar: daily run %s" % run_date
+    trailers = run_metrics.trailer_lines(
+        run_metrics.scan_metrics(args.scan_transcript))
+    if trailers:
+        message += "\n\n" + "\n".join(trailers)
+    _git(args.git_dir, args.workspace, ["commit", "-q", "-m", message])
     sha = _git(args.git_dir, None, ["rev-parse", "HEAD"]).stdout.strip()
 
     delays = tuple(int(part) for part in args.push_retry_delays.split(",")
@@ -303,6 +311,22 @@ def _violation_keys(path):
     return sorted(keys)
 
 
+_RULE_ID = re.compile(r"^[A-Z][A-Z0-9_]{2,60}$")
+
+
+def rule_counts(path):
+    """Plan 2026-11-09-001 U9: [(rule id, count)] for a findings file, most
+    frequent first. Rule ids are registered constants; anything else is
+    dropped. The run summary carries them into the job log, which is kept
+    for 90 days; the diagnostics artifact (30 days) had expired before the
+    2026-09-10/11/12 failures were written up, and their rules were lost."""
+    counts = {}
+    for _, rule, _ in _violation_keys(path):
+        if _RULE_ID.match(rule):
+            counts[rule] = counts.get(rule, 0) + 1
+    return sorted(counts.items(), key=lambda item: (-item[1], item[0]))
+
+
 def classify_repair(revalidate_verdict, before_path, after_path):
     """Plan 2026-11-09-001 U6: what the bounded repair pass achieved, as one
     of make_run_summary.REPAIR_OUTCOMES.
@@ -366,11 +390,24 @@ def cmd_summarize(args) -> int:
                     blocked += line.startswith("BLOCKED ")
                     errors += line.startswith("GUARD_ERROR ")
         entry_guard = (blocked, errors)
+    # Plan 2026-11-09-001 U8: scan effort against the last delivered runs
+    # (trailers in the base commit's history). Report-only.
+    import run_metrics
+    effort = None
+    if args.execution_log is not None:
+        effort = run_metrics.evaluate(
+            run_metrics.scan_metrics(args.execution_log),
+            run_metrics.turns_history(args.git_dir, args.base))
     summary = mrs.build_summary(
         args.workspace, args.base, args.git_dir, run_date, outcome, attempts,
         commit, args.oauth_ready == "true", artifacts_note=incomplete,
         evidence_path=args.evidence, coverage=coverage,
         queue_restored=queue_restored, entry_guard=entry_guard,
+        effort=effort,
+        findings=[(label, rule_counts(path)) for label, path in (
+            ("attempt 1", args.violations_before),
+            ("after repair", args.violations_after),
+            ("attempt 2", args.violations_attempt2))],
         repair_outcome=classify_repair(args.revalidate1, args.violations_before,
                                        args.violations_after))
     # stdout carries ONLY the safe summary markdown (the workflow tees it to
@@ -381,6 +418,9 @@ def cmd_summarize(args) -> int:
         with open(args.github_output, "a", encoding="utf-8") as handle:
             handle.write("outcome=%s\nattempts=%d\nincomplete=%s\n"
                          % (outcome, attempts, "true" if incomplete else "false"))
+            handle.write("alarm=%s\n" % (
+                ",".join(effort["alarms"]) if effort and effort["alarms"]
+                else "none"))
     print(summary)
     return 0
 
@@ -411,6 +451,9 @@ def main() -> int:
     p_deliver.add_argument("--workspace", required=True)
     p_deliver.add_argument("--git-dir", required=True)
     p_deliver.add_argument("--base", required=True)
+    p_deliver.add_argument("--scan-transcript", default=None,
+                           help="the scan attempt's execution log; its turns, "
+                                "cost and duration become commit trailers (U8)")
     p_deliver.add_argument("--remote", required=True)
     p_deliver.add_argument("--final", action="store_true")
     p_deliver.add_argument("--run-date", default=None)
@@ -451,6 +494,9 @@ def main() -> int:
     p_summarize.add_argument("--queue-restored-log", default=None,
                              help="normalize_queue_appends.py report (U3 "
                                   "summary row); omit to skip the row")
+    p_summarize.add_argument("--violations-attempt2", default=None,
+                             help="findings at attempt 2's validation (U9 "
+                                  "summary row)")
     p_summarize.add_argument("--entry-guard-log", default=None,
                              help="entry_write_guard.py log (U7b summary "
                                   "rows); omit to skip the rows")

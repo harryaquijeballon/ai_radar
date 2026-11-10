@@ -193,6 +193,52 @@ class TestDeliver(DeliveryBase):
                              cwd=self.origin, capture_output=True, text=True)
         self.assertIn("radar: daily run 2026-07-23", log.stdout)
 
+    def private_remote(self, workspace):
+        """A bare copy of the origin, so a push here cannot make the other
+        tests' pushes to the shared origin non-fast-forward."""
+        remote = workspace + "-remote.git"
+        subprocess.run(["git", "clone", "-q", "--bare", self.origin, remote],
+                       check=True, capture_output=True)
+        return remote
+
+    def test_commit_carries_scan_effort_trailers(self):
+        """Plan 2026-11-09-001 U8: turns, cost and duration of the scan
+        travel with the commit; the subject line is unchanged."""
+        workspace, _, _ = self.setup_run()
+        fix.write(workspace, "library/entries/2026-trailer-entry.md",
+                  fix.read(workspace, fix.ACCEPTED_ENTRY).replace(
+                      "2023-korinek-genai-economic-research",
+                      "2026-trailer-entry"))
+        log = workspace + "-scan.json"
+        with open(log, "w", encoding="utf-8") as handle:
+            json.dump([{"type": "result", "num_turns": 127,
+                        "total_cost_usd": 3.3772014,
+                        "duration_ms": 898275}], handle)
+        pairs = self.deliver(workspace, remote=self.private_remote(workspace),
+                             extra_args=["--scan-transcript", log])
+        self.assertEqual(pairs["outcome"], "pushed")
+        body = subprocess.run(["git", "log", "-1", "--format=%B", "HEAD"],
+                              cwd=workspace, capture_output=True,
+                              text=True).stdout
+        self.assertEqual(body.strip().split("\n"), [
+            "radar: daily run 2026-07-23", "", "Radar-Scan-Turns: 127",
+            "Radar-Scan-Cost-USD: 3.38", "Radar-Scan-Duration-S: 898"])
+
+    def test_missing_scan_transcript_gives_plain_commit(self):
+        workspace, _, _ = self.setup_run()
+        fix.write(workspace, "library/entries/2026-plain-entry.md",
+                  fix.read(workspace, fix.ACCEPTED_ENTRY).replace(
+                      "2023-korinek-genai-economic-research",
+                      "2026-plain-entry"))
+        pairs = self.deliver(
+            workspace, remote=self.private_remote(workspace),
+            extra_args=["--scan-transcript", workspace + "-absent.json"])
+        self.assertEqual(pairs["outcome"], "pushed")
+        body = subprocess.run(["git", "log", "-1", "--format=%B", "HEAD"],
+                              cwd=workspace, capture_output=True,
+                              text=True).stdout
+        self.assertEqual(body.strip(), "radar: daily run 2026-07-23")
+
     def test_no_change_when_reports_exist_at_base(self):
         workspace, _, _ = self.setup_run()
         self.assertEqual(self.deliver(workspace)["outcome"], "no-change")
@@ -567,6 +613,78 @@ class TestSummarizeOutputs(DeliveryBase):
         with open(coverage_out, encoding="utf-8") as handle:
             self.assertEqual(
                 json.load(handle)["domains"]["ai_engineering"]["succeeded"], 1)
+
+    def test_summarize_reports_effort_and_alarm(self):
+        """Plan 2026-11-09-001 U8: effort rows from the scan transcript; a
+        collapsed scan raises low_turns in the summary and the outputs."""
+        workspace, pristine, _ = self.setup_run()
+        shutil.copytree(os.path.join(REPO_ROOT, "profiles"),
+                        os.path.join(pristine, "profiles"))
+        log = workspace + "-execution.json"
+        out = workspace + "-effort-out"
+
+        def run(turns, cost):
+            with open(log, "w", encoding="utf-8") as handle:
+                json.dump([{"type": "result", "num_turns": turns,
+                            "total_cost_usd": cost, "duration_ms": 60000}],
+                          handle)
+            if os.path.exists(out):
+                os.remove(out)
+            result = subprocess.run(
+                [sys.executable, SCRIPT, "summarize",
+                 "--workspace", workspace, "--pristine", pristine,
+                 "--git-dir", os.path.join(workspace, ".git"),
+                 "--mode", "no-push", "--model1", "success",
+                 "--validate1", "pass", "--base", "origin/main",
+                 "--run-date", RUN_DATE, "--execution-log", log,
+                 "--github-output", out],
+                capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            with open(out, encoding="utf-8") as handle:
+                return result.stdout, handle.read()
+
+        stdout, outputs = run(120, 3.5)
+        self.assertIn("| scan turns | 120 |", stdout)
+        self.assertIn("| scan cost (USD) | 3.50 |", stdout)
+        self.assertIn("| scan duration (s) | 60 |", stdout)
+        self.assertIn("| turns reference | 127 (fixed baseline) |", stdout)
+        self.assertIn("| effort alarm | none |", stdout)
+        self.assertIn("alarm=none\n", outputs)
+        stdout, outputs = run(22, 9.25)
+        self.assertIn("| effort alarm | low_turns, high_cost |", stdout)
+        self.assertIn("alarm=low_turns,high_cost\n", outputs)
+
+    def test_summarize_lists_finding_rules_2026_11_10(self):
+        """Plan 2026-11-09-001 U9: the rule ids of the findings reach the job
+        log through the summary (run 42819765946's real findings); paths,
+        messages and anything that is not a rule id do not."""
+        workspace, pristine, _ = self.setup_run()
+        before = workspace + "-v1.txt"
+        with open(before, "w", encoding="utf-8") as handle:
+            handle.write(
+                "ABORT ENTRY_FRONTMATTER_FIELD_CHANGED library/entries/a.md - m\n"
+                "ABORT ENTRY_FRONTMATTER_FIELD_CHANGED library/entries/a.md - m\n"
+                "ABORT ENTRY_BODY_REWRITTEN library/entries/a.md - m\n"
+                "REPAIRABLE REPORT_QUIET_DAY_STATEMENT_MISSING reports/"
+                "social_science/daily/2026-11-10.md - m\n"
+                "ABORT not-a-rule|injected library/entries/a.md - m\n")
+        result = subprocess.run(
+            [sys.executable, SCRIPT, "summarize",
+             "--workspace", workspace, "--pristine", pristine,
+             "--mode", "no-push", "--model1", "success",
+             "--validate1", "abort", "--validate1-class", "validation",
+             "--base", "origin/main", "--run-date", RUN_DATE,
+             "--violations-before", before,
+             "--violations-attempt2", workspace + "-absent.txt"],
+            capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn(
+            "| validation findings (attempt 1) | "
+            "ENTRY_FRONTMATTER_FIELD_CHANGED x2, ENTRY_BODY_REWRITTEN x1, "
+            "REPORT_QUIET_DAY_STATEMENT_MISSING x1 |", result.stdout)
+        self.assertNotIn("injected", result.stdout)
+        self.assertNotIn("validation findings (attempt 2)", result.stdout)
+        self.assertNotIn("validation findings (after repair)", result.stdout)
 
     def test_summarize_counts_queue_restorations(self):
         """Plan 2026-11-09-001 U3: the normaliser's derived report becomes a

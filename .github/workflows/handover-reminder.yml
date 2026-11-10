@@ -1,0 +1,61 @@
+# Weekly outer-loop reminder (plan 2026-11-09-001 U11).
+#
+# Every Monday: derive the week's digest from the repository (delivered and
+# missed days, write-ups, scan effort, review queue) and, when the newest
+# HDAI handover is at least 7 days old, post it as an issue assigned to the
+# repository owner. An open reminder gets a comment instead of a second
+# issue. No model runs here and no secret is used; the digest holds derived
+# facts only (scripts/make_weekly_digest.py).
+name: handover-reminder
+
+on:
+  schedule:
+    - cron: "23 7 * * 1"   # Mondays, UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: handover-reminder
+  cancel-in-progress: false
+
+jobs:
+  remind:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout (history for the commit trailers)
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Build the weekly digest
+        id: digest
+        run: |
+          set -eu
+          python3 scripts/make_weekly_digest.py \
+            --workspace "$GITHUB_WORKSPACE" \
+            --github-output "$GITHUB_OUTPUT" > "$RUNNER_TEMP/digest.md"
+          cat "$RUNNER_TEMP/digest.md" >> "$GITHUB_STEP_SUMMARY"
+          cat "$RUNNER_TEMP/digest.md"
+
+      - name: Post the reminder (only when a handover is due)
+        if: steps.digest.outputs.due == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          TITLE="Weekly HDAI handover due"
+          OPEN=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "in:title \"$TITLE\"" --json number --jq '.[0].number // empty')
+          if [ -n "$OPEN" ]; then
+            gh issue comment "$OPEN" --repo "$GITHUB_REPOSITORY" \
+              --body-file "$RUNNER_TEMP/digest.md"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" \
+              --assignee "$GITHUB_REPOSITORY_OWNER" \
+              --body-file "$RUNNER_TEMP/digest.md"
+          fi

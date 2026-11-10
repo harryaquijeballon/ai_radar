@@ -47,9 +47,12 @@ CLASS RULE_ID path[:line] - message
 | `check_library_consistency.py` | Entry schema conformance; slug/filename; INDEX agreement (repairable). Two entries sharing a canonical identifier: `ENTRY_DUPLICATE_IDENTIFIER` (abort; plan 2026-11-09-001 U7b) | repairable / abort |
 | `check_report_integrity.py` | Report bar: entry link resolves (abort), accepted+verified+high relevance, ≤3 items, quiet-day statement + evidence block | abort / repairable |
 | `check_queue_records.py` | Queue structure, controlled vocabularies, URL hygiene, metadata-only bounds, duplicates incl. sibling-domain | repairable |
-| `../make_run_summary.py` | R37 job summary — derived counts, controlled vocab, safe paths only; no model-authored text can reach it | n/a (generator) |
+| `../make_run_summary.py` | R37 job summary — derived counts, controlled vocab, safe paths only; no model-authored text can reach it. Since plan 2026-11-09-001 U9 it lists rule ids and counts per validation stage, so the 90-day job log holds what failed | n/a (generator) |
 | `../normalize_queue_appends.py` | Not a validator: a harness step run before every unattended validation (plan 2026-11-09-001 U3). Restores the base text of a grow-only field on an existing queue record when the run rephrased it or pushed it over `MAX_FREE_TEXT`; keeps the `last_encountered` bump. Fixes the grow-only/length-cap deadlock (P9) without the model. Reports `path:line field reason` only (count in the run summary) | n/a (mutates workspace) |
 | `../entry_write_guard.py` | Not a validator: a PreToolUse hook on the model's `Write`, registered in the model settings and run by the CLI from the pristine base (plan 2026-11-09-001 U7b). Blocks a Write over an entry in the base commit and a new entry whose identifier or URL is already archived (`lib_dedup.py`); the message tells the agent to merge or skip. Fails open; logs `BLOCKED <rule> <safe path>` only (count in the run summary) | n/a (blocks a tool call) |
+| `../run_metrics.py` | Not a validator: scan turns, cost and duration from the transcript's result block (plan 2026-11-09-001 U8). Written as commit trailers on delivery and compared with the last 7 delivered runs in the run summary; alarms `low_turns` and `high_cost` are report-only | n/a |
+| `../make_queue_triage.py` | Not a validator: read-only triage sheet of pending queue records, ordered by closeness to the length cap (U10) | n/a (generator) |
+| `../make_weekly_digest.py` | Not a validator: weekly digest for the handover reminder workflow, derived from commits, `docs/ops/`, `docs/hdai/` and the queues (U11) | n/a (generator) |
 
 Queue-record and scan-evidence formats are DRAFT until the U5 engine revision adopts them (documented in `lib_queues.py` and `check_scan_evidence.py`).
 

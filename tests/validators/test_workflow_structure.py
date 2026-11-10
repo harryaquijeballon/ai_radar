@@ -284,6 +284,25 @@ class TestWorkflowStructure(unittest.TestCase):
                       'entry-guard.txt"', summary)
 
 
+    def test_effort_alarm_is_report_only_and_trailers_wired(self):
+        """Plan 2026-11-09-001 U8: the scan transcript feeds the commit
+        trailers; the alarm is a warning annotation from a controlled
+        value passed through env, and never blocks."""
+        deliver1 = self.text.split("id: deliver1")[1].split("- name:")[0]
+        self.assertIn('--scan-transcript "$RUNNER_TEMP/radar-private/'
+                      'scan-transcript-attempt1.json"', deliver1)
+        deliver2 = self.text.split("id: deliver2")[1].split("- name:")[0]
+        self.assertEqual(deliver2.count(
+            '--scan-transcript "${SCAN_TRANSCRIPT_2:-}"'), 2)
+        alarm = self.text.split("Effort alarm (warning annotation")[1] \
+            .split("- name:")[0]
+        self.assertIn("steps.summary.outputs.alarm != 'none'", alarm)
+        self.assertIn("ALARM: ${{ steps.summary.outputs.alarm }}", alarm)
+        self.assertIn('echo "::warning title=Radar effort alarm::${ALARM}',
+                      alarm)
+        self.assertNotIn("exit 1", alarm)
+
+
 class TestRuntimePrompt(unittest.TestCase):
     """Completion contract of the unattended prompt (2026-07-28 model-bail
     review): two scheduled runs died because the model ended its turn after

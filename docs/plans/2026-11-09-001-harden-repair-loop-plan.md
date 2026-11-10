@@ -6,7 +6,7 @@ origin: >-
   Incident records docs/ops/2026-10-30-repair-pass-stall-incident.md and
   docs/ops/2026-11-05-queue-deadlock-recurrence-incident.md; handover
   HDAI-AIRADAR-003 (docs/hdai/2026-11-09_handover_003_delta.md)
-status: Phases 1–2 done (2026-11-09); U7b done (2026-11-10); Phase 3 awaiting approval
+status: all phases done (Phases 1–2 2026-11-09; Phase 2b and Phase 3 2026-11-10); production checks pending on the 2026-11-11 run
 ---
 
 # fix: Harden the repair loop and the coverage sensor
@@ -65,12 +65,16 @@ Added after the 2026-11-10 run was lost (`docs/ops/2026-11-10-dedup-miss-inciden
 
 **Residual risk.** Hooks from the settings file are not yet proven on the pinned action. The guard fails open, so the worst case is the 11-10 behaviour plus the new validator rule.
 
-## Phase 3: close the outer loop (awaiting approval)
+## Phase 3: close the outer loop (approved and done 2026-11-10)
 
-- **U8 Effort and cost alarm** (rest of plan 2026-10-16-001 U16): turns, cost and duration in the run summary; alarm on turns below 50% of the rolling 7-run median, and on cost above a ceiling.
-- **U9 Write-ups for the 09-10, 09-11, 09-12 and 09-27 red runs** before their logs expire (90-day default).
-- **U10 Queue triage sheet** for the user, ordered by closeness to the cap.
-- **U11 Weekly handover reminder.**
+| Unit | Change | Check |
+|---|---|---|
+| **U8** Effort and cost alarm | `scripts/run_metrics.py`. The scan's turns, cost and duration are rows in the run summary and trailers in the daily commit (`Radar-Scan-Turns`, `Radar-Scan-Cost-USD`, `Radar-Scan-Duration-S`), so git history is the record and no state file is needed. Alarm `low_turns`: turns below 50% of the median of the last 7 delivered runs (fixed baseline of 127 until 4 trailers exist). Alarm `high_cost`: scan cost above $8.00. Report-only: a warning annotation and a summary row; delivery is never blocked | `tests/validators/test_run_metrics.py`; replay over the 24 scheduled scans 10-18 → 11-10 raises no alarm; a 22-turn scan (the 09-29 collapse) raises `low_turns` |
+| **U9** September write-ups | `docs/ops/2026-11-10-september-red-runs-review.md`. 09-27 is the queue deadlock. The rules behind 09-10, 09-11 and 09-12 are not recoverable: the 30-day artifacts had expired. Fix for the cause of that loss: the run summary lists rule ids and counts per validation stage, which puts them in the 90-day job log | `test_summarize_lists_finding_rules_2026_11_10` |
+| **U10** Queue triage sheet | `scripts/make_queue_triage.py`: pending records ordered by closeness to the 240-character cap, then age. First sheet: `docs/ops/2026-11-10-queue-triage-sheet.md` (22 pending, 10 within 15 characters of the cap) | `tests/validators/test_outer_loop_tools.py` |
+| **U11** Weekly reminder | `.github/workflows/handover-reminder.yml`, Mondays. `scripts/make_weekly_digest.py` derives the week from the repository: delivered and missed days, write-ups, scan effort, queue. When the newest handover is 7 or more days old it opens an issue assigned to the owner, or comments on the open one. No model, no secrets; `issues: write` only | `tests/validators/test_outer_loop_tools.py` |
+
+**Residual risk.** The alarm thresholds are calibrated on 24 runs and the cost trend is upward ($1.58 → $6.09); expect to revisit the $8.00 ceiling. The reminder's issue step runs for the first time on 2026-11-16.
 
 ## Out of scope
 

@@ -27,6 +27,10 @@ import lib_radar  # noqa: E402
 
 OUTCOMES = ("success", "no-change", "auth", "tooling", "validation", "push",
             "coverage")
+EFFORT_ALARMS = ("low_turns", "high_cost")
+FINDING_STAGES = ("attempt 1", "after repair", "attempt 2")
+MAX_FINDING_RULES = 12
+_RULE_ID_RE = re.compile(r"^[A-Z][A-Z0-9_]{2,60}$")
 REPAIR_OUTCOMES = ("fixed", "no_progress", "partial", "regressed")
 _SHA_RE = re.compile(r"^[0-9a-f]{7,40}$")
 _ITEM_RE = re.compile(r"^### ", re.MULTILINE)
@@ -155,7 +159,7 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
                   oauth_ready: bool, artifacts_note: bool,
                   evidence_path: str = None, coverage=False,
                   queue_restored=None, repair_outcome=None,
-                  entry_guard=None) -> str:
+                  entry_guard=None, effort=None, findings=None) -> str:
     """`coverage` is False when not measured (no rows), None when the
     execution log was unavailable, else the U12 coverage record.
     `queue_restored` is the number of grow-only queue fields the harness
@@ -163,7 +167,10 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
     the normaliser did not run (no row). `repair_outcome` is one of
     REPAIR_OUTCOMES, or None when no repair ran (no row). `entry_guard` is
     (blocked, errors) from the entry write guard's log, or None when the
-    guard log was not given (no rows)."""
+    guard log was not given (no rows). `effort` is the record from
+    run_metrics.evaluate (scan turns, cost, duration, alarms), or None when
+    the scan transcript was unavailable (no rows). `findings` is a list of
+    (stage label, [(rule id, count)]); a stage without findings has no row."""
     added, modified, provisional, rejections = _entry_change_counts(
         workspace, base_ref, git_dir)
     deferred_total, deferred_by_class = _new_queue_records(
@@ -193,6 +200,14 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
         if reason_class in deferred_by_class:
             lines.append("| deferred: %s | %d |"
                          % (reason_class, deferred_by_class[reason_class]))
+    for label, counts in findings or ():
+        if counts and label in FINDING_STAGES:
+            shown = ", ".join("%s x%d" % (rule, int(count))
+                              for rule, count in counts[:MAX_FINDING_RULES]
+                              if _RULE_ID_RE.match(str(rule)))
+            if len(counts) > MAX_FINDING_RULES:
+                shown += ", and %d more rules" % (len(counts) - MAX_FINDING_RULES)
+            lines.append("| validation findings (%s) | %s |" % (label, shown))
     if repair_outcome is not None:
         lines.append("| repair outcome | %s |"
                      % (repair_outcome if repair_outcome in REPAIR_OUTCOMES
@@ -205,6 +220,20 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
                      % int(entry_guard[0]))
         if int(entry_guard[1]):
             lines.append("| entry guard errors | %d |" % int(entry_guard[1]))
+    if effort is not None:
+        lines.append("| scan turns | %d |" % int(effort["turns"]))
+        if "cost_usd" in effort:
+            lines.append("| scan cost (USD) | %.2f |" % float(effort["cost_usd"]))
+        if "duration_s" in effort:
+            lines.append("| scan duration (s) | %d |" % int(effort["duration_s"]))
+        lines.append("| turns reference | %d (%s) |" % (
+            int(round(float(effort["reference_turns"]))),
+            "median of recent delivered runs"
+            if effort.get("reference_source") == "rolling"
+            else "fixed baseline"))
+        raised = [name for name in effort.get("alarms", ())
+                  if name in EFFORT_ALARMS]
+        lines.append("| effort alarm | %s |" % (", ".join(raised) or "none"))
     evidence = _evidence_counts(evidence_path)
     for domain in lib_radar.DOMAINS:
         pair = evidence.get(domain)

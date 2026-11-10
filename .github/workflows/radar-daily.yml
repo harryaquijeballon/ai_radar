@@ -193,6 +193,7 @@ jobs:
             --workspace "$GITHUB_WORKSPACE" \
             --git-dir "$RUNNER_TEMP/harness/.git" \
             --base "${{ steps.pristine.outputs.base_sha }}" \
+            --scan-transcript "$RUNNER_TEMP/radar-private/scan-transcript-attempt1.json" \
             --remote "https://x-access-token:${RADAR_PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
             --diagnostics-dir "$RADAR_DIR/diagnostics" \
             --github-output "$GITHUB_OUTPUT"
@@ -296,6 +297,7 @@ jobs:
               --workspace "$GITHUB_WORKSPACE" \
               --git-dir "$RUNNER_TEMP/harness/.git" \
               --base "${{ steps.pristine2.outputs.base_sha }}" \
+              --scan-transcript "${SCAN_TRANSCRIPT_2:-}" \
               --remote "https://x-access-token:${RADAR_PUSH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
               --final \
               --diagnostics-dir "$RADAR_DIR/diagnostics" \
@@ -364,10 +366,20 @@ jobs:
             --entry-guard-log "$RUNNER_TEMP/radar-private/entry-guard.txt" \
             --violations-before "$RUNNER_TEMP/radar-private/violations-1.txt" \
             --violations-after "$RADAR_DIR/violations-1b.txt" \
+            --violations-attempt2 "$RADAR_DIR/violations-2.txt" \
             --github-output "$GITHUB_OUTPUT" \
             > "$RADAR_DIR/diagnostics/run-summary.md"
           cat "$RADAR_DIR/diagnostics/run-summary.md" >> "$GITHUB_STEP_SUMMARY"
           cat "$RADAR_DIR/diagnostics/run-summary.md"
+
+      # Plan 2026-11-09-001 U8: report-only. The value is a controlled
+      # vocabulary (low_turns, high_cost) written by run_delivery.py.
+      - name: Effort alarm (warning annotation, never blocks)
+        if: always() && steps.summary.outputs.alarm != '' && steps.summary.outputs.alarm != 'none'
+        env:
+          ALARM: ${{ steps.summary.outputs.alarm }}
+        run: |
+          echo "::warning title=Radar effort alarm::${ALARM} - see the run summary"
 
       - name: Preserve diagnostics (failure or incomplete outcome, tiered per R43)
         if: failure() || steps.summary.outputs.incomplete == 'true'
