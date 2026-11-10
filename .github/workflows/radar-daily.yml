@@ -83,6 +83,10 @@ jobs:
             --evidence-dir "$RADAR_DIR" \
             --runner-temp "$RUNNER_TEMP" \
             --model "${MODEL_OVERRIDE:-}" \
+            --guard-script "$RUNNER_TEMP/pristine/scripts/entry_write_guard.py" \
+            --workspace "$GITHUB_WORKSPACE" \
+            --pristine "$RUNNER_TEMP/pristine" \
+            --guard-log "$RUNNER_TEMP/radar-private/entry-guard.txt" \
             --output "$RUNNER_TEMP/claude-settings.json"
 
       # ---------------- attempt 1 ----------------
@@ -334,6 +338,7 @@ jobs:
               --output "$RADAR_DIR/diagnostics/model-run-facts-attempt1.json" || true
           fi
           cp "$RUNNER_TEMP"/radar-private/queue-restored*.txt "$RADAR_DIR/diagnostics/" 2>/dev/null || true
+          cp "$RUNNER_TEMP/radar-private/entry-guard.txt" "$RADAR_DIR/diagnostics/" 2>/dev/null || true
           python3 "$RUNNER_TEMP/pristine/scripts/run_delivery.py" summarize \
             --workspace "$GITHUB_WORKSPACE" \
             --pristine "$RUNNER_TEMP/pristine" \
@@ -356,6 +361,7 @@ jobs:
             --execution-log "$SCAN_LOG" \
             --coverage-out "$RADAR_DIR/diagnostics/coverage.json" \
             --queue-restored-log "$RUNNER_TEMP/radar-private/queue-restored.txt" \
+            --entry-guard-log "$RUNNER_TEMP/radar-private/entry-guard.txt" \
             --violations-before "$RUNNER_TEMP/radar-private/violations-1.txt" \
             --violations-after "$RADAR_DIR/violations-1b.txt" \
             --github-output "$GITHUB_OUTPUT" \

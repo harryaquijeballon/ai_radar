@@ -269,6 +269,21 @@ class TestWorkflowStructure(unittest.TestCase):
         self.assertIn('--github-output "$GITHUB_OUTPUT"', self.text)
 
 
+    def test_entry_write_guard_wired_from_pristine(self):
+        """Plan 2026-11-09-001 U7b: the guard hook runs the pristine script
+        (R41), logs to the harness-private dir, and reaches the summary."""
+        build = self.text.split("Build model settings")[1].split("- name:")[0]
+        self.assertIn('--guard-script "$RUNNER_TEMP/pristine/scripts/'
+                      'entry_write_guard.py"', build)
+        self.assertIn('--workspace "$GITHUB_WORKSPACE"', build)
+        self.assertIn('--pristine "$RUNNER_TEMP/pristine"', build)
+        self.assertIn('--guard-log "$RUNNER_TEMP/radar-private/'
+                      'entry-guard.txt"', build)
+        summary = self.text.split("Job summary (always")[1].split("- name:")[0]
+        self.assertIn('--entry-guard-log "$RUNNER_TEMP/radar-private/'
+                      'entry-guard.txt"', summary)
+
+
 class TestRuntimePrompt(unittest.TestCase):
     """Completion contract of the unattended prompt (2026-07-28 model-bail
     review): two scheduled runs died because the model ended its turn after
@@ -337,6 +352,12 @@ class TestRuntimePrompt(unittest.TestCase):
             self.assertIn(fragment, engine)
 
 
+    def test_prompt_names_the_entry_guard(self):
+        """Plan 2026-11-09-001 U7b (run 42819765946)."""
+        self.assertIn("search `library/INDEX.md` for the candidate's", self.text)
+        self.assertIn("Never retry under another slug", self.text)
+
+
 class TestSettingsBuilder(unittest.TestCase):
     def test_settings_shape(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -401,6 +422,24 @@ class TestSettingsBuilder(unittest.TestCase):
                 handle.write("# nothing here\n")
             with self.assertRaises(ValueError):
                 bcs.read_allowlist(allowlist)
+
+
+    def test_entry_write_guard_hook(self):
+        """Plan 2026-11-09-001 U7b: a PreToolUse hook on Write only; paths
+        are shell-quoted; no hook unless asked for."""
+        self.assertNotIn("hooks", bcs.build_settings(["arxiv.org"], "/tmp/r", "/t"))
+        hooks = bcs.build_guard_hook("/p/scripts/entry_write_guard.py",
+                                     "/w s", "/p", "/t/private/guard.txt")
+        settings = bcs.build_settings(["arxiv.org"], "/tmp/r", "/t", hooks=hooks)
+        (group,) = settings["hooks"]["PreToolUse"]
+        self.assertEqual(group["matcher"], "Write")
+        (hook,) = group["hooks"]
+        self.assertEqual(hook["type"], "command")
+        self.assertEqual(
+            hook["command"],
+            "python3 /p/scripts/entry_write_guard.py --workspace '/w s' "
+            "--pristine /p --log /t/private/guard.txt")
+        self.assertIn("Bash", settings["permissions"]["deny"])
 
 
 if __name__ == "__main__":

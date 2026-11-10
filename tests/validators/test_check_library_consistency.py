@@ -98,5 +98,27 @@ class TestLibraryConsistency(unittest.TestCase):
                          ["INDEX_UNPARSEABLE"])
 
 
+    def test_duplicate_identifier_aborts_2026_11_10(self):
+        """Plan 2026-11-09-001 U7b: run 42819765946 wrote three duplicates
+        of archived papers under new slugs; nothing flagged them."""
+        entries = os.path.join(self.workspace, "library", "entries")
+        with open(os.path.join(entries, "2023-korinek-genai-economic-research.md"),
+                  encoding="utf-8") as handle:
+            text = handle.read()
+        dup = "2023-korinek-llms-for-economists"
+        with open(os.path.join(entries, dup + ".md"), "w",
+                  encoding="utf-8") as handle:
+            handle.write(text.replace(
+                "slug: 2023-korinek-genai-economic-research", "slug: " + dup))
+        self.write_index(INDEX_OK + "| %s | T | social_science | accepted "
+                         "| doi:10.1257/jel.20231736 |\n" % dup)
+        found = [v for v in clc.validate(self.workspace)
+                 if v.rule_id == "ENTRY_DUPLICATE_IDENTIFIER"]
+        self.assertEqual(len(found), 1)
+        self.assertEqual(found[0].klass, clc.ABORT)
+        self.assertEqual(found[0].path, "library/entries/%s.md" % dup)
+        self.assertIn("2023-korinek-genai-economic-research", found[0].message)
+
+
 if __name__ == "__main__":
     unittest.main()

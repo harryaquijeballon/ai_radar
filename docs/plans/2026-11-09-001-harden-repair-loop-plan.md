@@ -6,7 +6,7 @@ origin: >-
   Incident records docs/ops/2026-10-30-repair-pass-stall-incident.md and
   docs/ops/2026-11-05-queue-deadlock-recurrence-incident.md; handover
   HDAI-AIRADAR-003 (docs/hdai/2026-11-09_handover_003_delta.md)
-status: Phases 1–2 done (2026-11-09); Phase 3 awaiting approval
+status: Phases 1–2 done (2026-11-09); U7b done (2026-11-10); Phase 3 awaiting approval
 ---
 
 # fix: Harden the repair loop and the coverage sensor
@@ -54,6 +54,16 @@ User decisions, 2026-11-09: floors social science ≥ 12 of 19 and AI engineerin
 | **U7** Coverage floors | `ATTEMPTED_FLOORS` in `check_scan_coverage.py`, enforced by `run_delivery.py validate --scan-transcript` on attempt 1 (from the U2 snapshot), on revalidation, and on attempt 2 (its own transcript). Below the floor, or no transcript: abort, outcome class `coverage`, never sent to repair (a repair cannot add fetches). Coverage lines do not cancel the degenerate-run retry. Dry runs skip the gate | `TestCoverageGate`, `TestAttemptedFloors`. Replay over the logs: every unrepaired run 10-26 → 11-09 clears the floors (lowest: AI engineering 7 of 17 on 11-03) |
 
 **Residual risk.** The gate fails closed: if the transcript snapshot (U2) were broken in production, every run would stop with outcome `coverage` and deliver nothing until fixed. That is loud, not silent, and the library is untouched. A supervised no-push run before the next scheduled run removes the risk.
+
+## Phase 2b: dedup at the point of writing (approved and done 2026-11-10)
+
+Added after the 2026-11-10 run was lost (`docs/ops/2026-11-10-dedup-miss-incident.md`): the scan missed dedup on five archived papers, wrote over two entries and created three duplicates.
+
+| Unit | Change | Check |
+|---|---|---|
+| **U7b** Entry write guard | `scripts/entry_write_guard.py`, a PreToolUse hook on `Write` registered by `build_claude_settings.py --guard-script` and run by the CLI from the pristine base (the model has no shell). It blocks a Write over an entry in the base commit (`ENTRY_EXISTS`) and a new entry whose identifier or URL is already archived (`ENTRY_DUPLICATE`), and tells the agent to merge or skip. It fails open. Backstop: `ENTRY_DUPLICATE_IDENTIFIER` (abort) in `check_library_consistency.py`. The run summary gains "duplicate entry writes blocked by harness" | `tests/validators/test_entry_write_guard.py` (15 tests, both 11-10 shapes); `test_duplicate_identifier_aborts_2026_11_10`; `test_entry_write_guard_hook`. The library's 465 entries share no canonical identifier |
+
+**Residual risk.** Hooks from the settings file are not yet proven on the pinned action. The guard fails open, so the worst case is the 11-10 behaviour plus the new validator rule.
 
 ## Phase 3: close the outer loop (awaiting approval)
 

@@ -12,6 +12,10 @@ The unattended model step gets exactly:
 - no tools that defer work past the end of the turn (subagents, wake-ups,
   messaging; `DEFERRAL_TOOLS`), which a non-interactive run silently drops.
 
+With `--guard-script`, it also registers the entry write guard
+(`entry_write_guard.py`) as a PreToolUse hook on Write. The CLI runs the
+hook itself, so the model cannot skip it and needs no shell for it.
+
 Deny rules override allows; in a non-interactive run, anything not allowed
 does not execute. Run from the pristine base copy (R41).
 """
@@ -21,6 +25,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shlex
 import sys
 
 DOMAIN_RE = re.compile(r"^- ([a-z0-9][a-z0-9.-]*\.[a-z]{2,})$")
@@ -55,8 +60,24 @@ MODEL_ID = re.compile(r"^claude-[a-z0-9.-]+$")
 PINNED_MODEL = "claude-sonnet-5"
 
 
+def build_guard_hook(guard_script: str, workspace: str, pristine: str,
+                     guard_log: str = "") -> dict:
+    """Plan 2026-11-09-001 U7b: run the entry write guard before every Write.
+    On 2026-11-10 (run 42819765946) the scan missed dedup on five papers and
+    wrote over two existing entries; the day was lost at validation."""
+    command = "python3 %s --workspace %s --pristine %s" % (
+        shlex.quote(guard_script), shlex.quote(workspace),
+        shlex.quote(pristine))
+    if guard_log:
+        command += " --log %s" % shlex.quote(guard_log)
+    return {"PreToolUse": [{
+        "matcher": "Write",
+        "hooks": [{"type": "command", "command": command, "timeout": 30}],
+    }]}
+
+
 def build_settings(domains: list, evidence_dir: str, runner_temp: str,
-                   model: str = "") -> dict:
+                   model: str = "", hooks: dict = None) -> dict:
     allow = [
         "Read(./**)",
         "Edit(./**)",
@@ -79,6 +100,8 @@ def build_settings(domains: list, evidence_dir: str, runner_temp: str,
     if not MODEL_ID.match(model):
         raise ValueError("model id rejected: not a claude-* identifier")
     settings["model"] = model
+    if hooks:
+        settings["hooks"] = hooks
     return settings
 
 
@@ -89,9 +112,21 @@ def main() -> int:
     parser.add_argument("--runner-temp", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--model", default="")
+    parser.add_argument("--guard-script", default="",
+                        help="entry_write_guard.py in the pristine base")
+    parser.add_argument("--workspace", default="")
+    parser.add_argument("--pristine", default="")
+    parser.add_argument("--guard-log", default="")
     args = parser.parse_args()
+    hooks = None
+    if args.guard_script:
+        if not (args.workspace and args.pristine):
+            raise ValueError("--guard-script needs --workspace and --pristine")
+        hooks = build_guard_hook(args.guard_script, args.workspace,
+                                 args.pristine, args.guard_log)
     settings = build_settings(read_allowlist(args.allowlist),
-                              args.evidence_dir, args.runner_temp, args.model)
+                              args.evidence_dir, args.runner_temp, args.model,
+                              hooks)
     with open(args.output, "w", encoding="utf-8") as handle:
         json.dump(settings, handle, indent=2)
         handle.write("\n")
@@ -99,6 +134,7 @@ def main() -> int:
           % (sum(1 for rule in settings["permissions"]["allow"]
                  if rule.startswith("WebFetch(")),
              settings["model"]))
+    print("entry_write_guard=%s" % ("on" if hooks else "off"))
     return 0
 
 

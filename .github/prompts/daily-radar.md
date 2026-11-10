@@ -45,6 +45,12 @@ Procedure:
    never log a rejection for one older than the cap. Hold back each
    domain's P8 report write for step 6: no report file may exist before
    the scan-evidence artifact does.
+   Before writing any entry, search `library/INDEX.md` for the candidate's
+   identifier (arXiv ID, DOI, URL). A harness guard checks every entry
+   Write as well: it rejects a Write over an existing entry, and a new
+   entry whose identifier or URL is already in the library. When it
+   rejects, the candidate is a re-encounter: follow the message, write no
+   new entry, and move on. Never retry under another slug.
 3. Fetch only from domains in `profiles/egress_allowlist.md`. A promising
    result anywhere else: defer or propose per Unattended mode — never fetch it.
 4. When you cannot safely judge a candidate (ambiguity, access, verification,

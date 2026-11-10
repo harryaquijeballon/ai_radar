@@ -157,6 +157,8 @@ class TestValidate(DeliveryBase):
         workspace, pristine, evidence = self.setup_run()
         new_entry = fix.read(workspace, fix.ACCEPTED_ENTRY).replace(
             "2023-korinek-genai-economic-research", "2026-unindexed-entry")
+        # A different development: its own identifier (U7b duplicate rule).
+        new_entry = new_entry.replace("10.1257/jel.20231736", "10.9999/other")
         fix.write(workspace, "library/entries/2026-unindexed-entry.md", new_entry)
         self.assertEqual(
             self.validate(workspace, pristine, evidence)["verdict"],
@@ -590,6 +592,34 @@ class TestSummarizeOutputs(DeliveryBase):
         self.assertIn("| queue fields restored by harness | 2 |", result.stdout)
         result = subprocess.run(base_args, capture_output=True, text=True)
         self.assertNotIn("queue fields restored", result.stdout)
+
+    def test_summarize_counts_entry_guard_blocks(self):
+        """Plan 2026-11-09-001 U7b: blocked duplicate writes become a count
+        row; guard faults get their own row only when there are any."""
+        workspace, pristine, _ = self.setup_run()
+        log = workspace + "-guard.txt"
+        base_args = [sys.executable, SCRIPT, "summarize",
+                     "--workspace", workspace, "--pristine", pristine,
+                     "--mode", "no-push", "--model1", "success",
+                     "--validate1", "pass", "--base", "origin/main",
+                     "--run-date", RUN_DATE]
+        result = subprocess.run(base_args + ["--entry-guard-log", log],
+                                capture_output=True, text=True)
+        self.assertIn("| duplicate entry writes blocked by harness | 0 |",
+                      result.stdout)
+        self.assertNotIn("entry guard errors", result.stdout)
+        with open(log, "w", encoding="utf-8") as handle:
+            handle.write("BLOCKED ENTRY_EXISTS library/entries/a.md\n"
+                         "BLOCKED ENTRY_DUPLICATE library/entries/b.md\n"
+                         "GUARD_ERROR ValueError\n")
+        result = subprocess.run(base_args + ["--entry-guard-log", log],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("| duplicate entry writes blocked by harness | 2 |",
+                      result.stdout)
+        self.assertIn("| entry guard errors | 1 |", result.stdout)
+        result = subprocess.run(base_args, capture_output=True, text=True)
+        self.assertNotIn("duplicate entry writes", result.stdout)
 
     def test_clean_no_push_run_emits_incomplete_false(self):
         pairs, stdout = self.summarize("pass", "none", "none")

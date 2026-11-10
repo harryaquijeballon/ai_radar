@@ -154,13 +154,16 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
                   outcome: str, attempts: int, commit: str,
                   oauth_ready: bool, artifacts_note: bool,
                   evidence_path: str = None, coverage=False,
-                  queue_restored=None, repair_outcome=None) -> str:
+                  queue_restored=None, repair_outcome=None,
+                  entry_guard=None) -> str:
     """`coverage` is False when not measured (no rows), None when the
     execution log was unavailable, else the U12 coverage record.
     `queue_restored` is the number of grow-only queue fields the harness
     restored to their base text (normalize_queue_appends.py), or None when
     the normaliser did not run (no row). `repair_outcome` is one of
-    REPAIR_OUTCOMES, or None when no repair ran (no row)."""
+    REPAIR_OUTCOMES, or None when no repair ran (no row). `entry_guard` is
+    (blocked, errors) from the entry write guard's log, or None when the
+    guard log was not given (no rows)."""
     added, modified, provisional, rejections = _entry_change_counts(
         workspace, base_ref, git_dir)
     deferred_total, deferred_by_class = _new_queue_records(
@@ -197,6 +200,11 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
     if queue_restored is not None:
         lines.append("| queue fields restored by harness | %d |"
                      % int(queue_restored))
+    if entry_guard is not None:
+        lines.append("| duplicate entry writes blocked by harness | %d |"
+                     % int(entry_guard[0]))
+        if int(entry_guard[1]):
+            lines.append("| entry guard errors | %d |" % int(entry_guard[1]))
     evidence = _evidence_counts(evidence_path)
     for domain in lib_radar.DOMAINS:
         pair = evidence.get(domain)

@@ -4,7 +4,8 @@ origin priority 4 — INDEX.md agrees with the entries it derives from).
 Checks every entry's frontmatter against the frozen v1 schema (via
 lib_radar.validate_entry_frontmatter), slug/filename agreement, and the
 derived index: a row per entry, no stale rows, status cells matching entry
-frontmatter. All rules repairable-class — the index is regenerable by design.
+frontmatter. Those rules are repairable-class — the index is regenerable by
+design. One abort rule: two entries sharing a canonical identifier.
 """
 
 from __future__ import annotations
@@ -14,8 +15,9 @@ import os
 import sys
 from typing import Dict, List
 
+import lib_dedup
 import lib_radar
-from lib_radar import REPAIRABLE, Violation, emit, register_rule
+from lib_radar import ABORT, REPAIRABLE, Violation, emit, register_rule
 
 register_rule("SLUG_FILENAME_MISMATCH", REPAIRABLE,
               "entry slug does not match its filename")
@@ -27,6 +29,13 @@ register_rule("INDEX_ROW_MISMATCH", REPAIRABLE,
               "INDEX.md row disagrees with entry frontmatter ({field})")
 register_rule("INDEX_UNPARSEABLE", REPAIRABLE,
               "INDEX.md table could not be parsed ({reason})")
+
+
+# Plan 2026-11-09-001 U7b (docs/ops/2026-11-10-dedup-miss-incident.md): the
+# backstop behind the entry write guard. Abort, not repairable: the fix is
+# to remove an entry, which the repair pass cannot do.
+register_rule("ENTRY_DUPLICATE_IDENTIFIER", ABORT,
+              "entry shares a canonical identifier with entry {other}")
 
 
 def parse_index(text: str) -> Dict[str, Dict[str, str]]:
@@ -57,6 +66,17 @@ def validate(workspace: str) -> List[Violation]:
         if fields.get("slug") and fields["slug"] != slug:
             violations.append(emit("SLUG_FILENAME_MISMATCH", rel))
         entries[slug] = fields
+
+    owners: Dict[str, str] = {}
+    for slug, fields in sorted(entries.items()):
+        clashes = sorted({owners[key] for key in lib_dedup.id_keys(fields)
+                          if key in owners})
+        for other in clashes:
+            violations.append(emit("ENTRY_DUPLICATE_IDENTIFIER",
+                                   "library/entries/%s.md" % slug,
+                                   other=other))
+        for key in lib_dedup.id_keys(fields):
+            owners.setdefault(key, slug)
 
     index_path = os.path.join(workspace, "library", "INDEX.md")
     if not os.path.isfile(index_path):
