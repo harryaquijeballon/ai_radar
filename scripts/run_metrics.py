@@ -51,6 +51,44 @@ COST_CEILING_USD = 8.0
 
 ALARMS = ("low_turns", "high_cost")
 
+TOKEN_FIELDS = (("input", "input_tokens"),
+                ("cache_write", "cache_creation_input_tokens"),
+                ("cache_read", "cache_read_input_tokens"),
+                ("output", "output_tokens"))
+_MODEL_ID = re.compile(r"^claude-[a-z0-9.-]{1,40}$")
+
+
+def _count(value) -> Optional[int]:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return None
+    return int(value) if 0 <= value < 10 ** 12 else None
+
+
+def _usage(result: dict) -> Dict[str, object]:
+    """Token counts and per-model cost from the result block, when the CLI
+    wrote them (docs/ops/2026-11-11-scan-cost-review.md: the job log alone
+    could not say what a scan's cost was made of). Numbers and model ids
+    only; absent or malformed fields are skipped."""
+    found: Dict[str, object] = {}
+    usage = result.get("usage")
+    if isinstance(usage, dict):
+        tokens = {name: _count(usage.get(key)) for name, key in TOKEN_FIELDS}
+        if all(value is not None for value in tokens.values()):
+            found["tokens"] = tokens
+    by_model = result.get("modelUsage")
+    if isinstance(by_model, dict):
+        costs = {}
+        for model, record in by_model.items():
+            cost = record.get("costUSD") if isinstance(record, dict) else None
+            if isinstance(model, str) and _MODEL_ID.match(model) \
+                    and isinstance(cost, (int, float)) \
+                    and not isinstance(cost, bool) and 0 <= cost < 10000:
+                costs[model] = round(float(cost), 2)
+        if costs:
+            found["cost_by_model"] = costs
+    return found
+
+
 _TURNS_LINE = re.compile(r"^%s: (\d{1,6})$" % TURNS_TRAILER, re.M)
 
 
@@ -84,6 +122,7 @@ def scan_metrics(execution_log) -> Optional[Dict[str, object]]:
     if isinstance(duration, (int, float)) and not isinstance(duration, bool) \
             and 0 <= duration < 10 ** 9:
         metrics["duration_s"] = int(round(duration / 1000.0))
+    metrics.update(_usage(result))
     return metrics
 
 

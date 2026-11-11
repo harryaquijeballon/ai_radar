@@ -626,7 +626,15 @@ class TestSummarizeOutputs(DeliveryBase):
         def run(turns, cost):
             with open(log, "w", encoding="utf-8") as handle:
                 json.dump([{"type": "result", "num_turns": turns,
-                            "total_cost_usd": cost, "duration_ms": 60000}],
+                            "total_cost_usd": cost, "duration_ms": 60000,
+                            "usage": {"input_tokens": 1200,
+                                      "cache_creation_input_tokens": 90000,
+                                      "cache_read_input_tokens": 4000000,
+                                      "output_tokens": 52000},
+                            "modelUsage": {
+                                "claude-sonnet-5": {"costUSD": 3.1},
+                                "claude-haiku-5-5": {"costUSD": 0.4},
+                                "x | injected": {"costUSD": 1}}}],
                           handle)
             if os.path.exists(out):
                 os.remove(out)
@@ -647,6 +655,11 @@ class TestSummarizeOutputs(DeliveryBase):
         self.assertIn("| scan turns | 120 |", stdout)
         self.assertIn("| scan cost (USD) | 3.50 |", stdout)
         self.assertIn("| scan duration (s) | 60 |", stdout)
+        self.assertIn("| scan tokens (input / cache write / cache read / "
+                      "output) | 1200 / 90000 / 4000000 / 52000 |", stdout)
+        self.assertIn("| scan cost by model (USD) | claude-haiku-5-5 0.40, "
+                      "claude-sonnet-5 3.10 |", stdout)
+        self.assertNotIn("injected", stdout)
         self.assertIn("| turns reference | 127 (fixed baseline) |", stdout)
         self.assertIn("| effort alarm | none |", stdout)
         self.assertIn("alarm=none\n", outputs)
@@ -729,6 +742,7 @@ class TestSummarizeOutputs(DeliveryBase):
         with open(log, "w", encoding="utf-8") as handle:
             handle.write("BLOCKED ENTRY_EXISTS library/entries/a.md\n"
                          "BLOCKED ENTRY_DUPLICATE library/entries/b.md\n"
+                         "CHECKED library/entries/c.md\n"
                          "GUARD_ERROR ValueError\n")
         result = subprocess.run(base_args + ["--entry-guard-log", log],
                                 capture_output=True, text=True)
@@ -736,6 +750,8 @@ class TestSummarizeOutputs(DeliveryBase):
         self.assertIn("| duplicate entry writes blocked by harness | 2 |",
                       result.stdout)
         self.assertIn("| entry guard errors | 1 |", result.stdout)
+        self.assertIn("| entry writes checked by harness guard | 3 |",
+                      result.stdout)
         result = subprocess.run(base_args, capture_output=True, text=True)
         self.assertNotIn("duplicate entry writes", result.stdout)
 

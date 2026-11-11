@@ -383,13 +383,14 @@ def cmd_summarize(args) -> int:
     # during the model step, and the guard's own faults (it fails open).
     entry_guard = None
     if args.entry_guard_log is not None:
-        blocked = errors = 0
+        blocked = errors = checked = 0
         if os.path.isfile(args.entry_guard_log):
             with open(args.entry_guard_log, encoding="utf-8") as handle:
                 for line in handle:
                     blocked += line.startswith("BLOCKED ")
                     errors += line.startswith("GUARD_ERROR ")
-        entry_guard = (blocked, errors)
+                    checked += line.startswith(("CHECKED ", "BLOCKED "))
+        entry_guard = (blocked, errors, checked)
     # Plan 2026-11-09-001 U8: scan effort against the last delivered runs
     # (trailers in the base commit's history). Report-only.
     import run_metrics

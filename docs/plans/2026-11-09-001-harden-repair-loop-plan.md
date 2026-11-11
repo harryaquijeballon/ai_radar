@@ -76,6 +76,13 @@ Added after the 2026-11-10 run was lost (`docs/ops/2026-11-10-dedup-miss-inciden
 
 **Residual risk.** The alarm thresholds are calibrated on 24 runs and the cost trend is upward ($1.58 → $6.09); expect to revisit the $8.00 ceiling. The reminder's issue step runs for the first time on 2026-11-16.
 
+## Follow-up, 2026-11-11
+
+- **Decision (user):** the effort alarm stays report-only. Only failed runs notify; the alarm rows are reviewed in the Monday check.
+- **Cost review:** `docs/ops/2026-11-11-scan-cost-review.md`. Cost follows turns (about $0.03 each) and has no time trend. The $8.00 ceiling stays. The run summary gains token and per-model cost rows.
+- **Guard proof:** the entry write guard logs each entry Write it lets through; the summary row `entry writes checked by harness guard` shows whether the hook runs.
+- **Run of 2026-11-11:** stopped by the coverage floor (`docs/ops/2026-11-11-coverage-floor-incident.md`). Proposed, not approved: an in-run coverage check when the agent tries to finish.
+
 ## Out of scope
 
 - U15 of plan 2026-10-16-001 (210-paper re-review): paused by the user.

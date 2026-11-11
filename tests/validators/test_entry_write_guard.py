@@ -119,7 +119,9 @@ class TestEntryWriteGuard(GuardCase):
             entry("2026-new-paper", "https://arxiv.org/abs/2611.09999",
                   '["arxiv:2611.09999"]')))
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(self.log_text(), "")
+        # An allowed entry Write leaves proof that the hook ran.
+        self.assertEqual(self.log_text(),
+                         "CHECKED library/entries/2026-new-paper.md\n")
 
     def test_rewrite_of_entry_created_this_run_allowed(self):
         """A new entry may be written twice in a run (e.g. by the repair)."""
@@ -157,6 +159,7 @@ class TestEntryWriteGuard(GuardCase):
                               EXISTING + ".md")
         self.assertEqual(self.run_hook(
             self.write_call(nested, entry(EXISTING))).returncode, 0)
+        self.assertEqual(self.log_text(), "")  # not entry Writes: no line
 
     def test_fails_open_on_its_own_errors(self):
         """A guard fault must never stop a scan; validators are the gate."""

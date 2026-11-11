@@ -21,8 +21,9 @@ The guard fails OPEN: on any error of its own it lets the write through.
 The validators stay the gate (`ENTRY_BODY_REWRITTEN`,
 `ENTRY_DUPLICATE_IDENTIFIER`); a guard fault must never stop a scan.
 
-The log holds derived lines only (`BLOCKED <rule> <safe path>`), never the
-content of the write.
+The log holds derived lines only (`BLOCKED <rule> <safe path>`, and
+`CHECKED <safe path>` for an entry Write it let through), never the content
+of the write.
 """
 
 from __future__ import annotations
@@ -55,7 +56,9 @@ DUPLICATE_MESSAGE = (
 
 
 def evaluate(payload: dict, workspace: str, pristine: str):
-    """Return None to allow, or (rule, message, safe_rel_path) to block."""
+    """Return None when the call is not an entry Write, ("ALLOWED", "",
+    safe_rel_path) for an entry Write that may proceed, or (rule, message,
+    safe_rel_path) to block."""
     if payload.get("tool_name") != "Write":
         return None
     tool_input = payload.get("tool_input") or {}
@@ -82,7 +85,7 @@ def evaluate(payload: dict, workspace: str, pristine: str):
         return None
     keys = lib_dedup.all_keys(lib_radar.parse_frontmatter(content).fields)
     if not keys:
-        return None
+        return ("ALLOWED", "", safe_rel)
     # The base commit first, then entries written earlier in this run.
     for root in (pristine, workspace):
         known = lib_dedup.library_keys(root, skip_slugs=(slug,))
@@ -92,7 +95,7 @@ def evaluate(payload: dict, workspace: str, pristine: str):
                 return ("ENTRY_DUPLICATE",
                         DUPLICATE_MESSAGE % {"slug": known[key], "key": shown},
                         safe_rel)
-    return None
+    return ("ALLOWED", "", safe_rel)
 
 
 def _log(path, line: str) -> None:
@@ -117,6 +120,11 @@ def main() -> int:
         _log(args.log, "GUARD_ERROR %s" % type(error).__name__)
         return 0
     if decision is None:
+        return 0
+    if decision[0] == "ALLOWED":
+        # Proof the hook ran: without it, "0 blocked" cannot be told apart
+        # from "the CLI never called the guard" (run 43017169301).
+        _log(args.log, "CHECKED %s" % decision[2])
         return 0
     rule, message, safe_rel = decision
     _log(args.log, "BLOCKED %s %s" % (rule, safe_rel))

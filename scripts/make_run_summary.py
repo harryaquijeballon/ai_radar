@@ -31,6 +31,7 @@ EFFORT_ALARMS = ("low_turns", "high_cost")
 FINDING_STAGES = ("attempt 1", "after repair", "attempt 2")
 MAX_FINDING_RULES = 12
 _RULE_ID_RE = re.compile(r"^[A-Z][A-Z0-9_]{2,60}$")
+_MODEL_ID_RE = re.compile(r"^claude-[a-z0-9.-]{1,40}$")
 REPAIR_OUTCOMES = ("fixed", "no_progress", "partial", "regressed")
 _SHA_RE = re.compile(r"^[0-9a-f]{7,40}$")
 _ITEM_RE = re.compile(r"^### ", re.MULTILINE)
@@ -216,6 +217,9 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
         lines.append("| queue fields restored by harness | %d |"
                      % int(queue_restored))
     if entry_guard is not None:
+        if len(entry_guard) > 2:
+            lines.append("| entry writes checked by harness guard | %d |"
+                         % int(entry_guard[2]))
         lines.append("| duplicate entry writes blocked by harness | %d |"
                      % int(entry_guard[0]))
         if int(entry_guard[1]):
@@ -226,6 +230,22 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
             lines.append("| scan cost (USD) | %.2f |" % float(effort["cost_usd"]))
         if "duration_s" in effort:
             lines.append("| scan duration (s) | %d |" % int(effort["duration_s"]))
+        tokens = effort.get("tokens")
+        if isinstance(tokens, dict):
+            lines.append(
+                "| scan tokens (input / cache write / cache read / output) "
+                "| %d / %d / %d / %d |" % tuple(
+                    int(tokens.get(name, 0))
+                    for name in ("input", "cache_write", "cache_read",
+                                 "output")))
+        by_model = effort.get("cost_by_model")
+        if isinstance(by_model, dict):
+            shown = ", ".join(
+                "%s %.2f" % (model, float(cost))
+                for model, cost in sorted(by_model.items())
+                if _MODEL_ID_RE.match(str(model)))
+            if shown:
+                lines.append("| scan cost by model (USD) | %s |" % shown)
         lines.append("| turns reference | %d (%s) |" % (
             int(round(float(effort["reference_turns"]))),
             "median of recent delivered runs"
