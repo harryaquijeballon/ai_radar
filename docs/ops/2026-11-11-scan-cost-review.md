@@ -51,13 +51,13 @@ What the scan must consult grows with the library:
 | `library/INDEX.md` | 46 kB (246 entries) | 59 kB (315) | 88 kB (465) |
 | `library/rejections.md` | 39 kB | 153 kB | 187 kB |
 
-Together they are now about 275 kB, in the order of 70,000 tokens if read whole. If the agent read both in full, every later turn would carry them, and price per turn would climb with the library. It has not: the rejection log grew fourfold between September and October while price per turn went down. The likely reason is that the agent searches these files instead of reading them (9 to 12 `Grep` calls per run). That is behaviour, not a guarantee.
+Together they are now about 275 kB, in the order of 70,000 tokens if read whole. If the agent read both in full, every later turn would carry them, and price per turn would climb with the library. It has not: the rejection log grew fourfold between September and October while price per turn went down. The likely reason is that the agent searches these files instead of reading them (9 and 12 `Grep` calls in the two runs whose tool counts were kept, 11-10 and 11-11). That is behaviour, not a guarantee.
 
 [interpretation] The structural protection is the same as for dedup: do the lookup in a script. The entry write guard already checks identifiers at write time. If the token rows show the index or the rejection log being read whole, the next step is to stop the agent needing them: a harness-side lookup for candidates, and no more date-only rejection lines (already stopped on 10-27).
 
 ## For planning another radar or more categories
 
-- Budget by turns. A two-domain scan here runs 110 to 125 turns and costs $3 to $4. Roughly half of that per domain, plus about $0.25 of fixed reading (engine, profiles, sources).
+- Budget by turns. A two-domain scan here runs 110 to 125 turns and costs $3 to $4. The split between the two domains was not measured.
 - A category adds cost in proportion to the sources it fetches and the candidates it reviews, not to the size of the library, as long as dedup stays a search.
 - Accepting more per day is cheap: about 4 cents per extra entry on top of the turns it takes.
 - Failed runs are the avoidable cost: 17% here. In-run checks (the write guard, and the proposed coverage check in `docs/ops/2026-11-11-coverage-floor-incident.md`) recover that spend as delivered days.
