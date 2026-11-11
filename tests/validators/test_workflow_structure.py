@@ -72,9 +72,25 @@ class TestWorkflowStructure(unittest.TestCase):
         # U11: no floating tag may remain — it moved three times unannounced.
         self.assertNotRegex(self.text, r"claude-code-action@v\d+\s*$")
         self.assertNotIn("claude-code-action@v1\n", self.text)
+        # The two scan steps share one settings file; the repair pass has
+        # its own, without the scan finish guard (plan 2026-11-09-001 U7c).
         self.assertEqual(
             self.text.count("settings: ${{ runner.temp }}/claude-settings.json"),
-            model_steps)
+            2)
+        repair = self.text.split("id: repair1")[1].split("- name:")[0]
+        self.assertIn(
+            "settings: ${{ runner.temp }}/claude-settings-repair.json", repair)
+        build = self.text.split("Build model settings")[1].split("- name:")[0]
+        scan, repair_build = build.split("claude-settings.json", 1)
+        self.assertIn('--finish-script "$RUNNER_TEMP/pristine/scripts/'
+                      'scan_finish_guard.py"', scan)
+        self.assertIn('--finish-log "$RUNNER_TEMP/radar-private/'
+                      'finish-guard.txt"', scan)
+        self.assertNotIn("--finish-script", repair_build)
+        self.assertIn("--guard-script", repair_build)
+        summary = self.text.split("Job summary (always")[1].split("- name:")[0]
+        self.assertIn('--finish-guard-log "$RUNNER_TEMP/radar-private/'
+                      'finish-guard.txt"', summary)
         self.assertIn(".github/prompts/daily-radar.md", self.text)
 
     def test_all_scripts_execute_from_pristine_copy_r41(self):
@@ -376,6 +392,14 @@ class TestRuntimePrompt(unittest.TestCase):
         self.assertIn("search `library/INDEX.md` for the candidate's", self.text)
         self.assertIn("Never retry under another slug", self.text)
 
+    def test_prompt_states_the_coverage_minimum(self):
+        """Plan 2026-11-09-001 U7c (run 43017169301): the agent was never
+        told the floors that discard its run."""
+        self.assertIn("fewer than 12 social-science or 6 AI-engineering "
+                      "watchlist sources is", self.text.replace("\n   ", " "))
+        self.assertIn("sends you back with the sources still to fetch",
+                      self.text)
+
 
 class TestSettingsBuilder(unittest.TestCase):
     def test_settings_shape(self):
@@ -459,6 +483,19 @@ class TestSettingsBuilder(unittest.TestCase):
             "python3 /p/scripts/entry_write_guard.py --workspace '/w s' "
             "--pristine /p --log /t/private/guard.txt")
         self.assertIn("Bash", settings["permissions"]["deny"])
+
+
+    def test_scan_finish_guard_hook(self):
+        """Plan 2026-11-09-001 U7c: a Stop hook, added next to the entry
+        write guard, only when asked for."""
+        hook = bcs.build_finish_hook("/p/scripts/scan_finish_guard.py", "/p",
+                                     "/t/private/finish.txt")
+        (group,) = hook["Stop"]
+        self.assertNotIn("matcher", group)
+        self.assertEqual(
+            group["hooks"][0]["command"],
+            "python3 /p/scripts/scan_finish_guard.py --pristine /p "
+            "--log /t/private/finish.txt")
 
 
 if __name__ == "__main__":

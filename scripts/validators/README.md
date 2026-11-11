@@ -53,6 +53,7 @@ CLASS RULE_ID path[:line] - message
 | `../run_metrics.py` | Not a validator: scan turns, cost and duration from the transcript's result block (plan 2026-11-09-001 U8). Written as commit trailers on delivery and compared with the last 7 delivered runs in the run summary; alarms `low_turns` and `high_cost` are report-only | n/a |
 | `../make_queue_triage.py` | Not a validator: read-only triage sheet of pending queue records, ordered by closeness to the length cap (U10) | n/a (generator) |
 | `../make_weekly_digest.py` | Not a validator: weekly digest for the handover reminder workflow, derived from commits, `docs/ops/`, `docs/hdai/` and the queues (U11) | n/a (generator) |
+| `../scan_finish_guard.py` | Not a validator: a Stop hook on the scan sessions (plan 2026-11-09-001 U7c). When the agent tries to finish, it measures coverage with `check_scan_coverage.py`'s code and `ATTEMPTED_FLOORS`; below a floor it blocks the stop and names the sources not yet attempted, at most twice per session. Fails open. Not registered for the repair pass | n/a (blocks the end of a turn) |
 
 Queue-record and scan-evidence formats are DRAFT until the U5 engine revision adopts them (documented in `lib_queues.py` and `check_scan_evidence.py`).
 

@@ -87,7 +87,21 @@ jobs:
             --workspace "$GITHUB_WORKSPACE" \
             --pristine "$RUNNER_TEMP/pristine" \
             --guard-log "$RUNNER_TEMP/radar-private/entry-guard.txt" \
+            --finish-script "$RUNNER_TEMP/pristine/scripts/scan_finish_guard.py" \
+            --finish-log "$RUNNER_TEMP/radar-private/finish-guard.txt" \
             --output "$RUNNER_TEMP/claude-settings.json"
+          # The repair pass fetches nothing by design, so its settings carry
+          # no scan finish guard (plan 2026-11-09-001 U7c).
+          python3 "$RUNNER_TEMP/pristine/scripts/build_claude_settings.py" \
+            --allowlist "$GITHUB_WORKSPACE/profiles/egress_allowlist.md" \
+            --evidence-dir "$RADAR_DIR" \
+            --runner-temp "$RUNNER_TEMP" \
+            --model "${MODEL_OVERRIDE:-}" \
+            --guard-script "$RUNNER_TEMP/pristine/scripts/entry_write_guard.py" \
+            --workspace "$GITHUB_WORKSPACE" \
+            --pristine "$RUNNER_TEMP/pristine" \
+            --guard-log "$RUNNER_TEMP/radar-private/entry-guard.txt" \
+            --output "$RUNNER_TEMP/claude-settings-repair.json"
 
       # ---------------- attempt 1 ----------------
 
@@ -154,7 +168,7 @@ jobs:
         uses: anthropics/claude-code-action@374f254f5efaf968abfe15d399fd90972e8138b9  # v1 as of 2026-10-16 (CLI 2.1.301), pinned per U11; upgrade by deliberate commit
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          settings: ${{ runner.temp }}/claude-settings.json
+          settings: ${{ runner.temp }}/claude-settings-repair.json
           prompt: "Read /tmp/radar/violations-1.txt (validator findings for your earlier changes in this repository) and .github/prompts/daily-radar.md, then fix only those findings. Change nothing else. No user is present and this session ends the moment you stop: make every edit yourself, directly, before you stop, and never hand work to another agent or wait for anything. Never shorten or rephrase text that already existed in a queue record. Never raise an entry's verification or status: if verification is missing, set verification: unverified and status: provisional."
 
       - name: Revalidate full suite (attempt 1)
@@ -341,6 +355,7 @@ jobs:
           fi
           cp "$RUNNER_TEMP"/radar-private/queue-restored*.txt "$RADAR_DIR/diagnostics/" 2>/dev/null || true
           cp "$RUNNER_TEMP/radar-private/entry-guard.txt" "$RADAR_DIR/diagnostics/" 2>/dev/null || true
+          cp "$RUNNER_TEMP/radar-private/finish-guard.txt" "$RADAR_DIR/diagnostics/" 2>/dev/null || true
           python3 "$RUNNER_TEMP/pristine/scripts/run_delivery.py" summarize \
             --workspace "$GITHUB_WORKSPACE" \
             --pristine "$RUNNER_TEMP/pristine" \
@@ -364,6 +379,7 @@ jobs:
             --coverage-out "$RADAR_DIR/diagnostics/coverage.json" \
             --queue-restored-log "$RUNNER_TEMP/radar-private/queue-restored.txt" \
             --entry-guard-log "$RUNNER_TEMP/radar-private/entry-guard.txt" \
+            --finish-guard-log "$RUNNER_TEMP/radar-private/finish-guard.txt" \
             --violations-before "$RUNNER_TEMP/radar-private/violations-1.txt" \
             --violations-after "$RADAR_DIR/violations-1b.txt" \
             --violations-attempt2 "$RADAR_DIR/violations-2.txt" \

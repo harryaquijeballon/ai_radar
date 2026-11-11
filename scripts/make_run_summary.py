@@ -160,7 +160,8 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
                   oauth_ready: bool, artifacts_note: bool,
                   evidence_path: str = None, coverage=False,
                   queue_restored=None, repair_outcome=None,
-                  entry_guard=None, effort=None, findings=None) -> str:
+                  entry_guard=None, effort=None, findings=None,
+                  finish_guard=None) -> str:
     """`coverage` is False when not measured (no rows), None when the
     execution log was unavailable, else the U12 coverage record.
     `queue_restored` is the number of grow-only queue fields the harness
@@ -224,6 +225,17 @@ def build_summary(workspace: str, base_ref: str, git_dir, run_date: datetime.dat
                      % int(entry_guard[0]))
         if int(entry_guard[1]):
             lines.append("| entry guard errors | %d |" % int(entry_guard[1]))
+    if finish_guard is not None:
+        lines.append("| finish checks run by harness guard | %d |"
+                     % int(finish_guard.get("checked", 0)))
+        lines.append("| scan sent back for low coverage | %d |"
+                     % int(finish_guard.get("blocked", 0)))
+        if int(finish_guard.get("gave_up", 0)):
+            lines.append("| finish guard gave up (still below floor) | %d |"
+                         % int(finish_guard["gave_up"]))
+        if int(finish_guard.get("errors", 0)):
+            lines.append("| finish guard errors | %d |"
+                         % int(finish_guard["errors"]))
     if effort is not None:
         lines.append("| scan turns | %d |" % int(effort["turns"]))
         if "cost_usd" in effort:

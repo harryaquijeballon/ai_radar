@@ -1,6 +1,6 @@
 # 2026-11-11: a shallow scan stopped by the coverage floor
 
-Scheduled run 43017169301 (`radar-daily`, 2026-11-11, started 12:04 UTC, base `3f9647f`). It failed at **"Enforce run outcome (fail on incomplete)"** with outcome `coverage`. Status: **the gate worked as decided on 2026-11-09 (below the floor, do not deliver); why the scan was shallow is not established; no fix applied; a proposal awaits the user.**
+Scheduled run 43017169301 (`radar-daily`, 2026-11-11, started 12:04 UTC, base `3f9647f`). It failed at **"Enforce run outcome (fail on incomplete)"** with outcome `coverage`. Status: **the gate worked as decided on 2026-11-09 (below the floor, do not deliver); why the scan was shallow is not established; in-run coverage check applied the same day (plan 2026-11-09-001 U7c).**
 
 ## What happened
 
@@ -50,11 +50,27 @@ From 10-27 the sensor readings that are valid were 16 or 17 of 19 every day unti
 
 Fixed with this record: the guard now logs every entry Write it lets through, and the run summary has the row `entry writes checked by harness guard`. A zero there on a day with new entries means the hook is not running.
 
-## Proposal (not applied)
+## Fix (plan 2026-11-09-001 U7c, approved and applied 2026-11-11)
 
 The floor is a post-run gate: it can only reject the day. The agent never learns during the run that it is below the floor. The same pattern as the entry write guard would fix that: a hook at the moment the agent tries to finish, which measures coverage from the session so far and, below the floor, sends the agent back with the list of sources not yet attempted. A shallow day would then become a completed scan instead of a lost one. The post-run gate stays as the backstop.
 
-This depends on hooks running under the pinned action, which the next delivered run will show.
+```mermaid
+flowchart LR
+    A[Agent tries to<br/>end its turn] --> H{Scan finish guard<br/>run by the CLI}
+    H -- at or above both floors --> E[Session ends]
+    H -- below a floor,<br/>fewer than 2 blocks so far --> B[Stop blocked:<br/>sources not yet attempted]
+    B --> F[Agent fetches them,<br/>updates entries and reports]
+    F --> A
+    H -- below a floor,<br/>2 blocks already --> E
+    H -- guard error or<br/>unreadable transcript --> E
+    E --> G{Post-run coverage gate}
+    G -- below floor --> X[Not delivered]
+    G -- pass --> D[Validate and deliver]
+```
+
+Built as `scripts/scan_finish_guard.py`: it uses the post-run gate's own measuring code and floors, so the two cannot disagree. The run prompt now also states the minimum, which the agent had never been told. The repair pass has its own settings without this hook, because a repair fetches nothing by design.
+
+It was wired in before hooks were proven on the pinned action. That is safe because the guard fails open and can block at most twice; if hooks do not run, the system behaves as it did on 11-11. The summary row `finish checks run by harness guard` shows on the next model run whether it ran.
 
 ## Lessons
 

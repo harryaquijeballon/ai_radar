@@ -699,6 +699,35 @@ class TestSummarizeOutputs(DeliveryBase):
         self.assertNotIn("validation findings (attempt 2)", result.stdout)
         self.assertNotIn("validation findings (after repair)", result.stdout)
 
+    def test_summarize_counts_finish_guard(self):
+        """Plan 2026-11-09-001 U7c: proof the Stop hook ran, and how often
+        it sent the scan back."""
+        workspace, pristine, _ = self.setup_run()
+        log = workspace + "-finish.txt"
+        base_args = [sys.executable, SCRIPT, "summarize",
+                     "--workspace", workspace, "--pristine", pristine,
+                     "--mode", "no-push", "--model1", "success",
+                     "--validate1", "pass", "--base", "origin/main",
+                     "--run-date", RUN_DATE]
+        result = subprocess.run(base_args + ["--finish-guard-log", log],
+                                capture_output=True, text=True)
+        self.assertIn("| finish checks run by harness guard | 0 |",
+                      result.stdout)
+        self.assertIn("| scan sent back for low coverage | 0 |", result.stdout)
+        with open(log, "w", encoding="utf-8") as handle:
+            handle.write("BLOCKED COVERAGE s ai_engineering=6/17 "
+                         "social_science=9/19\n"
+                         "CHECKED s ai_engineering=9/17 social_science=14/19\n")
+        result = subprocess.run(base_args + ["--finish-guard-log", log],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("| finish checks run by harness guard | 2 |",
+                      result.stdout)
+        self.assertIn("| scan sent back for low coverage | 1 |", result.stdout)
+        self.assertNotIn("finish guard gave up", result.stdout)
+        result = subprocess.run(base_args, capture_output=True, text=True)
+        self.assertNotIn("finish checks", result.stdout)
+
     def test_summarize_counts_queue_restorations(self):
         """Plan 2026-11-09-001 U3: the normaliser's derived report becomes a
         count row; a missing report means zero; no flag means no row."""

@@ -51,6 +51,12 @@ Procedure:
    entry whose identifier or URL is already in the library. When it
    rejects, the candidate is a re-encounter: follow the message, write no
    new entry, and move on. Never retry under another slug.
+   Work through the whole active list in both `sources.md` files (P6.2):
+   fetch the page of every source that has a `fetch hosts` entry. A quiet
+   source still counts once fetched. A run that attempts
+   fewer than 12 social-science or 6 AI-engineering watchlist sources is
+   discarded whole. A harness check measures this when you try to finish
+   and, below the minimum, sends you back with the sources still to fetch.
 3. Fetch only from domains in `profiles/egress_allowlist.md`. A promising
    result anywhere else: defer or propose per Unattended mode — never fetch it.
 4. When you cannot safely judge a candidate (ambiguity, access, verification,

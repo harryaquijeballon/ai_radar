@@ -81,7 +81,8 @@ Added after the 2026-11-10 run was lost (`docs/ops/2026-11-10-dedup-miss-inciden
 - **Decision (user):** the effort alarm stays report-only. Only failed runs notify; the alarm rows are reviewed in the Monday check.
 - **Cost review:** `docs/ops/2026-11-11-scan-cost-review.md`. Cost follows turns (about $0.03 each) and has no time trend. The $8.00 ceiling stays. The run summary gains token and per-model cost rows.
 - **Guard proof:** the entry write guard logs each entry Write it lets through; the summary row `entry writes checked by harness guard` shows whether the hook runs.
-- **Run of 2026-11-11:** stopped by the coverage floor (`docs/ops/2026-11-11-coverage-floor-incident.md`). Proposed, not approved: an in-run coverage check when the agent tries to finish.
+- **Run of 2026-11-11:** stopped by the coverage floor (`docs/ops/2026-11-11-coverage-floor-incident.md`).
+- **U7c Scan finish guard (approved and done 2026-11-11).** `scripts/scan_finish_guard.py`, a Stop hook on the scan sessions (attempt 1 and attempt 2), registered by `build_claude_settings.py --finish-script`. When the agent tries to end its turn, the hook measures the session's fetches against the watchlists with the post-run gate's own code and floors. Below a floor it blocks the stop and names the sources not yet attempted; at most twice per session, then the post-run gate decides. It fails open. The repair pass runs on its own settings file without this hook. The run prompt now states the minimum. Summary rows: `finish checks run by harness guard`, `scan sent back for low coverage`. Checks: `tests/validators/test_scan_finish_guard.py` (the 11-11 shape, the read-only bail, the block limit, fail-open), and the hook run by hand on a real session transcript. **Not yet proven:** that the pinned action runs hooks; a non-zero `finish checks run` on the next model run is the proof.
 
 ## Out of scope
 

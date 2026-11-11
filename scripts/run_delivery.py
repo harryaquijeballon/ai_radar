@@ -399,12 +399,25 @@ def cmd_summarize(args) -> int:
         effort = run_metrics.evaluate(
             run_metrics.scan_metrics(args.execution_log),
             run_metrics.turns_history(args.git_dir, args.base))
+    # Plan 2026-11-09-001 U7c: how often the finish guard ran, sent the scan
+    # back for coverage, gave up, or faulted.
+    finish_guard = None
+    if args.finish_guard_log is not None:
+        finish_guard = {"checked": 0, "blocked": 0, "gave_up": 0, "errors": 0}
+        if os.path.isfile(args.finish_guard_log):
+            with open(args.finish_guard_log, encoding="utf-8") as handle:
+                for line in handle:
+                    finish_guard["checked"] += line.startswith(
+                        ("CHECKED ", "BLOCKED ", "GAVE_UP "))
+                    finish_guard["blocked"] += line.startswith("BLOCKED ")
+                    finish_guard["gave_up"] += line.startswith("GAVE_UP ")
+                    finish_guard["errors"] += line.startswith("GUARD_ERROR ")
     summary = mrs.build_summary(
         args.workspace, args.base, args.git_dir, run_date, outcome, attempts,
         commit, args.oauth_ready == "true", artifacts_note=incomplete,
         evidence_path=args.evidence, coverage=coverage,
         queue_restored=queue_restored, entry_guard=entry_guard,
-        effort=effort,
+        effort=effort, finish_guard=finish_guard,
         findings=[(label, rule_counts(path)) for label, path in (
             ("attempt 1", args.violations_before),
             ("after repair", args.violations_after),
@@ -498,6 +511,9 @@ def main() -> int:
     p_summarize.add_argument("--violations-attempt2", default=None,
                              help="findings at attempt 2's validation (U9 "
                                   "summary row)")
+    p_summarize.add_argument("--finish-guard-log", default=None,
+                             help="scan_finish_guard.py log (U7c summary "
+                                  "rows); omit to skip the rows")
     p_summarize.add_argument("--entry-guard-log", default=None,
                              help="entry_write_guard.py log (U7b summary "
                                   "rows); omit to skip the rows")

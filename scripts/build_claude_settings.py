@@ -14,7 +14,10 @@ The unattended model step gets exactly:
 
 With `--guard-script`, it also registers the entry write guard
 (`entry_write_guard.py`) as a PreToolUse hook on Write. The CLI runs the
-hook itself, so the model cannot skip it and needs no shell for it.
+hook itself, so the model cannot skip it and needs no shell for it. With
+`--finish-script`, it registers the scan finish guard
+(`scan_finish_guard.py`) as a Stop hook; the workflow builds the repair
+pass's settings without it.
 
 Deny rules override allows; in a non-interactive run, anything not allowed
 does not execute. Run from the pristine base copy (R41).
@@ -76,6 +79,21 @@ def build_guard_hook(guard_script: str, workspace: str, pristine: str,
     }]}
 
 
+def build_finish_hook(finish_script: str, pristine: str,
+                      finish_log: str = "") -> dict:
+    """Plan 2026-11-09-001 U7c: when the scan tries to end its turn, measure
+    coverage and send it back below the floor (run 43017169301 was discarded
+    at 9 of 19 social-science sources). Scan sessions only: the repair pass
+    fetches nothing by design and gets settings without this hook."""
+    command = "python3 %s --pristine %s" % (shlex.quote(finish_script),
+                                            shlex.quote(pristine))
+    if finish_log:
+        command += " --log %s" % shlex.quote(finish_log)
+    return {"Stop": [{
+        "hooks": [{"type": "command", "command": command, "timeout": 30}],
+    }]}
+
+
 def build_settings(domains: list, evidence_dir: str, runner_temp: str,
                    model: str = "", hooks: dict = None) -> dict:
     allow = [
@@ -117,6 +135,10 @@ def main() -> int:
     parser.add_argument("--workspace", default="")
     parser.add_argument("--pristine", default="")
     parser.add_argument("--guard-log", default="")
+    parser.add_argument("--finish-script", default="",
+                        help="scan_finish_guard.py in the pristine base "
+                             "(scan settings only, never the repair pass)")
+    parser.add_argument("--finish-log", default="")
     args = parser.parse_args()
     hooks = None
     if args.guard_script:
@@ -124,6 +146,12 @@ def main() -> int:
             raise ValueError("--guard-script needs --workspace and --pristine")
         hooks = build_guard_hook(args.guard_script, args.workspace,
                                  args.pristine, args.guard_log)
+    if args.finish_script:
+        if not args.pristine:
+            raise ValueError("--finish-script needs --pristine")
+        hooks = dict(hooks or {})
+        hooks.update(build_finish_hook(args.finish_script, args.pristine,
+                                       args.finish_log))
     settings = build_settings(read_allowlist(args.allowlist),
                               args.evidence_dir, args.runner_temp, args.model,
                               hooks)
@@ -134,7 +162,9 @@ def main() -> int:
           % (sum(1 for rule in settings["permissions"]["allow"]
                  if rule.startswith("WebFetch(")),
              settings["model"]))
-    print("entry_write_guard=%s" % ("on" if hooks else "off"))
+    print("entry_write_guard=%s scan_finish_guard=%s" % (
+        "on" if hooks and "PreToolUse" in hooks else "off",
+        "on" if hooks and "Stop" in hooks else "off"))
     return 0
 
 
