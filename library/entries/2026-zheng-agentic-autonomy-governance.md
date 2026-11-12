@@ -68,4 +68,4 @@ None yet.
 
 ## Related entries
 
-None yet.
+- [2026-zhao-deputybench-contextual-safety](2026-zhao-deputybench-contextual-safety.md) — related theme (permission/governance for agentic AI), distinct contribution: this entry is a governance framework separating capability from permission; that one is an executable benchmark quantifying where permission-checking actually fails.

@@ -58,4 +58,4 @@ None yet.
 
 ## Related entries
 
-None yet.
+- [2026-voria-acf-instruction-adherence](2026-voria-acf-instruction-adherence.md) — same topic (ACF instruction compliance), distinct method: this entry is a controlled experiment with one inserted policy; that one mines real-world ACFs and their linked commits.

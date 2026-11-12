@@ -249,6 +249,17 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-ibrahim-agentops-not-mlops | AgentOps Is Not MLOps: What Breaks in Your Monitoring Stack When Agents Go to Production | ai_engineering | accepted | towardsdatascience.com/agentops-is-not-mlops-what-breaks-in-your-monitoring-stack-when-agents-go-to-production |
 | 2026-shi-noisy-text-rag | Noisy Text in RAG: Typos, OCR, and the Gap Classical Spell-Check Leaves | ai_engineering | accepted | towardsdatascience.com/noisy-text-in-rag-typos-ocr-and-the-gap-classical-spell-check-leaves |
 | 2026-paialunga-context-engineering-changing | Context Engineering Is Changing. Here's What It Means for Data Scientists | ai_engineering | accepted | towardsdatascience.com/context-engineering-is-changing-heres-what-it-means-for-data-scientists |
+| 2026-liu-fairness-drift-property-assessment | Fairness Drift: Assessing Algorithmic Fairness in a Moving Market | social_science | accepted | arxiv:2611.11783 |
+| 2026-voria-acf-instruction-adherence | Do They Do as They Are Told? Investigating Coding Agents' Adherence to Explicit Instructions in Context Files | ai_engineering | accepted | arxiv:2611.13709 |
+| 2026-sepidband-flowplan-token-cost | FlowPlan: Reducing the Token Cost of Coding Agents with Abstraction-Guided Planning and Verification | ai_engineering | accepted | arxiv:2611.13241 |
+| 2026-nagashima-kvm-agent-containment | Coding Agents in KVM: Practical Containment and User Control with Limited Resources | ai_engineering | accepted | arxiv:2611.12823 |
+| 2026-white-ai-cognitive-load-code-comprehension | Feeling Easier, Working Harder: Cognitive Load in AI-Assisted Code Comprehension | ai_engineering | accepted | arxiv:2611.12019 |
+| 2026-agarwal-token-spend-engineering-output | The AI Era's Lines of Code? A Case Study on What an Engineer's Token Spend Measures | ai_engineering | accepted | arxiv:2611.13396 |
+| 2026-vrdoljak-expertcrowd-swe-benchmark | ExpertCrowd-SWE: Measuring Frontier Coding Agents on Expert-Authored Engineering Tasks in Unfamiliar Codebases | ai_engineering | accepted | arxiv:2611.13246 |
+| 2026-zhao-deputybench-contextual-safety | DEPUTYBENCH: Evaluating Contextual Safety in Enterprise Agents | ai_engineering | accepted | arxiv:2611.13355 |
+| 2026-zhang-agent-eval-framework-comparison | Comparative Analysis of Agent Evaluation Frameworks: Stability, Detection, and Discovery in Enterprise Analytics Agents | ai_engineering | accepted | arxiv:2611.14493 |
+| 2026-afonso-proofcoder-continuous-reasoning | ProofCoder: Continuous Reasoning for Automated Software Verification | ai_engineering | accepted | arxiv:2611.14106 |
+| 2026-daghigh-spark-prompt-mutation-verification | SPARK: Semantic-preserving Prompt Mutation for Code Generation using Consensus-based Verification Framework | ai_engineering | accepted | arxiv:2611.13401 |
 | 2026-mosk-frontier-ai-cyber-defense-glasswing | Does Frontier AI Strengthen Cyber Defense? Evidence from Project Glasswing | social_science, ai_engineering | accepted | arxiv:2611.06629 |
 | 2026-yu-occupational-ai-exposure-working-conditions | Dull, Dirty, Dangerous? Working Conditions and the Limits of Occupational AI Exposure | social_science | accepted | arxiv:2611.06888 |
 | 2026-saxena-decision-models-economic-surrogates | Decision Models as Scalable Economic Surrogates that Capture Human Variation | social_science, ai_engineering | accepted | arxiv:2611.05553 |
