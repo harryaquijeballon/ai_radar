@@ -84,6 +84,8 @@ Added after the 2026-11-10 run was lost (`docs/ops/2026-11-10-dedup-miss-inciden
 - **Run of 2026-11-11:** stopped by the coverage floor (`docs/ops/2026-11-11-coverage-floor-incident.md`).
 - **U7c Scan finish guard (approved and done 2026-11-11).** `scripts/scan_finish_guard.py`, a Stop hook on the scan sessions (attempt 1 and attempt 2), registered by `build_claude_settings.py --finish-script`. When the agent tries to end its turn, the hook measures the session's fetches against the watchlists with the post-run gate's own code and floors. Below a floor it blocks the stop and names the sources not yet attempted; at most twice per session, then the post-run gate decides. It fails open. The repair pass runs on its own settings file without this hook. The run prompt now states the minimum. Summary rows: `finish checks run by harness guard`, `scan sent back for low coverage`. Checks: `tests/validators/test_scan_finish_guard.py` (the 11-11 shape, the read-only bail, the block limit, fail-open), and the hook run by hand on a real session transcript. **Not yet proven:** that the pinned action runs hooks; a non-zero `finish checks run` on the next model run is the proof.
 
+- **Confirmed in production, 2026-11-12 (run 43224490117, delivered):** hooks run on the pinned action. The entry write guard checked 11 entry writes (11 new entries) and blocked none; the finish guard ran once and let the scan end at 17 of 19 and 16 of 17. The daily commit `6851edf` carries the three effort trailers. Token and per-model cost rows are present. Still unexercised: a guard block, a finish-guard send-back, the repair-scope check and the repair outcome row.
+
 ## Out of scope
 
 - U15 of plan 2026-10-16-001 (210-paper re-review): paused by the user.

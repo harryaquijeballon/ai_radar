@@ -77,3 +77,20 @@ Whether the CLI writes these fields into the transcript the harness reads is not
 - All 71 scheduled runs from 09-02 to 11-11 are in the table; none was dropped. For runs with several invocations, the scan is the invocation with the most turns.
 - Figures recomputed from the logs by script on 2026-11-11.
 - Not verified: the token composition of cost; why price per turn is higher on heavy writing days.
+
+## Update 2026-11-12: first token breakdown
+
+Run 43224490117 (delivered, 141 turns, $3.61) is the first with the token rows.
+
+| Measure | Value |
+|---|---|
+| Fresh input tokens | 108 |
+| Cache-write tokens | 243,640 |
+| Cache-read tokens | 8,912,673 |
+| Output tokens | 72,216 |
+| Cost by model | `claude-sonnet-5` $3.48, `claude-haiku-5-5` $0.14 |
+
+- The small model that summarises fetched pages is 4% of the cost. Fetching is not the cost driver.
+- Cache reads are 97% of all tokens. Divided by the 141 turns, each turn re-reads about 63,000 tokens of accumulated context. That is why cost follows turns: every extra turn pays again for the whole conversation so far.
+- [interpretation] Under the usual price ratios (cache read 0.1, cache write 1.25, output 5, relative to input), cache reads would be a little over half the cost, output about a quarter and cache writes about a fifth. The actual prices were not checked.
+- This sharpens the growth risk above: anything that enlarges the context early in the run (reading the index or the rejection log whole, long engine files) is paid for on every later turn. One day of data; review after about seven runs.
