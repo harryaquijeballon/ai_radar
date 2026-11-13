@@ -480,3 +480,12 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-handa-decaf-agentic-pipeline-optimization | Divide, Diagnose, and Compose: Optimizing Agentic Pipelines and Harnesses | ai_engineering | accepted | arxiv:2611.08723 |
 | 2026-adnan-breakpoint-debugging-repair-limits | On the Limits of Execution Traces for Repairing Assertion Failures in LLM-Generated Code | ai_engineering | accepted | arxiv:2611.09212 |
 | 2026-zhou-greyzone-agentic-threat-benchmark | GreyZone: Production-quality Agentic Application Threats | ai_engineering | accepted | arxiv:2611.09161 |
+| 2026-chin-rebundling-freelance-ai-age | The Rebundling of Freelance Work in the AI Age | social_science | accepted | arxiv:2611.14708 |
+| 2026-castellacci-firm-application-ai-typology | From the Firm- to the Application-Level: A New Typology of AI Use in Organisations | social_science | accepted | arxiv:2611.15371 |
+| 2026-zhou-datacenter-electricity-wholesale-prices | Data-Center Growth Impacts Household Electricity Costs More Through Wholesale Prices Than Through Grid Reinforcement | social_science | accepted | arxiv:2611.16095 |
+| 2026-ning-accuracy-not-welfare-ai-buyers | Accuracy Is Not Welfare: Evaluating AI Buyers under Strategic Price Complexity in a Synthetic Duopoly | social_science, ai_engineering | accepted | arxiv:2611.16471 |
+| 2026-mollick-fable-52-jagged-agi | Fable 5.2 and Jagged AGI | social_science, ai_engineering | accepted | oneusefulthing.org/p/fable-52-and-jagged-agi |
+| 2026-sahni-rasoi-visual-diffs-coding-agents | Rasoi: Visual Diffs for Evaluating Structural Changes Made by Coding Agents | ai_engineering | accepted | arxiv:2611.16293 |
+| 2026-wang-zhang-satisfix-specification-satisficing | Eliciting and Mitigating Specification Satisficing in Coding Agents | ai_engineering | accepted | arxiv:2611.16289 |
+| 2026-polasani-doulcet-parsebench-2 | Introducing ParseBench-2 | ai_engineering | accepted | llamaindex.ai/blog/introducing-parsebench-v2 |
+| 2026-li-epoch-inference-performance-index | Inference Performance Index: Changing the Way We Measure Inference Capacity | social_science, ai_engineering | accepted | epoch.ai/publications/inference-performance-index |

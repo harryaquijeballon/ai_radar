@@ -156,7 +156,7 @@
 - title: Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment
 - domain: social_science
 - first_encountered: 2026-08-21
-- last_encountered: 2026-11-08
+- last_encountered: 2026-11-13
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. RCT evidence on AI math tutoring — would score high on lens 1/6 if in-window.
@@ -168,7 +168,7 @@
 - title: AI Agents and Prompt Engineering in Econometric Coding
 - domain: social_science, ai_engineering
 - first_encountered: 2026-08-22
-- last_encountered: 2026-11-07
+- last_encountered: 2026-11-13
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. Cross-domain: agent-autonomy levels raise econometric-coding task completion 74%→96% at ~$0.08/op (Galiani et al.).
@@ -195,7 +195,7 @@
 - title: From AI investment to GDP growth: An ecosystem view
 - domain: social_science
 - first_encountered: 2026-08-25
-- last_encountered: 2026-11-09
+- last_encountered: 2026-11-13
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403, consistent with prior runs; only a search-engine title/author snippet available, exact date unconfirmed, insufficient to trace claims to source text.
@@ -207,7 +207,7 @@
 - title: Workers' age and AI adoption
 - domain: social_science
 - first_encountered: 2026-09-16
-- last_encountered: 2026-11-09
+- last_encountered: 2026-11-13
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403 on the column; listing page confirmed date (16 Sep 2026). Only a search-engine paraphrase available (Cette, Nicoletti, Vernerey — AI adoption by age); insufficient to trace claims.
@@ -219,7 +219,7 @@
 - title: AI and the token economy: telco role, telco value
 - domain: social_science
 - first_encountered: 2026-09-18
-- last_encountered: 2026-11-06
+- last_encountered: 2026-11-13
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: gsmaintelligence.com index lists this title under "September 2026" (no day-level date); the only dated match found ("Telcos and the AI token economy: China sets the pace") shows June 2026, unclear if same or a newer item.
@@ -231,12 +231,12 @@
 - title: Embracing AI in Europe: New evidence from harmonised central bank business surveys
 - domain: social_science
 - first_encountered: 2026-08-25
-- last_encountered: 2026-11-09
+- last_encountered: 2026-11-13
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403, consistent with prior runs; only a search-engine title/author snippet available, exact date unconfirmed, insufficient to trace claims to source text.
 - surfaced_by: open search (economic growth / lens 1, competition and regulation / lens 4)
-- action_needed: retry direct fetch in a future run, or have a human read and confirm the column and its date directly; consider an SSRN/RePEc mirror if one exists, per the precedent for the Marsal & Perkowski column.; 11-09: same.
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the column and its date directly; consider an SSRN/RePEc mirror if one exists, per the precedent for the Marsal & Perkowski column.; 11-09: same.; 11-13: same.
 - status: pending
 
 ### https://doi.org/10.1098/rsos.252226
@@ -255,19 +255,19 @@
 - title: Measuring what work generative AI does: Survey evidence versus chat logs
 - domain: social_science
 - first_encountered: 2026-09-25
-- last_encountered: 2026-11-09
+- last_encountered: 2026-11-13
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but the column 403'd; listing page confirmed date (25 Sep 2026, Bick/Blandin/Deming/Schumacher). NBER WP w35677 is month-only dated and lacks the column's survey-vs-chat-log comparison.
 - surfaced_by: watchlist:voxeu-cepr
-- action_needed: retry the column fetch, or have a human confirm the column text directly; NBER w35677 abstract alone is insufficient to write a verified entry for the column's specific comparison.; 11-08: same.; 11-09: same.
+- action_needed: retry the column fetch, or have a human confirm the column text directly; NBER w35677 abstract alone is insufficient to write a verified entry for the column's specific comparison.; 11-08: same.; 11-09: same.; 11-13: same.
 - status: pending
 
 ### https://www.gsmaintelligence.com/research
 - title: Telco AI: State of the Market, Q3 2026
 - domain: social_science
 - first_encountered: 2026-10-20
-- last_encountered: 2026-11-08
+- last_encountered: 2026-11-13
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: Research-index page lists this title under "Oct 2026" only (no day-level date, no item-specific URL shown); distinct title from the prior pending June-2026 "token economy" item, so likely a new report.
@@ -279,12 +279,12 @@
 - title: Artificial intelligence in finance
 - domain: social_science
 - first_encountered: 2026-11-06
-- last_encountered: 2026-11-09
+- last_encountered: 2026-11-13
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: cepr.org allowlisted but the column 403'd; introduces the 7th Future of Banking report (AI in finance: intermediation, central banking, governance). Page date 2 Nov 2026 vs metadata ~519 days old; true date unresolved.
 - surfaced_by: open search (competition/regulation lens, AI in finance)
-- action_needed: confirm the true publication date directly; if genuinely new, review against lens 4; if pre-dating the radar, dismiss as not-new.; 11-08: same (403).; 11-09: same.
+- action_needed: confirm the true publication date directly; if genuinely new, review against lens 4; if pre-dating the radar, dismiss as not-new.; 11-08: same (403).; 11-09: same.; 11-13: same.
 - status: pending
 
 ### https://arxiv.org/abs/2610.28639
