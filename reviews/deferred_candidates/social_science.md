@@ -195,7 +195,7 @@
 - title: From AI investment to GDP growth: An ecosystem view
 - domain: social_science
 - first_encountered: 2026-08-25
-- last_encountered: 2026-11-13
+- last_encountered: 2026-11-14
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403, consistent with prior runs; only a search-engine title/author snippet available, exact date unconfirmed, insufficient to trace claims to source text.
@@ -207,7 +207,7 @@
 - title: Workers' age and AI adoption
 - domain: social_science
 - first_encountered: 2026-09-16
-- last_encountered: 2026-11-13
+- last_encountered: 2026-11-14
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403 on the column; listing page confirmed date (16 Sep 2026). Only a search-engine paraphrase available (Cette, Nicoletti, Vernerey — AI adoption by age); insufficient to trace claims.
@@ -219,7 +219,7 @@
 - title: AI and the token economy: telco role, telco value
 - domain: social_science
 - first_encountered: 2026-09-18
-- last_encountered: 2026-11-13
+- last_encountered: 2026-11-14
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: gsmaintelligence.com index lists this title under "September 2026" (no day-level date); the only dated match found ("Telcos and the AI token economy: China sets the pace") shows June 2026, unclear if same or a newer item.
@@ -231,7 +231,7 @@
 - title: Embracing AI in Europe: New evidence from harmonised central bank business surveys
 - domain: social_science
 - first_encountered: 2026-08-25
-- last_encountered: 2026-11-13
+- last_encountered: 2026-11-14
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but WebFetch returned HTTP 403, consistent with prior runs; only a search-engine title/author snippet available, exact date unconfirmed, insufficient to trace claims to source text.
@@ -255,12 +255,12 @@
 - title: Measuring what work generative AI does: Survey evidence versus chat logs
 - domain: social_science
 - first_encountered: 2026-09-25
-- last_encountered: 2026-11-13
+- last_encountered: 2026-11-14
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: cepr.org allowlisted but the column 403'd; listing page confirmed date (25 Sep 2026, Bick/Blandin/Deming/Schumacher). NBER WP w35677 is month-only dated and lacks the column's survey-vs-chat-log comparison.
 - surfaced_by: watchlist:voxeu-cepr
-- action_needed: retry the column fetch, or have a human confirm the column text directly; NBER w35677 abstract alone is insufficient to write a verified entry for the column's specific comparison.; 11-08: same.; 11-09: same.; 11-13: same.
+- action_needed: retry the column fetch, or have a human confirm the column text directly; NBER w35677 abstract alone is insufficient to write a verified entry for the column's specific comparison.; 11-08: same.; 11-09: same.; 11-13: same.; 11-14: same.
 - status: pending
 
 ### https://www.gsmaintelligence.com/research
@@ -279,12 +279,12 @@
 - title: Artificial intelligence in finance
 - domain: social_science
 - first_encountered: 2026-11-06
-- last_encountered: 2026-11-13
+- last_encountered: 2026-11-14
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: cepr.org allowlisted but the column 403'd; introduces the 7th Future of Banking report (AI in finance: intermediation, central banking, governance). Page date 2 Nov 2026 vs metadata ~519 days old; true date unresolved.
 - surfaced_by: open search (competition/regulation lens, AI in finance)
-- action_needed: confirm the true publication date directly; if genuinely new, review against lens 4; if pre-dating the radar, dismiss as not-new.; 11-08: same (403).; 11-09: same.; 11-13: same.
+- action_needed: confirm the true publication date directly; if genuinely new, review against lens 4; if pre-dating the radar, dismiss as not-new.; 11-08: same (403).; 11-09: same.; 11-13: same.; 11-14: same.
 - status: pending
 
 ### https://arxiv.org/abs/2610.28639

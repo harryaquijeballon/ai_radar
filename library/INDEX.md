@@ -489,3 +489,9 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-wang-zhang-satisfix-specification-satisficing | Eliciting and Mitigating Specification Satisficing in Coding Agents | ai_engineering | accepted | arxiv:2611.16289 |
 | 2026-polasani-doulcet-parsebench-2 | Introducing ParseBench-2 | ai_engineering | accepted | llamaindex.ai/blog/introducing-parsebench-v2 |
 | 2026-li-epoch-inference-performance-index | Inference Performance Index: Changing the Way We Measure Inference Capacity | social_science, ai_engineering | accepted | epoch.ai/publications/inference-performance-index |
+| 2026-anthropic-building-strong-safety-evaluations | Building strong safety evaluations | ai_engineering | accepted | anthropic.com/engineering/building-strong-safety-evaluations |
+| 2026-deepmind-alphaproof-code-formal-verification | Introducing AlphaProof Code: a breakthrough in verifying complex software at depth | ai_engineering | accepted | deepmind.google/blog/introducing-alphaproof-code |
+| 2026-almasri-yang-shadowbench-mcp | ShadowBench-MCP: Measuring Shadow Invocations in MCP-Style Tool Routing | ai_engineering | accepted | arxiv:2611.11720 |
+| 2026-uchoa-gha-smellfix-workflow-smells | GHA-SmellFix: Taking Action with Agentic LLMs for Detecting and Refactoring GitHub Actions Workflow Smells | ai_engineering | accepted | arxiv:2611.14963 |
+| 2026-gottesman-multiloop-evolving-harnesses | MULTILOOP: Evolving Multi-Agent Harnesses for Complex Information-Seeking Tasks | ai_engineering | accepted | arxiv:2611.15754 |
+| 2026-lonkar-evidence-governed-agent-evolution | Evidence-Governed Adoption of Self-Generated Updates in Autonomous AI Agents | ai_engineering | accepted | arxiv:2611.16378 |
