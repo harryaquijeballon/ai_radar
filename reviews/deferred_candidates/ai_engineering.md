@@ -144,7 +144,7 @@
 - title: How we contain Claude across products
 - domain: ai_engineering
 - first_encountered: 2026-08-20
-- last_encountered: 2026-11-13
+- last_encountered: 2026-11-16
 - source_type: primary
 - reason_class: access_or_license_unclear
 - reason: www.anthropic.com is not on the egress allowlist (only bare anthropic.com is); snippet describes sandbox/VM containment architecture (hypervisor, seccomp, gVisor), unverified without fetch; publish date unconfirmed.
@@ -168,12 +168,12 @@
 - title: Research acceleration: The view inside OpenAI
 - domain: ai_engineering
 - first_encountered: 2026-09-07
-- last_encountered: 2026-11-15
+- last_encountered: 2026-11-16
 - source_type: primary
 - reason_class: access_or_license_unclear
 - reason: openai.com allowlisted but returned HTTP 403 (persistent pattern); relayed via Simon Willison (09-06) with a quantified claim (3.1 agent workdays/human workday, mid-Aug 2026), unverifiable without direct fetch.
 - surfaced_by: watchlist:simon-willison
-- action_needed: retry direct fetch in a future run, or have a human read and confirm the methodology and figures directly.; 11-14: openai.com/news/ still 403.; 11-15: same.
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the methodology and figures directly.; 11-14: openai.com/news/ still 403.; 11-15: same.; 11-16: same (403).
 - status: pending
 
 ### https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/
