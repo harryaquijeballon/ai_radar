@@ -287,6 +287,18 @@
 - action_needed: confirm the true publication date directly; if genuinely new, review against lens 4; if pre-dating the radar, dismiss as not-new.; 11-08: same (403).; 11-09: same.; 11-13: same.; 11-14: same.; 11-15: same.; 11-16: same (403).
 - status: pending
 
+### https://economics.mit.edu/sites/default/files/2026-11/Speculative%20Growth%20and%20the%20AI%20Bubble.pdf
+- title: Speculative Growth and the AI "Bubble"
+- domain: social_science
+- first_encountered: 2026-11-17
+- last_encountered: 2026-11-17
+- source_type: academic
+- reason_class: verification_insufficient
+- reason: Ricardo J. Caballero paper on MIT Economics publications page, listed "August 2026" but the PDF file path is in a 2026-11 folder; unclear if this is a November revision/re-upload or a stale link, so true visibility date unconfirmed.
+- surfaced_by: watchlist:mit-economics (Acemoglu/department publications page)
+- action_needed: confirm the paper's true first-public or latest-revision date directly (not via the listing page); if genuinely revised/newly visible in November, review against lens 1 (growth, AI investment).
+- status: pending
+
 ### https://arxiv.org/abs/2610.28639
 - title: Can AI Chat Replace Traditional Search? Evidence from a RAG-based Live Events Experiment
 - domain: social_science, ai_engineering

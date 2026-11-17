@@ -511,3 +511,9 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-uchoa-gha-smellfix-workflow-smells | GHA-SmellFix: Taking Action with Agentic LLMs for Detecting and Refactoring GitHub Actions Workflow Smells | ai_engineering | accepted | arxiv:2611.14963 |
 | 2026-gottesman-multiloop-evolving-harnesses | MULTILOOP: Evolving Multi-Agent Harnesses for Complex Information-Seeking Tasks | ai_engineering | accepted | arxiv:2611.15754 |
 | 2026-lonkar-evidence-governed-agent-evolution | Evidence-Governed Adoption of Self-Generated Updates in Autonomous AI Agents | ai_engineering | accepted | arxiv:2611.16378 |
+| 2026-shimao-ai-trading-informational-effects | The Opposing Informational Effects of AI Trading | social_science | accepted | arxiv:2611.18872 |
+| 2026-lazer-agentic-authorization-trust-boundaries | Evaluating Authorization and Trust Boundaries in Agentic Orchestration Frameworks | ai_engineering | accepted | arxiv:2611.21259 |
+| 2026-anthropic-coordinated-vulnerability-disclosure-update | Updating our coordinated vulnerability disclosure policy timelines | ai_engineering | accepted | anthropic.com/research/coordinated-vulnerability-disclosure-timelines |
+| 2026-reddy-recursive-self-improvement-anatomy | Recursive, Self, Improvement: The Anatomy of an Intelligence Explosion | social_science | accepted | blog.cosmos-institute.org/p/recursive-self-improvement |
+| 2026-chase-langchain-tasks-to-goals | From Tasks to Goals | ai_engineering | accepted | langchain.com/blog/from-tasks-to-goals |
+| 2026-crowder-langsmith-rebuilt-around-agent | We Rebuilt LangSmith Around the Agent | ai_engineering | accepted | langchain.com/blog/we-rebuilt-langsmith-around-the-agent |
