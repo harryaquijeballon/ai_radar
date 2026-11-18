@@ -249,6 +249,15 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-ibrahim-agentops-not-mlops | AgentOps Is Not MLOps: What Breaks in Your Monitoring Stack When Agents Go to Production | ai_engineering | accepted | towardsdatascience.com/agentops-is-not-mlops-what-breaks-in-your-monitoring-stack-when-agents-go-to-production |
 | 2026-shi-noisy-text-rag | Noisy Text in RAG: Typos, OCR, and the Gap Classical Spell-Check Leaves | ai_engineering | accepted | towardsdatascience.com/noisy-text-in-rag-typos-ocr-and-the-gap-classical-spell-check-leaves |
 | 2026-paialunga-context-engineering-changing | Context Engineering Is Changing. Here's What It Means for Data Scientists | ai_engineering | accepted | towardsdatascience.com/context-engineering-is-changing-heres-what-it-means-for-data-scientists |
+| 2026-itu-antalya-ai-climate-pledge | Antalya Artificial Intelligence Pledge: aligning AI development with climate action | social_science | accepted | itu.int/en/mediacentre/Pages/PR-2026-11-16-COP31-Antalya-AI-Pledge.aspx |
+| 2026-willison-external-sandboxes-coding-agents | External sandboxes for coding agents | ai_engineering | accepted | repo:prime-radiant-inc/external-sandbox-v86 |
+| 2026-epoch-fable-gpt-astra-real-work | How good are Fable 5.2 and GPT-6.2 Astra at real work? | ai_engineering | accepted | epoch.ai/publications/how-good-are-fable-5-2-and-gpt-6-2-astra-at-real-work |
+| 2026-hua-benchmark-scores-real-work-diff-in-diff | Higher-Scoring Coding Models Did Not Get More Work Done | ai_engineering | accepted | arxiv:2611.23216 |
+| 2026-sivaraman-readie-low-latency-sandboxes | Readie: Low-Latency Code Sandboxes for AI Agents | ai_engineering | accepted | arxiv:2611.22171 |
+| 2026-xu-ai-reviewer-maintenance-burden | Does the AI Reviewer Alleviate or Aggravate the Maintenance Burden? Evidence from GitHub Copilot Reviewer | ai_engineering | accepted | arxiv:2611.22793 |
+| 2026-krishnamoorthy-reasoning-effort-shopping-agents | Thinking Harder Doesn't Lead to Better Choices: Reasoning Effort Increases the Confidence but Not the Correctness of LLM Shopping Agents | ai_engineering | accepted | arxiv:2611.22033 |
+| 2026-gao-passing-checks-evidence-interpretation | When Passing Checks Do Not Establish Completion: Evidence Interpretation in Coding Agents | ai_engineering | accepted | arxiv:2611.22835 |
+| 2026-langchain-lessons-proactive-agents | What We've Learned Building Proactive Agents | ai_engineering | accepted | langchain.com/blog/what-weve-learned-building-proactive-agents |
 | 2026-esposito-zhang-ai-two-margins-work | AI and the Two Margins of Work: Why Job Losses Show Up Before Job Creation | social_science | accepted | arxiv:2611.17530 |
 | 2026-margolin-framing-collusion-llm-agent | A Push Down the Mountain: Framing Effects and Internal State Interventions on Collusive Behavior in a Long-Horizon LLM Agent | social_science, ai_engineering | accepted | arxiv:2611.17515 |
 | 2026-nandi-tradegauntlet-trading-agent-compliance | TradeGauntlet: Evaluating Compliance Controls for Autonomous Trading Agents | ai_engineering, social_science | accepted | arxiv:2611.18493 |

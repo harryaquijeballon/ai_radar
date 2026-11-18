@@ -299,6 +299,18 @@
 - action_needed: confirm the paper's true first-public or latest-revision date directly (not via the listing page); if genuinely revised/newly visible in November, review against lens 1 (growth, AI investment).
 - status: pending
 
+### https://arxiv.org/abs/2611.21641
+- title: RAW: Refusal Aversion in the Wild, A Causal Measurement Method for Deployed LLMs
+- domain: social_science, ai_engineering
+- first_encountered: 2026-11-18
+- last_encountered: 2026-11-18
+- source_type: academic
+- reason_class: verification_insufficient
+- reason: Cross-listed in today's econ.GN listing, but the fetched abs page reported a Sep 2026 v1 submission date inconsistent with its 2611.xxxxx arXiv ID (Nov-dated); true visibility date unresolved by WebFetch.
+- surfaced_by: watchlist:arxiv-econ.GN
+- action_needed: confirm the true first-public date directly on arXiv; if genuinely within the 7-day window, review the natural-experiment refusal-measurement method for lens 5 (social_science) and lens 4 (ai_engineering).
+- status: pending
+
 ### https://arxiv.org/abs/2610.28639
 - title: Can AI Chat Replace Traditional Search? Evidence from a RAG-based Live Events Experiment
 - domain: social_science, ai_engineering
