@@ -526,3 +526,13 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-reddy-recursive-self-improvement-anatomy | Recursive, Self, Improvement: The Anatomy of an Intelligence Explosion | social_science | accepted | blog.cosmos-institute.org/p/recursive-self-improvement |
 | 2026-chase-langchain-tasks-to-goals | From Tasks to Goals | ai_engineering | accepted | langchain.com/blog/from-tasks-to-goals |
 | 2026-crowder-langsmith-rebuilt-around-agent | We Rebuilt LangSmith Around the Agent | ai_engineering | accepted | langchain.com/blog/we-rebuilt-langsmith-around-the-agent |
+| 2026-zhang-ai-specialization-legal-services | AI, Specialization, and the Organization of Knowledge Work: Evidence from Legal Services | social_science | accepted | arxiv:2611.23354 |
+| 2026-xu-idempotency-not-recovery-fault-injection | Idempotency Is Not Recovery: A Fault-Injection Study of Language-Model Agent Tool Actions | ai_engineering | accepted | arxiv:2611.23353 |
+| 2026-sharma-reyes-monperrus-yul-coding-agent-supply-chain | YUL: Bringing Software Supply Chain Security to Coding Agents | ai_engineering | accepted | arxiv:2611.23314 |
+| 2026-ali-siddiqui-zahid-agentic-platform-capability-framework | A Capability Framework for Evaluating Agentic AI Platforms in Regulated Enterprises | ai_engineering | accepted | arxiv:2611.24039 |
+| 2026-chen-trace-mas-collaboration-failure-diagnosis | TRACE-MAS: Diagnosing and Repairing Collaboration Failures in Multi-Agent Systems | ai_engineering | accepted | arxiv:2611.23362 |
+| 2026-zhang-arise-self-evolving-enterprise-agent-memory | ARISE: Practical Self-Evolving Memory for Accurate and Cost-Efficient Enterprise Agents | ai_engineering | accepted | arxiv:2611.23588 |
+| 2026-cho-gupta-scaffold-warranted-reuse-skills | SCAFFOLD: Toward Warrant-Preserving Evidence Transport for Reusable LLM-Agent Skills | ai_engineering | accepted | arxiv:2611.23990 |
+| 2026-zhao-reliability-user-specific-llms | Reliability is a user-specific property of large language models | ai_engineering | accepted | arxiv:2611.23732 |
+| 2026-epoch-agentic-inference-capacity-growth | Agentic inference capacity grew 4.6x in a year, versus 2.6x for compute capacity | ai_engineering | accepted | epoch.ai/data-insights/agentic-inference-capacity-growth |
+| 2026-mallick-kaer-security-aware-replanning | Kaer: Security-Aware Replanning for Multi-Agent Systems | ai_engineering | accepted | arxiv:2611.24839 |

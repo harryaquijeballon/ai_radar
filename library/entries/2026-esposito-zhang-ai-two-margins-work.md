@@ -80,4 +80,4 @@ None yet.
 
 ## Related entries
 
-None yet.
+Related project: [2026-zhang-ai-specialization-legal-services](2026-zhang-ai-specialization-legal-services.md) — same authors (Esposito, Zhang), same lens-1 research programme on how AI reshapes labour/organizational outcomes, different mechanism (job-flow measurement lag there vs. knowledge-work specialization/reallocation here).
