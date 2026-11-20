@@ -303,12 +303,12 @@
 - title: RAW: Refusal Aversion in the Wild, A Causal Measurement Method for Deployed LLMs
 - domain: social_science, ai_engineering
 - first_encountered: 2026-11-18
-- last_encountered: 2026-11-18
+- last_encountered: 2026-11-20
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: Cross-listed in today's econ.GN listing, but the fetched abs page reported a Sep 2026 v1 submission date inconsistent with its 2611.xxxxx arXiv ID (Nov-dated); true visibility date unresolved by WebFetch.
 - surfaced_by: watchlist:arxiv-econ.GN
-- action_needed: confirm the true first-public date directly on arXiv; if genuinely within the 7-day window, review the natural-experiment refusal-measurement method for lens 5 (social_science) and lens 4 (ai_engineering).
+- action_needed: confirm the true first-public date directly on arXiv; if genuinely within the 7-day window, review the natural-experiment refusal-measurement method for lens 5 (social_science) and lens 4 (ai_engineering).; 11-20: still Sep25, OOW.
 - status: pending
 
 ### https://arxiv.org/abs/2610.28639
@@ -321,4 +321,16 @@
 - reason: arXiv ID prefix (2610) implies Oct 2026 and it appears in today's econ.GN listing, but the abs page's own "Submitted on" line reads 20 Aug 2026 — an internal contradiction WebFetch could not resolve.; 10-23: date confirmed, not new.
 - surfaced_by: watchlist:arxiv-econ.GN
 - action_needed: confirm the true submission date directly (not via summarizing fetch); if genuinely in-window, review a RAG-vs-filter search-interface field experiment for lens 3/6 (social_science) and lens 8 (ai_engineering).: 10-23 confirmed stale.
+- status: pending
+
+### https://www.oecd.org/en/publications/2026/11/oecd-digital-economy-and-society-outlook-2026_457d074d.html
+- title: OECD Digital Economy and Society Outlook 2026
+- domain: social_science
+- first_encountered: 2026-11-20
+- last_encountered: 2026-11-20
+- source_type: primary
+- reason_class: access_or_license_unclear
+- reason: oecd.org is allowlisted but this URL returned HTTP 403 this run; URL path implies a Nov 2026 publication but exact day and full AI-adoption findings are unconfirmed without a direct fetch.
+- surfaced_by: open search (economic development / digital technologies lens)
+- action_needed: retry direct fetch in a future run, or have a human confirm the publication date and AI-adoption findings directly; review against lenses 1/3 if confirmed in-window.
 - status: pending

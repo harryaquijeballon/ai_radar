@@ -536,3 +536,14 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-zhao-reliability-user-specific-llms | Reliability is a user-specific property of large language models | ai_engineering | accepted | arxiv:2611.23732 |
 | 2026-epoch-agentic-inference-capacity-growth | Agentic inference capacity grew 4.6x in a year, versus 2.6x for compute capacity | ai_engineering | accepted | epoch.ai/data-insights/agentic-inference-capacity-growth |
 | 2026-mallick-kaer-security-aware-replanning | Kaer: Security-Aware Replanning for Multi-Agent Systems | ai_engineering | accepted | arxiv:2611.24839 |
+| 2026-duenas-mandel-structural-change-digital-transformation | Structural economic change under the digital transformation | social_science | accepted | arxiv:2611.26338 |
+| 2026-dahl-american-medical-directory-panel-transcription | The American Medical Directory Panel: Comparing AI-Assisted and LLM Transcription with Manual Data Entry at Scale | social_science, ai_engineering | accepted | arxiv:2611.25218 |
+| 2026-wang-rogue-ai-incident-replication | Replication of Agentic Security Events: Audit and Investigation (ROGUE-AI) | ai_engineering | accepted | arxiv:2611.26553 |
+| 2026-yang-unfaithful-work-reports-coding-agents | Characterizing and Detecting Unfaithful Work Reports by Coding Agents | ai_engineering | accepted | arxiv:2611.25760 |
+| 2026-lunghi-static-analysis-guided-secure-codegen | Guiding LLM Code Generation with Static Analysis Findings During Generation | ai_engineering | accepted | arxiv:2611.26312 |
+| 2026-rajpurohit-finveriqa-independent-verification | FinVeriQA: Financial Research Agents for Question Answering — Routing, Retrieval, MCP Tool Use, and Provenance-Aware Evidence Verification | ai_engineering | accepted | arxiv:2611.25071 |
+| 2026-oertel-klunder-hebig-comprehension-gap-llm-dev | The Comprehension Gap in LLM-Assisted Software Development: An Experiment | ai_engineering | accepted | arxiv:2611.24216 |
+| 2026-heo-kim-suh-bad-apples-misaligned-agents | Bad Apples in the Kitchen: How LLM Teams Detect, Correct, and Calibrate Against Their Misaligned Members | ai_engineering | accepted | arxiv:2611.22342 |
+| 2026-arino-pafka-agent-dataset-factory | Operating an Agent-Driven Dataset Factory: Discovery, Construction, and Public Release | ai_engineering | accepted | arxiv:2611.21957 |
+| 2026-liu-parsebench-2-severity-policy-eval | Building Toward a Perfect Document Parsing Benchmark | ai_engineering | accepted | llamaindex.ai/blog/building-toward-a-perfect-document-parsing-benchmark |
+| 2026-arifov-spangher-ho-ai-text-state-courts | AI Might Be Flooding State Court Houses, but Proving It Is Another Matter | social_science, ai_engineering | accepted | hai.stanford.edu/news/ai-might-be-flooding-state-court-houses-but-proving-it-is-another-matter |
