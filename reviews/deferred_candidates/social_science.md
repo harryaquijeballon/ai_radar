@@ -267,7 +267,7 @@
 - title: Telco AI: State of the Market, Q3 2026
 - domain: social_science
 - first_encountered: 2026-10-20
-- last_encountered: 2026-11-16
+- last_encountered: 2026-11-21
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: Research-index page lists this title under "Oct 2026" only (no day-level date, no item-specific URL shown); distinct title from the prior pending June-2026 "token economy" item, so likely a new report.
@@ -327,10 +327,10 @@
 - title: OECD Digital Economy and Society Outlook 2026
 - domain: social_science
 - first_encountered: 2026-11-20
-- last_encountered: 2026-11-20
+- last_encountered: 2026-11-21
 - source_type: primary
 - reason_class: access_or_license_unclear
 - reason: oecd.org is allowlisted but this URL returned HTTP 403 this run; URL path implies a Nov 2026 publication but exact day and full AI-adoption findings are unconfirmed without a direct fetch.
 - surfaced_by: open search (economic development / digital technologies lens)
-- action_needed: retry direct fetch in a future run, or have a human confirm the publication date and AI-adoption findings directly; review against lenses 1/3 if confirmed in-window.
+- action_needed: retry direct fetch in a future run, or have a human confirm the publication date and AI-adoption findings directly; review against lenses 1/3 if confirmed in-window.; 11-21: same (403).
 - status: pending

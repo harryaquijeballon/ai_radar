@@ -249,6 +249,14 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-ibrahim-agentops-not-mlops | AgentOps Is Not MLOps: What Breaks in Your Monitoring Stack When Agents Go to Production | ai_engineering | accepted | towardsdatascience.com/agentops-is-not-mlops-what-breaks-in-your-monitoring-stack-when-agents-go-to-production |
 | 2026-shi-noisy-text-rag | Noisy Text in RAG: Typos, OCR, and the Gap Classical Spell-Check Leaves | ai_engineering | accepted | towardsdatascience.com/noisy-text-in-rag-typos-ocr-and-the-gap-classical-spell-check-leaves |
 | 2026-paialunga-context-engineering-changing | Context Engineering Is Changing. Here's What It Means for Data Scientists | ai_engineering | accepted | towardsdatascience.com/context-engineering-is-changing-heres-what-it-means-for-data-scientists |
+| 2026-asada-code-review-rule-reuse | From Code Review Comments to Reuse in Production: An Industrial Study of Extracted Rules | ai_engineering | accepted | arxiv:2611.25918 |
+| 2026-liu-copilot-culprit-bug-reporting | Copilot or Culprit? How AI Is Changing Open-Source Bug Reporting and Maintenance | ai_engineering | accepted | arxiv:2611.25605 |
+| 2026-sreenivasa-held-while-waiting-agent-runtimes | Held While Waiting: What LLM Agent Sessions Reserve on Serverless and Agent Runtimes | ai_engineering | accepted | arxiv:2611.26480 |
+| 2026-xu-skillbridge-cross-os-skill-repair | SkillBridge: Cost-Aware Diagnosis and Repair of Cross-OS Compatibility Defects in Agent Skills | ai_engineering | accepted | arxiv:2611.26256 |
+| 2026-wu-buggymle-ml-engineering-difficulty | BuggyMLE: Scaling Machine Learning Engineering Difficulty with Bug Injection | ai_engineering | accepted | arxiv:2611.25088 |
+| 2026-laws-decentralized-multiagent-attacks-defenses | Attacks and Defenses in Decentralized Multi-Agent Systems with Hop-by-Hop Task Decomposition and Delegation | ai_engineering | accepted | arxiv:2611.25056 |
+| 2026-zhang-autoragbench-agentic-rag-development | AutoRAGBench: A Benchmark for LLM Agents Automating RAG System Development | ai_engineering | accepted | arxiv:2611.25582 |
+| 2026-kim-llm-judge-scoring-topology | Same Judgement, Different Scores: Numerical Scoring Topology in LLM-as-a-Judge Evaluation | ai_engineering | accepted | arxiv:2611.26077 |
 | 2026-itu-antalya-ai-climate-pledge | Antalya Artificial Intelligence Pledge: aligning AI development with climate action | social_science | accepted | itu.int/en/mediacentre/Pages/PR-2026-11-16-COP31-Antalya-AI-Pledge.aspx |
 | 2026-willison-external-sandboxes-coding-agents | External sandboxes for coding agents | ai_engineering | accepted | repo:prime-radiant-inc/external-sandbox-v86 |
 | 2026-epoch-fable-gpt-astra-real-work | How good are Fable 5.2 and GPT-6.2 Astra at real work? | ai_engineering | accepted | epoch.ai/publications/how-good-are-fable-5-2-and-gpt-6-2-astra-at-real-work |
