@@ -399,6 +399,19 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-alexander-intent-continuity-coding-agents | Coding Agents Don't Need Longer History — They Need Intent Continuity | ai_engineering | accepted | towardsdatascience.com/coding-agents-dont-need-longer-history-they-need-intent-continuity |
 | 2026-willison-openai-agents-rubygems | OpenAI Agents Attacked RubyGems Back in May | ai_engineering | accepted | simonwillison.net/2026/Sep/12/openai-agents-rubygems |
 | 2026-gieng-ai-adoption-selection-effect | Your AI Adoption Lift Is a Selection Effect | social_science | accepted | towardsdatascience.com/your-ai-adoption-lift-is-a-selection-effect |
+| 2026-jones-tonetti-weak-links-growth-explosion | Past Automation and Future AI: How Weak Links Tame the Growth Explosion | social_science | accepted | doi:10.3386/w36050, nber:w36050 |
+| 2026-gans-holden-revealed-preferences-ai-alignment | Are Revealed Preferences All You Need for AI Alignment? | social_science, ai_engineering | accepted | doi:10.3386/w36048, nber:w36048 |
+| 2026-mohnen-gans-alphafold2-deepening-knowledge | How AI Impacts the Quest for Knowledge: Evidence from AlphaFold2 | social_science | accepted | doi:10.3386/w36045, nber:w36045 |
+| 2026-graham-harvey-jha-cfos-meet-llms | CFOs Meet LLMs | social_science, ai_engineering | accepted | doi:10.3386/w36057, nber:w36057 |
+| 2026-borri-cheremukhin-liu-tsyvinski-ai-agents-labor-market | The Rise of Agents and the Human Labor Market | social_science | accepted | arxiv:2611.27210 |
+| 2026-hapuarachchi-recovery-ai-agent-harnesses-survey | Exercised, Rarely Recovered: What Public Reports Say About Recovery in 50 AI Agent Harnesses and Runtimes | ai_engineering | accepted | arxiv:2611.27090 |
+| 2026-huang-probeagent-diagnosis-agent-failures | ProbeAgent: Principled Diagnosis of Agent Failures in Verifiable Environments | ai_engineering | accepted | arxiv:2611.26897 |
+| 2026-achachlouei-separating-automation-gains-agent-validation | Separating Automation Gains from Agent Contributions in AI-Assisted Model Validation | ai_engineering | accepted | arxiv:2611.27094 |
+| 2026-judge-inherits-prompt-directional-label-bias | Your Judge Inherits Your Prompt: In-Context Label Bias in an LLM-as-Judge Is Directional, Not Symmetric | ai_engineering | accepted | arxiv:2611.26881 |
+| 2026-mali-leinonen-edwards-developer-perceived-differences-ai | Perceived Differences in Activity and Experience Between Developing Software With and Without AI | ai_engineering | accepted | arxiv:2611.27947 |
+| 2026-yan-public-agent-evals-teardown | How Public Evals Work, Where They Break, and What Should Change | ai_engineering | accepted | eugeneyan.com/writing/public-evals |
+| 2026-huggingface-building-maintaining-agentic-evals | How to Build and Maintain an Agentic Evaluation | ai_engineering | accepted | huggingface.co/blog/agentic-evals |
+| 2026-pachocki-openai-perplexity-intelligence-governance | Perplexity and Intelligence | social_science, ai_engineering | accepted | openai.com/index/perplexity-and-intelligence |
 | 2026-epoch-near-daily-ai-use-growth | Near-Daily AI Use Among US Adults Has More Than Doubled in Six Months | social_science | accepted | epoch.ai/data-insights/near-daily-ai-use-doubled |
 | 2026-willison-compaction-prompt-injection | Self-Generated Prompt Injections in Compaction Summaries | ai_engineering | accepted | simonwillison.net/2026/Sep/17/compaction-summaries |
 | 2026-willison-gemini-hacked-three-companies | Gemini Hacked Three Companies in First Known Breakout by Google's AI | ai_engineering | accepted | simonwillison.net/2026/Sep/18/gemini-hacked-three-companies |

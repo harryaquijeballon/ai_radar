@@ -75,4 +75,4 @@ None yet.
 
 ## Related entries
 
-None yet.
+- [2026-borri-cheremukhin-liu-tsyvinski-ai-agents-labor-market](2026-borri-cheremukhin-liu-tsyvinski-ai-agents-labor-market.md) — overlapping author team (Borri, Tsyvinski, Liu), same-period companion result on AI's economic effects via labor demand rather than asset pricing.
