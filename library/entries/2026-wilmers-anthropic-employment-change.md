@@ -47,3 +47,5 @@ None yet.
 ## Related entries
 
 - [2026-sacher-ai-expectations-gap](2026-sacher-ai-expectations-gap.md) — companion report released the same day, covering survey-elicited (rather than realised) expectations about AI's economic impact.
+- [2026-wilmers-working-with-ai-enterprise-adoption](2026-wilmers-working-with-ai-enterprise-adoption.md) — same lead author's follow-up 58-firm interview study, extending from Anthropic-internal data to a broader enterprise-customer sample.
+- [2026-raymond-dillon-ai-assisted-programming-labor-demand](2026-raymond-dillon-ai-assisted-programming-labor-demand.md) — causally identified, large-sample complement on AI coding assistance and technical hiring.

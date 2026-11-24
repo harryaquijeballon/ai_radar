@@ -303,7 +303,7 @@
 - title: RAW: Refusal Aversion in the Wild, A Causal Measurement Method for Deployed LLMs
 - domain: social_science, ai_engineering
 - first_encountered: 2026-11-18
-- last_encountered: 2026-11-20
+- last_encountered: 2026-11-24
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: Cross-listed in today's econ.GN listing, but the fetched abs page reported a Sep 2026 v1 submission date inconsistent with its 2611.xxxxx arXiv ID (Nov-dated); true visibility date unresolved by WebFetch.
@@ -321,6 +321,30 @@
 - reason: arXiv ID prefix (2610) implies Oct 2026 and it appears in today's econ.GN listing, but the abs page's own "Submitted on" line reads 20 Aug 2026 — an internal contradiction WebFetch could not resolve.; 10-23: date confirmed, not new.
 - surfaced_by: watchlist:arxiv-econ.GN
 - action_needed: confirm the true submission date directly (not via summarizing fetch); if genuinely in-window, review a RAG-vs-filter search-interface field experiment for lens 3/6 (social_science) and lens 8 (ai_engineering).: 10-23 confirmed stale.
+- status: pending
+
+### https://towardsdatascience.com/ai-math-proofs-arent-knowledge-until-someone-explains-them
+- title: AI Math Proofs Aren't Knowledge Until Someone Explains Them
+- domain: social_science, ai_engineering
+- first_encountered: 2026-11-24
+- last_encountered: 2026-11-24
+- source_type: commentary
+- reason_class: access_or_license_unclear
+- reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
+- surfaced_by: watchlist:towards-data-science (feed)
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the epistemology-of-AI-generated-proof argument directly; review against lens 8 if confirmed; otherwise dismiss.
+- status: pending
+
+### https://www.nber.org/papers/w36035
+- title: Will AI Growth Reach the Developing World?
+- domain: social_science
+- first_encountered: 2026-11-24
+- last_encountered: 2026-11-24
+- source_type: academic
+- reason_class: verification_insufficient
+- reason: nber.org fetched OK but shows only "November 2026" (no day-level date); cannot confirm if in-window. Growth model on AI and developing-country skill/market-access gaps; abstract gives no quantitative results, only qualitative simulations.
+- surfaced_by: open search (economic development / lens 2)
+- action_needed: confirm exact NBER issue date via dated listing/metadata; archive if in-window and if full text has quantified results worth citing.
 - status: pending
 
 ### https://www.oecd.org/en/publications/2026/11/oecd-digital-economy-and-society-outlook-2026_457d074d.html

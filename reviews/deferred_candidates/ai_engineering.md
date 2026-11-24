@@ -188,6 +188,42 @@
 - action_needed: approve alignment.anthropic.com for the allowlist, or have a human read and confirm the publish date and findings directly; otherwise dismiss.
 - status: pending
 
+### https://towardsdatascience.com/how-to-plan-retries-for-multi-agent-workflows-before-you-write-code
+- title: How to Plan Retries for Multi-Agent Workflows Before You Write Code
+- domain: ai_engineering
+- first_encountered: 2026-11-24
+- last_encountered: 2026-11-24
+- source_type: commentary
+- reason_class: access_or_license_unclear
+- reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
+- surfaced_by: watchlist:towards-data-science (feed)
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the retry-planning technique and any evidence directly; otherwise dismiss.
+- status: pending
+
+### https://towardsdatascience.com/what-a-90-prompt-cache-hit-rate-hides-about-attention-work
+- title: What a 90% Prompt Cache Hit Rate Hides About Attention Work
+- domain: ai_engineering
+- first_encountered: 2026-11-24
+- last_encountered: 2026-11-24
+- source_type: commentary
+- reason_class: access_or_license_unclear
+- reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
+- surfaced_by: watchlist:towards-data-science (feed)
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the prompt-caching/attention argument directly; otherwise dismiss.
+- status: pending
+
+### https://towardsdatascience.com/the-birthday-paradox-shows-small-llms-pick-from-about-6-of-40-words
+- title: The Birthday Paradox Shows Small LLMs Pick From About 6 of 40 Words
+- domain: ai_engineering
+- first_encountered: 2026-11-24
+- last_encountered: 2026-11-24
+- source_type: commentary
+- reason_class: access_or_license_unclear
+- reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
+- surfaced_by: watchlist:towards-data-science (feed)
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the sampling-diversity claim and any evidence directly; otherwise dismiss.
+- status: pending
+
 ### https://blog.cryptographyengineering.com/2026/09/30/is-sandboxing-sufficient-to-contain-rogue-agents/
 - title: Is sandboxing sufficient to contain rogue agents?
 - domain: ai_engineering

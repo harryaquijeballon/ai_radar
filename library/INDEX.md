@@ -249,6 +249,18 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-ibrahim-agentops-not-mlops | AgentOps Is Not MLOps: What Breaks in Your Monitoring Stack When Agents Go to Production | ai_engineering | accepted | towardsdatascience.com/agentops-is-not-mlops-what-breaks-in-your-monitoring-stack-when-agents-go-to-production |
 | 2026-shi-noisy-text-rag | Noisy Text in RAG: Typos, OCR, and the Gap Classical Spell-Check Leaves | ai_engineering | accepted | towardsdatascience.com/noisy-text-in-rag-typos-ocr-and-the-gap-classical-spell-check-leaves |
 | 2026-paialunga-context-engineering-changing | Context Engineering Is Changing. Here's What It Means for Data Scientists | ai_engineering | accepted | towardsdatascience.com/context-engineering-is-changing-heres-what-it-means-for-data-scientists |
+| 2026-wilmers-working-with-ai-enterprise-adoption | Working with AI | social_science, ai_engineering | accepted | anthropic.com/research/working-with-ai |
+| 2026-raymond-dillon-ai-assisted-programming-labor-demand | AI-Assisted Programming and Labor Demand | social_science, ai_engineering | accepted | arxiv:2611.31083 |
+| 2026-openai-cisco-shirudo-ebpf-security-shields | OpenAI and Cisco Introduce Shirudo | ai_engineering | accepted | repo:openai/shirudo |
+| 2026-ghimire-damian-agent-context-files-architecture-fit | Does the Agent's Map Match the Territory? Architectural Claims in AI Agent Context Files and Their Fit with the Code | ai_engineering | accepted | arxiv:2611.29916 |
+| 2026-joos-pradel-agentbouncer-syscall-mediation | AgentBouncer: Defending Software Engineering Agents via Dynamic System-Call Mediation | ai_engineering | accepted | arxiv:2611.30621 |
+| 2026-li-clawhub-agent-skill-supply-chain-threats | Carried-Over and Agent-Native Threats in the Supply Chain of LLM Agent Skills | ai_engineering | accepted | arxiv:2611.30932 |
+| 2026-zhang-swe-gym-verified-reward-label-audit | What Makes Good Data for Training Coding Agents? A Systematic Study on SWE-Gym | ai_engineering | accepted | arxiv:2611.30207 |
+| 2026-vaid-reward-hacking-spread-agent-swarms | Causal Evidence for the Emergence and Spread of Reward Hacking in AI Agent Swarms | ai_engineering | accepted | arxiv:2611.30185 |
+| 2026-chen-sudo-l7-staff-engineer-benchmark | sudo L7: Can Coding Agents Act Like Staff Engineers? | ai_engineering | accepted | arxiv:2611.30517 |
+| 2026-tool-call-smuggling-against-llm-agents | Oops!... I Parsed It Again: Tool-Call Smuggling Against LLM Agents | ai_engineering | accepted | arxiv:2611.30624 |
+| 2026-metaskill-reusable-problem-solving-methods | MetaSkill: Reusable Problem-Solving Methods for Adaptive Skill Orchestration in LLM Agents | ai_engineering | accepted | arxiv:2611.29274 |
+| 2026-cao-deng-blind-to-what-they-can-fix-self-improving-agents | Blind to What They Can Fix: A Detection Gap in Self-Improving Agents | ai_engineering | accepted | arxiv:2611.29807 |
 | 2026-asada-code-review-rule-reuse | From Code Review Comments to Reuse in Production: An Industrial Study of Extracted Rules | ai_engineering | accepted | arxiv:2611.25918 |
 | 2026-liu-copilot-culprit-bug-reporting | Copilot or Culprit? How AI Is Changing Open-Source Bug Reporting and Maintenance | ai_engineering | accepted | arxiv:2611.25605 |
 | 2026-sreenivasa-held-while-waiting-agent-runtimes | Held While Waiting: What LLM Agent Sessions Reserve on Serverless and Agent Runtimes | ai_engineering | accepted | arxiv:2611.26480 |
