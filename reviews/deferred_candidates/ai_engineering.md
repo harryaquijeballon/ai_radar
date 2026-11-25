@@ -192,19 +192,19 @@
 - title: How to Plan Retries for Multi-Agent Workflows Before You Write Code
 - domain: ai_engineering
 - first_encountered: 2026-11-24
-- last_encountered: 2026-11-24
+- last_encountered: 2026-11-25
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
 - surfaced_by: watchlist:towards-data-science (feed)
-- action_needed: retry direct fetch in a future run, or have a human read and confirm the retry-planning technique and any evidence directly; otherwise dismiss.
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the retry-planning technique and any evidence directly; otherwise dismiss.; 11-25: direct article-page fetch retried, still 403.
 - status: pending
 
 ### https://towardsdatascience.com/what-a-90-prompt-cache-hit-rate-hides-about-attention-work
 - title: What a 90% Prompt Cache Hit Rate Hides About Attention Work
 - domain: ai_engineering
 - first_encountered: 2026-11-24
-- last_encountered: 2026-11-24
+- last_encountered: 2026-11-25
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
@@ -216,7 +216,7 @@
 - title: The Birthday Paradox Shows Small LLMs Pick From About 6 of 40 Words
 - domain: ai_engineering
 - first_encountered: 2026-11-24
-- last_encountered: 2026-11-24
+- last_encountered: 2026-11-25
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
@@ -234,4 +234,28 @@
 - reason: blog.cryptographyengineering.com is not on the egress allowlist, so the post was not fetched; known only via a Simon Willison quote post (2026-10-01).
 - surfaced_by: watchlist:simon-willison
 - action_needed: approve the domain for the allowlist, or have a human read it and confirm claims directly; otherwise dismiss.
+- status: pending
+
+### https://arxiv.org/abs/2611.31307
+- title: When Successful Collaboration Becomes an Attack Surface: Insider Memory Poisoning in Multi-Agent Systems
+- domain: ai_engineering
+- first_encountered: 2026-11-25
+- last_encountered: 2026-11-25
+- source_type: academic
+- reason_class: possible_duplicate_requires_review
+- reason: Appeared in today's cs.MA listing but the abs page shows a 22 Nov 2026 submission date, a 2-3 day gap; unclear if genuine new cross-list or prior circulation.
+- surfaced_by: watchlist:arxiv-cs.MA Would score high on lens 6 (shared-memory insider-poisoning attack, quantified cross-benchmark results, audit only partially mitigates).
+- action_needed: confirm whether this had prior public visibility before 2026-11-25; if genuinely new, archive at high relevance (lens 6).
+- status: pending
+
+### https://arxiv.org/abs/2611.28173
+- title: Selective Verification in Multi-Agent Orchestration with Large Language Models
+- domain: ai_engineering
+- first_encountered: 2026-11-25
+- last_encountered: 2026-11-25
+- source_type: academic
+- reason_class: possible_duplicate_requires_review
+- reason: Appeared in today's cs.MA listing but the abs page shows a 20 Nov 2026 submission date, a 4-day gap — longer than routine moderation lag; unclear if genuine new listing or prior circulation.
+- surfaced_by: watchlist:arxiv-cs.MA Would score high on lens 4 (verifier-intervention design guide, quantified checking-strategy comparison, 4-framework documentation audit).
+- action_needed: confirm whether this had prior public visibility before 2026-11-25; if genuinely new, archive at high relevance (lens 4).
 - status: pending

@@ -267,7 +267,7 @@
 - title: Telco AI: State of the Market, Q3 2026
 - domain: social_science
 - first_encountered: 2026-10-20
-- last_encountered: 2026-11-21
+- last_encountered: 2026-11-25
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: Research-index page lists this title under "Oct 2026" only (no day-level date, no item-specific URL shown); distinct title from the prior pending June-2026 "token economy" item, so likely a new report.
@@ -327,12 +327,12 @@
 - title: AI Math Proofs Aren't Knowledge Until Someone Explains Them
 - domain: social_science, ai_engineering
 - first_encountered: 2026-11-24
-- last_encountered: 2026-11-24
+- last_encountered: 2026-11-25
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
 - surfaced_by: watchlist:towards-data-science (feed)
-- action_needed: retry direct fetch in a future run, or have a human read and confirm the epistemology-of-AI-generated-proof argument directly; review against lens 8 if confirmed; otherwise dismiss.
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the epistemology-of-AI-generated-proof argument directly; review against lens 8 if confirmed; otherwise dismiss.; 11-25: direct article-page fetch retried, still 403.
 - status: pending
 
 ### https://www.nber.org/papers/w36035

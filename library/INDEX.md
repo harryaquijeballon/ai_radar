@@ -580,3 +580,10 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-arino-pafka-agent-dataset-factory | Operating an Agent-Driven Dataset Factory: Discovery, Construction, and Public Release | ai_engineering | accepted | arxiv:2611.21957 |
 | 2026-liu-parsebench-2-severity-policy-eval | Building Toward a Perfect Document Parsing Benchmark | ai_engineering | accepted | llamaindex.ai/blog/building-toward-a-perfect-document-parsing-benchmark |
 | 2026-arifov-spangher-ho-ai-text-state-courts | AI Might Be Flooding State Court Houses, but Proving It Is Another Matter | social_science, ai_engineering | accepted | hai.stanford.edu/news/ai-might-be-flooding-state-court-houses-but-proving-it-is-another-matter |
+| 2026-chen-worth-the-wait-chatbot-latency-bias | Worth the Wait? How Response Time and Streaming Shape Judgments of Generative AI Answers and Chatbot Engagement | social_science, ai_engineering | accepted | arxiv:2611.33050 |
+| 2026-levyyeyati-agentification-domestic-value-added | Burning the Bridge: Agentification and Domestic Value Added | social_science | accepted | arxiv:2611.31518 |
+| 2026-wadi-ma-decision-models-simulated-respondents | Training decision models for simulating human respondents | social_science, ai_engineering | accepted | arxiv:2611.31613 |
+| 2026-koc-shellbench-model-harness-benchmark | ShellBench: What Matters More for AI Agents, Models, or Harness for Everyday Tasks | ai_engineering | accepted | arxiv:2611.32946 |
+| 2026-sehgal-below-the-stopwatch-coding-agent-claims | Below the Stopwatch: Checking the Performance Claims of Coding Agents in the Kernel | ai_engineering | accepted | arxiv:2611.31460 |
+| 2026-chadha-banerjee-agent-kernel-fork | fork() for Agents: Agent Kernel for Non-blocking LLM Orchestration | ai_engineering | accepted | arxiv:2611.31727 |
+| 2026-ibm-cuga-cross-lingual-retrieval-failure | An Indic Voice Agent with CUGA | ai_engineering | accepted | huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga |
