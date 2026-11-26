@@ -192,12 +192,36 @@
 - title: How to Plan Retries for Multi-Agent Workflows Before You Write Code
 - domain: ai_engineering
 - first_encountered: 2026-11-24
-- last_encountered: 2026-11-25
+- last_encountered: 2026-11-26
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
 - surfaced_by: watchlist:towards-data-science (feed)
 - action_needed: retry direct fetch in a future run, or have a human read and confirm the retry-planning technique and any evidence directly; otherwise dismiss.; 11-25: direct article-page fetch retried, still 403.
+- status: pending
+
+### https://towardsdatascience.com/shuffle-the-questions-to-catch-an-llm-that-memorized-its-benchmark
+- title: Shuffle the Questions to Catch an LLM That Memorized Its Benchmark
+- domain: ai_engineering
+- first_encountered: 2026-11-26
+- last_encountered: 2026-11-26
+- source_type: commentary
+- reason_class: access_or_license_unclear
+- reason: towardsdatascience.com is allowlisted but the article page returned HTTP 403, so claims can't be traced to source text; title suggests a benchmark-contamination detection technique (lens 4).
+- surfaced_by: watchlist:towards-data-science (feed)
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the shuffling-based contamination technique directly; otherwise dismiss.
+- status: pending
+
+### https://towardsdatascience.com/a-second-llm-judge-hit-87-5-precision-but-left-21-of-33-for-humans
+- title: A Second LLM Judge Hit 87.5% Precision but Left 21 of 33 for Humans
+- domain: ai_engineering
+- first_encountered: 2026-11-26
+- last_encountered: 2026-11-26
+- source_type: commentary
+- reason_class: access_or_license_unclear
+- reason: towardsdatascience.com is allowlisted but the article page returned HTTP 403, so claims can't be traced to source text; title suggests a quantified LLM-judge-of-judge validity result (lens 4).
+- surfaced_by: watchlist:towards-data-science (feed)
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the 87.5% precision claim and method directly; otherwise dismiss.
 - status: pending
 
 ### https://towardsdatascience.com/what-a-90-prompt-cache-hit-rate-hides-about-attention-work
@@ -240,7 +264,7 @@
 - title: When Successful Collaboration Becomes an Attack Surface: Insider Memory Poisoning in Multi-Agent Systems
 - domain: ai_engineering
 - first_encountered: 2026-11-25
-- last_encountered: 2026-11-25
+- last_encountered: 2026-11-26
 - source_type: academic
 - reason_class: possible_duplicate_requires_review
 - reason: Appeared in today's cs.MA listing but the abs page shows a 22 Nov 2026 submission date, a 2-3 day gap; unclear if genuine new cross-list or prior circulation.

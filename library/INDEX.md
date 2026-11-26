@@ -249,6 +249,18 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-ibrahim-agentops-not-mlops | AgentOps Is Not MLOps: What Breaks in Your Monitoring Stack When Agents Go to Production | ai_engineering | accepted | towardsdatascience.com/agentops-is-not-mlops-what-breaks-in-your-monitoring-stack-when-agents-go-to-production |
 | 2026-shi-noisy-text-rag | Noisy Text in RAG: Typos, OCR, and the Gap Classical Spell-Check Leaves | ai_engineering | accepted | towardsdatascience.com/noisy-text-in-rag-typos-ocr-and-the-gap-classical-spell-check-leaves |
 | 2026-paialunga-context-engineering-changing | Context Engineering Is Changing. Here's What It Means for Data Scientists | ai_engineering | accepted | towardsdatascience.com/context-engineering-is-changing-heres-what-it-means-for-data-scientists |
+| 2026-koch-posztos-grokipedia-political-spectrum | Grokipedia Stretches the US Political Spectrum | social_science | accepted | arxiv:2611.32420 |
+| 2026-bastani-graetz-automation-fiscal-pressure | AI, Automation, and Fiscal Pressure | social_science | accepted | arxiv:2611.34234 |
+| 2026-rost-stephany-ai-replace-juniors | Will AI Replace Juniors? How Task Complexity Reduces Automation Risk | social_science | accepted | arxiv:2611.34099 |
+| 2026-khaleti-reasoning-models-auction-bidding | Budget, Readout or Reasoning? Where Small Reasoning Models Lose Value in Auction Bidding | ai_engineering | accepted | arxiv:2611.34068 |
+| 2026-goel-coding-agent-over-editing | How Much Do Coding Agents Over-Edit, and Why? An Empirical Study of Unneeded Edits in Repository-Level Agent Patches | ai_engineering | accepted | arxiv:2611.34875 |
+| 2026-fu-beitler-houck-agent-experience-ax | DevEx is for Humans, AX is for Agents: Measuring Context Health in Agentic Software Work | ai_engineering | accepted | arxiv:2611.33480 |
+| 2026-zhang-long-skillsbench-audit | What Does Skill Lift Actually Measure? A Source-Code-Level Audit and Noise-Aware Reanalysis of SkillsBench | ai_engineering | accepted | arxiv:2611.33943 |
+| 2026-shen-ai-code-reviewer-effort | How Much Effort Does an AI Code Reviewer Need? Evidence from Claude 5.5 Models on Plausible-but-Wrong Patches | ai_engineering | accepted | arxiv:2611.33639 |
+| 2026-lyu-yin-zhang-parallel-subagents-coding | When Are Parallel Subagents Effective for Coding? An Empirical Study on Repository Construction | ai_engineering | accepted | arxiv:2611.33893 |
+| 2026-anthropic-messages-api-rust-migration | Migrating our Messages API to Rust | ai_engineering | accepted | anthropic.com/research/migrating-api-to-rust |
+| 2026-huggingface-training-swarms-multiagent | Swarms, Flocks, Gangs: How to Build, Train, and Evaluate Multi-Agent Systems | ai_engineering | accepted | huggingface.co/blog/training-swarms |
+| 2026-allenai-scientists-ai-agents-trust | Where Scientists Draw the Line on AI Agents | ai_engineering, social_science | accepted | huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents |
 | 2026-wilmers-working-with-ai-enterprise-adoption | Working with AI | social_science, ai_engineering | accepted | anthropic.com/research/working-with-ai |
 | 2026-raymond-dillon-ai-assisted-programming-labor-demand | AI-Assisted Programming and Labor Demand | social_science, ai_engineering | accepted | arxiv:2611.31083 |
 | 2026-openai-cisco-shirudo-ebpf-security-shields | OpenAI and Cisco Introduce Shirudo | ai_engineering | accepted | repo:openai/shirudo |
