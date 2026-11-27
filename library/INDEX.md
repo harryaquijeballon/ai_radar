@@ -599,3 +599,14 @@ Derived from `entries/` frontmatter — entries are the source of truth. Regener
 | 2026-sehgal-below-the-stopwatch-coding-agent-claims | Below the Stopwatch: Checking the Performance Claims of Coding Agents in the Kernel | ai_engineering | accepted | arxiv:2611.31460 |
 | 2026-chadha-banerjee-agent-kernel-fork | fork() for Agents: Agent Kernel for Non-blocking LLM Orchestration | ai_engineering | accepted | arxiv:2611.31727 |
 | 2026-ibm-cuga-cross-lingual-retrieval-failure | An Indic Voice Agent with CUGA | ai_engineering | accepted | huggingface.co/blog/ibm-research/an-indic-voice-agent-with-cuga |
+| 2026-microsoft-copilot-unified-inline-edit | Building a Unified Inline Code Editing Model for GitHub Copilot | ai_engineering | accepted | arxiv:2611.33314 |
+| 2026-luo-prove-llm-collusion | PROVE: Mitigating Long-Horizon LLM Collusion | ai_engineering | accepted | arxiv:2611.34215 |
+| 2026-asgari-black-box-test-selection-agents | Evaluating More with Less: Black-Box Test Selection for AI Agents | ai_engineering | accepted | arxiv:2611.34617 |
+| 2026-wu-reprocue-linux-kernel-bug-repro | Reproducer Synthesis for AI-Reported Bugs in the Linux Kernel | ai_engineering | accepted | arxiv:2611.34142 |
+| 2026-stoianov-claim-level-rewards-support-agents | Learning from Unreliable Operator References: Claim-Level Rewards for Customer Support Agents | ai_engineering | accepted | arxiv:2611.34341 |
+| 2026-chen-rerankers-cascade-rag | When Rerankers Work Together: Reranking without Joint Training | ai_engineering | accepted | arxiv:2611.33844 |
+| 2026-teja-reust-reliable-user-simulation | Reliable User Simulation in Complex Multi-Step Workflows | ai_engineering | accepted | arxiv:2611.34044 |
+| 2026-xu-meterrouter-budget-routing | MeterRouter: Budget-Aware Dynamic Routing for Multi-Agent Systems | ai_engineering | accepted | arxiv:2611.34327 |
+| 2026-davis-ferroscope-c-to-rust | Cross-Layer Characterization and AI-Assisted Diagnosis of C-to-Rust Performance | ai_engineering | accepted | arxiv:2611.33490 |
+| 2026-phan-mine-prompt-injection-defense | MINE: A Training-Free Defense against Indirect Prompt Injection via Mutual Information and Embedding Variance | ai_engineering | accepted | arxiv:2611.34188 |
+| 2026-hubers-lexi-legal-due-diligence | From Data Room to Report: End-to-End AI Support for M&A Legal Due Diligence | ai_engineering | provisional | arxiv:2611.34120 |

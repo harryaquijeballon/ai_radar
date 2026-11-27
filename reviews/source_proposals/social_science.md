@@ -20,3 +20,15 @@
 - status: pending
 - review_note:
 -->
+
+### https://www.federalreserve.gov/econres/feds/index.htm
+- source_name: Federal Reserve Board — FEDS Working Papers
+- domain: social_science
+- first_discovered: 2026-11-27
+- last_encountered: 2026-11-27
+- source_type: institution
+- why_useful: First-party US central-bank staff research on AI's aggregate economic effects (e.g. a Nov 2026 paper on AI and US productivity/data-center investment) — would anchor lenses 1 and 4 alongside existing IMF/OECD/BIS coverage.
+- surfaced_by: open search (economic growth/productivity lens)
+- proposed_purpose: watchlist candidate for curated discovery; federalreserve.gov is not currently on the egress allowlist, so promoting this source also requires an allowlist addition.
+- status: pending
+- review_note:

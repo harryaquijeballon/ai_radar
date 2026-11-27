@@ -156,7 +156,7 @@
 - title: Making AI Tutoring Productive: Evidence from a Mastery-Based Math Practice Experiment
 - domain: social_science
 - first_encountered: 2026-08-21
-- last_encountered: 2026-11-16
+- last_encountered: 2026-11-27
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. RCT evidence on AI math tutoring — would score high on lens 1/6 if in-window.
@@ -168,7 +168,7 @@
 - title: AI Agents and Prompt Engineering in Econometric Coding
 - domain: social_science, ai_engineering
 - first_encountered: 2026-08-22
-- last_encountered: 2026-11-16
+- last_encountered: 2026-11-27
 - source_type: academic
 - reason_class: verification_insufficient
 - reason: nber.org fetched OK but shows only "August 2026" (no day-level date); cannot confirm if after 2026-08-20. Cross-domain: agent-autonomy levels raise econometric-coding task completion 74%→96% at ~$0.08/op (Galiani et al.).
@@ -267,7 +267,7 @@
 - title: Telco AI: State of the Market, Q3 2026
 - domain: social_science
 - first_encountered: 2026-10-20
-- last_encountered: 2026-11-25
+- last_encountered: 2026-11-27
 - source_type: primary
 - reason_class: verification_insufficient
 - reason: Research-index page lists this title under "Oct 2026" only (no day-level date, no item-specific URL shown); distinct title from the prior pending June-2026 "token economy" item, so likely a new report.
@@ -284,7 +284,7 @@
 - reason_class: verification_insufficient
 - reason: cepr.org allowlisted but the column 403'd; introduces the 7th Future of Banking report (AI in finance: intermediation, central banking, governance). Page date 2 Nov 2026 vs metadata ~519 days old; true date unresolved.
 - surfaced_by: open search (competition/regulation lens, AI in finance)
-- action_needed: confirm the true publication date directly; if genuinely new, review against lens 4; if pre-dating the radar, dismiss as not-new.; 11-08: same (403).; 11-09: same.; 11-13: same.; 11-14: same.; 11-15: same.; 11-16: same (403).
+- action_needed: confirm the true publication date directly; if genuinely new, review against lens 4; if pre-dating the radar, dismiss as not-new.; 11-08: same (403).; 11-09: same.; 11-13: same.; 11-14: same.; 11-15: same.; 11-16: same (403).; 11-27: same.
 - status: pending
 
 ### https://economics.mit.edu/sites/default/files/2026-11/Speculative%20Growth%20and%20the%20AI%20Bubble.pdf
@@ -327,7 +327,7 @@
 - title: AI Math Proofs Aren't Knowledge Until Someone Explains Them
 - domain: social_science, ai_engineering
 - first_encountered: 2026-11-24
-- last_encountered: 2026-11-25
+- last_encountered: 2026-11-27
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
@@ -351,10 +351,34 @@
 - title: OECD Digital Economy and Society Outlook 2026
 - domain: social_science
 - first_encountered: 2026-11-20
-- last_encountered: 2026-11-21
+- last_encountered: 2026-11-27
 - source_type: primary
 - reason_class: access_or_license_unclear
 - reason: oecd.org is allowlisted but this URL returned HTTP 403 this run; URL path implies a Nov 2026 publication but exact day and full AI-adoption findings are unconfirmed without a direct fetch.
 - surfaced_by: open search (economic development / digital technologies lens)
-- action_needed: retry direct fetch in a future run, or have a human confirm the publication date and AI-adoption findings directly; review against lenses 1/3 if confirmed in-window.; 11-21: same (403).
+- action_needed: retry direct fetch in a future run, or have a human confirm the publication date and AI-adoption findings directly; review against lenses 1/3 if confirmed in-window.; 11-21: same (403).; 11-27: same (403).
+- status: pending
+
+### https://towardsdatascience.com/chatgpt-boosted-consultants-scores-not-their-knowledge/
+- title: ChatGPT Boosted Consultants' Scores, Not Their Knowledge
+- domain: social_science
+- first_encountered: 2026-11-27
+- last_encountered: 2026-11-27
+- source_type: commentary
+- reason_class: access_or_license_unclear
+- reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/date (26 Nov 2026), but the article page itself returned HTTP 403, so claims can't be traced to source text.
+- surfaced_by: watchlist:towards-data-science (feed)
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the study/claim directly; review against lens 1 or 6 if confirmed; otherwise dismiss.
+- status: pending
+
+### https://www.federalreserve.gov/econres/feds/artificial-intelligence-and-the-us-economy-current-evidence.htm
+- title: Artificial Intelligence and the US Economy: Current Evidence
+- domain: social_science
+- first_encountered: 2026-11-27
+- last_encountered: 2026-11-27
+- source_type: academic
+- reason_class: access_or_license_unclear
+- reason: federalreserve.gov is not on profiles/egress_allowlist.md; open-search summary describes a Nov 2026 Fed staff paper finding small aggregate AI productivity effects so far, concentrated in data-center investment
+- surfaced_by: open search (economic growth/productivity lens)
+- action_needed: approve federalreserve.gov for the allowlist (source proposal also logged), or have a human read and confirm the findings and exact publication date directly; otherwise dismiss.; rather than measured output gains.
 - status: pending

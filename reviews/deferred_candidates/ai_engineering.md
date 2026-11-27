@@ -192,7 +192,7 @@
 - title: How to Plan Retries for Multi-Agent Workflows Before You Write Code
 - domain: ai_engineering
 - first_encountered: 2026-11-24
-- last_encountered: 2026-11-26
+- last_encountered: 2026-11-27
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
@@ -204,48 +204,72 @@
 - title: Shuffle the Questions to Catch an LLM That Memorized Its Benchmark
 - domain: ai_engineering
 - first_encountered: 2026-11-26
-- last_encountered: 2026-11-26
+- last_encountered: 2026-11-27
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted but the article page returned HTTP 403, so claims can't be traced to source text; title suggests a benchmark-contamination detection technique (lens 4).
 - surfaced_by: watchlist:towards-data-science (feed)
-- action_needed: retry direct fetch in a future run, or have a human read and confirm the shuffling-based contamination technique directly; otherwise dismiss.
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the shuffling-based contamination technique directly; otherwise dismiss.; 11-27: re-encountered via feed, still 403.
 - status: pending
 
 ### https://towardsdatascience.com/a-second-llm-judge-hit-87-5-precision-but-left-21-of-33-for-humans
 - title: A Second LLM Judge Hit 87.5% Precision but Left 21 of 33 for Humans
 - domain: ai_engineering
 - first_encountered: 2026-11-26
-- last_encountered: 2026-11-26
+- last_encountered: 2026-11-27
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted but the article page returned HTTP 403, so claims can't be traced to source text; title suggests a quantified LLM-judge-of-judge validity result (lens 4).
 - surfaced_by: watchlist:towards-data-science (feed)
-- action_needed: retry direct fetch in a future run, or have a human read and confirm the 87.5% precision claim and method directly; otherwise dismiss.
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the 87.5% precision claim and method directly; otherwise dismiss.; 11-27: re-encountered via feed, still 403.
 - status: pending
 
 ### https://towardsdatascience.com/what-a-90-prompt-cache-hit-rate-hides-about-attention-work
 - title: What a 90% Prompt Cache Hit Rate Hides About Attention Work
 - domain: ai_engineering
 - first_encountered: 2026-11-24
-- last_encountered: 2026-11-25
+- last_encountered: 2026-11-27
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
 - surfaced_by: watchlist:towards-data-science (feed)
-- action_needed: retry direct fetch in a future run, or have a human read and confirm the prompt-caching/attention argument directly; otherwise dismiss.
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the prompt-caching/attention argument directly; otherwise dismiss.; 11-27: re-encountered via feed, still 403.
 - status: pending
 
 ### https://towardsdatascience.com/the-birthday-paradox-shows-small-llms-pick-from-about-6-of-40-words
 - title: The Birthday Paradox Shows Small LLMs Pick From About 6 of 40 Words
 - domain: ai_engineering
 - first_encountered: 2026-11-24
-- last_encountered: 2026-11-25
+- last_encountered: 2026-11-27
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
 - surfaced_by: watchlist:towards-data-science (feed)
-- action_needed: retry direct fetch in a future run, or have a human read and confirm the sampling-diversity claim and any evidence directly; otherwise dismiss.
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the sampling-diversity claim and any evidence directly; otherwise dismiss.; 11-27: re-encountered via feed, still 403.
+- status: pending
+
+### https://towardsdatascience.com/speculative-decoding-makes-tool-calls-faster-agents-need-a-cache/
+- title: Speculative Decoding Makes Tool Calls Faster. Agents Need a Cache.
+- domain: ai_engineering
+- first_encountered: 2026-11-27
+- last_encountered: 2026-11-27
+- source_type: commentary
+- reason_class: access_or_license_unclear
+- reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/date (27 Nov 2026), but the article page itself returned HTTP 403, so claims can't be traced to source text
+- surfaced_by: watchlist:towards-data-science (feed)
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the caching technique and any evidence directly; otherwise dismiss.; title suggests a tool-call-latency/caching technique (lens 2/5).
+- status: pending
+
+### https://towardsdatascience.com/code-mode-vs-tool-calling-benchmarks-find-a-16-tool-crossover/
+- title: Code Mode vs. Tool Calling Benchmarks Find a 16-Tool Crossover
+- domain: ai_engineering
+- first_encountered: 2026-11-27
+- last_encountered: 2026-11-27
+- source_type: commentary
+- reason_class: access_or_license_unclear
+- reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/date (27 Nov 2026), but the article page itself returned HTTP 403, so claims can't be traced to source text
+- surfaced_by: watchlist:towards-data-science (feed)
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the 16-tool crossover finding directly; otherwise dismiss.; title suggests a quantified tool-use-architecture benchmark (lens 3).
 - status: pending
 
 ### https://blog.cryptographyengineering.com/2026/09/30/is-sandboxing-sufficient-to-contain-rogue-agents/
@@ -264,12 +288,12 @@
 - title: When Successful Collaboration Becomes an Attack Surface: Insider Memory Poisoning in Multi-Agent Systems
 - domain: ai_engineering
 - first_encountered: 2026-11-25
-- last_encountered: 2026-11-26
+- last_encountered: 2026-11-27
 - source_type: academic
 - reason_class: possible_duplicate_requires_review
 - reason: Appeared in today's cs.MA listing but the abs page shows a 22 Nov 2026 submission date, a 2-3 day gap; unclear if genuine new cross-list or prior circulation.
 - surfaced_by: watchlist:arxiv-cs.MA Would score high on lens 6 (shared-memory insider-poisoning attack, quantified cross-benchmark results, audit only partially mitigates).
-- action_needed: confirm whether this had prior public visibility before 2026-11-25; if genuinely new, archive at high relevance (lens 6).
+- action_needed: confirm whether this had prior public visibility before 2026-11-25; if genuinely new, archive at high relevance (lens 6).; 11-27: re-appeared in today's cs.MA listing (Wed 25 Nov section), same submission date, still unresolved.
 - status: pending
 
 ### https://arxiv.org/abs/2611.28173
