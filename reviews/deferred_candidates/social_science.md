@@ -327,7 +327,7 @@
 - title: AI Math Proofs Aren't Knowledge Until Someone Explains Them
 - domain: social_science, ai_engineering
 - first_encountered: 2026-11-24
-- last_encountered: 2026-11-27
+- last_encountered: 2026-11-28
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/author/date, but the article page itself returned HTTP 403, so claims can't be traced to source text.
@@ -363,22 +363,46 @@
 - title: ChatGPT Boosted Consultants' Scores, Not Their Knowledge
 - domain: social_science
 - first_encountered: 2026-11-27
-- last_encountered: 2026-11-27
+- last_encountered: 2026-11-28
 - source_type: commentary
 - reason_class: access_or_license_unclear
 - reason: towardsdatascience.com is allowlisted and its RSS feed confirms this title/date (26 Nov 2026), but the article page itself returned HTTP 403, so claims can't be traced to source text.
 - surfaced_by: watchlist:towards-data-science (feed)
-- action_needed: retry direct fetch in a future run, or have a human read and confirm the study/claim directly; review against lens 1 or 6 if confirmed; otherwise dismiss.
+- action_needed: retry direct fetch in a future run, or have a human read and confirm the study/claim directly; review against lens 1 or 6 if confirmed; otherwise dismiss.; 11-28: same (403).
 - status: pending
 
 ### https://www.federalreserve.gov/econres/feds/artificial-intelligence-and-the-us-economy-current-evidence.htm
 - title: Artificial Intelligence and the US Economy: Current Evidence
 - domain: social_science
 - first_encountered: 2026-11-27
-- last_encountered: 2026-11-27
+- last_encountered: 2026-11-28
 - source_type: academic
 - reason_class: access_or_license_unclear
 - reason: federalreserve.gov is not on profiles/egress_allowlist.md; open-search summary describes a Nov 2026 Fed staff paper finding small aggregate AI productivity effects so far, concentrated in data-center investment
 - surfaced_by: open search (economic growth/productivity lens)
-- action_needed: approve federalreserve.gov for the allowlist (source proposal also logged), or have a human read and confirm the findings and exact publication date directly; otherwise dismiss.; rather than measured output gains.
+- action_needed: approve federalreserve.gov for the allowlist (source proposal also logged), or have a human read and confirm the findings and exact publication date directly; otherwise dismiss.; rather than measured output gains.; 11-28: same.
+- status: pending
+
+### https://www.oecd.org/en/publications/miracle-or-myth-assessing-the-macroeconomic-productivity-gains-from-artificial-intelligence_b524a072-en.html
+- title: Miracle or Myth? Assessing the Macroeconomic Productivity Gains from Artificial Intelligence
+- domain: social_science
+- first_encountered: 2026-11-28
+- last_encountered: 2026-11-28
+- source_type: primary
+- reason_class: access_or_license_unclear
+- reason: oecd.org is allowlisted but this URL returned HTTP 403 this run; distinct DOI (b524a072-en) from the archived G7 paper (a5319ab5-en) — likely a separate companion paper with a lower TFP estimate per search snippets.
+- surfaced_by: open search (economic growth/productivity lens)
+- action_needed: retry direct fetch in a future run, or have a human confirm the exact publication date and findings directly, and whether it duplicates the archived G7 paper; otherwise dismiss.
+- status: pending
+
+### https://www.iza.org/publications/dp/19110/from-automation-to-acceleration-transitional-regimes-in-ai-driven-growth
+- title: From Automation to Acceleration: Transitional Regimes in AI-Driven Growth
+- domain: social_science
+- first_encountered: 2026-11-28
+- last_encountered: 2026-11-28
+- source_type: academic
+- reason_class: access_or_license_unclear
+- reason: iza.org (IZA Institute of Labor Economics) is not on the egress allowlist; search snippets describe a Nov 2026 growth model with four AI-acceleration scenarios (Naudé, Sequeira, Almeida).
+- surfaced_by: open search (economic growth/productivity lens)
+- action_needed: approve iza.org for the allowlist (source proposal also logged), or have a human read and confirm the model and findings directly; otherwise dismiss.
 - status: pending

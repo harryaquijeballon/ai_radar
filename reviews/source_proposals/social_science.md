@@ -25,10 +25,22 @@
 - source_name: Federal Reserve Board — FEDS Working Papers
 - domain: social_science
 - first_discovered: 2026-11-27
-- last_encountered: 2026-11-27
+- last_encountered: 2026-11-28
 - source_type: institution
 - why_useful: First-party US central-bank staff research on AI's aggregate economic effects (e.g. a Nov 2026 paper on AI and US productivity/data-center investment) — would anchor lenses 1 and 4 alongside existing IMF/OECD/BIS coverage.
 - surfaced_by: open search (economic growth/productivity lens)
 - proposed_purpose: watchlist candidate for curated discovery; federalreserve.gov is not currently on the egress allowlist, so promoting this source also requires an allowlist addition.
+- status: pending
+- review_note:
+
+### https://www.iza.org/
+- source_name: IZA Institute of Labor Economics — Discussion Papers
+- domain: social_science
+- first_discovered: 2026-11-28
+- last_encountered: 2026-11-28
+- source_type: institution
+- why_useful: Major labour-economics working-paper series increasingly covering AI-and-growth models (e.g. DP 19110, a semi-endogenous growth model of AI-driven acceleration) — would extend lenses 1 and 2 alongside NBER/CEPR coverage.
+- surfaced_by: open search (economic growth/productivity lens)
+- proposed_purpose: watchlist candidate for curated discovery; iza.org is not currently on the egress allowlist, so promoting this source also requires an allowlist addition.
 - status: pending
 - review_note:
